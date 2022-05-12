@@ -4,86 +4,86 @@ Last updated 12.05.2022
 
 List:
 
--ADSSpy
+- ADSSpy
     
     Finds hidden streams (NTFS alternate data streams).
 
--AdwCleaner and EsEtOnlineScanner
+- AdwCleaner and EsEtOnlineScanner
     
     Malware and PUP remover.
 
--Autoruns
+- Autoruns
     
     Displays everything that launches when the system boots.
 
--BlueScreenView
+- BlueScreenView
     
     Reads the blue screen crash dumps and displays why the system is blue screening.
 
--ComboFix
+- ComboFix
     
     "Scorched-earth" malware remover. Only use if you know what you're doing.
 
--Junkware Removal Tool
+- Junkware Removal Tool
     
     Freeware junk removal tool from one of the Malwarebytes employees.
 
--Net Adapter Repair
+- Net Adapter Repair
     
     Repairs the system network connection if it's bjorked.
 
--Remote Support Reboot Config
+- Remote Support Reboot Config
     
     Configures auto-login on the system. For using Tron remotely in case the system reboots.
 
--Safe Mode Boot Selector
+- Safe Mode Boot Selector
     
     Toggles between regular boot and safe mode. Use if the system is stuck in a safe mode boot mode.
 
--ServicesRepair
+- ServicesRepair
     
     Attempts to repair some core Windows services.
 
--Tron Reset Tool
+- Tron Reset Tool
     
     Clean up all TronScript-related stuff from the registry. Sometimes if Tron dies in the middle of a run it can leave stuff laying around.
    
--ConfigureDefender
+- ConfigureDefender
     
     Configure Windows Defender for better security.
     
--O&O ShutUp10++
+- O&O ShutUp10++
      
      Disable Windows telemetry.
      
--Debloater.ps1
+- Debloater.ps1
      
      Sycnex Windows debloater.
      
--QuickBooster
+- QuickBooster
      
      Install better Nvidia/AMD drivers, fix programs, and tweak Windows.
      
--procexp
+- procexp
      
      Process explorer.
      
--MyDefrag
+- MyDefrag
      
      Very good defragmentation program.
      
--WinaeroTweaker
+- WinaeroTweaker
      
      Tweak Windows.
      
--Process Hacker
+- Process Hacker
      
      Better Process Explorer
      
--cepeuz
+- cepeuz
      
      Cpu-z
      
--tron
+- tron
      
      TronScript
