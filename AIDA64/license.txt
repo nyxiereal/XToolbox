@@ -1,0 +1,200 @@
+AIDA64 END-USER LICENSE AGREEMENT
+
+The software and materials provided by FinalWire Ltd. are licensed, NOT SOLD; and are available for use only under the terms described hereafter. Please read this agreement carefully. By downloading, installing, copying or otherwise using the software and materials, you agree to be bound by the terms and conditions of this agreement. If you do not agree with all of the terms and conditions of this agreement, do not download, install, copy or otherwise use the software or materials provided by FinalWire Ltd.
+
+The term “Software” used throughout the agreement includes any modified versions or updates of the Software licensed to you by FinalWire, but does not include source code for the FinalWire software product.
+
+TERMS & CONDITIONS
+
+GRANT OF LICENSE: Subject to the terms and conditions of this Agreement, FinalWire grants you a non-exclusive and non-transferable license only to:
+
+a) Install and use for personal or internal business purposes one copy of the Software on a single computer; 
+
+b) Make a single copy of the Software solely for archival purposes; 
+
+c) Store or install a copy of the Software on a storage device such as a network server, used only to run the Software on your other computers over an internal network, provided that the number of computers on which you use the product does not exceed the license number. A single license for the Software does not allow you to share the Software or use it concurrently on different computers or for others (other than you) to access, install, download, copy or otherwise use the functionality of the Software. 
+
+MULTIPLE LICENSE PACK: If you have purchased a Multiple License Pack, you may make additional copies of the Software not exceeding the number of licenses purchased. You may use each copy solely in the manner specified in this Agreement.
+
+REGISTRATION: FinalWire has included features in the Software to prevent unlicensed use of the Software. You agree that FinalWire may do so. In particular, use of the full version of the Software requires that you register the Software through the Internet as described in the FinalWire Product Registration email sent to you following your purchase of the product.
+
+UPDATES / UPGRADES: You may install and use a modified version, update, or upgrade of the Software only if you have a validly licensed full version of the Software being modified, updated, or upgraded. If you download, install, copy, or otherwise use a modified version, update, or upgrade of the Software, then this Agreement terminates as to the previous version of the Software, and you then have a license only to such modified version, update, or upgrade of the Software under the terms and conditions of this Agreement.
+
+RESTRICTIONS: Except as otherwise expressly permitted in this Agreement, you may not:
+
+a) Reproduce or copy any of the Software; 
+
+b) Modify or create any derivative works of the Software, including translation or localization; 
+
+c) Decompile, disassemble, reverse engineer, or otherwise attempt to derive the source code for the Software; 
+
+d) Redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to the Software; 
+
+e) Remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in the Software; 
+
+f) Provide service bureau services using the Software or otherwise use the Software to process data or information supplied by a third party for the benefit of such third party without FinalWire’s prior express written consent, which may be given in FinalWire’s sole discretion; or 
+
+g) Copy the printed materials accompanying the Software. Any changes to, modifications to, or derivative works of the Software shall become the exclusive property of FinalWire. 
+
+TERMINATION: Without prejudice to any other rights, FinalWire may terminate this Agreement if you breach any of its terms and conditions. Upon termination, you shall destroy all your copies of the Software.
+
+PROPRIETARY RIGHTS: Title, ownership rights, and intellectual property rights in the Software shall remain in FinalWire and/or its suppliers or licensors. You acknowledge such ownership and intellectual property rights and will not take any action to jeopardize, limit or interfere in any manner with FinalWire’s or its suppliers’ or licensors’ ownership of or rights with respect to the Software. The Software is protected by copyright and other intellectual property laws and by international treaties.
+
+GENERAL:
+
+a) This Agreement may be amended only by a writing signed by both you and FinalWire Ltd. 
+
+b) If any provision in this Agreement should be held illegal or unenforceable by a court having jurisdiction, such provision shall be modified to the extent necessary to render it enforceable without losing its intent, or severed from this Agreement if no such modification is possible, and other provisions of this Agreement shall remain in full force and effect. 
+
+c) The controlling language of this Agreement is English. 
+
+d) You agree to bear any and all costs of interpreters if necessary. 
+
+e) If you have received a translation into another language, it has been provided for your convenience only. 
+
+f) If you or FinalWire waives any term or condition of this Agreement or any breach thereof, in any one instance, this shall not waive such term or condition or any subsequent breach thereof. 
+
+g) This Agreement shall be binding upon and shall be to the benefit of you, your successors and permitted assigns. The relationship between FinalWire and you is that of independent contractors, thus neither you nor your agents shall have any authority to bind FinalWire in any way. 
+
+h) The provisions of this Agreement that require or contemplate performance after the expiration or termination of this Agreement shall be enforceable notwithstanding such expiration or termination. 
+
+i) You may not assign, or otherwise transfer by operation of law or otherwise, this Agreement or any rights or obligations herein except to the acquirer of your business in the case of a merger or the sale of all (or substantially all) of your assets. 
+
+j) If any dispute arises under this Agreement, the prevailing party shall be reimbursed by the other party for any and all legal fees and costs associated with the dispute. 
+
+k) The headings to the sections of this Agreement are used for convenience only and shall have no substantive meaning. 
+
+l) FinalWire may use your name in any customer reference list or in any press release issued by FinalWire regarding the licensing of the Software. 
+
+DISCLAIMER OF WARRANTY: The software and documentation provided by FinalWire Ltd. is provided without warranty. FinalWire gives no guarantee that the Software is free from defects. The risk therefore lies on you to use the product with the knowledge that the performance and quality of the software may not be optimal. In the event that the Software is defective, you will be held responsible for the cost to service and repair the Software, and therefore cannot seek compensation from FinalWire Ltd. or any third party vendors. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS AGREEMENT. This software cannot be used in ways not specified by this disclaimer.
+
+LIMITATION OF LIABILITY: To the maximum extent permitted by applicable law, in no event will FinalWire or its suppliers or licensors be liable for any indirect, special, incidental or consequential damages arising out of the use of (or inability to) use the software, including without limitation: damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses, even if advised of the possibility thereof, and regardless of the legal or equitable theory (contract, tort or otherwise) upon which the claim is based. In any case, FinalWire and its suppliers’ and licensors’ entire liability under any provision of this agreement shall not exceed in the total sum of the fees you have paid for this license (if any), with the exception of death or personal injury caused by the negligence of FinalWire to the extent to which applicable law prohibits the limitation of damages in such cases. Some jurisdictions do not allow the exclusion or limitation of incidental or consequential damages, so this exclusion and limitation may not be applicable.
+
+APPLICABLE LAW: If you acquired this Software in the United States, this EULA is governed by the laws of the State of Washington. If you acquired this Software in Canada, unless expressly prohibited by local law, this EULA is governed by the laws in force in the Province of Ontario, Canada; and, in respect of any dispute which may arise hereunder, you consent to the jurisdiction of the federal and provincial courts sitting in Toronto, Ontario. If you acquired this Software in the European Union, Iceland, Norway, or Switzerland, then local law applies. If you acquired this Software in any other country, then local law may apply.
+
+Should you have any questions concerning this EULA, or if you desire to contact FinalWire for any reason, please contact FinalWire at info@finalwire.com or write to FinalWire Ltd., Hegedus Gyula u. 89/a. 7/6., Budapest, HUNGARY H-1133.
+
+Copyright © 2010 FinalWire Ltd. All rights reserved.
+
+Revised: October 2010
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+  OpenSSL License
+  ---------------
+
+/* ====================================================================
+ * Copyright (c) 1998-2008 The OpenSSL Project.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer. 
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ *
+ * 3. All advertising materials mentioning features or use of this
+ *    software must display the following acknowledgment:
+ *    "This product includes software developed by the OpenSSL Project
+ *    for use in the OpenSSL Toolkit. (http://www.openssl.org/)"
+ *
+ * 4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to
+ *    endorse or promote products derived from this software without
+ *    prior written permission. For written permission, please contact
+ *    openssl-core@openssl.org.
+ *
+ * 5. Products derived from this software may not be called "OpenSSL"
+ *    nor may "OpenSSL" appear in their names without prior written
+ *    permission of the OpenSSL Project.
+ *
+ * 6. Redistributions of any form whatsoever must retain the following
+ *    acknowledgment:
+ *    "This product includes software developed by the OpenSSL Project
+ *    for use in the OpenSSL Toolkit (http://www.openssl.org/)"
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
+ * EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
+ * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ * ====================================================================
+ *
+ * This product includes cryptographic software written by Eric Young
+ * (eay@cryptsoft.com).  This product includes software written by Tim
+ * Hudson (tjh@cryptsoft.com).
+ *
+ */
+
+ Original SSLeay License
+ -----------------------
+
+/* Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
+ * All rights reserved.
+ *
+ * This package is an SSL implementation written
+ * by Eric Young (eay@cryptsoft.com).
+ * The implementation was written so as to conform with Netscapes SSL.
+ * 
+ * This library is free for commercial and non-commercial use as long as
+ * the following conditions are aheared to.  The following conditions
+ * apply to all code found in this distribution, be it the RC4, RSA,
+ * lhash, DES, etc., code; not just the SSL code.  The SSL documentation
+ * included with this distribution is covered by the same copyright terms
+ * except that the holder is Tim Hudson (tjh@cryptsoft.com).
+ * 
+ * Copyright remains Eric Young's, and as such any Copyright notices in
+ * the code are not to be removed.
+ * If this package is used in a product, Eric Young should be given attribution
+ * as the author of the parts of the library used.
+ * This can be in the form of a textual message at program startup or
+ * in documentation (online or textual) provided with the package.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. All advertising materials mentioning features or use of this software
+ *    must display the following acknowledgement:
+ *    "This product includes cryptographic software written by
+ *     Eric Young (eay@cryptsoft.com)"
+ *    The word 'cryptographic' can be left out if the rouines from the library
+ *    being used are not cryptographic related :-).
+ * 4. If you include any Windows specific code (or a derivative thereof) from 
+ *    the apps directory (application code) you must include an acknowledgement:
+ *    "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
+ * 
+ * THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ * 
+ * The licence and distribution terms for any publically available version or
+ * derivative of this code cannot be changed.  i.e. this code cannot simply be
+ * copied and put under another distribution licence
+ * [including the GNU Public Licence.]
+ */
