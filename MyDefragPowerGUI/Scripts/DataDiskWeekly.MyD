@@ -1,0 +1,56 @@
+# MyDefrag v4.0 default script: Data Disk Daily
+#
+# This script is part of the standard MyDefrag distribution.
+
+Title('Data Disk Weekly')
+Description("Data Disk Weekly description")   // See the "Settings.MyD" file.
+
+
+
+/* Write the header to the logfile. See the "Settings.MyD" file for the
+   definition of the "LogHeader" string. */
+WriteLogfile("MyDefrag.log","LogHeader")
+
+/* Select and process the volumes one by one. */
+VolumeSelect
+  CommandlineVolumes()
+VolumeActions
+
+  /* Write the "before" statistics to the logfile. See the "Settings.MyD" file
+     for the definition of the "LogBefore" string. */
+  AppendLogfile("MyDefrag.log","LogBefore")
+
+  /* Zone 1: Place the MFT and some other special NTFS files. */
+  FileSelect
+    SelectNtfsSystemFiles(yes)
+  FileActions
+    PlaceNtfsSystemFiles(Ascending,MftSize * 0.01)
+  FileEnd
+
+  /* Zone 2: Directories. */
+  FileSelect
+    Directory(yes)
+  FileActions
+    SortByName(Ascending)
+  FileEnd
+
+  MakeGap(RoundUp(ZoneBegin,VolumeSize * 0.001))
+
+  /* Zone 3: all other files. */
+  FileSelect
+    all
+  FileActions
+    Defragment(Fast)
+    Defragment()
+    FastFill(WithShuffling)
+  FileEnd
+
+  /* Write the "after" statistics to the logfile. See the "Settings.MyD" file
+     for the definition of the "LogAfter" string. */
+  AppendLogfile("MyDefrag.log","LogAfter")
+
+VolumeEnd
+
+/* Write the footer to the logfile. See the "Settings.MyD" file for the
+   definition of the "LogFooter" string. */
+AppendLogfile("MyDefrag.log","LogFooter")

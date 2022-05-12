@@ -1,0 +1,253 @@
+NTREGOPT
+========
+
+Registry Optimization for Windows NT/2000/2003/XP
+
+v1.1j, 10/20/2005, Freeware
+Written by Lars Hederer
+e-mail: lars.hederer@t-online.de
+
+Look for the latest version here:
+http://www.larshederer.homepage.t-online.de/erunt
+
+To find out what's new in this version, please see the "Version
+history" section later in this file.
+
+
+
+Introduction
+------------
+
+Similar to Windows 9x/Me, the registry files in an NT-based system
+can become fragmented over time, occupying more space on your hard
+disk than necessary and decreasing overall performance. You should
+use the NTREGOPT utility regularly, but especially after installing
+or uninstalling a program, to minimize the size of the registry files
+and optimize registry access.
+
+The program works by recreating each registry hive "from scratch",
+thus removing any slack space that may be left from previously
+modified or deleted keys.
+
+Note that the program does NOT change the contents of the registry in
+any way, nor does it physically defrag the registry files on the drive
+(as the PageDefrag program from SysInternals does). The optimization
+done by NTREGOPT is simply compacting the registry hives to the
+minimum size possible.
+
+
+
+Supported operating systems
+---------------------------
+
+- Windows NT 3.51
+- Windows NT 4.0
+- Windows 2000
+- Windows 2003
+- Windows XP
+- most likely, all future Windows versions based on the NT kernel
+
+
+
+Installation
+------------
+
+Use the Setup program to install NTREGOPT on your computer.
+
+Or, if you downloaded the zipped version: Unzip all files into a
+folder of your choice, and if you want, create a shortcut on your
+desktop to the NTREGOPT.EXE file.
+
+
+
+Uninstallation
+--------------
+
+Use "Add/Remove Programs" in Windows' control panel to remove NTREGOPT
+from your computer.
+
+Or, if you downloaded the zipped version: Delete the NTREGOPT folder,
+delete the appropriate desktop icon.
+
+
+
+Optimizing the registry with NTREGOPT
+-------------------------------------
+
+Note: To ensure proper operation of NTREGOPT, you should be logged in
+as a system administrator.
+
+To optimize your registry, simply run NTREGOPT, click "OK", and when
+the process is complete click "OK" to reboot the computer. You should
+do so immediately because any changes made to the registry after
+NTREGOPT has been run are lost after the reboot.
+
+Note that depending on your system configuration the optimization
+process may take some time, and that the first bar is NOT a progress
+bar, just an indicator that the program is still running.
+
+
+
+NTREGOPT command line switches
+------------------------------
+
+NTREGOPT supports command line switches with which you can perform a
+"silent" registry optimization, without user interaction.
+The syntax for the NTREGOPT command line is:
+
+NTREGOPT silent [/noprogresswindow] [/reboot]
+
+(Switches in brackets are optional.)
+
+Description of the command line switches:
+
+silent
+  Puts NTREGOPT into "silent" mode and enables the other switches.
+
+/noprogresswindow
+  Hides the progress window during optimization.
+
+/reboot
+  Automatically reboots the computer when optimization of the registry
+  is complete.
+
+
+
+Known problems
+--------------
+
+NTREGOPT sometimes fails with error 1450 - "Insufficient system
+resources exist to complete the requested service" - when trying to
+save an optimized registry hive. I have not yet been able to reproduce
+this error on any PC, and reports from affected users indicate that it
+also pops up when trying to back up the critical hive using
+Microsoft's REGBACK program. This makes it unlikely that there is
+anything I can do on my (the programmer's) side. Some users reported
+however that they were able to work around the problem by running
+NTREGOPT in Windows' safe mode, and in one case uninstalling a
+Symantec software suite solved it permanently. One user reported that
+increasing the "IRPStackSize" value as described in Microsoft
+Knowledge Base article 177078 fixed the problem on his system.
+
+When the system is rebooted after an optimization with NTREGOPT,
+Windows Server 2003 will by default display the shutdown event tracker
+during logon asking why the system has been shut down unexpectedly.
+This is because the info that the shutdown was in fact an expected one
+is written to the "old" registry during shutdown of the system which
+is replaced by the optimized registry next time the system is booted,
+and therefore the shutdown info is discarded and shutdown event
+tracker thinks the system crashed. You may want to disable the tracker
+to avoid this message in the future (see the Windows help for
+information on how to do this).
+
+If you experience any other problems, please email me at
+lars.hederer@t-online.de with a detailed description and I will see if
+I can help you.
+
+
+
+Localization
+------------
+
+You can translate this program into your language by editing the
+NTREGOPT.LOC file.
+
+Keep in mind that the file should be edited using a Windows based
+editor (Notepad), to ensure that any OEM characters are displayed
+correctly in the program.
+
+If your language is not yet present on my homepage and you want your
+localization to be available to the general public, you are welcome to
+send your translated file to me. I will then make it available for
+download, with credits of course.
+
+I have included a German language file. If you want to use the program
+in German, simply unzip LOC_GER.ZIP into your NTREGOPT folder.
+
+
+
+Version history
+---------------
+
+v1.1j, 10/20/2005
+- Fixed compatibility issues with 64-bit Windows (many thanks to
+  Ian Smith and Hajo for all testing)
+- Enhanced error messages
+
+v1.1i, 08/17/2005
+- Optimization results are now calculated correctly when optimization
+  failed on one or more hives
+
+v1.1h, 03/06/2005
+- Updated homepage address
+
+v1.1f, 08/26/2004
+- Window position is now screen center instead of desktop center,
+  fixing display problem when using multiple monitors (thanks John :)
+
+v1.1e, 07/31/2004
+- Optimization results: use thousand separator
+
+v1.1d, 07/07/2004
+- Optimized error handling
+
+v1.1c, 05/10/2004
+- Fixed problems with dynamic disks
+- Re-added support for Windows NT 3.51 (got lost with v1.1)
+
+v1.1b, 04/23/2004
+- NTREGOPT is now compatible with Windows Server 2003 and Windows XP
+  Service Pack 2
+- Fixed a problem where the registry hives could not be optimized on
+  some systems
+
+v1.1a, 10/03/2002
+- Fixed a problem where the registry hives could not be optimized on
+  some systems
+
+v1.1, 09/25/2002
+- Added command line support
+- Show optimization results (initial and new registry size)
+
+v1.0, 11/24/2001
+- Initial release
+
+
+
+Distribution
+------------
+
+The NTREGOPT program is freeware. Please pass it to anyone who you
+think may find it useful.
+
+I explicitly allow this program to be included in any file archive,
+CD-ROM or other media collection as well as usage in your own programs
+provided that all files are kept and remain unchanged. A quick note
+via e-mail where my program has been included is appreciated.
+
+
+
+Donations
+---------
+
+Though I chose to make my programs freeware so that no one is required
+to pay for using them, I accept and appreciate donations. So, if you
+find my programs helpful and want to support further development,
+simply visit my homepage and click one of the "PayPal" buttons, or
+donate directly to my e-mail address via PayPal. Thanks in advance!
+
+If you live in Germany and want to make a donation, you may also
+transfer money directly to my bank account. Contact me for more
+information.
+
+
+
+Disclaimer
+----------
+
+Use this software at your own risk. I do not take responsibility for
+anything that might happen to you or the PC upon use of my program,
+including but not limited to: registry destruction, hard disk crash,
+heart attack...
+
+Comments and suggestions via e-mail, however, are always welcome!

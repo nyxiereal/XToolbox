@@ -1,0 +1,30 @@
+# MyDefrag v4.0 default script: Sort By Last Change
+#
+# This is an example script.
+
+Title('Sort By Last Change')
+Description('
+Sort all the files and directories by last change time on all the selected disk(s).
+')
+
+
+
+WriteLogfile("MyDefrag.log","LogHeader")
+
+VolumeSelect
+  CommandlineVolumes()
+VolumeActions
+
+  AppendLogfile("MyDefrag.log","LogBefore")
+
+  FileSelect
+    all
+  FileActions
+    SortByLastChange(Ascending)
+  FileEnd
+
+  AppendLogfile("MyDefrag.log","LogAfter")
+
+VolumeEnd
+
+AppendLogfile("MyDefrag.log","LogFooter")

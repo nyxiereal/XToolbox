@@ -1,0 +1,29 @@
+# MyDefrag v4.0 default script: Consolidate free space.
+#
+# This script is part of the standard MyDefrag distribution.
+
+
+Title('Consolidate free space')
+Description("Consolidate free space description")   // See the "Settings.MyD" file.
+
+
+
+WriteLogfile("MyDefrag.log","LogHeader")
+
+VolumeSelect
+  CommandlineVolumes()
+VolumeActions
+
+  AppendLogfile("MyDefrag.log","LogBefore")
+
+  FileSelect
+    all
+  FileActions
+    ForcedFill()
+  FileEnd
+
+  AppendLogfile("MyDefrag.log","LogAfter")
+
+VolumeEnd
+
+AppendLogfile("MyDefrag.log","LogFooter")

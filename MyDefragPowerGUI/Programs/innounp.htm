@@ -1,0 +1,616 @@
+<html>
+<head>
+<title>innounp, the Inno Setup Unpacker</title>
+<style>
+body { font-family: Verdana, Myriad Web, Syntax, sans-serif; font-size: 90%; }
+h1{
+font-family:Georgia, Minion Web, Palatino, Book Antiqua, Utopia, Times New Roman, serif;
+font-size-adjust:.4;
+font-size:2.0em;
+font-weight:600;
+font-style:normal;
+text-decoration:none;
+word-spacing:normal;
+letter-spacing:normal;
+text-transform:none;
+}
+
+h2{
+font-family:Georgia, Minion Web, Palatino, Book Antiqua, Utopia, Times New Roman, serif;
+font-size-adjust:.4;
+font-size:1.75em;
+font-weight:500;
+font-style:normal;
+text-decoration:none;
+word-spacing:normal;
+letter-spacing:normal;
+text-transform:none;
+}
+
+h3{
+font-family:Georgia, Minion Web, Palatino, Book Antiqua, Utopia, Times New Roman, serif;
+font-size-adjust:.4;
+font-size:1.58em;
+font-weight:600;
+font-style:italic;
+text-decoration:none;
+word-spacing:normal;
+letter-spacing:normal;
+text-transform:none;
+}
+
+h4{
+font-family:Georgia, Minion Web, Palatino, Book Antiqua, Utopia, Times New Roman, serif;
+font-size-adjust:.4;
+font-size:1.33em;
+font-weight:600;
+font-style:normal;
+text-decoration:none;
+word-spacing:normal;
+letter-spacing:normal;
+text-transform:none;
+}
+
+h5, dt{
+font-family:Georgia, Minion Web, Palatino, Book Antiqua, Utopia, Times New Roman, serif;
+font-size-adjust:.4;
+font-size:1.17em;
+font-weight:600;
+font-style:italic;
+text-decoration:none;
+word-spacing:normal;
+letter-spacing:normal;
+text-transform:none;
+}
+
+h6{
+font-family:Georgia, Minion Web, Palatino, Book Antiqua, Utopia, Times New Roman, serif;
+font-size-adjust:.4;
+font-size:1em;
+font-weight:700;
+font-style:normal;
+text-decoration:none;
+word-spacing:normal;
+letter-spacing:.1em;
+font-variant:small-caps
+}
+
+h1, h2, h3, h4, h5, h6, dt, th, thead, tfoot{
+color:#C00;
+}
+
+body{
+line-height:1.58em;
+margin-top:1.58em;
+margin-left:5%;
+margin-right:5%;
+margin-bottom:1.58em;
+padding-top:0;
+padding-left:0;
+padding-right:0;
+padding-bottom:0;
+border-top:0;
+border-left:0;
+border-bottom:0;
+border-right:0;
+width:auto;
+}
+
+pre { line-height: 1.2em; font-size: 110%; }
+tt { font-size: 110%; }
+
+.boxed { border: 1px solid black; background-color: #eeeeee; color: blue; }
+
+.quicklink :link, .quicklink :visited {
+  text-decoration: none;
+  background-color: #eeeeee;
+  border-top: 1px dashed #222222;
+  border-bottom: 1px dashed #222222;
+  color: blue;
+}
+.quicklink :hover {
+  text-decoration: none;
+  border-top: 1px dashed #222222;
+  border-bottom: 1px dashed #222222;
+  background-color: #aadddd;
+}
+
+.nav :link, .nav :visited { text-decoration: none; }
+.nav :visited { color: blue; }
+.nav :hover { text-decoration: underline; color: red; }
+
+:link { color: blue; }
+:hover { color: red; }
+
+</style>
+</head>
+
+<body>
+<!--<div style="float: right; width: 16em; text-align: center; margin-left: 2em;"><span class=quicklink>
+<a href="http://innounp.sourceforge.net/get-latest-innounp.php">
+<span class=boxed>&darr;</span> Download latest version</a></span><br>
+<small>if the above link does not work, please go to the
+<a href="http://sourceforge.net/project/showfiles.php?group_id=102423">download page</a></small></div>-->
+<p>innounp, the Inno Setup Unpacker<br>
+Version 0.37<br>
+Supports Inno Setup versions 2.0.8 through 5.5.0</p>
+<p><a href="http://www.jrsoftware.org/isinfo.php">Inno Setup</a> is a popular program
+for making software installations. Unfortunately, there is no official unpacker - the
+only method of getting the files out of the self-extracting executable
+is to run it. One piece of software that addresses this issue is Sergei
+Wanin's <a href="http://plugring.farmanager.com/downld/files/instexpl_v0.3.rar">InstallExplorer</a>,
+a plug-in for the <a href="http://farmanager.com">FAR Manager</a> that unpacks
+several types of installations, including Inno Setup (IS). But since it is not updated in a
+timely fashion, and so does not support the latest IS most of the time, this program was born.
+The advantages over InstallExplorer are:</p>
+<ul>
+<li>Innounp is open source and based on IS source. Therefore, it is more likely
+to support future IS versions.</li>
+<li>It recovers portions of the installation script (.iss file), including the registry
+changes and the compiled Innerfuse/RemObjects Pascal Script, if available.</li>
+</ul>
+<p>If you want to report a bug, request a feature, or discuss anything else related
+to the program, please write to the forum.</p>
+<dl class="nav">
+<dt>On this page:</dt>
+<dd><a href="#Usage">Usage</a> &nbsp;|&nbsp;
+<a href="#ReportingBugs">How to report bugs</a> &nbsp;|&nbsp;
+<a href="#History">What's new/History</a> &nbsp;|&nbsp;
+<a href="#MultiArc">MultiArc settings</a> &nbsp;|&nbsp;
+<a href="#Copyrights">Copyrights and licensing</a></dd>
+<dt>In other places:</dt>
+<dd><a href="http://sourceforge.net/projects/innounp/files/">Download</a>
+&nbsp;|&nbsp;
+<a href="http://sourceforge.net/projects/innounp/forums/forum/353235">Forum</a>
+&nbsp;|&nbsp;
+<a href="http://sourceforge.net/projects/innounp/">Project summary page on SF.net</a>
+&nbsp;|&nbsp;
+<a href="http://innounp.sf.net">Homepage</a></dd>
+</dl>
+<p>Both the source and the executable packages are compressed with
+<a href="http://www.rarlab.com">WinRar</a>. While the full-featured packer is shareware,
+the UnRar utility that can only extract files is free. And there are lots of free
+third-party programs that unpack rar just fine, e.g. <a href="http://www.7-zip.org">7-Zip</a>.</p>
+<p>As a bonus, a simple unpacker for <a href="http://www.indigorose.com/sf/index.php">Setup
+Factory</a> installations is available on the download page. It is ripped from
+<a href="http://synce.sourceforge.net">the SynCE project</a>.</p>
+<h2><a name="Usage"></a>Usage</h2>
+<p>Innounp is a console application, and it uses command-line options to find out
+what to do. For a more human-friendly interface utilizing FAR or Total Commander as
+a front-end see the <a href="#MultiArc">MultiArc section below</a>. Windows Explorer fans:
+nullz has made <a href="http://sourceforge.net/forum/forum.php?thread_id=1122068&forum_id=353235">
+some .reg scripts</a> to add innounp into the right-click menu and Richard Santaella crafted a
+graphical wrapper for innounp (get it on the download page).</p>
+<pre>innounp [command] [options] &lt;setup.exe or setup.0&gt; [@filelist] [filemask ...]
+Commands:
+  (no)   display general installation info
+  -v     verbosely list the files (with sizes and timestamps)
+  -x     extract the files from the installation (to the current directory, also see -d)
+  -e     extract files without paths
+  -t     test files for integrity
+Options:
+  -b     batch (non-interactive) mode - will not prompt for password or disk changes
+  -q     do not indicate progress while extracting
+  -m     process internal embedded files (such as license and uninstall.exe)
+  -pPASS decrypt the installation with a password
+  -dDIR  extract the files into DIR (can be absolute or relative path)
+  -cDIR  specifies that DIR is the current directory in the installation
+  -n     don't attempt to unpack new versions
+  -fFILE same as -p but reads the password from FILE
+  -a     process all copies of duplicate files
+  -y     assume Yes on all queries (e.g. overwrite files)  
+</pre>
+<p>If an installation has <tt>setup.0</tt> (it is made without using SetupLdr), run
+innounp on <tt>setup.0</tt> instead of <tt>setup.exe</tt>.</p>
+<p>To extract all files from a specific directory, use <tt>dirname\*.*</tt>, not
+just <tt>dirname</tt>.</p>
+<p>By default all files are extracted to the current directory. Use <tt>-d</tt> to
+override this behaviour. For example, <tt>-dUnpacked</tt> will create a directory named
+<tt>Unpacked</tt> inside the current directory and put the extracted files there.</p>
+<p>The <tt>-c</tt> option is a little more tricky to explain. Suppose you opened an installation
+in a file manager and browsed to <tt>{app}\subdir\program.exe</tt>. Now if you copied
+<tt>program.exe</tt> to another location, the entire directory tree (<tt>{app}\subdir\</tt>)
+would be created and <tt>program.exe</tt> would be extracted there. <tt>-c</tt> notifies innounp
+that you are only interested in paths from the current directory and below, so that your
+file, <tt>program.exe</tt>, is extracted right where you intended to copy it, not several
+directory levels deeper. Note that in order to avoid confusion, files must still be
+specified by their full path names inside the installation.</p>
+<p>Note that an installation can contain several identical files (possibly under different names). Inno Setup
+stores only one copy of such files, and by default innounp will also unpack one file. If you want to have
+all files that could ever be installed anywhere, regardless of how many identical files this may get you,
+<tt>-a</tt> option will do it.</p>
+<p>If <tt>-m</tt> is specified, the file listing includes <tt>embedded\CompiledCode.bin</tt>
+which is the code made by the RemObjects Pascal Script compiler. It is possible to disassemble
+it using the <tt>ifps3_disasm.rar</tt> package on the download page. The result is not very
+readable though since it uses the basic 'disassembler' from IFPS3. Anyone wants to write a
+decompiler?</p>
+
+<h2><a name="ReportingBugs"></a>How to report bugs</h2>
+<p>OK, I know innounp is far from being perfect, but it is my intention to make
+the program usable. User feedback is a great way to achieve this. Here's what you should
+do if you find a bug and want it fixed.</p>
+<p>Tell me what's wrong with innounp. If you encountered incorrect behaviour,
+say what you think it should do and what it actually does. If it crashed or gave
+an error message, say <i>what</i> did that - innounp, Windows, FAR, etc, and include
+the details.</p>
+<p>Describe the exact steps necessary to reproduce the bug. Say what are the
+preconditions. Is the bug specific to some system settings? To a setup file you
+have? (include the problem part of the installation script or a link to the compiled
+setup, if it is small enough) To an IS version? To something else? Or does the
+bug occur regardless of these things?</p>
+<p>Once you have the bug report ready, post it to the forum. Remember, if I can't
+reproduce the bug using the description you gave, the chances that it will be
+fixed fall dramatically.</p>
+<p>If the above guidelines were not obvious for you, I suggest that you read the
+following articles.</p>
+<p><a href="http://www.catb.org/~esr/faqs/smart-questions.html"><i>How to Ask
+Questions the Smart Way</i></a> by Eric Raymond<br>
+<a href="http://www.chiark.greenend.org.uk/~sgtatham/bugs.html"><i>How to Report
+Bugs Effectively</i></a> by Simon Tatham</p>
+
+<h2><a name="History"></a>What's new / History</h2>
+<p><b>0.37</b> <small>(2012.06.02)</small></p>
+<ul>
+<li>Added support for IS 5.5.0.</li>
+<li>Fixed problem with reading of large files.</li>
+<li>Added some more values to reconstructed script.</li>
+<li>Improved FAR MultiArc settings.</li>
+</ul>
+<p><b>0.36</b> <small>(2011.06.01)</small></p>
+<ul>
+<li>Fixed support for IS 5.4.2.</li>
+<li>Fixed issue with '{' symbol in file names.</li>
+</ul>
+<p><b>0.35</b> <small>(2010.10.01)</small></p>
+<ul>
+<li>Added support for IS 5.2.5 (wasn't released, but such installers can be found).</li>
+<li>Added command to test files for integrity.</li>
+</ul>
+<p><b>0.34</b> <small>(2010.09.16)</small></p>
+<ul>
+<li>Less technical text in some error messages.</li>
+<li>Added dump of password hash to reconstructed script.</li>
+<li>Added some more values to reconstructed script.</li>
+</ul>
+<p><b>0.33</b> <small>(2010.07.05)</small></p>
+<ul>
+<li>Fixed encoding for custom messages in reconstructed script.</li>
+<li>Fixed several parameters in [LangOptions] section.</li>
+<li>Fixed language names in *.isl files for Unicode-based installers.</li>
+<li>Added support for legacy IS versions 2.0.8 - 2.0.10.</li>
+</ul>
+<p><b>0.32</b> <small>(2010.06.14)</small></p>
+<ul>
+<li>Added support for IS versions 5.3.10 (both ANSI and Unicode).</li>
+<li>Added support for INI section in reconstructed script.</li>
+</ul>
+<p><b>0.31</b> <small>(2010.04.19)</small></p>
+<ul>
+<li>Fixed issue with endless decompression loop on incompatible files.</li>
+</ul>
+<p><b>0.30</b> <small>(2010.04.12)</small></p>
+<ul>
+<li>Fixed issue with password processing for Unicode versions.</li>
+<li>Added support for IS versions 5.3.9 (both ANSI and Unicode).</li>
+<li>Added support for LZMA2 compression, introduced in 5.3.9.</li>
+</ul>
+<p><b>0.29</b> <small>(2010.02.19)</small></p>
+<ul>
+<li>Added support for IS versions 5.3.8 (both ANSI and Unicode).</li>
+</ul>
+<p><b>0.28</b> <small>(2010.01.14)</small></p>
+<ul>
+<li>Added support for IS versions 5.3.7 (both ANSI and Unicode).</li>
+<li>Added support for legacy IS versions 2.0.11 - 2.0.17.</li>
+<li>Fixed renaming of duplicate files. If we do not use -a then don't append numbers to names<br>
+(this switch does not affect different files with same name, only duplicates with same content).</li>
+</ul>
+<p><b>0.27</b> <small>(2009.12.04)</small></p>
+<ul>
+<li>Yet another tuning for file mask processing.</li>
+<li>Added overwrite prompt for files extraction (and option for auto-overwrite).</li>
+<li>Several tweaks to reconstructed script.</li>
+</ul>
+<p><b>0.26</b> <small>(2009.11.30)</small></p>
+<ul>
+<li>Added manifest resource to resolve Vista/Win7 UAC issue.</li>
+<li>Added restored %n formatter to custom messages.</li>
+<li>Added default OutputBaseFilename value if one from header is empty.</li>
+</ul>
+<p><b>0.25</b> <small>(2009.11.26)</small></p>
+<ul>
+<li>Added support fro [Dirs] section in reconstructed script.</li>
+<li>Moved version parameter in script to comment (since it is not original IS parameter).</li>
+<li>Fixed ArchitecturesInstallIn64BitMode and ArchitecturesAllowed flags in script.</li>
+<li>Fixed file mask processing in some cases.</li>
+</ul>
+<p><b>0.24</b> <small>(2009.11.20)</small></p>
+<ul>
+<li>Added support for IS versions 5.3.6 (both ANSI and Unicode).</li>
+<li>Added version information resource.</li>
+<li>Fixed extraction of multiple files with same name.</li>
+</ul>
+<p><b>0.23</b> <small>(2009.09.25)</small></p>
+<ul>
+<li>Added support for IS versions 5.3.5 (both ANSI and Unicode).</li>
+<li>Added Inno Setup version info to reconstructed install script.</li>
+</ul>
+<p><b>0.22</b> <small>(2009.08.24)</small></p>
+<ul>
+<li>Added support for Unicode versions.</li>
+<li>Added support for IS versions 5.3.0 - 5.3.4 (both ANSI and Unicode).</li>
+<li>Fixed rare issue with double backslashes in file path.</li>
+</ul>
+<p><b>0.21</b> <small>(2009.04.24)</small></p>
+<ul>
+<li>Supports legacy IS versions 2.0.18 - 2.0.19</li>
+</ul>
+<p><b>0.20</b> <small>(2008.05.23)</small></p>
+<ul>
+<li>Supports IS up to version 5.2.3</li>
+<li>Several bugs fixed.</li>
+</ul>
+<p><b>0.19</b> <small>(2007.02.23)</small></p>
+<ul>
+<li>Supports IS up to version 5.1.10</li>
+<li>Fixed wrong representation of Unicode characters in LanguageName.</li>
+<li>Another fix to the handling of duplicate file names.</li>
+<li>New option <tt>-a</tt> to extract all copies of duplicate files.</li>
+</ul>
+<p><b>0.18</b> <small>(2006.11.23)</small></p>
+<ul>
+<li>The reconstructed script now includes the [Types], [CustomMessages], and [Languages] sections.</li>
+<li>ROPS disassembler updated to support the latest build of ROPS.</li>
+<li>New option <tt>-f</tt> to read the password from file. This way it can include any special characters.<br>
+Be sure to save the file in the correct character encoding as no translations are applied.</li>
+<li>Fixed the bug that caused the file timestamps to be inconsistently reported and applied (UTC vs. local).</li>
+<li>Updated the decompression libraries: zlib to version 1.2.3, bzip2 to version 1.03, and LZMA to version 4.43
+(optimized for speed).</li>
+</ul>
+<p><b>0.17</b> <small>(2005.08.31)</small></p>
+<ul>
+<li>Supports IS up to version 5.1.5.</li>
+<li>Supports Martijn Laan's My Inno Setup Extensions 3.0.6.1 (by request).</li>
+<li>The <tt>Types</tt> parameter is now space-separated, as required by the IS script specification.</li>
+</ul>
+<p><b>0.16</b> <small>(2005.04.30)</small></p>
+<ul>
+<li>Supports IS up to 5.1.2-beta.</li>
+<li>Innounp will try to unpack new versions of IS to handle the cases when the
+binary format is compatible with one of the previous versions. Use <tt>-n</tt>
+to disable this attempt.</li>
+</ul>
+<p><b>0.15</b> <small>(2005.03.08)</small></p>
+<ul>
+<li>Supports IS up to 5.1.0-beta.</li>
+<li>The old bug that prevented innounp from working properly with {reg:...} constants and
+the like has got another fix.</li>
+<li>Preliminary support for the 64-bit extensions that appeared in IS 5.1.0.</li>
+</ul>
+<p><b>0.14</b> <small>(2004.10.14)</small></p>
+<ul>
+<li>Supports IS up to 5.0.4-beta.</li>
+<li>It is now possible to specify the destination directory to extract files into using
+the <tt>-d</tt> option. This directory will be created if necessary.</li>
+<li>New option <tt>-c</tt> specifies the current directory inside an installation and
+prevents the creation of the upper-level directories. MultiArc settings are updated
+accordingly.</li>
+<li>The old <tt>-c</tt> command is removed. To get the compiled Pascal script, use
+<tt>-m</tt> and extract it like a normal file.</li>
+</ul>
+<p><b>0.13</b> <small>(2004.08.26)</small></p>
+<ul>
+<li>Supports IS up to 5.0.3-beta.</li>
+<li>Supports the Components and Tasks sections.</li>
+</ul>
+<p><b>0.12</b> <small>(2004.07.28)</small></p>
+<ul>
+<li>Supports IS up to 5.0.0-beta.</li>
+<li>Improved processing of big installations with many files.</li>
+<li>Innounp now supports a certain level of user interaction - it prompts the user
+for password and disk changes as necessary. To switch this functionality off (e.g. in
+batch mode), use the <tt>-b</tt> option.</li>
+<li>If no command is specified, innounp displays a brief summary of the specified
+installation. The old <tt>-i</tt> command is removed. To get the setup script, extract it
+like a normal file.</li>
+</ul>
+<p><b>0.11</b> <small>(2004.05.04)</small></p>
+<ul>
+<li>Supports IS 4.2.2.</li>
+<li>Supports ArcFour encryption. Use the <tt>-p</tt> switch to specify a password
+if files are encrypted</li>
+</ul>
+<p><b>0.10</b> <small>(2004.04.26)</small></p>
+<ul>
+<li>Fixed (again): filenames containing invalid characters could not be specified
+on the command line or in a list file.</li>
+</ul>
+<p><b>0.09</b> <small>(2004.04.22)</small></p>
+<ul>
+<li>Fixed (again): invalid characters in filenames (such as ':' and '|') made innounp crash.</li>
+<li>Updated TC MultiArc settings.</li>
+</ul>
+<p><b>0.08</b> <small>(2004.04.14)</small></p>
+<ul>
+<li>Added support for IS versions up to 4.2.1.</li>
+<li>Added MultiArc settings for Total Commander (thanks to Gnozal).</li>
+<li>Fixed a bug in MultiArc settings that prevented shells from displaying file
+dates and times (thanks to Maxim Ryazanov).</li>
+<li>The reconstructed setup script (<tt>.iss</tt>) is now included together with the 'normal' files.
+Using <tt>-m</tt> option it's possible to view/extract other internal files in the same way.</li>
+</ul>
+<p><b>0.07</b> <small>(2004.03.16)</small></p>
+<ul>
+<li>Multiple files with the same name are not overwritten now, instead they are appended
+with numbers.</li>
+<li><tt>-c</tt> command extracts the compiled Innerfuse Pascal Script code to a file.
+It can then be 'disassembled' with a separate tool. Get one on the download page.</li>
+<li>The output of <tt>-i</tt> command now looks more like <tt>.iss</tt> script.
+More data is included.</li>
+</ul>
+<p><b>0.06</b> <small>(2004.03.11)</small></p>
+<ul>
+<li>Added support for IS versions 3.0.0 - 4.0.0.</li>
+<li>Supports installations that were not packaged into a single exe using SetupLdr (these
+can be identified by the presence of <tt>setup.0</tt> which is appended to
+<tt>setup.exe</tt> in packaged installations).</li>
+<li><tt>-i</tt> command displays registry changes made by an installation.</li>
+<li>Supports (displays and reads from filelists) filenames with national
+characters (single-byte character encodings only, Unicode/MBCS was not tested). The correct
+code page must be set in Windows for this function to work properly.</li>
+<li>[fix] File dates and times were not set during extraction.</li>
+</ul>
+<p><b>0.05</b> <small>(2004.03.09)</small></p>
+<ul>
+<li>Improved batch processing. Now it's possible to browse and extract IS installations
+in FAR using the supplied settings for the standard MultiArc plug-in.</li>
+<li>Removed <tt>isbunzip.dll</tt>. Bzip2 library is linked statically.</li>
+</ul>
+<p><b>0.04</b> <small>(2004.02.27)</small></p>
+<ul>
+<li>Initial release. Supports IS versions 4.0.1 - 4.1.8.</li>
+</ul>
+
+<h2><a name="MultiArc"></a>MultiArc settings</h2>
+<p>Unless you are a die-hard fan of command line, you may like the idea of working
+with IS installations like with conventional archives in a file manager. Right now
+two programs support this: FAR and Total Commander. Below are the instructions
+how to integrate innounp into each.</p>
+<h3>FAR</h3>
+<p>Copy <tt>innounp.exe</tt> to a directory in your <tt>PATH</tt> and edit your
+<tt>FAR\Plugins\MultiArc\Formats\Custom.ini</tt> file. There are two alternate
+settings differing in several aspects and each having its own pros and cons. Try
+the recommended setting first, if it does not work well for you, try the other
+setting or even combine them.</p>
+<h4>Co-operation with InstallExplorer</h4>
+<p>If you have InstallExplorer installed (or another plug-in that handles IS,
+but you will need to adjust the settings accordingly), you might want to let it
+process all the other types of installations but keep IS installations for innounp.
+FAR does not provide a means of customizing the plug-in call order; however, an
+empirical study has shown that it loads plug-ins and applies them to files in
+lexical order. So the solution is to rename InstallExplorer's dll file from <tt>6InstExpl.dll</tt>
+to e.g. <tt>zInstExpl.dll</tt> (and restart FAR).</p>
+<h4>FAR: recommended setting</h4>
+<pre>[InnoSetup5]
+TypeName=InnoSetup5
+ID=49 6E 6E 6F 20 53 65 74 75 70 20 53 65 74 75 70 20 44 61 74 61 20 28 35 2E
+IDOnly=1
+List=innounp -v -m
+Errorlevel=1
+Start="^---------"
+End="^---------"
+Format0="/^\s+(?P&lt;size&gt;\d+)\s+(?P&lt;mYear&gt;\d+)\.(?P&lt;mMonth&gt;\d+)\.(?P&lt;mDay&gt;\d+)\s+(?P&lt;mHour&gt;\d+):(?P&lt;mMin&gt;\d+)\s+(?P&lt;name&gt;.*)$/i"
+Extract=innounp -x -m {-c%%R} %%A {@%%LMQ}
+ExtractWithoutPath=innounp -e -m {-c%%R} %%A {@%%LMQ}
+Test=innounp -t -m %%A
+AllFilesMask="*.*"
+
+[InnoSetup4]
+TypeName=InnoSetup4
+ID=49 6E 6E 6F 20 53 65 74 75 70 20 53 65 74 75 70 20 44 61 74 61 20 28 34 2E
+IDOnly=1
+List="innounp -v -m"
+Errorlevel=1
+Start="^---------"
+End="^---------"
+Format0="/^\s+(?P&lt;size&gt;\d+)\s+(?P&lt;mYear&gt;\d+)\.(?P&lt;mMonth&gt;\d+)\.(?P&lt;mDay&gt;\d+)\s+(?P&lt;mHour&gt;\d+):(?P&lt;mMin&gt;\d+)\s+(?P&lt;name&gt;.*)$/i"
+Extract=innounp -x -m {-c%%R} %%A {@%%LMQ}
+ExtractWithoutPath=innounp -e -m {-c%%R} %%A {@%%LMQ}
+Test=innounp -t -m %%A
+AllFilesMask="*.*"
+
+[InnoSetup3]
+TypeName=InnoSetup3
+ID=49 6E 6E 6F 20 53 65 74 75 70 20 53 65 74 75 70 20 44 61 74 61 20 28 33 2E
+IDOnly=1
+List="innounp -v -m"
+Errorlevel=1
+Start="^---------"
+End="^---------"
+Format0="/^\s+(?P&lt;size&gt;\d+)\s+(?P&lt;mYear&gt;\d+)\.(?P&lt;mMonth&gt;\d+)\.(?P&lt;mDay&gt;\d+)\s+(?P&lt;mHour&gt;\d+):(?P&lt;mMin&gt;\d+)\s+(?P&lt;name&gt;.*)$/i"
+Extract=innounp -x -m {-c%%R} %%A {@%%LMQ}
+ExtractWithoutPath=innounp -e -m {-c%%R} %%A {@%%LMQ}
+Test=innounp -t -m %%A
+AllFilesMask="*.*"
+
+[InnoSetup2]
+TypeName=InnoSetup2
+ID=49 6E 6E 6F 20 53 65 74 75 70 20 53 65 74 75 70 20 44 61 74 61 20 28 32 2E
+IDOnly=1
+List="innounp -v -m"
+Errorlevel=1
+Start="^---------"
+End="^---------"
+Format0="/^\s+(?P&lt;size&gt;\d+)\s+(?P&lt;mYear&gt;\d+)\.(?P&lt;mMonth&gt;\d+)\.(?P&lt;mDay&gt;\d+)\s+(?P&lt;mHour&gt;\d+):(?P&lt;mMin&gt;\d+)\s+(?P&lt;name&gt;.*)$/i"
+Extract=innounp -x -m {-c%%R} %%A {@%%LMQ}
+ExtractWithoutPath=innounp -e -m {-c%%R} %%A {@%%LMQ}
+Test=innounp -t -m %%A
+AllFilesMask="*.*"
+</pre>
+<h4>FAR: alternate setting</h4>
+Will not work for IS 5.1.5 and up because new versions no longer have this signature.
+<pre>
+[InnoSetup]
+TypeName=InnoSetup
+ID=49 6E 6E 6F
+IDPos=48
+Extension=exe
+List="innounp -v -m"
+Errorlevel=1
+Start="^---------"
+End="^---------"
+Format0="zzzzzzzzzz  yyyy tt dd hh:mm  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+Extract=innounp -x -m {-c%%R} %%A {@%%LMQ}
+ExtractWithoutPath=innounp -e -m {-c%%R} %%A {@%%LMQ}
+AllFilesMask="*.*"</pre>
+<h3>Total Commander</h3>
+<p>Will not work for IS 5.1.5 and up because new versions no longer have this signature. I guess the
+version-specific settings from above have to be cloned.</p>
+<p>Configuration made up by Gnozal and Maxwish and posted on
+<a href="http://ghisler.ch/board/viewtopic.php?t=3810">TC forum</a>. Change the path below
+to where you have innounp installed and add this to your <tt>MultiArc.ini</tt>. Note that
+MultiArc is not included in the default TC installation, instead it is available as a
+separate download from <a href="http://wcx.sourceforge.net">Siarzhuk Zharski's web site</a>.
+Refer to the help file for information on any additional configuration necessary.</p>
+<pre>[InnoSetup]
+Description="InnoSetup"
+Archiver=C:\PROGRAM FILES\WINCMD\WCXPlugin\MultiArc\innounp.exe
+Extension=exe
+ID=49 6E 6E 6F
+IDPos=48
+Start="^--------------------------------------"
+End="^--------------------------------------"
+Format0="zzzzzzzzzz  yyyy.tt.dd hh:mm  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+List=%P -v -m %AQ
+Extract=%P -e -m -c%R %AQ @%LQ
+ExtractWithPath=%P -x -m -c%R %AQ @%LQ
+IgnoreErrors=0
+SkipEmpty=0
+SkipDirsInFileList=0
+SearchForUglyDirs=0
+BatchUnpack=1
+UnixPath=0
+AskMode=0
+SkipLIST=1
+Debug=0</pre>
+
+<h2><a name="Copyrights"></a>Copyrights and licensing</h2>
+<p>Copyright &copy; 2004-2012 QuickeneR, 2009-2012 Ariman<br>
+This program is licensed under the terms of the <a href="http://www.gnu.org/copyleft/gpl.html">
+GNU General Public License (GPL)</a>. A copy of the license is included with the source files.<br>
+If you distribute innounp on the WWW, please put a link to its home page,
+http://innounp.sourceforge.net</p>
+<p>Over 90% of code is ripped from Inno Setup which is Copyright &copy; 1997-2010 Jordan
+Russell. All rights reserved.<br>
+Portions Copyright &copy; 2000-2006 Martijn Laan. All rights reserved.<br>
+See <a href="http://www.jrsoftware.org">http://www.jrsoftware.org</a> for details.</p>
+<p>Contains zlib code, Copyright &copy; 1995-2005 Jean-loup Gailly and Mark Adler.</p>
+<p>Contains bzip2 code, Copyright &copy; 1996-2009 Julian R Seward. All rights reserved.</p>
+<p>Contains LZMA code, Copyright &copy; 1999-2009 Igor Pavlov.</p>
+<hr width=20% align=left style="margin-left: 5%">
+<p>Innerfuse Pascal Script is Copyright &copy; 2000-2004 by Carlo Kok, Innerfuse.</p>
+<p>StripReloc is Copyright &copy; 1999-2005 Jordan Russell, www.jrsoftware.org</p>
+<hr>
+<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=102423&type=1" width="88" height="31" border="0" alt="SourceForge.net"></a>
+</body>
+</html>
