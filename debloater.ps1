@@ -1,0 +1,1 @@
+iwr -useb https://git.io/debloat|iex
