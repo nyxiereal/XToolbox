@@ -4,12 +4,15 @@ Last updated 12.05.2022
 
 List:
 -ADSSpy
+    
     Finds hidden streams (NTFS alternate data streams).
 
 -AdwCleaner and EsEtOnlineScanner
+    
     Malware and PUP remover.
 
 -Autoruns
+    
     Displays everything that launches when the system boots.
 
 -BlueScreenView
