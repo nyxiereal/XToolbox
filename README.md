@@ -2,6 +2,7 @@
 Constantly updated free Virus Removing Toolkit!
 Last updated 12.05.2022
 
+- RepoTracker link: https://repo-tracker.com/r/gh/xemulat/Virus-Removal-Toolkit
 
 - Tron
     Automated virus removal tool, and a wrapper around a large amount of other engines and debloat tools, designed to make it easy to remove most malware.
