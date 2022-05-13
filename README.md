@@ -2,6 +2,10 @@
 Constantly updated free Virus Removing Toolkit!
 Last updated 12.05.2022
 
+
+- Tron
+    Automated virus removal tool, and a wrapper around a large amount of other engines and debloat tools, designed to make it easy to remove most malware.
+
 List:
 
 - ADSSpy
@@ -84,9 +88,6 @@ List:
      
      Cpu-z
      
-- tron
-     
-     TronScript
 
 
 Bro pls donate bro pls bro donate bro
