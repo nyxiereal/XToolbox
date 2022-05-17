@@ -1,6 +1,6 @@
 # Virus-Removing-Toolkit
 Constantly updated free Virus Removing Toolkit!
-Last updated 12.05.2022
+Last updated 17.05.2022
 
 - RepoTracker link: https://repo-tracker.com/r/gh/xemulat/Virus-Removal-Toolkit
 
