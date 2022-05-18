@@ -1,0 +1,90 @@
+CPUID CPU-Z END-USER LICENSE AGREEMENT (EULA) 
+
+IMPORTANT - PLEASE READ CAREFULLY 
+
+This End-User License Agreement is a legal agreement between you (either an individual or a single entity) and CPUID for the CPUID software product identified above, which includes computer software and associated media and printed materials, and may include online or electronic documentation.
+By installing, copying, or otherwise using CPU-Z, you agree to be bound by the terms of this agreement. 
+
+1. CPUID CPU-Z PRODUCT LICENSE 
+
+CPUID CPU-Z is a free software : you can freely use it and redistribute it.
+CPUID CPU-Z is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties.
+
+For further information, please contact: 
+
+CPUID
+cpuid@gmx.com 
+
+1.1. COPYRIGHT 
+
+CPUID is the sole developer and owner of CPUID CPU-Z. You, as user of CPUID CPU-Z, acknowledge and agree that CPUID CPU-Z is a proprietary product of CPUID under the French and European copyright laws and prevailing copyright laws throughout the world. You further acknowledge and agree that all right, title, and interest in and to CPUID CPU-Z, including associated intellectual property rights, are and shall remain with CPUID, and you agree not to contest CPUID's ownership or the validity of CPUID's rights.
+This License Agreement does not convey to you an interest in or to CPUID CPU-Z, but only a limited right to use the work, which is revocable in accordance with the terms of this License Agreement.
+You assume responsibility for the selection of this program to achieve your intended results, and for its installation and subsequent use. 
+
+1.2 SOFTWARE DEFECT REPORTING 
+
+If you find software defects in CPUID CPU-Z, you should report them to cpuz@cpuid.com. CPUID will evaluate them and, at its sole discretion, may address them in a future revision of CPUID CPU-Z.
+
+1.3. UPDATES 
+
+The CPUID CPU-Z updates (including, but not limited to : bug fixes, upgrades, hot fixes, enhancements, modifications, new releases) are provided in the sole discretion of CPUID.
+If CPUID does provide you with any updates, such updates shall be subject to the terms and conditions of this Agreement (including the License) or such agreement, if any, which accompanies such updates.
+
+2. RIGHTS OF CPUID 
+
+You acknowledge and agree that CPUID CPU-Z contains proprietary material of CPUID protected under French and International copyright, trademark, and trade secret laws and conventions. All right, title, and interest in CPUID CPU-Z are, and shall remain, with CPUID.
+This Agreement does not convey to you any title or interest in and to CPUID CPU-Z only the limited right of use which may be terminated as provided for herein.
+
+3. DISCLAIMER OF WARRANTY 
+
+THIS SOFTWARE AND THE ACCOMPANYING FILES ARE PROVIDED "AS IS." CPUID AND ITS SUPPLIERS DO NOT AND CANNOT WARRANT THE PERFORMANCE OR RESULTS YOU MAY OBTAIN BY USING THIS SOFWARE OR SUCH FILES. CPUID AND ITS SUPPLIERS MAKE NO WARRANTIES, EXPRESS OR IMPLIED, AS TO TITLE OR INFRINGEMENT OF THIRD-PARTY RIGHTS, MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE. The entire risk as to the quality and performance of CPUID CPU-Z is with you.
+Should CPUID CPU-Z prove defective, you (and not CPUID or any authorized dealers of CPUID products) assume the entire cost of all necessary servicing, repair, or correction. Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusion may not apply to you. The foregoing does not affect or prejudice your statutory rights.
+Good data processing procedure dictates that any program be thoroughly tested with non-critical data before relying on it. 
+
+4. LIMITATION OF LIABILITY 
+
+IN NO EVENT WILL CPUID BE LIABLE FOR ANY DAMAGES, INCLUDING ANY LOST PROFITS, LOST SAVINGS, OR OTHER INDIRECT, SPECIAL, EXEMPLARY, INCIDENTAL OR CONSEQUENTIAL DAMAGES, CLAIMS OR ACTIONS, ARISING OUT OF THE USE OR INABILITY TO USE CPUID CPU-Z, EVEN IF CPUID HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, CLAIMS OR ACTIONS. FURTHER, IN NO EVENT WILL CPUID BE LIABLE FOR ANY CLAIMS BY ANY OTHER PARTY ARISING OUT OF YOUR USE OF CPUID CPU-Z.
+SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU.
+
+Nothing contained in this Agreement shall prejudice the statutory rights of any party dealing as a consumer. 
+
+5. INDEMNIFICATION 
+
+You agree to indemnify, defend, and hold CPUID harmless from and against any claims or lawsuits, including costs and attorneys fees, that arise or result from the use of CPUID CPU-Z, provided CPUID gives you prompt written notice of any such claim, tenders to you the defense or settlement of such a claim at your expense and cooperates with you at your expense in defending or settling such claim.
+
+6. GOVERNING LAW 
+
+This Agreement shall be governed by and construed in accordance with the laws of France. Any legal proceedings arising under this Agreement shall be instituted only in the courts of France.
+The parties opt out of the United Nations Convention on the Sale of Goods and choose the laws of the France to apply to the Agreement and performance hereunder. 
+
+7. SEVERABILITY 
+
+Should any term of this Agreement be declared invalid, illegal, void, or not enforceable by any court of competent jurisdiction, such provision shall be severed from this Agreement, and the remaining terms shall remain in full force and effect.
+
+8. WAIVER 
+
+The waiver or failure of either party to exercise or enforce in any respect any of its rights provided for in this Agreement or take action against the other party in the event of a breach of this Agreement shall not be deemed a waiver of any further right under this Agreement by such party or the right to subsequent enforcement of its rights or actions in the event of subsequent or the same breaches by the other party.
+Should you have any questions concerning this Agreement, you may contact CPUID by writing :
+
+CPUID
+cpuid@gmx.com
+
+9. TRADEMARKS 
+
+The names of companies and products mentioned on the Site or in the Materials may be the trademarks of their respective owners. 
+
+10. COMPLETE AGREEMENT 
+
+BY USING THIS SOFTWARE YOU ACKNOWLEDGE THAT YOU HAVE READ THIS AGREEMENT, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.
+YOU FURTHER AGREE THAT THIS AGREEMENT IS THE COMPLETE AND EXCLUSIVE STATEMENT OF THE AGREEMENT BETWEEN YOU AND CPUID REGARDING THE SUBJECT MATTER HEREOF AND SUPERSEDES ANY PROPOSAL OR PRIOR AGREEMENT, ORAL OR WRITTEN, AND ANY OTHER COMMUNICATIONS BETWEEN YOU AND CPUID RELATING TO THE SUBJECT MATTER OF THIS AGREEMENT.
+
+11. OPTIONAL SUPPORT SERVICES 
+
+At your option and expense, and under a separate agreement, CPUID may provide you with support services related to your use of CPUID CPU-Z.
+Any supplemental software code provided to you as part of the support services shall be considered part of CPUID CPU-Z and subject to the terms and conditions of this License Agreement.
+
+12. PRIVACY POLICY
+
+Please consult CPUID Privacy Policy at http://www.cpuid.com/privacy-policy.html
+
+
