@@ -1,0 +1,30 @@
+# MyDefrag v4.0 default script: Force Together
+#
+# This is an example script.
+
+Title('Force Together')
+Description('
+Move all the files and directories to the beginning of the selected disk(s).
+Files will be fragmented to perfectly fill all the gaps.
+')
+
+
+WriteLogfile("MyDefrag.log","LogHeader")
+
+VolumeSelect
+  CommandlineVolumes()
+VolumeActions
+
+  AppendLogfile("MyDefrag.log","LogBefore")
+
+  FileSelect
+    all
+  FileActions
+    ForcedFill()
+  FileEnd
+
+  AppendLogfile("MyDefrag.log","LogAfter")
+
+VolumeEnd
+
+AppendLogfile("MyDefrag.log","LogFooter")

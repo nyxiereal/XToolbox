@@ -1,0 +1,111 @@
+;
+; This is the localization file for NTREGOPT v1.1 .
+;
+; IMPORTANT: This file is not compatible with
+; NTREGOPT v1.0 !
+;
+; Only change lines beginning with #
+;
+; Other #'s or ##'s in a line are replaced at
+; runtime with certain text strings (file names
+; etc.), so include them in your translation!
+;
+; To make sure OEM characters are saved correctly,
+; please use a Windows based text editor (such as
+; Notepad) to edit this file.
+;
+
+: 1
+; 1 line only
+# NT Registry Optimizer
+
+: 2
+; multiple lines possible
+# Registry Optimization for Windows NT/2000/XP
+
+: 3
+; 1 line only
+# Written by
+
+: 4
+; 1 line only
+# Welcome!
+
+: 5
+; multiple lines possible
+# This program optimizes the registry files
+# of your Windows NT/2000/XP system.
+#
+# Click OK to start the process.
+
+: 6
+; multiple lines possible
+# Syntax:
+#
+# NTREGOPT
+#
+# - or -
+#
+# NTREGOPT silent [/noprogresswindow] [/reboot]
+
+: 7
+; 1 line only
+# Warning!
+
+: 8
+; multiple lines possible
+# This program requires Windows NT/2000/XP!
+#
+# Continue anyway?
+
+: 9
+; 1 line only
+# Error!
+
+: 10
+; multiple lines possible
+# Registry key not found:
+# HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\hivelist
+#
+# Without the information from this key the registry cannot be optimized.
+
+: 11
+; multiple lines possible
+# No registry files found to optimize!
+
+: 12
+; 1 line only
+# Optimizing registry
+
+: 13
+; 1 line only
+# Current registry hive:
+
+: 14
+; 1 line only
+# # of ## hives optimized
+
+: 15
+; multiple lines possible
+# Unknown hive type: #
+#
+# Continue registry optimization
+# with the next hive?
+
+: 16
+; multiple lines possible
+# Error optimizing registry hive
+# # !
+#
+# Continue with the next hive?
+
+: 17
+; multiple lines possible
+# Registry optimization is complete!
+#
+# # bytes (## reduction)
+#
+# The computer must be rebooted to activate
+# the optimized registry.
+#
+# Reboot the computer now?

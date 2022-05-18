@@ -1,0 +1,14 @@
+# MyDefrag v4.0 default script: Highlight
+#
+# This is an example script.
+
+Title('Highlight')
+Description('This script shows how you can highlight a selection of files.
+In this example it will colorize all ZIP files in white.')
+
+VolumeSelect
+  CommandlineVolumes()
+VolumeActions
+  SetFileColor(FileName("*.zip"),All,255,255,255)
+  Pause()
+VolumeEnd
