@@ -1,5 +1,5 @@
 # Virus-Removal-Toolkit
-*changes are only temporarily*
+*changes are only temporarily, don't worry releases are untouched*
 
 Constantly updated free Virus Removing Toolkit!
 Last updated 17.05.2022
