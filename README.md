@@ -1,12 +1,12 @@
-# Virus-Removal-Toolkit
+# Windows Toolkit
 *do not touch updater.py if you cloned the repo*
 
-Constantly updated free Virus Removing Toolkit!
+Constantly updated free Windows Toolkit!
 Last updated 17.05.2022
 
-- RepoTracker link: [link](https://repo-tracker.com/r/gh/xemulat/Virus-Removal-Toolkit)
+- RepoTracker link: [link](https://repo-tracker.com/r/gh/xemulat/Windows-Toolkit)
 
-- Software list is [here](https://github.com/xemulat/Virus-Removal-Toolkit/blob/main/list.md)
+- Software list is [here](https://github.com/xemulat/Windows-Toolkit/blob/main/list.md)
 
 
 
