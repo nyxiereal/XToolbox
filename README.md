@@ -2,7 +2,15 @@
 *do not touch updater.py if you cloned the repo*
 
 Constantly updated free Windows Toolkit!
-Last updated 17.05.2022
+Last updated 19.05.2022
+
+## Recommended Hardware and Software
+Windows 10 or Windows 11
+Pentium 4 or newer processor that supports SSE2
+2GB of RAM
+~1.5GB of hard drive space
+Any Graphics Card with minimum 512MB VRAM
+
 
 - RepoTracker link: [link](https://repo-tracker.com/r/gh/xemulat/Windows-Toolkit)
 
