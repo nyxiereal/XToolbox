@@ -14,7 +14,7 @@ Any Graphics Card with minimum 512MB VRAM
 
 - RepoTracker link: [link](https://repo-tracker.com/r/gh/xemulat/Windows-Toolkit)
 
-- Software list is [here](https://github.com/xemulat/Windows-Toolkit/blob/main/list.md)
+- Software list is [here](https://github.com/xemulat/Windows-Toolkit/wiki/Software-List)
 
 
 
