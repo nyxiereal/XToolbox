@@ -3,7 +3,7 @@ import read
 
 
 #set vars
-yourversion = "0.0.1 "
+yourversion = "0.0.2 "
 fname1 = 'relver.txt'
 fname2 = 'Virus.Removal.Toolkit.zip'
 
