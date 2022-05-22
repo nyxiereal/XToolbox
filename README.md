@@ -11,6 +11,11 @@ Pentium 4 or newer processor that supports SSE2
 ~1.5GB of hard drive space
 Any Graphics Card with minimum 512MB VRAM
 
+## ToDo
+
+* Do .Iso Downloader
+* Update Programs
+
 
 - RepoTracker link: [link](https://repo-tracker.com/r/gh/xemulat/Windows-Toolkit)
 
@@ -22,7 +27,7 @@ Any Graphics Card with minimum 512MB VRAM
 
 
 
-Bro pls donate bro pls bro donate bro
+## Bro pls donate bro pls bro donate bro
 
 Monero(XMR): 83kAah6ztn6h1oKQxmFAcS86p1uzX3RKXcqptr75cCU4ca4ETmn78ceD2ad8tv6zjr516aVpgiwHi8NamiBwY3RE2Xx3R5G
 
