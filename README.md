@@ -6,15 +6,18 @@ Last updated 19.05.2022
 
 ## Recommended Hardware and Software
 Windows 10 or Windows 11
-Pentium 4 or newer processor that supports SSE2
+Pentium 4 or newer
 2GB of RAM
 ~1.5GB of hard drive space
 Any Graphics Card with minimum 512MB VRAM
 
 ## ToDo
 
-* Do .Iso Downloader
-* Update Programs
+| Name | Status |
+| --- | --- |
+|.Iso Downloader|Working on it|
+|Adding More Software|Doing Research|
+
 
 ## Links
 
