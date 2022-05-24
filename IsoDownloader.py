@@ -30,7 +30,7 @@ def powpow():
 system('cls')
 print(Fore.BLUE +"Welcome to Xem's Iso Downloader")
 print(Fore.WHITE +"Type 1/2/3/4/5 To Execute Selected Actions:")
-print(Fore.BLUE +"1. Rufus")
+print(Fore.BLUE +"1. USB Flasher")
 print(Fore.BLUE +"2. Windows Editions")
 print(Fore.BLUE +"3. Linux Distros")
 print(Fore.BLUE +"4. Backup Iso's")
@@ -41,10 +41,22 @@ whattoinstalldwag = input("(1/2/3/4/5): ")
 
 ################## Rufus Download ##################
 if whattoinstalldwag == '1':
-    replink = 'https://github.com/pbatard/rufus/releases/download/v3.18/rufus-3.18.exe'
-    repname = 'Rufus.exe'
-    name = 'Rufus'
-    powpow()
+    system('cls')
+    print(Fore.WHITE +"Type 1/2 To Execute Selected Actions:")
+    print(Fore.BLUE +"1. Rufus(For Everything)")
+    print(Fore.BLUE +"2. Balena Etcher (For Linux)")
+    rufustodo = input("(1/2): ")
+    if rufustodo == '1':
+        replink = 'https://github.com/pbatard/rufus/releases/download/v3.18/rufus-3.18.exe'
+        repname = 'Rufus.exe'
+        name = 'Rufus'
+        powpow()
+
+    if rufustodo == '2':
+        replink = 'https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-Portable-1.7.9.exe'
+        repname = 'Balena.exe'
+        name = 'Balena Etcher'
+        powpow()
 
 ################## Windows Iso's ##################
 if whattoinstalldwag == '2':
@@ -131,7 +143,7 @@ if whattoinstalldwag == '4':
     if repairtodo == '1':
         repname = 'Acronis.iso'
         replink = 'https://archive.org/download/acronis-true-image-2021/AcronisTrueImage2021.iso'
-        name = ''
+        name = 'Acronis True Image'
         powpow()
 
     if repairtodo == '2':
