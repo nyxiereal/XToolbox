@@ -1,52 +1,35 @@
-import wget
+from wget import download
 import read
 import webbrowser
-
+from time import sleep
+from sys import exit
+from colorama import Fore, Back, Style, init
+init(autoreset=True)
 
 #set vars
-yourversion = "0.0.3 "
+yourversion = ('0.0.5')
 fname1 = 'relver.txt'
 fname2 = 'Virus.Removal.Toolkit.zip'
 
-
-print("Downloading update info...")
-wget.download('https://raw.githubusercontent.com/xemulat/Virus-Removal-Toolkit/main/newestversion.txt', fname1)
-f=open("relver.txt", "r")
-if f.mode == 'r':
-    contents =f.read()
-
-
-
-latesturl = 'https://github.com/xemulat/Virus-Removal-Toolkit/releases/latest'
-
+print(Fore.RED +"[S>] Downloading update info...")
+download('https://raw.githubusercontent.com/xemulat/Virus-Removal-Toolkit/main/newestversion.txt', fname1)
+with open('relver.txt', 'r') as line:
+	newver = line.read(5)
 
 print(" ")
-print("You need to remove relver.txt file!")
-print("Newest version is: " + contents)
-print("Your version is: " + yourversion)
-if (contents == yourversion):
-    print("Your version is up-to-date!")
-    exit()
-elif (contents >= yourversion):
-    print("Your version is outdated :(")
-    print("Do you want to update now?")
-    answer = input("update: " + "(y/n): ").lower().strip()
-    print("")
-    while not(answer == "y" or answer == "yes" or \
-    answer == "n" or answer == "no"):
-        print("Input yes or no")
-        answer = input(question + "(y/n):").lower().strip()
-        print("")
-    
-    if answer[0] == "y":
-        print ("Opening latest update in browser...")
-        webbrowser.open(latesturl, new=2)
-        print("Opened, exiting...")
-        exit()
-    
-    if answer[0] == "n":
-        print("Okey, exiting")
-        exit()
+print(Fore.BLUE +"[I>] You need to remove relver.txt file!")
+print(Fore.RED +"[S>] Newest version is: " + newver)
+print(Fore.RED +"[S>] Your version is: " + yourversion)
 
-    else:
-        exit()
+if newver == yourversion:
+    print(Fore.BLUE +"[I>] Your version is up-to-date!")
+    exit(sleep(5))
+if newver >= yourversion:
+    print(Fore.BLUE +"[I>] Your version is outdated :(")
+    print(Fore.WHITE +"[K>] Do you want to update now?")
+    updates = input("(y/n): ")
+    if updates == 'y':
+        webbrowser.open("https://github.com/xemulat/Virus-Removal-Toolkit/releases/latest")
+    if updates == 'n':
+        print(Fore.RED +"[S>] Ok, exiting...")
+        exit(sleep(3))
