@@ -3,6 +3,7 @@ from time import sleep
 from webbrowser import open as webopen
 from os import system
 import sys
+import socket
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
@@ -11,7 +12,7 @@ def reporter(blocknum, blocksize, totalsize):
     readsofar = blocknum * blocksize
     if totalsize > 0:
         percent = readsofar * 1e2 / totalsize
-        s = "\r%5.1f%% %*d / %d" % (
+        s = "\r%5.1f%% %*d out of %d" % (
             percent, len(str(totalsize)), readsofar, totalsize)
         sys.stderr.write(s)
         if readsofar >= totalsize:
@@ -27,17 +28,40 @@ def powpow():
     print(Fore.RED +"[S>] " +name+ " Downloaded, exiting...")
     exit(sleep(3))
 
+
+def is_connected():
+  try:
+    host = socket.gethostbyname("github.com")
+    s = socket.create_connection((host, 80), 2)
+    return 'Yes'
+  except:
+     pass
+  return 'No'
+
+def starty():
+    print(Fore.BLUE +"Welcome to Xem's Iso Downloader")
+    print(Fore.WHITE +"Type 1/2/3/4/5 To Execute Selected Actions:")
+    print(Fore.BLUE +"1. USB Flasher")
+    print(Fore.BLUE +"2. Windows Editions")
+    print(Fore.BLUE +"3. Linux Distros")
+    print(Fore.BLUE +"4. Backup Iso's")
+    print(Fore.BLUE +"5. JOKE os's")
+    print(Fore.BLUE +"6. Other os's")
+    print(Fore.BLUE +"7. Credits")
+    whattoinstalldwag = input("(1/2/3/4/5): ")
+
 system('cls')
-print(Fore.BLUE +"Welcome to Xem's Iso Downloader")
-print(Fore.WHITE +"Type 1/2/3/4/5 To Execute Selected Actions:")
-print(Fore.BLUE +"1. USB Flasher")
-print(Fore.BLUE +"2. Windows Editions")
-print(Fore.BLUE +"3. Linux Distros")
-print(Fore.BLUE +"4. Backup Iso's")
-print(Fore.BLUE +"5. JOKE os's")
-print(Fore.BLUE +"6. Other os's")
-print(Fore.BLUE +"7. Credits")
-whattoinstalldwag = input("(1/2/3/4/5): ")
+print("Testing Internet...")
+if is_connected() == 'Yes':
+    system('cls')
+    print("Internet is connected")
+    print(" ")
+    starty()
+if is_connected() == 'No':
+    system('cls')
+    print("No internet connected, exiting...")
+    exit(sleep(5))
+
 
 ################## Rufus Download ##################
 if whattoinstalldwag == '1':
