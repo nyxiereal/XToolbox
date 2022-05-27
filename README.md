@@ -2,7 +2,7 @@
 *do not touch updater.py if you cloned the repo*
 
 Constantly updated free Windows Toolkit!
-Last updated 19.05.2022
+Last updated 24.05.2022
 
 ## Recommended Hardware and Software
 Windows 10 or Windows 11
