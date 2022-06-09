@@ -43,7 +43,7 @@ if is_connected() == 'Yes':
     system('cls')
     print(Fore.RED +"[S>] Internet is connected")
     print(" ")
-    print(Fore.BLUE +"Welcome to Xem's Iso Downloader")
+    print(Fore.BLUE +"Welcome to Xem's Decryptor Downloader")
     print(Fore.WHITE +"Select Ransomware Decryptor:")
     print(Fore.BLUE +"1. Alpha")
     print(Fore.BLUE +"2. Aurora")
