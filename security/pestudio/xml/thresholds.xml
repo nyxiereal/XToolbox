@@ -1,0 +1,46 @@
+<!--
+This file is part of the pestudio solution (www.winitor.com).
+Any usage of this file outside of the context of pestudio (e.g. in third-party application, tools chain, etc...) must be explicitely authorized.
+
+This file can be modified when running pestudio.
+-->
+<xml version="1.0" encoding="utf-8">
+  <thresholds>
+    <item id="000" enable="1" min="3000" max="10485760"></item>
+    <item id="001" enable="1" min="64" max="64"></item>
+    <item id="002" enable="1" min="20" max="512"></item>
+    <item id="003" enable="1" min="20" max="20"></item>
+    <item id="004" enable="1" min="224" max="260"></item>
+    <item id="005" enable="1" min="16" max="16"></item>
+    <item id="006" enable="1" min="3" max="1024"></item>
+    <item id="009" enable="1" min="256" max="-1"></item>
+    <item id="010" enable="1" min="80" max="4096"></item>
+    <item id="015" enable="1" min="10" max="-1"></item>
+    <item id="016" enable="1" min="100" max="16384"></item>
+    <item id="020" enable="1" min="1" max="512"></item>
+    <item id="021" enable="1" min="0" max="512"></item>
+    <item id="030" enable="1" min="1" max="50"></item>
+    <item id="031" enable="1" min="1" max="30"></item>
+    <item id="032" enable="1" min="1" max="18"></item>
+    <item id="033" enable="1" min="0" max="255"></item>
+    <item id="034" enable="1" min="100" max="2000"></item>
+    <item id="035" enable="1" min="15" max="16"></item>
+    <item id="039" enable="1" min="1" max="1"></item>
+    <item id="046" enable="1" min="0" max="0"></item>
+    <item id="060" enable="1" min="2" max="-1"></item>
+    <item id="078" enable="1" min="0" max="2"></item>
+    <item id="080" enable="1" min="12" max="20"></item>
+    <item id="100" enable="1" min="1" max="100"></item>
+    <item id="110" enable="1" min="2000" max="2023"></item>
+    <item id="111" enable="1" min="2000" max="2023"></item>
+    <item id="112" enable="1" min="2000" max="2023"></item>
+    <item id="113" enable="1" min="2000" max="2023"></item>
+    <item id="114" enable="1" min="2000" max="2023"></item>
+    <item id="130" enable="1" min="0" max="50"></item>
+    <item id="131" enable="1" min="0" max="60"></item>
+    <item id="132" enable="1" min="0" max="100"></item>
+    <item id="133" enable="1" min="0" max="75"></item>
+    <item id="134" enable="1" min="0" max="40"></item>
+    <item id="135" enable="1" min="0" max="50"></item>
+  </thresholds>
+</xml>

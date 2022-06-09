@@ -1,0 +1,727 @@
+<!--
+This file is part of the pestudio solution (www.winitor.com).
+Any usage of this file outside of the context of pestudio (e.g. in third-party application, tools chain, etc...) must be explicitely authorized.
+
+Please note that this file will be modified when running pestudio.
+-->
+<xml version="1.0" encoding="utf-8">
+  <richheader>
+    <prodId>
+      <item id="0x00">Import (old)</item>
+      <item id="0x01">Import</item>
+      <item id="0x02">Linker510</item>
+      <item id="0x03">Cvtomf510</item>
+      <item id="0x04">Linker600</item>
+      <item id="0x05">Cvtomf600</item>
+      <item id="0x06">Cvtres500</item>
+      <item id="0x07">Utc11_Basic</item>
+      <item id="0x08">Utc11_C</item>
+      <item id="0x09">Utc12_Basic</item>
+      <item id="0x0A">Utc12_C</item>
+      <item id="0x0B">Utc12_CPP</item>
+      <item id="0x0C">AliasObj60</item>
+      <item id="0x0D">VisualBasic60</item>
+      <item id="0x0E">Masm613</item>
+      <item id="0x0F">Masm710</item>
+      <item id="0x10">Linker511</item>
+      <item id="0x11">Cvtomf511</item>
+      <item id="0x12">Masm614</item>
+      <item id="0x13">Linker512</item>
+      <item id="0x14">Cvtomf512</item>
+      <item id="0x15">Utc12_C_Std</item>
+      <item id="0x16">Utc12_CPP_Std</item>
+      <item id="0x17">Utc12_C_Book</item>
+      <item id="0x18">Utc12_CPP_Book</item>
+      <item id="0x19">Implib700</item>
+      <item id="0x1A">Cvtomf700</item>
+      <item id="0x1B">Utc13_Basic</item>
+      <item id="0x1C">Utc13_C</item>
+      <item id="0x1D">Utc13_CPP</item>
+      <item id="0x1E">Linker610</item>
+      <item id="0x1F">Cvtomf610</item>
+      <item id="0x20">Linker601</item>
+      <item id="0x21">Cvtomf601</item>
+      <item id="0x22">Utc12_1_Basic</item>
+      <item id="0x23">Utc12_1_C</item>
+      <item id="0x24">Utc12_1_CPP</item>
+      <item id="0x25">Linker620</item>
+      <item id="0x26">Cvtomf620</item>
+      <item id="0x27">AliasObj70</item>
+      <item id="0x28">Linker621</item>
+      <item id="0x29">Cvtomf621</item>
+      <item id="0x2A">Masm615</item>
+      <item id="0x2B">Utc13_LTCG_C</item>
+      <item id="0x2C">Utc13_LTCG_CPP</item>
+      <item id="0x2D">Masm620</item>
+      <item id="0x2E">ILAsm100</item>
+      <item id="0x2F">Utc12_2_Basic</item>
+      <item id="0x30">Utc12_2_C</item>
+      <item id="0x31">Utc12_2_CPP</item>
+      <item id="0x32">Utc12_2_C_Std</item>
+      <item id="0x33">Utc12_2_CPP_Std</item>
+      <item id="0x34">Utc12_2_C_Book</item>
+      <item id="0x35">Utc12_2_CPP_Book</item>
+      <item id="0x36">Implib622</item>
+      <item id="0x37">Cvtomf622</item>
+      <item id="0x38">Cvtres501</item>
+      <item id="0x39">Utc13_C_Std</item>
+      <item id="0x3A">Utc13_CPP_Std</item>
+      <item id="0x3B">Cvtpgd1300</item>
+      <item id="0x3C">Linker622 </item>
+      <item id="0x3D">Linker700 </item>
+      <item id="0x3E">Export622 </item>
+      <item id="0x3F">Export700 </item>
+      <item id="0x40">Masm700</item>
+      <item id="0x41">Utc13_POGO_I_C</item>
+      <item id="0x42">Utc13_POGO_I_CPP</item>
+      <item id="0x43">Utc13_POGO_O_C</item>
+      <item id="0x44">Utc13_POGO_O_CPP</item>
+      <item id="0x45">Cvtres700</item>
+      <item id="0x46">Cvtres710p</item>
+      <item id="0x47">Linker710p</item>
+      <item id="0x48">Cvtomf710p</item>
+      <item id="0x49">Export710p</item>
+      <item id="0x4A">Implib710p</item>
+      <item id="0x4B">Masm710p</item>
+      <item id="0x4C">Utc1310p_C</item>
+      <item id="0x4D">Utc1310p_CPP</item>
+      <item id="0x4E">Utc1310p_C_Std</item>
+      <item id="0x4F">Utc1310p_CPP_Std</item>
+      <item id="0x50">Utc1310p_LTCG_C</item>
+      <item id="0x51">Utc1310p_LTCG_CPP</item>
+      <item id="0x52">Utc1310p_POGO_I_C</item>
+      <item id="0x53">Utc1310p_POGO_I_CPP</item>
+      <item id="0x54">Utc1310p_POGO_O_C</item>
+      <item id="0x55">Utc1310p_POGO_O_CPP</item>
+      <item id="0x56">Linker624</item>
+      <item id="0x57">Cvtomf624</item>
+      <item id="0x58">Export624</item>
+      <item id="0x59">Implib624</item>
+      <item id="0x5A">Linker710</item>
+      <item id="0x5B">Cvtomf710</item>
+      <item id="0x5C">Export710</item>
+      <item id="0x5D">Implib710</item>
+      <item id="0x5E">Cvtres710</item>
+      <item id="0x5F">Utc1310_C</item>
+      <item id="0x60">Utc1310_CPP</item>
+      <item id="0x61">Utc1310_C_Std</item>
+      <item id="0x62">Utc1310_CPP_Std</item>
+      <item id="0x63">Utc1310_LTCG_C</item>
+      <item id="0x64">Utc1310_LTCG_CPP</item>
+      <item id="0x65">Utc1310_POGO_I_C</item>
+      <item id="0x66">Utc1310_POGO_I_CPP</item>
+      <item id="0x67">Utc1310_POGO_O_C</item>
+      <item id="0x68">Utc1310_POGO_O_CPP</item>
+      <item id="0x69">AliasObj710</item>
+      <item id="0x6A">AliasObj710p</item>
+      <item id="0x6B">Cvtpgd1310</item>
+      <item id="0x6C">Cvtpgd1310p</item>
+      <item id="0x6D">Utc1400_C</item>
+      <item id="0x6E">Utc1400_CPP</item>
+      <item id="0x6F">Utc1400_C_Std</item>
+      <item id="0x70">Utc1400_CPP_Std</item>
+      <item id="0x71">Utc1400_LTCG_C</item>
+      <item id="0x72">Utc1400_LTCG_CPP</item>
+      <item id="0x73">Utc1400_POGO_I_C</item>
+      <item id="0x74">Utc1400_POGO_I_CPP</item>
+      <item id="0x75">Utc1400_POGO_O_C</item>
+      <item id="0x76">Utc1400_POGO_O_CPP</item>
+      <item id="0x77">Cvtpgd1400</item>
+      <item id="0x78">Linker800</item>
+      <item id="0x79">Cvtomf800</item>
+      <item id="0x7A">Export800</item>
+      <item id="0x7B">Implib800</item>
+      <item id="0x7C">Cvtres800</item>
+      <item id="0x7D">Masm800</item>
+      <item id="0x7E">AliasObj800</item>
+      <item id="0x7F">PhoenixPrerelease</item>
+      <item id="0x80">Utc1400_CVTCIL_C</item>
+      <item id="0x81">Utc1400_CVTCIL_CPP</item>
+      <item id="0x82">Utc1400_LTCG_MSIL</item>
+      <item id="0x83">Utc1500_C</item>
+      <item id="0x84">Utc1500_CPP</item>
+      <item id="0x85">Utc1500_C_Std</item>
+      <item id="0x86">Utc1500_CPP_Std</item>
+      <item id="0x87">Utc1500_CVTCIL_C</item>
+      <item id="0x88">Utc1500_CVTCIL_CPP</item>
+      <item id="0x89">Utc1500_LTCG_C</item>
+      <item id="0x8A">Utc1500_LTCG_CPP</item>
+      <item id="0x8B">Utc1500_LTCG_MSIL</item>
+      <item id="0x8C">Utc1500_POGO_I_C</item>
+      <item id="0x8D">Utc1500_POGO_I_CPP</item>
+      <item id="0x8E">Utc1500_POGO_O_C</item>
+      <item id="0x8F">Utc1500_POGO_O_CPP</item>
+      <item id="0x90">Cvtpgd1500</item>
+      <item id="0x91">Linker900</item>
+      <item id="0x92">Export900</item>
+      <item id="0x93">Implib900</item>
+      <item id="0x94">Cvtres900</item>
+      <item id="0x95">Masm900</item>
+      <item id="0x96">AliasObj900</item>
+      <item id="0x97">Resource</item>
+      <item id="0x98">AliasObj1000</item>
+      <item id="0x99">Cvtpgd1600</item>
+      <item id="0x9A">Cvtres1000</item>
+      <item id="0x9B">Export1000</item>
+      <item id="0x9C">Implib1000</item>
+      <item id="0x9D">Linker1000</item>
+      <item id="0x9E">Masm1000</item>
+      <item id="0x9F">Phx1600_C</item>
+      <item id="0xA0">Phx1600_CPP</item>
+      <item id="0xA1">Phx1600_CVTCIL_C</item>
+      <item id="0xA2">Phx1600_CVTCIL_CPP</item>
+      <item id="0xA3">Phx1600_LTCG_C</item>
+      <item id="0xA4">Phx1600_LTCG_CPP</item>
+      <item id="0xA5">Phx1600_LTCG_MSIL</item>
+      <item id="0xA6">Phx1600_POGO_I_C</item>
+      <item id="0xA7">Phx1600_POGO_I_CPP</item>
+      <item id="0xA8">Phx1600_POGO_O_C</item>
+      <item id="0xA9">Phx1600_POGO_O_CPP</item>
+      <item id="0xAA">Utc1600_C</item>
+      <item id="0xAB">Utc1600_CPP</item>
+      <item id="0xAC">Utc1600_CVTCIL_C</item>
+      <item id="0xAD">Utc1600_CVTCIL_CPP</item>
+      <item id="0xAE">Utc1600_LTCG_C</item>
+      <item id="0xAF">Utc1600_LTCG_CPP</item>
+      <item id="0xB0">Utc1600_LTCG_MSIL</item>
+      <item id="0xB1">Utc1600_POGO_I_C</item>
+      <item id="0xB2">Utc1600_POGO_I_CPP</item>
+      <item id="0xB3">Utc1600_POGO_O_C</item>
+      <item id="0xB4">Utc1600_POGO_O_CPP</item>
+      <item id="0xB5">AliasObj1010</item>
+      <item id="0xB6">Cvtpgd1610</item>
+      <item id="0xB7">Cvtres1010</item>
+      <item id="0xB8">Export1010</item>
+      <item id="0xB9">Implib1010</item>
+      <item id="0xBA">Linker1010</item>
+      <item id="0xBB">Masm1010</item>
+      <item id="0xBC">Utc1610_C</item>
+      <item id="0xBD">Utc1610_CPP</item>
+      <item id="0xBE">Utc1610_CVTCIL_C</item>
+      <item id="0xBF">Utc1610_CVTCIL_CPP</item>
+      <item id="0xC0">Utc1610_LTCG_C</item>
+      <item id="0xC1">Utc1610_LTCG_CPP</item>
+      <item id="0xC2">Utc1610_LTCG_MSIL </item>
+      <item id="0xC3">Utc1610_POGO_I_C</item>
+      <item id="0xC4">Utc1610_POGO_I_CPP</item>
+      <item id="0xC5">Utc1610_POGO_O_C</item>
+      <item id="0xC6">Utc1610_POGO_O_CPP</item>
+      <item id="0xC7">AliasObj1100</item>
+      <item id="0xC8">Cvtpgd1700</item>
+      <item id="0xC9">Cvtres1100</item>
+      <item id="0xCA">Export1100</item>
+      <item id="0xCB">Implib1100</item>
+      <item id="0xCC">Linker1100</item>
+      <item id="0xCD">Masm1100</item>
+      <item id="0xCE">Utc1700_C</item>
+      <item id="0xCF">Utc1700_CPP</item>
+      <item id="0xD0">Utc1700_CVTCIL_C</item>
+      <item id="0xD1">Utc1700_CVTCIL_CPP</item>
+      <item id="0xD2">Utc1700_LTCG_C</item>
+      <item id="0xD3">Utc1700_LTCG_CPP</item>
+      <item id="0xD4">Utc1700_LTCG_MSIL</item>
+      <item id="0xD5">Utc1700_POGO_I_C</item>
+      <item id="0xD6">Utc1700_POGO_I_CPP</item>
+      <item id="0xD7">Utc1700_POGO_O_C</item>
+      <item id="0xD8">Utc1700_POGO_O_CPP</item>
+      <item id="0xD9">AliasObj1200</item>
+      <item id="0xDA">Cvtpgd1800</item>
+      <item id="0xDB">Cvtres1200</item>
+      <item id="0xDC">Export1200</item>
+      <item id="0xDD">Implib1200</item>
+      <item id="0xDE">Linker1200</item>
+      <item id="0xDF">Masm1200</item>
+      <item id="0xE0">Utc1800_C</item>
+      <item id="0xE1">Utc1800_CPP</item>
+      <item id="0xE2">Utc1800_CVTCIL_C</item>
+      <item id="0xE3">Utc1800_CVTCIL_CPP</item>
+      <item id="0xE4">Utc1800_LTCG_C</item>
+      <item id="0xE5">Utc1800_LTCG_CPP</item>
+      <item id="0xE6">Utc1800_LTCG_MSIL</item>
+      <item id="0xE7">Utc1800_POGO_I_C</item>
+      <item id="0xE8">Utc1800_POGO_I_CPP</item>
+      <item id="0xE9">Utc1800_POGO_O_C</item>
+      <item id="0xEA">Utc1800_POGO_O_CPP</item>
+      <item id="0xEB">AliasObj1210</item>
+      <item id="0xEC">Cvtpgd1810</item>
+      <item id="0xED">Cvtres1210</item>
+      <item id="0xEE">Export1210</item>
+      <item id="0xEF">Implib1210</item>
+      <item id="0xF0">Linker1210</item>
+      <item id="0xF1">Masm1210</item>
+      <item id="0xF2">Utc1810_C </item>
+      <item id="0xF3">Utc1810_CPP </item>
+      <item id="0xF4">Utc1810_CVTCIL_C</item>
+      <item id="0xF5">Utc1810_CVTCIL_CPP</item>
+      <item id="0xF6">Utc1810_LTCG_C</item>
+      <item id="0xF7">Utc1810_LTCG_CPP</item>
+      <item id="0xF8">Utc1810_LTCG_MSIL</item>
+      <item id="0xF9">Utc1810_POGO_I_C</item>
+      <item id="0xFA">Utc1810_POGO_I_CPP</item>
+      <item id="0xFB">Utc1810_POGO_O_C</item>
+      <item id="0xFC">Utc1810_POGO_O_CPP</item>
+      <item id="0xFD">AliasObj1400</item>
+      <item id="0xFE">Cvtpgd1900</item>
+      <item id="0xFF">Cvtres1400</item>
+      <item id="0x100">Export1400</item>
+      <item id="0x101">Implib1400</item>
+      <item id="0x102">Linker1400</item>
+      <item id="0x103">Masm1400</item>
+      <item id="0x104">Utc1900_C</item>
+      <item id="0x105">Utc1900_CPP</item>
+      <item id="0x106">Utc1900_CVTCIL_C</item>
+      <item id="0x107">Utc1900_CVTCIL_CPP</item>
+      <item id="0x108">Utc1900_LTCG_C</item>
+      <item id="0x109">Utc1900_LTCG_CPP</item>
+      <item id="0x10A">Utc1900_LTCG_MSIL</item>
+      <item id="0x10B">Utc1900_POGO_I_C</item>
+      <item id="0x10C">Utc1900_POGO_I_CPP</item>
+      <item id="0x10D">Utc1900_POGO_O_C</item>
+      <item id="0x10E">Utc1900_POGO_O_CPP</item>
+    </prodId>
+
+    <ide>
+      <item id="00">.NET Framework</item>
+      <item id="01">.NET Core</item>
+      <item id="02">Visual Studio 5.0 CvtRes.exe</item>
+      <item id="03">Visual Studio 5.0</item>
+      <item id="04">Visual Studio 6.0</item>
+      <item id="05">Visual Basic 6.0</item>
+      <item id="06">Visual Studio 6.0</item>
+      <item id="07">Visual Studio 6.0 MASM</item>
+      <item id="08">Visual Studio 2002</item>
+      <item id="09">Visual Studio 2003</item>
+      <item id="10">Visual Studio 2005</item>
+      <item id="11">Visual Studio 2008</item>
+      <item id="12">Visual Studio 2010</item>
+      <item id="13">Visual Studio 2012</item>
+      <item id="14">Visual Studio 2012 MASM</item>
+      <item id="15">Visual Studio 2013</item>
+      <item id="16">Visual Studio 2013</item>
+      <item id="17">Visual Studio 2015</item>
+      <item id="18">Visual Studio 2015</item>
+      <item id="19">Visual Studio 2017</item>
+      <item id="20">Visual Studio 2017</item>
+      <item id="21">Visual Studio 2019</item>
+      <item id="22">Visual Studio 2019</item>
+      <item id="23">Visual Studio</item>
+    </ide>
+
+    <version>
+      <item value="02914" ide="00">1.0 beta 2</item>
+      <item value="03512" ide="00">1.0 RC3</item>
+      <item value="03705" ide="00">1.0</item>
+      <item value="04322" ide="00">1.1</item>
+      <item value="21213" ide="00">1.2 pre-alpha</item>
+      <item value="30703" ide="00">1.2 alpha</item>
+      <item value="40301" ide="00">2.0</item>
+      <item value="40426" ide="00">2.0</item>
+      <item value="40607" ide="00">2.0</item>
+      <item value="40903" ide="00">2.0</item>
+      <item value="41115" ide="00">2.0</item>
+      <item value="50110" ide="00">2.0</item>
+      <item value="50215" ide="00">2.0</item>
+      <item value="50601" ide="00">2.0</item>
+      <item value="50710" ide="00">4.5</item>
+      <item value="50932" ide="00">4.5.1</item>
+      <item value="50938" ide="00">4.5.1</item>
+      <item value="51090" ide="00">4.5.2</item>
+      <item value="51209" ide="00">4.5.2</item>
+      <item value="51641" ide="00">4.5.1</item>
+      <item value="51651" ide="00">4.5.2</item>
+      <item value="01055" ide="00">4.6</item>
+      <item value="23902" ide="01">5.0</item>
+      <item value="01668" ide="02">5.0</item>
+      <item value="01720" ide="02">5.0</item>
+      <item value="01735" ide="02">5.0</item>
+      <item value="01803" ide="02">5.0</item>
+      <item value="02080" ide="02">5.0</item>
+      <item value="02090" ide="02">5.0</item>
+      <item value="07008" ide="03">5.0</item>
+      <item value="07022" ide="03">5.0 SP0</item>
+      <item value="07132" ide="03">5.2 SP1</item>
+      <item value="07274" ide="03">5.10 SP3</item>
+      <item value="07303" ide="03">5.10 SP3</item>
+      <item value="08022" ide="03">5.12</item>
+      <item value="08034" ide="03">5.12</item>
+      <item value="08078" ide="03">5.12</item>
+      <item value="08124" ide="03">5.12</item>
+      <item value="08152" ide="03">5.12</item>
+      <item value="09049" ide="03">5.12</item>
+      <item value="07291" ide="04">6.0</item>
+      <item value="08167" ide="04">6.0</item>
+      <item value="08877" ide="04">6.0 SP4</item>
+      <item value="08964" ide="04">6.0 SP5</item>
+      <item value="09738" ide="04">6.0 SP6</item>
+      <item value="09782" ide="04">6.0 SP6</item>
+      <item value="09783" ide="04">6.0 SP6</item>
+      <item value="08168" ide="04">6.0</item>
+      <item value="08169" ide="04">6.0</item>
+      <item value="08176" ide="04">6.0</item>
+      <item value="08495" ide="04">6.0 SP3</item>
+      <item value="08041" ide="05">5.0</item>
+      <item value="08783" ide="05">5.0</item>
+      <item value="52512" ide="06">5.0</item>
+      <item value="08047" ide="06">6.0</item>
+      <item value="08349" ide="06">6.0</item>
+      <item value="08350" ide="06">6.0</item>
+      <item value="08397" ide="06">6.0</item>
+      <item value="08447" ide="06">6.0 SP3</item>
+      <item value="08569" ide="06">6.0 SP3</item>
+      <item value="08755" ide="06">6.0 SP3</item>
+      <item value="08769" ide="06">6.0 SP3</item>
+      <item value="08797" ide="06">6.0 SP4</item>
+      <item value="08798" ide="06">6.0 SP4</item>
+      <item value="08799" ide="06">6.0 SP4</item>
+      <item value="08804" ide="06">6.0 SP4</item>
+      <item value="08943" ide="06">6.0 SP5 Processor Pack</item>
+      <item value="08966" ide="06">6.0 SP5</item>
+      <item value="09044" ide="06">6.0 SP5 Processor Pack</item>
+      <item value="07299" ide="07">6.13 SP1</item>
+      <item value="08444" ide="07">6.14 SP3</item>
+      <item value="08803" ide="07">6.15 SP4</item>
+      <item value="08905" ide="07">6.15 SP4</item>
+      <item value="08491" ide="08">7.0</item>
+      <item value="08800" ide="08">7.0</item>
+      <item value="08830" ide="08">7.0</item>
+      <item value="09030" ide="08">7.0 beta 1</item>
+      <item value="09037" ide="08">7.0</item>
+      <item value="09043" ide="08">7.0</item>
+      <item value="09111" ide="08">7.0</item>
+      <item value="09162" ide="08">7.0</item>
+      <item value="09177" ide="08">7.0</item>
+      <item value="06378" ide="08">7.0</item>
+      <item value="09178" ide="08">7.0</item>
+      <item value="08242" ide="08">7.0</item>
+      <item value="09210" ide="08">7.0 XP DDK</item>
+      <item value="09254" ide="08">7.0 beta 2</item>
+      <item value="09372" ide="08">7.0 RC1</item>
+      <item value="09466" ide="08">7.0</item>
+      <item value="07058" ide="08">7.0</item>
+      <item value="06704" ide="08">7.0</item>
+      <item value="09955" ide="08">7.0 SP1</item>
+      <item value="02035" ide="09">7.10 beta</item>
+      <item value="02067" ide="09">7.10 beta</item>
+      <item value="03538" ide="08">7.0</item>
+      <item value="51403" ide="08">7.0</item>
+      <item value="25767" ide="08">7.0</item>
+      <item value="28095" ide="08">7.0</item>
+      <item value="02179" ide="09">7.10</item>
+      <item value="02190" ide="09">7.10</item>
+      <item value="02197" ide="09">7.10</item>
+      <item value="02241" ide="09">7.10</item>
+      <item value="03052" ide="09">7.10 Free Toolkit</item>
+      <item value="03077" ide="09">7.10</item>
+      <item value="03088" ide="09">7.10</item>
+      <item value="03310" ide="09">7.10</item>
+      <item value="55849" ide="09">7.10</item>
+      <item value="04017" ide="09">7.10</item>
+      <item value="01071" ide="09">7.10</item>
+      <item value="04031" ide="09">7.10 SDK</item>
+      <item value="04035" ide="09">7.10 SDK</item>
+      <item value="06030" ide="09">7.10 SP1</item>
+      <item value="06101" ide="09">7.10 SP1</item>
+      <item value="02160" ide="09">7.10</item>
+      <item value="30120" ide="10">8.0</item>
+      <item value="30701" ide="10">8.0</item>
+      <item value="31008" ide="10">8.0</item>
+      <item value="40310" ide="10">8.0 SDK</item>
+      <item value="41204" ide="10">8.0</item>
+      <item value="50327" ide="10">8.0</item>
+      <item value="50608" ide="10">8.0</item>
+      <item value="09992" ide="10">8.0</item>
+      <item value="50706" ide="10">8.0</item>
+      <item value="60516" ide="10">8.0</item>
+      <item value="50727" ide="10">08.00</item>
+      <item value="02207" ide="10">08.00</item>
+      <item value="02228" ide="10">08.00</item>
+      <item value="61001" ide="10">8.0 SP1 MFC Update</item>
+      <item value="20413" ide="11">9.0</item>
+      <item value="30411" ide="11">9.0</item>
+      <item value="21022" ide="11">9.0</item>
+      <item value="30718" ide="11">9.0</item>
+      <item value="01915" ide="11">9.0</item>
+      <item value="09269" ide="11">9.0</item>
+      <item value="30729" ide="11">9.0</item>
+      <item value="03343" ide="11">9.0</item>
+      <item value="20115" ide="12">10.0</item>
+      <item value="21202" ide="12">10.0</item>
+      <item value="30034" ide="17">14.0</item>
+      <item value="30038" ide="17">14.0</item>
+      <item value="30311" ide="12">10.0</item>
+      <item value="30314" ide="12">10.0</item>
+      <item value="30319" ide="12">10.0</item>
+      <item value="30414" ide="12">10.0</item>
+      <item value="03199" ide="12">10.0</item>
+      <item value="03830" ide="12">10.0</item>
+      <item value="09993" ide="12">10.0</item>
+      <item value="30716" ide="12">10.10 SP1</item>
+      <item value="31118" ide="12">10.10 SP1</item>
+      <item value="40219" ide="12">10.10 SP1</item>
+      <item value="41118" ide="13">11.0</item>
+      <item value="50307" ide="13">11.0</item>
+      <item value="50323" ide="13">11.0</item>
+      <item value="50413" ide="13">11.0</item>
+      <item value="50522" ide="13">11.0</item>
+      <item value="50425" ide="13">11.0</item>
+      <item value="50503" ide="13">11.0</item>
+      <item value="50531" ide="13">11.0</item>
+      <item value="50612" ide="13">11.0</item>
+      <item value="50628" ide="13">11.0</item>
+      <item value="50709" ide="13">11.0</item>
+      <item value="50722" ide="13">11.0</item>
+      <item value="50929" ide="13">11.0</item>
+      <item value="51016" ide="13">11.0</item>
+      <item value="51020" ide="13">11.0.1</item>
+      <item value="51106" ide="13">11.0.1</item>
+      <item value="51114" ide="13">11.0.2</item>
+      <item value="51204" ide="13">11.0.2</item>
+      <item value="60610" ide="13">11.0.3</item>
+      <item value="60315" ide="13">11.0.2</item>
+      <item value="61030" ide="13">11.0.4</item>
+      <item value="61219" ide="13">11.0.5</item>
+      <item value="61232" ide="13">11.0</item>
+      <item value="65500" ide="13">11.0</item>
+      <item value="65501" ide="13">11.0</item>
+      <item value="60930" ide="14">11.0</item>
+      <item value="20322" ide="15">12.0</item>
+      <item value="20403" ide="15">12.0</item>
+      <item value="20501" ide="15">12.0</item>
+      <item value="20617" ide="15">12.0</item>
+      <item value="20806" ide="15">12.0</item>
+      <item value="21005" ide="15">12.0 RTM</item>
+      <item value="30102" ide="15">12.10</item>
+      <item value="40115" ide="15">12.10</item>
+      <item value="40116" ide="15">12.10</item>
+      <item value="40649" ide="15">12.0</item>
+      <item value="40660" ide="15">12.0</item>
+      <item value="40664" ide="15">12.0</item>
+      <item value="30110" ide="16">12.0.1</item>
+      <item value="30324" ide="16">12.0.2</item>
+      <item value="30501" ide="16">12.0.2</item>
+      <item value="30723" ide="16">12.0.3</item>
+      <item value="31101" ide="16">12.0.4</item>
+      <item value="40629" ide="16">12.0.5</item>
+      <item value="23007" ide="17">14.0</item>
+      <item value="23013" ide="17">14.0</item>
+      <item value="23026" ide="17">14.0</item>
+      <item value="23406" ide="17">14.0</item>
+      <item value="23524" ide="17">14.0</item>
+      <item value="23615" ide="17">14.0</item>
+      <item value="25834" ide="17">14.0</item>
+      <item value="25835" ide="17">14.0</item>
+      <item value="26715" ide="17">14.0</item>
+      <item value="27412" ide="17">14.0</item>
+      <item value="28900" ide="17">14.0</item>
+      <item value="28920" ide="17">14.0</item>
+      <item value="28619" ide="17">14.0</item>
+      <item value="28805" ide="17">14.0</item>
+      <item value="28806" ide="17">14.0</item>
+      <item value="29112" ide="17">14.0</item>
+      <item value="29118" ide="17">14.0</item>
+      <item value="29335" ide="17">14.0</item>
+      <item value="29336" ide="17">14.0</item>
+      <item value="29804" ide="17">14.0</item>
+      <item value="29395" ide="17">14.0</item>
+      <item value="23506" ide="17">14.0.1</item>
+      <item value="23907" ide="17">14.0.1</item>
+      <item value="23917" ide="17">14.0 preview 2</item>
+      <item value="23918" ide="17">14.0.2</item>
+      <item value="23927" ide="17">14.0.2</item>
+      <item value="24123" ide="17">14.0.3 RC</item>
+      <item value="24210" ide="17">14.0.3</item>
+      <item value="24212" ide="17">14.0.3.b </item>
+      <item value="24213" ide="17">14.0.3.d</item>
+      <item value="24215" ide="17">14.0.3.d</item>
+      <item value="24218" ide="17">14.0.3.d</item>
+      <item value="24225" ide="17">14.0.3.d</item>
+      <item value="24231" ide="17">14.0.3.d</item>
+      <item value="24233" ide="17">14.0.3.d</item>
+      <item value="24234" ide="17">14.0.3.d</item>
+      <item value="24237" ide="17">14.0</item>
+      <item value="24245" ide="17">14.0</item>
+      <item value="26433" ide="17">14.0</item>
+      <item value="27316" ide="17">14.0</item>
+      <item value="27508" ide="17">14.0</item>
+      <item value="29913" ide="17">14.0</item>
+      <item value="29915" ide="17">14.0</item>
+      <item value="24406" ide="17">14.0 preview 4</item>
+      <item value="24425" ide="17">14.0 TFS Test VMs</item>
+      <item value="22823" ide="18">14.0 RC </item>
+      <item value="23107" ide="18">14.0</item>
+      <item value="24019" ide="18">14.0</item>
+      <item value="24116" ide="18">14.0</item>
+      <item value="24325" ide="18">14.0</item>
+      <item value="24610" ide="18">14.0</item>
+      <item value="24720" ide="18">14.0.1</item>
+      <item value="24723" ide="18">14.0.1.a</item>
+      <item value="24728" ide="18">14.0.1.b</item>
+      <item value="24730" ide="18">14.0.1.c</item>
+      <item value="25025" ide="18">14.0</item>
+      <item value="25123" ide="18">14.0.2</item>
+      <item value="25125" ide="18">14.0.2</item>
+      <item value="25126" ide="18">14.0.2.a</item>
+      <item value="25130" ide="18">14.0.2.b</item>
+      <item value="25131" ide="18">14.0.2.b</item>
+      <item value="25132" ide="18">14.0.2.c</item>
+      <item value="25203" ide="18">14.0</item>
+      <item value="26129" ide="18">14.0</item>
+      <item value="25224" ide="18">14.0</item>
+      <item value="25305" ide="18">14.0</item>
+      <item value="25930" ide="18">14.0</item>
+      <item value="25420" ide="18">14.0.3</item>
+      <item value="25421" ide="18">14.0.3</item>
+      <item value="25422" ide="18">14.0.3.a</item>
+      <item value="25424" ide="18">14.0.3.b</item>
+      <item value="25425" ide="18">14.0.3.c</item>
+      <item value="25431" ide="18">14.0.3.d</item>
+      <item value="28105" ide="18">14.0</item>
+      <item value="28315" ide="18">14.0</item>
+      <item value="24629" ide="19">14.10 RC</item>
+      <item value="25008" ide="19">14.10</item>
+      <item value="25017" ide="19">14.10</item>
+      <item value="25019" ide="19">14.10</item>
+      <item value="25508" ide="19">14.11</item>
+      <item value="25547" ide="19">14.11</item>
+      <item value="25711" ide="19">14.12</item>
+      <item value="26128" ide="19">14.12</item>
+      <item value="26131" ide="19">14.13</item>
+      <item value="26213" ide="19">14.13</item>
+      <item value="26706" ide="19">14.15</item>
+      <item value="27043" ide="19">14.15</item>
+      <item value="26715" ide="19">14.15</item>
+      <item value="26726" ide="19">14.15</item>
+      <item value="28316" ide="19">14.15</item>
+      <item value="28427" ide="19">14.15</item>
+      <item value="27023" ide="19">14.16</item>
+      <item value="27024" ide="19">14.16</item>
+      <item value="27026" ide="19">14.16</item>
+      <item value="27027" ide="19">14.16</item>
+      <item value="27030" ide="19">14.16</item>
+      <item value="27031" ide="19">14.16</item>
+      <item value="27034" ide="19">14.16</item>
+      <item value="28614" ide="19">14.16</item>
+      <item value="26304" ide="20">15.0.0 preview 1</item>
+      <item value="26501" ide="20">15.0 Office tools</item>
+      <item value="26504" ide="20">15.0</item>
+      <item value="26315" ide="20">15.0.0 preview 2</item>
+      <item value="26323" ide="20">15.0.0 preview 3</item>
+      <item value="26228" ide="20">15.0.x</item>
+      <item value="26403" ide="20">15.1.x</item>
+      <item value="26412" ide="20">15.2.0 preview 1</item>
+      <item value="26419" ide="20">15.2.0 preview 2</item>
+      <item value="26424" ide="20">15.2.0 preview 3</item>
+      <item value="26430" ide="20">15.2.x</item>
+      <item value="26507" ide="20">15.3.0 preview 1</item>
+      <item value="26510" ide="20">15.3.0 preview 1.1</item>
+      <item value="26606" ide="20">15.3.0 preview 2</item>
+      <item value="26608" ide="20">15.3.0 preview 2.1</item>
+      <item value="26621" ide="20">15.3.0 preview 3</item>
+      <item value="26711" ide="20">15.3.0 preview 4</item>
+      <item value="26720" ide="20">15.3.0 preview 5</item>
+      <item value="26724" ide="20">15.3.0 preview 6</item>
+      <item value="26730" ide="20">15.3.x</item>
+      <item value="26732" ide="20">15.3.x</item>
+      <item value="26823" ide="20">15.4.0 preview 1</item>
+      <item value="26906" ide="20">15.4.0 preview 2</item>
+      <item value="26923" ide="20">15.4.0 preview 3</item>
+      <item value="26929" ide="20">15.4.0 preview 4</item>
+      <item value="27004" ide="20">15.4.x</item>
+      <item value="27009" ide="20">15.5.0 preview 1</item>
+      <item value="27019" ide="20">15.5.0 preview 2</item>
+      <item value="27045" ide="20">15.5.0 preview 2</item>
+      <item value="27102" ide="20">15.5.0 preview 3</item>
+      <item value="27110" ide="20">15.5.0 preview 4</item>
+      <item value="27128" ide="20">15.5.0 preview 5</item>
+      <item value="27130" ide="20">15.5.x</item>
+      <item value="27205" ide="20">15.6.0 preview 1</item>
+      <item value="27207" ide="20">15.0 MSI tools</item>
+      <item value="27309" ide="20">15.6.0 preview 2</item>
+      <item value="27323" ide="20">15.6.0 preview 3</item>
+      <item value="27406" ide="20">15.6.0 preview 4</item>
+      <item value="27413" ide="20">15.6.0 preview 5</item>
+      <item value="27421" ide="20">15.6.0 preview 6</item>
+      <item value="27428" ide="20">15.6.x</item>
+      <item value="27512" ide="20">15.7.0 preview 1</item>
+      <item value="27520" ide="20">15.7.0 preview 2</item>
+      <item value="27521" ide="20">15.7.0 preview 2</item>
+      <item value="27604" ide="20">15.7.0 preview 3</item>
+      <item value="27617" ide="20">15.7.0 preview 4</item>
+      <item value="27625" ide="20">15.7.0 preview 5</item>
+      <item value="27701" ide="20">15.7.0 preview 6</item>
+      <item value="27702" ide="20">15.7.0 preview 6</item>
+      <item value="27703" ide="20">15.7.x</item>
+      <item value="27705" ide="20">15.8.0 preview 1</item>
+      <item value="27729" ide="20">15.8.0 preview 2</item>
+      <item value="27825" ide="20">15.8.0 preview 3</item>
+      <item value="27906" ide="20">15.8.0 preview 4</item>
+      <item value="27924" ide="20">15.8.0 preview 5</item>
+      <item value="28010" ide="20">15.8.x</item>
+      <item value="28016" ide="20">15.9.0 preview 1</item>
+      <item value="28107" ide="20">15.9.0 preview 2</item>
+      <item value="28128" ide="20">15.9.0 preview 3</item>
+      <item value="28219" ide="20">15.9.0 preview 4</item>
+      <item value="28302" ide="20">15.9.0 preview 5</item>
+      <item value="28307" ide="20">15.9.x</item>
+      <item value="27706" ide="21">14.22 </item>
+      <item value="27724" ide="21">14.22 </item>
+      <item value="27807" ide="21">14.22 </item>
+      <item value="27812" ide="21">14.22 </item>
+      <item value="27821" ide="21">14.22 </item>
+      <item value="27905" ide="21">14.22</item>
+      <item value="28117" ide="21">14.24</item>
+      <item value="28329" ide="22">16.0.0 preview 1</item>
+      <item value="28408" ide="22">16.0.0 preview 1.1</item>
+      <item value="28522" ide="22">16.0.0 preview 2</item>
+      <item value="28529" ide="22">16.0.0 preview 2.1</item>
+      <item value="28602" ide="22">16.0.0 preview 2.2</item>
+      <item value="28608" ide="22">16.0.0 preview 3</item>
+      <item value="28625" ide="22">16.0.0 preview 4</item>
+      <item value="28701" ide="22">16.0.0 preview 4.1</item>
+      <item value="28705" ide="22">16.0.0 preview 4.1.1</item>
+      <item value="28711" ide="22">16.0.0 preview 4.2</item>
+      <item value="28714" ide="22">16.0.0 preview 4.3</item>
+      <item value="28721" ide="22">16.0.0 preview 4.4</item>
+      <item value="28729" ide="22">16.0.0</item>
+      <item value="28803" ide="22">16.0.x</item>
+      <item value="28809" ide="22">16.1.0 preview 1</item>
+      <item value="28822" ide="22">16.1.0 preview 2</item>
+      <item value="28902" ide="22">16.1.0 preview 3</item>
+      <item value="28917" ide="22">16.1.0</item>
+      <item value="28922" ide="22">16.1.1</item>
+      <item value="29001" ide="22">16.1.2</item>
+      <item value="29009" ide="22">16.1.3</item>
+      <item value="29020" ide="22">16.1.4</item>
+      <item value="29025" ide="22">16.1.5</item>
+      <item value="29102" ide="22">16.1.6</item>
+      <item value="29006" ide="22">16.2.0 preview 2</item>
+      <item value="29021" ide="22">16.2.0 preview 3</item>
+      <item value="29111" ide="22">16.2.0 preview 4</item>
+      <item value="29123" ide="22">16.2.0</item>
+      <item value="29201" ide="22">16.2.1</item>
+      <item value="29209" ide="22">16.2.2</item>
+      <item value="29215" ide="22">16.2.3</item>
+      <item value="29230" ide="22">16.2.4</item>
+      <item value="29306" ide="22">16.2.5</item>
+      <item value="29311" ide="22">16.3.0 preview 4</item>
+      <item value="29318" ide="22">16.3.0</item>
+      <item value="29324" ide="22">16.3.1</item>
+      <item value="29326" ide="22">16.3.2</item>
+      <item value="29403" ide="22">16.3.3</item>
+      <item value="29409" ide="22">16.3.4</item>
+      <item value="29411" ide="22">16.3.5</item>
+      <item value="29418" ide="22">16.3.6</item>
+      <item value="29424" ide="22">16.3.7</item>
+      <item value="29503" ide="22">16.3.8</item>
+      <item value="29509" ide="22">16.3.9</item>
+      <item value="29319" ide="22">16.4.0 preview 1</item>
+      <item value="29430" ide="22">16.4.0 preview 3</item>
+      <item value="29505" ide="22">16.4.0 preview 4</item>
+      <item value="29512" ide="22">16.4.0 preview 5</item>
+      <item value="29519" ide="22">16.4.0</item>
+      <item value="29609" ide="22">16.4.1</item>
+      <item value="29521" ide="22">16.5.0 preview 1</item>
+      <item value="00000" ide="23"></item>
+    </version>
+  </richheader>
+</xml>
