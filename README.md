@@ -15,7 +15,6 @@ Any Graphics Card with minimum 512MB VRAM
 
 | Name | Status |
 | --- | --- |
-|.Iso Downloader|Almost Dome|
 |Adding More Software|Doing Research|
 
 
