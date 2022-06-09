@@ -1,0 +1,39 @@
+﻿HxD License
+===========
+
+HxD Copyright© 2002-2021 by Maël Hörz. All rights reserved.
+
+"Software" refers to HxD and all files belonging to the program, including 
+documentation.
+
+Warranty disclaimer
+===================
+The Software is provided "as-is", without any express or implied warranty,
+to the maximum extent permitted by applicable law.
+In no event shall the author be held liable for any damages arising from the
+direct or indirect use of the Software. The user must assume the entire risk 
+of using the Software, knowing in particular that the Software is not designed
+or intended for use in hazardous environments requiring fail-safe performance, 
+where its failure to perform, misuse or inability to use adequately can 
+reasonably be expected to lead to death, personal injury, or severe physical or
+environmental damage. 
+
+Right of use/Distribution
+=========================
+Permission is granted to anyone to use this Software for any purpose,
+including commercial applications, and to redistribute it, provided that the
+warranty disclaimer is accepted and the following conditions are met:
+
+1. All redistributions must keep the original package intact. No file
+   may be removed or modified. Especially you must retain all copyright
+   notices that are currently in place, and this license without modification.
+
+2. The origin of this Software must not be misrepresented; you must not
+   claim that you wrote the original Software.
+
+3. You may distribute this Software and charge a distribution fee, but you must
+   not represent in any way that you are selling the Software itself.
+
+
+Maël Hörz
+https://www.mh-nexus.de
