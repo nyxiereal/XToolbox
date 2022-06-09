@@ -1,0 +1,3 @@
+pip install urllib
+pip install socket
+pip install colorama
