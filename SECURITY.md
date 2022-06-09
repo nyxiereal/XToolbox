@@ -3,6 +3,7 @@
 ## Supported Versions
 
 Versions below are supported by security updates:
+
 List:
 | Emoji | Info |
 | --- | --- |
