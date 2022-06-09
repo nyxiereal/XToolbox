@@ -1,8 +1,8 @@
 from urllib.request import urlretrieve
+import sys
 from time import sleep
 from webbrowser import open as webopen
 from os import system
-import sys
 import socket
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
@@ -38,7 +38,12 @@ def is_connected():
      pass
   return 'No'
 
-def starty():
+system('cls')
+print(Fore.RED +"[S>] Testing Internet...")
+if is_connected() == 'Yes':
+    system('cls')
+    print(Fore.RED +"[S>] Internet is connected")
+    print(" ")
     print(Fore.BLUE +"Welcome to Xem's Iso Downloader")
     print(Fore.WHITE +"Type 1/2/3/4/5 To Execute Selected Actions:")
     print(Fore.BLUE +"1. USB Flasher")
@@ -49,14 +54,6 @@ def starty():
     print(Fore.BLUE +"6. Other os's")
     print(Fore.BLUE +"7. Credits")
     whattoinstalldwag = input("(1/2/3/4/5): ")
-
-system('cls')
-print("Testing Internet...")
-if is_connected() == 'Yes':
-    system('cls')
-    print("Internet is connected")
-    print(" ")
-    starty()
 if is_connected() == 'No':
     system('cls')
     print("No internet connected, exiting...")
