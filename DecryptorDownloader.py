@@ -25,6 +25,7 @@ def powpow():
     print(Fore.RED +"[S>] Downloading "+ name +"...")
     urlretrieve(replink, repname, reporter)
     print(Fore.RED +"[S>] " +name+ " Downloaded, exiting...")
+    exit(sleep(3,5))
 
 #Check Is Internet Connection
 def is_connected():
@@ -203,8 +204,4 @@ if whattoinstalldwag == '21':
 if whattoinstalldwag == '99' or whattoinstalldwag == '0' or whattoinstalldwag == '':
     print("")
     print("Exiting...")
-    exit(sleep(6))
-
-else:
-    print("You MUST Choose at least one option")
     exit(sleep(6))

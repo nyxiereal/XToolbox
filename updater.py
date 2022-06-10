@@ -16,7 +16,7 @@ fname2 = 'Virus.Removal.Toolkit.zip'
 print(Fore.RED +"[S>] Downloading update info...")
 urlretrieve('https://raw.githubusercontent.com/xemulat/Virus-Removal-Toolkit/main/newestversion.txt', fname1)
 with open('relver.txt', 'r') as line:
-	newver = line.read(3)
+	newver = line.read(5)
 
 print(" ")
 print(Fore.RED +"[S>] Newest version is: " + newver)
