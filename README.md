@@ -22,8 +22,10 @@ Last updated 09.06.2022
 
 ## Links
 
-- RepoTracker link: [link](https://repo-tracker.com/r/gh/xemulat/Windows-Toolkit)
+- RepoTracker link: [here](https://repo-tracker.com/r/gh/xemulat/Windows-Toolkit)
 - Software list is [here](https://github.com/xemulat/Windows-Toolkit/wiki/Software-List)
+- Software list is [here](https://github.com/xemulat/Windows-Toolkit/wiki/Custom-Software-List)
+- Iso Downloader's Isos [here](https://github.com/xemulat/Windows-Toolkit/wiki/Custom-Software-List)
 - How Can You Support Me [here](https://github.com/xemulat/Windows-Toolkit/wiki/How-can-you-support-me)
 - Security Policy [here](https://github.com/xemulat/Windows-Toolkit/blob/main/SECURITY.md)
 
