@@ -14,9 +14,12 @@ List:
 
 | Version | Updated |
 | ------- | -- |
-|0.7|:green_circle:|
-|0.6|:green_circle:|
-|0.0.5|:yellow_circle:|
+|1.0|:green_circle:|
+|0.9|:green_circle:|
+|0.8|:yellow_circle:|
+|0.7|:red_circle:|
+|0.6|:red_circle:|
+|0.0.5|:red_circle:|
 |0.0.4|:red_circle:|
 |0.0.3|:red_circle:|
 |0.0.2|:red_circle:|
