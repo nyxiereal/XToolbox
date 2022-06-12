@@ -9,7 +9,7 @@ from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
 #set vars
-yourversion = ('0.9')
+yourversion = ('1.0')
 fname1 = 'relver.txt'
 fname2 = 'Virus.Removal.Toolkit.zip'
 
