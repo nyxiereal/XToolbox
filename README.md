@@ -1,6 +1,8 @@
 # Windows Toolkit
 *do not touch updater.py if you cloned the repo*
 
+Version 1.0 is out!
+
 Constantly updated free Windows Toolkit!
 Last updated 09.06.2022
 
