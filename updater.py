@@ -8,35 +8,41 @@ from sys import exit
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
-#set vars
-yourversion = ('1.0')
-fname1 = 'relver.txt'
-fname2 = 'Virus.Removal.Toolkit.zip'
+#TESTING! Optimized print function
+def BPrint(prent)
+    print(Fore.BLUE + prent)
+def RPrint(prentr)
+    print(Fore.RED + prentr)
+def WPrint(prentw)
+    print(Fore.WHITE + prentw)
 
-print(Fore.RED +"[S>] Downloading update info...")
-urlretrieve('https://raw.githubusercontent.com/xemulat/Virus-Removal-Toolkit/main/newestversion.txt', fname1)
+#set vars
+yourversion = ('1.1')
+
+RPrint("[S>] Downloading update info...")
+urlretrieve('https://raw.githubusercontent.com/xemulat/Virus-Removal-Toolkit/main/newestversion.txt', 'relver.txt')
 with open('relver.txt', 'r') as line:
 	newver = line.read(5)
 
 print(" ")
-print(Fore.RED +"[S>] Newest version is: " + newver)
-print(Fore.RED +"[S>] Your version is: " + yourversion)
+RPrint("[S>] Newest version is: " + newver)
+RPrint("[S>] Your version is: " + yourversion)
 remove('relver.txt')
 
 if newver == yourversion:
-    print(Fore.BLUE +"[I>] Your version is up-to-date!")
+    BPrint("[I>] Your version is up-to-date!")
     exit(sleep(5))
 if newver >= yourversion:
-    print(Fore.BLUE +"[I>] Your version is outdated :(")
-    print(Fore.WHITE +"[K>] Do you want to update now?")
+    BPrint("[I>] Your version is outdated :(")
+    WPrint("[K>] Do you want to update now?")
     updates = input("(y/n): ")
     if updates == 'y':
         webopen("https://github.com/xemulat/Virus-Removal-Toolkit/releases/latest")
     if updates == 'n':
-        print(Fore.RED +"[S>] Ok, exiting...")
+        RPrint("[S>] Ok, exiting...")
         exit(sleep(3))
 if newver <= yourversion:
-    print(Fore.BLUE +"[I>] Your version is Newer than Lastest *_*")
-    print(Fore.BLUE +"[I>] I Don't Know Why, Report issue at My github page!")
-    print(Fore.BLUE +"[I>] Ps. github.com/xemulat/Windows-Toolkit/issues")
-    exit(sleep(3))
+    BPrint("[I>] Your version is Newer than Lastest *_*")
+    BPrint("[I>] If You don't know why it happend report issue at My github page!")
+    BPrint("[I>] Ps. github.com/xemulat/Windows-Toolkit/issues")
+    exit(sleep(6))
