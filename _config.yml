@@ -1,7 +1,0 @@
-@import
-    "base",
-    "layout",
-    "syntax-highlighting",
-    "bootstrap";
-    
-theme: jekyll-theme-cayman
