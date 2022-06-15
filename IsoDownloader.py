@@ -7,7 +7,7 @@ from socket import create_connection, gethostbyname
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
-#TESTING! Optimized print functiond
+#TESTING! Optimized color-print function
 def BPrint(prent)
     print(Fore.BLUE + prent)
 
