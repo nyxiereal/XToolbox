@@ -3,9 +3,16 @@ import sys
 from time import sleep
 from webbrowser import open as webopen
 from os import system
-import socket
+from socket import create_connection, gethostbyname
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
+
+#TESTING! Optimized print function
+Def BPrint(prent)
+    print(Fore.BLUE + prent)
+
+Def RPrint(prentr)
+    print(Fore.RED + prentr)
 
 #Progress Bar And Size Reporter
 def reporter(blocknum, blocksize, totalsize):
@@ -23,16 +30,16 @@ def reporter(blocknum, blocksize, totalsize):
 #UrlRetriever
 def powpow(name, repname, replink):
     system('cls')
-    print(Fore.RED +"[S>] Downloading "+ name +"...")
+    RPrint("[S>] Downloading "+ name +"...")
     urlretrieve(replink, repname, reporter)
-    print(Fore.RED +"[S>] " +name+ " Downloaded, exiting...")
+    RPrint("[S>] " +name+ " Downloaded, exiting...")
     exit(sleep(3))
 
 
 def is_connected():
   try:
-    host = socket.gethostbyname("github.com")
-    s = socket.create_connection((host, 80), 2)
+    host = gethostbyname("github.com")
+    s = create_connection((host, 80), 2)
     return 'Yes'
   except:
      pass
@@ -42,9 +49,9 @@ system('cls')
 print(Fore.RED +"[S>] Testing Internet...")
 if is_connected() == 'Yes':
     system('cls')
-    print(Fore.RED +"[S>] Internet is connected")
+    RPrint("[S>] Internet is connected")
     print(" ")
-    print(Fore.BLUE +"Welcome to Xem's Iso Downloader")
+    BPrint("Welcome to Xem's Iso Downloader")
     print(Fore.WHITE +"Type 1/2/3/4/5 To Execute Selected Actions:")
     print(Fore.BLUE +"1. USB Flasher")
     print(Fore.BLUE +"2. Windows Editions")
@@ -156,65 +163,38 @@ if whattoinstalldwag == '5':
     print(Fore.BLUE +"6. Download Catholic Ubuntu")
     joketodo = input("(1/2/3/4/5/6): ")
     if joketodo == '1':
-        replink = 'https://templeos.org/Downloads/TempleOS.ISO'
-        repname = 'TempleOS.iso'
-        name = 'TempleOS'
-        powpow()
+        powpow('TempleOS', 'TempleOS.iso', 'https://templeos.org/Downloads/TempleOS.ISO')
 
     if joketodo == '2':
-        replink = 'https://github.com/gobolinux/LiveCD/releases/download/017/GoboLinux-017-x86_64.iso'
-        repname = 'Gobo.iso'
-        name = 'Gobo Linux'
-        powpow()
+        powpow('Gobo Linux', 'Gobo.iso',  'https://github.com/gobolinux/LiveCD/releases/download/017/GoboLinux-017-x86_64.iso')
 
     if joketodo == '3':
-        replink = 'https://archive.org/download/RedStarOS/Red%20Star%20OS%203.0%20Desktop/DESKTOP_redstar_desktop3.0_sign.iso'
-        repname = 'RedStarOS.iso'
-        name = 'RedStarOS'
-        powpow()
+        powpow('RedStarOS', 'RedStar.iso', 'https://archive.org/download/RedStarOS/Red%20Star%20OS%203.0%20Desktop/DESKTOP_redstar_desktop3.0_sign.iso')
 
     if joketodo == '4':
-        replink = 'https://archive.org/download/tinfoil2/tinfoil2.img'
-        repname = 'TinFoil.iso'
-        name = 'TinFoil'
-        powpow()
+        powpow('TinFoil', 'TinFoil.img', 'https://archive.org/download/tinfoil2/tinfoil2.img')
         
     if joketodo == '5':
-        replink = 'https://jztkft.dl.sourceforge.net/project/archiveos/u/ubuntu-satanic/satanic-undead-i386-666.9.iso'
-        repname = 'Ubuntu Satanic.iso'
-        name = 'Ubuntu Satanic Edition'
-        powpow()
+        powpow('Ubuntu Satanic Edition', 'Ubuntu Satanic.iso', 'https://jztkft.dl.sourceforge.net/project/archiveos/u/ubuntu-satanic/satanic-undead-i386-666.9.iso')
 
     if joketodo == '6':
-        replink = 'https://deac-ams.dl.sourceforge.net/project/ubuntuce/ubuntuce-22.04.0-2022.05.12.0-desktop-amd64.iso'
-        repname = 'UbuntuCE.iso'
-        name = 'Ubuntu Catholic Edition'
-        powpow()
+        powpow('Ubuntu Catholic Edition', 'UbuntuCE.iso', 'https://deac-ams.dl.sourceforge.net/project/ubuntuce/ubuntuce-22.04.0-2022.05.12.0-desktop-amd64.iso')
 
 if whattoinstalldwag == '5':
     system('cls')
     print(Fore.BLUE +"Type 1/2/3 To Execute Selected Actions:")
     print(Fore.BLUE +"1. Download OpenBSD")
     print(Fore.BLUE +"2. Download FreeBSD")
-    print(Fore.BLUE +"3. Download OpenBSD")
+    print(Fore.BLUE +"3. Download ReactOS")
     othertodo = input("(1/2/3/4/5/6): ")
     if othertodo == '1':
-        name = 'OpenBSD'
-        replink = 'https://cdn.openbsd.org/pub/OpenBSD/7.1/amd64/install71.iso'
-        repname = 'OpenBSD.iso'
-        powpow()
+        powpow('OpenBSD', 'OpenBSD.iso, 'https://cdn.openbsd.org/pub/OpenBSD/7.1/amd64/install71.iso')
 
     if othertodo == '2':
-        name = 'FreeBSD'
-        replink = 'https://download.freebsd.org/releases/amd64/amd64/ISO-IMAGES/13.1/FreeBSD-13.1-RELEASE-amd64-dvd1.iso'
-        repname = 'FreeBSD.iso'
-        powpow()
+        powpow('FreeBSD', 'FreeBSD.iso', 'https://download.freebsd.org/releases/amd64/amd64/ISO-IMAGES/13.1/FreeBSD-13.1-RELEASE-amd64-dvd1.iso')
 
     if othertodo == '3':
-        name = 'ReactOS'
-        replink = 'https://jztkft.dl.sourceforge.net/project/reactos/ReactOS/0.4.14/ReactOS-0.4.14-release-15-gb6088a6-iso.zip'
-        repname = 'ReactOS.iso.zip'
-        powpow()
+        powpow('ReactOS', 'ReactOS.iso', 'https://jztkft.dl.sourceforge.net/project/reactos/ReactOS/0.4.14/ReactOS-0.4.14-release-15-gb6088a6-iso.zip')
 
 ################## Credits ##################
 if whattoinstalldwag == '6':
