@@ -89,15 +89,10 @@ if whattoinstalldwag == '2':
         powpow('Windows 11', 'Windows 11.iso',  'https://backup.winiso.space/files/Windows11/pl-pl_windows_11_21h1_22000.651_multi_editions_updated_apr_2022_x64_782d4743.iso')
 
     if winver == '3':
-        name = 'Rectify11'
-        replink = 'https://download2390.mediafire.com/3ehxc3uweezg/x10ymvjd2vn2bo5/22000.318.CO_RELEASE_CLIPRO_RET_X64FRE_EN-US_RECTIFIED2.5.iso'
-        repname = 'Rectify11.iso'
-        powpow()
+        powpow('Rectify11', 'Rectify11.iso', 'https://download2390.mediafire.com/3ehxc3uweezg/x10ymvjd2vn2bo5/22000.318.CO_RELEASE_CLIPRO_RET_X64FRE_EN-US_RECTIFIED2.5.iso')
 
     if winver == '4':
-        name = 'Windows 10 AME'
-        replink = 'https://archive.org/download/windows10-ame-21h1-2021-08-09/AME_21H1_%282021-08-09%29.iso'
-        repname = 'Windows 10 AME.iso'
+        powpow('Windows 10 AME', 'Windows 10 AME.iso', 'https://archive.org/download/windows10-ame-21h1-2021-08-09/AME_21H1_%282021-08-09%29.iso')
 
 ################## Linux Iso's ##################
 if whattoinstalldwag == '3':
@@ -110,34 +105,19 @@ if whattoinstalldwag == '3':
     print(Fore.BLUE +"5. Download Debian")
     linver = input("(1/2/3/4/5): ")
     if linver == '1':
-        repname = 'Mint.iso'
-        replink = 'https://mirrors.layeronline.com/linuxmint/stable/20.3/linuxmint-20.3-cinnamon-64bit.iso'
-        name = 'Linux Mint'
-        powpow()
+        powpow('Linux Mint', 'Mint.iso', 'https://mirrors.layeronline.com/linuxmint/stable/20.3/linuxmint-20.3-cinnamon-64bit.iso')
 
     if linver == '2':
-        repname = 'Ubuntu.iso'
-        replink = 'https://ubuntu.task.gda.pl/ubuntu-releases/22.04/ubuntu-22.04-desktop-amd64.iso'
-        name = 'Ubuntu'
-        powpow()
+        powpow('Ubuntu', 'Ubuntu.iso', 'https://ubuntu.task.gda.pl/ubuntu-releases/22.04/ubuntu-22.04-desktop-amd64.iso')
 
     if linver == '3':
-        repname = 'ArchLinux.iso'
-        replink = 'https://geo.mirror.pkgbuild.com/iso/2022.05.01/archlinux-2022.05.01-x86_64.iso'
-        name = 'Arch Linux'
-        powpow()
+        powpow('Arch Linux', 'Arch.iso', 'https://geo.mirror.pkgbuild.com/iso/2022.05.01/archlinux-2022.05.01-x86_64.iso')
     
     if linver == '4':
-        repname = 'Fedora.iso'
-        replink = 'https://download.fedoraproject.org/pub/fedora/linux/releases/36/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-36-1.5.iso'
-        name = 'Fedora'
-        powpow()
+        powpow('Fedora', 'Fedora.iso', 'https://download.fedoraproject.org/pub/fedora/linux/releases/36/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-36-1.5.iso')
 
     if linver == '5':
-        repname = 'Debian.iso'
-        replink = 'https://laotzu.ftp.acc.umu.se/debian-cd/current/amd64/iso-cd/debian-11.3.0-amd64-netinst.iso'
-        name = 'Debian'
-        powpow()
+        powpow('Debian', 'Debian.iso', 'https://laotzu.ftp.acc.umu.se/debian-cd/current/amd64/iso-cd/debian-11.3.0-amd64-netinst.iso')
 
 ################## Repair Iso's ##################
 if whattoinstalldwag == '4':
