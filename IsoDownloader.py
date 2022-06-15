@@ -21,7 +21,7 @@ def reporter(blocknum, blocksize, totalsize):
         sys.stderr.write("read %d\n" % (readsofar,))
 
 #UrlRetriever
-def powpow():
+def powpow(name, repname, replink):
     system('cls')
     print(Fore.RED +"[S>] Downloading "+ name +"...")
     urlretrieve(replink, repname, reporter)
@@ -68,10 +68,7 @@ if whattoinstalldwag == '1':
     print(Fore.BLUE +"2. Balena Etcher (For Linux)")
     rufustodo = input("(1/2): ")
     if rufustodo == '1':
-        replink = 'https://github.com/pbatard/rufus/releases/download/v3.18/rufus-3.18.exe'
-        repname = 'Rufus.exe'
-        name = 'Rufus'
-        powpow()
+        powpow('Rufus', 'Rufus.exe', 'https://github.com/pbatard/rufus/releases/download/v3.18/rufus-3.18.exe')
 
     if rufustodo == '2':
         replink = 'https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-Portable-1.7.9.exe'
