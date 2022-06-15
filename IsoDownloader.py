@@ -71,10 +71,7 @@ if whattoinstalldwag == '1':
         powpow('Rufus', 'Rufus.exe', 'https://github.com/pbatard/rufus/releases/download/v3.18/rufus-3.18.exe')
 
     if rufustodo == '2':
-        replink = 'https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-Portable-1.7.9.exe'
-        repname = 'Balena.exe'
-        name = 'Balena Etcher'
-        powpow()
+        powpow('Balena Etcher', 'Balena.exe', 'https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-Portable-1.7.9.exe')
 
 ################## Windows Iso's ##################
 if whattoinstalldwag == '2':
@@ -86,16 +83,10 @@ if whattoinstalldwag == '2':
     print(Fore.BLUE +"4. Download Windows 10 AME")
     winver = input("(1/2/3/4): ")
     if winver == '1':
-        replink = 'https://backup.winiso.space/files/Windows10/pl-pl_windows_10_multi_editions_version_21h2_updated_may_2022_x64_9337a823.iso'
-        repname = 'Windows 10.iso'
-        name = 'Windows 10'
-        powpow()
+        powpow('Windows 10', 'Windows 10.iso', 'https://backup.winiso.space/files/Windows10/pl-pl_windows_10_multi_editions_version_21h2_updated_may_2022_x64_9337a823.iso')
 
     if winver == '2':
-        replink = 'https://backup.winiso.space/files/Windows11/pl-pl_windows_11_21h1_22000.651_multi_editions_updated_apr_2022_x64_782d4743.iso'
-        repname = 'Windows 11.iso'
-        name = 'Windows 11'
-        powpow()
+        powpow('Windows 11', 'Windows 11.iso',  'https://backup.winiso.space/files/Windows11/pl-pl_windows_11_21h1_22000.651_multi_editions_updated_apr_2022_x64_782d4743.iso')
 
     if winver == '3':
         name = 'Rectify11'
