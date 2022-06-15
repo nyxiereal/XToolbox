@@ -130,34 +130,19 @@ if whattoinstalldwag == '4':
     print(Fore.BLUE +"5. Download R-Drive Image")
     repairtodo = input("(1/2/3/4): ")
     if repairtodo == '1':
-        repname = 'Acronis.iso'
-        replink = 'https://archive.org/download/acronis-true-image-2021/AcronisTrueImage2021.iso'
-        name = 'Acronis True Image'
-        powpow()
+        powpow('Acronis True Image', 'Acronis.iso', 'https://archive.org/download/acronis-true-image-2021/AcronisTrueImage2021.iso')
 
     if repairtodo == '2':
-        repname = 'PMagic.iso'
-        replink = 'https://archive.org/download/pmagic_2013_08_01_202202/pmagic_2013_08_01.iso'
-        name = 'Parted Magic'
-        powpow()
+        powpow('Parted Magic', PMagic.iso',  'https://archive.org/download/pmagic_2013_08_01_202202/pmagic_2013_08_01.iso')
 
     if repairtodo == '3':
-        repname = 'GParted.iso'
-        replink = 'https://netcologne.dl.sourceforge.net/project/gparted/gparted-live-stable/1.4.0-1/gparted-live-1.4.0-1-amd64.iso'
-        name = 'GParted'
-        powpow()
+        powpow('Gparted', 'GParted.iso', 'https://netcologne.dl.sourceforge.net/project/gparted/gparted-live-stable/1.4.0-1/gparted-live-1.4.0-1-amd64.iso')
 
     if repairtodo == '4':
-        repname = 'HirensBoot.iso'
-        replink = 'https://ftp.ps.pl/dsk0/hirensbootcd.org/HBCD_PE_x64.iso'
-        name = 'Hirens Boot CD PE'
-        powpow()
+        powpow('Hirens Boot CD PE', 'HirensBoot.iso', 'https://ftp.ps.pl/dsk0/hirensbootcd.org/HBCD_PE_x64.iso')
 
     if repairtodo == '5':
-        repname = 'R-Drive.iso'
-        replink = 'https://archive.org/download/r-drive.-image-7.0.7004-oemkit/R-Drive.Image_7.0.7004_OEMKit.iso'
-        name = 'R-Drive Image'
-        powpow()
+        powpow('R-Drive Image', 'R-Drive.iso', 'https://archive.org/download/r-drive.-image-7.0.7004-oemkit/R-Drive.Image_7.0.7004_OEMKit.iso')
 
 ################## JOKE os's ##################
 if whattoinstalldwag == '5':
