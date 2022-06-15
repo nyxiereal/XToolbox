@@ -46,24 +46,24 @@ def is_connected():
   return 'No'
 
 system('cls')
-print(Fore.RED +"[S>] Testing Internet...")
+RPrint("[S>] Testing Internet...")
 if is_connected() == 'Yes':
     system('cls')
     RPrint("[S>] Internet is connected")
     print(" ")
     BPrint("Welcome to Xem's Iso Downloader")
-    print(Fore.WHITE +"Type 1/2/3/4/5 To Execute Selected Actions:")
-    print(Fore.BLUE +"1. USB Flasher")
-    print(Fore.BLUE +"2. Windows Editions")
-    print(Fore.BLUE +"3. Linux Distros")
-    print(Fore.BLUE +"4. Backup Iso's")
-    print(Fore.BLUE +"5. JOKE os's")
-    print(Fore.BLUE +"6. Other os's")
-    print(Fore.BLUE +"7. Credits")
+    BPrint("Type 1/2/3/4/5 To Execute Selected Actions:")
+    BPrint("1. USB Flasher")
+    BPrint("2. Windows Editions")
+    BPrint("3. Linux Distros")
+    BPrint("4. Backup Iso's")
+    BPrint("5. JOKE os's")
+    BPrint("6. Other os's")
+    BPrint("7. Credits")
     whattoinstalldwag = input("(1/2/3/4/5): ")
 if is_connected() == 'No':
     system('cls')
-    print("No internet connected, exiting...")
+    RPrint("No internet connected, exiting...")
     exit(sleep(5))
 
 
@@ -71,8 +71,8 @@ if is_connected() == 'No':
 if whattoinstalldwag == '1':
     system('cls')
     print(Fore.WHITE +"Type 1/2 To Execute Selected Actions:")
-    print(Fore.BLUE +"1. Rufus(For Everything)")
-    print(Fore.BLUE +"2. Balena Etcher (For Linux)")
+    BPrint("1. Rufus(For Everything)")
+    BPrint("2. Balena Etcher (For Linux)")
     rufustodo = input("(1/2): ")
     if rufustodo == '1':
         powpow('Rufus', 'Rufus.exe', 'https://github.com/pbatard/rufus/releases/download/v3.18/rufus-3.18.exe')
@@ -84,10 +84,10 @@ if whattoinstalldwag == '1':
 if whattoinstalldwag == '2':
     system('cls')
     print(Fore.WHITE +"What Windows Version To Download?")
-    print(Fore.BLUE +"1. Download Windows 10")
-    print(Fore.BLUE +"2. Download Windows 11")
-    print(Fore.BLUE +"3. Download Rectify11")
-    print(Fore.BLUE +"4. Download Windows 10 AME")
+    BPrint("1. Download Windows 10")
+    BPrint("2. Download Windows 11")
+    BPrint("3. Download Rectify11")
+    BPrint("4. Download Windows 10 AME")
     winver = input("(1/2/3/4): ")
     if winver == '1':
         powpow('Windows 10', 'Windows 10.iso', 'https://backup.winiso.space/files/Windows10/pl-pl_windows_10_multi_editions_version_21h2_updated_may_2022_x64_9337a823.iso')
@@ -104,12 +104,12 @@ if whattoinstalldwag == '2':
 ################## Linux Iso's ##################
 if whattoinstalldwag == '3':
     system('cls')
-    print(Fore.BLUE +"Type 1/2/3 To Execute Selected Actions:")
-    print(Fore.BLUE +"1. Download Linux Mint")
-    print(Fore.BLUE +"2. Download Ubuntu")
-    print(Fore.BLUE +"3. Download ArchLinux")
-    print(Fore.BLUE +"4. Download Fedora")
-    print(Fore.BLUE +"5. Download Debian")
+    BPrint("Type 1/2/3 To Execute Selected Actions:")
+    BPrint("1. Download Linux Mint")
+    BPrint("2. Download Ubuntu")
+    BPrint("3. Download ArchLinux")
+    BPrint("4. Download Fedora")
+    BPrint("5. Download Debian")
     linver = input("(1/2/3/4/5): ")
     if linver == '1':
         powpow('Linux Mint', 'Mint.iso', 'https://mirrors.layeronline.com/linuxmint/stable/20.3/linuxmint-20.3-cinnamon-64bit.iso')
@@ -129,12 +129,12 @@ if whattoinstalldwag == '3':
 ################## Repair Iso's ##################
 if whattoinstalldwag == '4':
     system('cls')
-    print(Fore.BLUE +"Type 1/2/3 To Execute Selected Actions:")
-    print(Fore.BLUE +"1. Download Acronis True Image 2021")
-    print(Fore.BLUE +"2. Download Parted Magic 2013")
-    print(Fore.BLUE +"3. Download GParted")
-    print(Fore.BLUE +"4. Download Hiren's Boot PE")
-    print(Fore.BLUE +"5. Download R-Drive Image")
+    BPrint("Type 1/2/3 To Execute Selected Actions:")
+    BPrint("1. Download Acronis True Image 2021")
+    BPrint("2. Download Parted Magic 2013")
+    BPrint("3. Download GParted")
+    BPrint("4. Download Hiren's Boot PE")
+    BPrint("5. Download R-Drive Image")
     repairtodo = input("(1/2/3/4): ")
     if repairtodo == '1':
         powpow('Acronis True Image', 'Acronis.iso', 'https://archive.org/download/acronis-true-image-2021/AcronisTrueImage2021.iso')
@@ -154,13 +154,13 @@ if whattoinstalldwag == '4':
 ################## JOKE os's ##################
 if whattoinstalldwag == '5':
     system('cls')
-    print(Fore.BLUE +"Type 1/2/3 To Execute Selected Actions:")
-    print(Fore.BLUE +"1. Download TempleOS")
-    print(Fore.BLUE +"2. Download Gobo Linux")
-    print(Fore.BLUE +"3. Download RedStarOS")
-    print(Fore.BLUE +"4. Download TinFoil Linux")
-    print(Fore.BLUE +"5. Download Satanic Ubuntu")
-    print(Fore.BLUE +"6. Download Catholic Ubuntu")
+    BPrint("Type 1/2/3 To Execute Selected Actions:")
+    BPrint("1. Download TempleOS")
+    BPrint("2. Download Gobo Linux")
+    BPrint("3. Download RedStarOS")
+    BPrint("4. Download TinFoil Linux")
+    BPrint("5. Download Satanic Ubuntu")
+    BPrint("6. Download Catholic Ubuntu")
     joketodo = input("(1/2/3/4/5/6): ")
     if joketodo == '1':
         powpow('TempleOS', 'TempleOS.iso', 'https://templeos.org/Downloads/TempleOS.ISO')
@@ -182,10 +182,10 @@ if whattoinstalldwag == '5':
 
 if whattoinstalldwag == '5':
     system('cls')
-    print(Fore.BLUE +"Type 1/2/3 To Execute Selected Actions:")
-    print(Fore.BLUE +"1. Download OpenBSD")
-    print(Fore.BLUE +"2. Download FreeBSD")
-    print(Fore.BLUE +"3. Download ReactOS")
+    BPrint("Type 1/2/3 To Execute Selected Actions:")
+    BPrint("1. Download OpenBSD")
+    BPrint("2. Download FreeBSD")
+    BPrint("3. Download ReactOS")
     othertodo = input("(1/2/3/4/5/6): ")
     if othertodo == '1':
         powpow('OpenBSD', 'OpenBSD.iso, 'https://cdn.openbsd.org/pub/OpenBSD/7.1/amd64/install71.iso')
@@ -199,6 +199,6 @@ if whattoinstalldwag == '5':
 ################## Credits ##################
 if whattoinstalldwag == '6':
     system('cls')
-    print(Fore.RED +"Opening Wiki And Exiting...")
+    RPrint("Opening Wiki And Exiting...")
     webopen('bit.ly/3G5Xli1')
     exit(sleep(4))
