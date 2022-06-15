@@ -7,12 +7,16 @@ from socket import create_connection, gethostbyname
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
-#TESTING! Optimized print function
-Def BPrint(prent)
+#TESTING! Optimized print functiond
+def BPrint(prent)
     print(Fore.BLUE + prent)
 
-Def RPrint(prentr)
+def RPrint(prentr)
     print(Fore.RED + prentr)
+
+def WPrint(prentw)
+    print(Fore.WHITE + prentw)
+
 
 #Progress Bar And Size Reporter
 def reporter(blocknum, blocksize, totalsize):
@@ -70,7 +74,7 @@ if is_connected() == 'No':
 ################## Rufus Download ##################
 if whattoinstalldwag == '1':
     system('cls')
-    print(Fore.WHITE +"Type 1/2 To Execute Selected Actions:")
+    WPrint("Type 1/2 To Execute Selected Actions:")
     BPrint("1. Rufus(For Everything)")
     BPrint("2. Balena Etcher (For Linux)")
     rufustodo = input("(1/2): ")
@@ -83,7 +87,7 @@ if whattoinstalldwag == '1':
 ################## Windows Iso's ##################
 if whattoinstalldwag == '2':
     system('cls')
-    print(Fore.WHITE +"What Windows Version To Download?")
+    WPrint("Type 1/2/3/4 To Execute Selected Actions:")
     BPrint("1. Download Windows 10")
     BPrint("2. Download Windows 11")
     BPrint("3. Download Rectify11")
@@ -104,7 +108,7 @@ if whattoinstalldwag == '2':
 ################## Linux Iso's ##################
 if whattoinstalldwag == '3':
     system('cls')
-    BPrint("Type 1/2/3 To Execute Selected Actions:")
+    WPrint("Type 1/2/3/4/5 To Execute Selected Actions:")
     BPrint("1. Download Linux Mint")
     BPrint("2. Download Ubuntu")
     BPrint("3. Download ArchLinux")
@@ -129,13 +133,13 @@ if whattoinstalldwag == '3':
 ################## Repair Iso's ##################
 if whattoinstalldwag == '4':
     system('cls')
-    BPrint("Type 1/2/3 To Execute Selected Actions:")
+    WPrint("Type 1/2/3/4/5 To Execute Selected Actions:")
     BPrint("1. Download Acronis True Image 2021")
     BPrint("2. Download Parted Magic 2013")
     BPrint("3. Download GParted")
     BPrint("4. Download Hiren's Boot PE")
     BPrint("5. Download R-Drive Image")
-    repairtodo = input("(1/2/3/4): ")
+    repairtodo = input("(1/2/3/4/5): ")
     if repairtodo == '1':
         powpow('Acronis True Image', 'Acronis.iso', 'https://archive.org/download/acronis-true-image-2021/AcronisTrueImage2021.iso')
 
@@ -154,7 +158,7 @@ if whattoinstalldwag == '4':
 ################## JOKE os's ##################
 if whattoinstalldwag == '5':
     system('cls')
-    BPrint("Type 1/2/3 To Execute Selected Actions:")
+    WPrint("Type 1/2/3/4/5/6 To Execute Selected Actions:")
     BPrint("1. Download TempleOS")
     BPrint("2. Download Gobo Linux")
     BPrint("3. Download RedStarOS")
@@ -182,11 +186,11 @@ if whattoinstalldwag == '5':
 
 if whattoinstalldwag == '5':
     system('cls')
-    BPrint("Type 1/2/3 To Execute Selected Actions:")
+    WPrint("Type 1/2/3 To Execute Selected Actions:")
     BPrint("1. Download OpenBSD")
     BPrint("2. Download FreeBSD")
     BPrint("3. Download ReactOS")
-    othertodo = input("(1/2/3/4/5/6): ")
+    othertodo = input("(1/2/3): ")
     if othertodo == '1':
         powpow('OpenBSD', 'OpenBSD.iso, 'https://cdn.openbsd.org/pub/OpenBSD/7.1/amd64/install71.iso')
 
