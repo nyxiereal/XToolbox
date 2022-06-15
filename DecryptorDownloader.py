@@ -101,10 +101,10 @@ if whattoinstalldwag == '5':
     powpow('BTCWare DCR', 'BTCWareDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/BTCWareDecrypter.zip')
 
 if whattoinstalldwag == '6':
-    powpow('Crypt38 Keygen', Crypt38KeyGen.zip'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/Crypt38Keygen.zip')
+    powpow('Crypt38 Keygen', 'Crypt38KeyGen.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/Crypt38Keygen.zip')
 
 if whattoinstalldwag == '7':
-    powpow('DCry DCR', 'DCryDCR.zip , 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/DCryDecrypter.zip')
+    powpow('DCry DCR', 'DCryDCR.zip' , 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/DCryDecrypter.zip')
 
 if whattoinstalldwag == '8':
     powpow('CryptON DCR', 'CryptONDCR.exe', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/decrypt_CryptON.exe')
@@ -113,47 +113,37 @@ if whattoinstalldwag == '9':
     powpow('Jigsaw DCR', 'JigsawDCR.exe', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/decrypt_Jigsaw.exe')
 
 if whattoinstalldwag == '10':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/decrypt_STOPDjvu.exe'
-    powpow('StopDjvuDCR', 'StopDjvuDCR.exe')
+    powpow('StopDjvuDCR', 'StopDjvuDCR.exe', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/decrypt_STOPDjvu.exe')
 
 if whattoinstalldwag == '11':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/FilesLockerDecrypter.zip'
-    powpow('FilesLockerDCR', 'FilesLockerDCR.exe')
+    powpow('FilesLockerDCR', 'FilesLockerDCR.exe', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/FilesLockerDecrypter.zip')
 
 if whattoinstalldwag == '12':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/GibonDecrypter.zip'
-    powpow('GibbonDCR', 'GibbonDCR.zip')
+    powpow('GibbonDCR', 'GibbonDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/GibonDecrypter.zip')
 
 if whattoinstalldwag == '13':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/hidden-tear-bruteforcer.zip'
-    powpow('HiddenTearDCR', 'HiddenTearDCR.zip')
+    powpow('HiddenTearDCR', 'HiddenTearDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/hidden-tear-bruteforcer.zip')
 
 if whattoinstalldwag == '14':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/InsaneCryptDecrypter.zip'
-    powpow('InsaneCryptDCR', 'InsaneCryptDCR.zip')
+    powpow('InsaneCryptDCR', 'InsaneCryptDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/InsaneCryptDecrypter.zip')
 
 if whattoinstalldwag == '15':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/MirCopDecrypter.zip'
-    powpow('MirCopDCR', 'MirCopDCR.zip')
+    powpow('MirCopDCR', 'MirCopDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/MirCopDecrypter.zip')
 
 if whattoinstalldwag == '16':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/Mole02Decryptor.zip'
-    powpow('Mole02DCR', 'Mole02DCR.zip')
+    powpow('Mole02DCR', 'Mole02DCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/Mole02Decryptor.zip')
 
 if whattoinstalldwag == '17':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/PowerLockyDecrypter.zip'
-    powpow('PowerLockyDCR', 'PowerLockyDCR', )
+    powpow('PowerLockyDCR', 'PowerLockyDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/PowerLockyDecrypter.zip')
 
 if whattoinstalldwag == '18':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/StrikedDecrypter.zip'
-    powpow('StrikedDCR', 'StrikedDCR', )
+    powpow('StrikedDCR', 'StrikedDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/StrikedDecrypter.zip')
 
 if whattoinstalldwag == '19':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/StupidDecry
-    powpow('StupidDCR', 'StupidDCR', )
+    powpow('StupidDCR', 'StupidDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/StupidDecryptor.zip)
 
 if whattoinstalldwag == '20':
-    powpow('Unlock92DCR', 'Unlock92DCR',  'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/Unlock92Decrypter.zip')
+    powpow('Unlock92DCR', 'Unlock92DCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/Unlock92Decrypter.zip')
 
 if whattoinstalldwag == '21':
     powpow('Emisoft Emergency Kit', 'EmisoftEmergencyKit.exe', 'https://dl.emsisoft.com/EmsisoftEmergencyKit.exe')
