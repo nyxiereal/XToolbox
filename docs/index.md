@@ -10,3 +10,5 @@ So for all of this i wanna thank you all guys and gals for showing support to th
 * Custom-built Software List - https://github.com/xemulat/Windows-Toolkit/wiki/Custom-Software-List
 * Iso Downloader's Isos - https://github.com/xemulat/Windows-Toolkit/wiki/Custom-Software-List
 * RepoTracker - https://repo-tracker.com/r/gh/xemulat/Windows-Toolkit
+
+Copyright Xemulated 2022
