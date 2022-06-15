@@ -2,9 +2,19 @@ from urllib.request import urlretrieve
 import sys
 from time import sleep
 from os import system
-import socket
+from socket import create_connection, gethostbyname
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
+
+#TESTING! Optimized print function
+def BPrint(prent)
+    print(Fore.BLUE + prent)
+
+def RPrint(prentr)
+    print(Fore.RED + prentr)
+
+def WPrint(prentw)
+    print(Fore.WHITE + prentw)
 
 #Progress Bar And Size Reporter
 def reporter(blocknum, blocksize, totalsize):
@@ -20,18 +30,18 @@ def reporter(blocknum, blocksize, totalsize):
         sys.stderr.write("read %d\n" % (readsofar,))
 
 #UrlRetriever
-def powpow():
+def powpow(name, repname, replink):
     system('cls')
-    print(Fore.RED +"[S>] Downloading "+ name +"...")
+    RPrint("[S>] Downloading "+ name +"...")
     urlretrieve(replink, repname, reporter)
-    print(Fore.RED +"[S>] " +name+ " Downloaded, exiting...")
-    exit(sleep(3,5))
+    RPrint("[S>] " +name+ " Downloaded, exiting...")
+    exit(sleep(3))
 
 #Check Is Internet Connection
 def is_connected():
   try:
-    host = socket.gethostbyname("github.com")
-    s = socket.create_connection((host, 80), 2)
+    host = gethostbyname("github.com")
+    s = create_connection((host, 80), 2)
     return 'Yes'
   except:
      pass
@@ -39,40 +49,40 @@ def is_connected():
 
 #Main
 system('cls')
-print(Fore.RED +"[S>] Testing Internet...")
+RPrint"[S>] Testing Internet...")
 if is_connected() == 'Yes':
     system('cls')
-    print(Fore.RED +"[S>] Internet is connected")
+    RPrint("[S>] Internet is connected")
     print(" ")
-    print(Fore.BLUE +"Welcome to Xem's Decryptor Downloader")
-    print(Fore.WHITE +"Select Ransomware Decryptor:")
-    print(Fore.BLUE +"1. Alpha")
-    print(Fore.BLUE +"2. Aurora")
-    print(Fore.BLUE +"3. BitKangaroo")
-    print(Fore.BLUE +"4. BitStak")
-    print(Fore.BLUE +"5. BTCWare")
-    print(Fore.BLUE +"6. Crypt38")
-    print(Fore.BLUE +"7. DCry")
-    print(Fore.BLUE +"8. CryptON")
-    print(Fore.BLUE +"9. Jigsaw")
-    print(Fore.BLUE +"10. Stop / Djvu")
-    print(Fore.BLUE +"11. FilesLocker")
-    print(Fore.BLUE +"12. Gibon")
-    print(Fore.BLUE +"13. HiddenTear")
-    print(Fore.BLUE +"14. InsaneCrypt")
-    print(Fore.BLUE +"15. MirCop")
-    print(Fore.BLUE +"16. Mole02")
-    print(Fore.BLUE +"17. PowerLocky")
-    print(Fore.BLUE +"18. Striked")
-    print(Fore.BLUE +"19. Stupid")
-    print(Fore.BLUE +"20. Unlock92")
-    print(Fore.BLUE +"21. Emisoft Emergency Kit")
-    print(Fore.BLUE +"99/0. Exit")
+    BPrint("Welcome to Xem's Decryptor Downloader")
+    WPrint("Select Ransomware Decryptor:")
+    BPrint("1. Alpha")
+    BPrint("2. Aurora")
+    BPrint("3. BitKangaroo")
+    BPrint("4. BitStak")
+    BPrint("5. BTCWare")
+    BPrint("6. Crypt38")
+    BPrint("7. DCry")
+    BPrint("8. CryptON")
+    BPrint("9. Jigsaw")
+    BPrint("10. Stop / Djvu")
+    BPrint("11. FilesLocker")
+    BPrint("12. Gibon")
+    BPrint("13. HiddenTear")
+    BPrint("14. InsaneCrypt")
+    BPrint("15. MirCop")
+    BPrint("16. Mole02")
+    BPrint("17. PowerLocky")
+    BPrint("18. Striked")
+    BPrint("19. Stupid")
+    BPrint("20. Unlock92")
+    BPrint("21. Emisoft Emergency Kit")
+    BPrint("99/0. Exit")
     whattoinstalldwag = input(": ")
     
 if is_connected() == 'No':
     system('cls')
-    print("No internet connected, exiting...")
+    RPrint("No internet connected, exiting...")
     exit(sleep(5))
     
 if whattoinstalldwag == '1':
