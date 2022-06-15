@@ -9,11 +9,11 @@ from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
 #TESTING! Optimized print function
-def BPrint(prent)
+def BPrint(prent):
     print(Fore.BLUE + prent)
-def RPrint(prentr)
+def RPrint(prentr):
     print(Fore.RED + prentr)
-def WPrint(prentw)
+def WPrint(prentw):
     print(Fore.WHITE + prentw)
 
 #set vars

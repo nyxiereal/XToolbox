@@ -8,13 +8,13 @@ from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
 #TESTING! Optimized color-print function
-def BPrint(prent)
+def BPrint(prent):
     print(Fore.BLUE + prent)
 
-def RPrint(prentr)
+def RPrint(prentr):
     print(Fore.RED + prentr)
 
-def WPrint(prentw)
+def WPrint(prentw):
     print(Fore.WHITE + prentw)
 
 
@@ -144,7 +144,7 @@ if whattoinstalldwag == '4':
         powpow('Acronis True Image', 'Acronis.iso', 'https://archive.org/download/acronis-true-image-2021/AcronisTrueImage2021.iso')
 
     if repairtodo == '2':
-        powpow('Parted Magic', PMagic.iso',  'https://archive.org/download/pmagic_2013_08_01_202202/pmagic_2013_08_01.iso')
+        powpow('Parted Magic', 'PMagic.iso', 'https://archive.org/download/pmagic_2013_08_01_202202/pmagic_2013_08_01.iso')
 
     if repairtodo == '3':
         powpow('Gparted', 'GParted.iso', 'https://netcologne.dl.sourceforge.net/project/gparted/gparted-live-stable/1.4.0-1/gparted-live-1.4.0-1-amd64.iso')
@@ -192,7 +192,7 @@ if whattoinstalldwag == '5':
     BPrint("3. Download ReactOS")
     othertodo = input("(1/2/3): ")
     if othertodo == '1':
-        powpow('OpenBSD', 'OpenBSD.iso, 'https://cdn.openbsd.org/pub/OpenBSD/7.1/amd64/install71.iso')
+        powpow('OpenBSD', 'OpenBSD.iso', 'https://cdn.openbsd.org/pub/OpenBSD/7.1/amd64/install71.iso')
 
     if othertodo == '2':
         powpow('FreeBSD', 'FreeBSD.iso', 'https://download.freebsd.org/releases/amd64/amd64/ISO-IMAGES/13.1/FreeBSD-13.1-RELEASE-amd64-dvd1.iso')

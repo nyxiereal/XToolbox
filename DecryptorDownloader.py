@@ -7,13 +7,13 @@ from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
 #TESTING! Optimized print function
-def BPrint(prent)
+def BPrint(prent):
     print(Fore.BLUE + prent)
 
-def RPrint(prentr)
+def RPrint(prentr):
     print(Fore.RED + prentr)
 
-def WPrint(prentw)
+def WPrint(prentw):
     print(Fore.WHITE + prentw)
 
 #Progress Bar And Size Reporter
@@ -49,7 +49,7 @@ def is_connected():
 
 #Main
 system('cls')
-RPrint"[S>] Testing Internet...")
+RPrint("[S>] Testing Internet...")
 if is_connected() == 'Yes':
     system('cls')
     RPrint("[S>] Internet is connected")
@@ -140,7 +140,7 @@ if whattoinstalldwag == '18':
     powpow('StrikedDCR', 'StrikedDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/StrikedDecrypter.zip')
 
 if whattoinstalldwag == '19':
-    powpow('StupidDCR', 'StupidDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/StupidDecryptor.zip)
+    powpow('StupidDCR', 'StupidDCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/StupidDecryptor.zip')
 
 if whattoinstalldwag == '20':
     powpow('Unlock92DCR', 'Unlock92DCR.zip', 'https://github.com/xemulat/MyFilesForDDL/releases/download/decryptors/Unlock92Decrypter.zip')

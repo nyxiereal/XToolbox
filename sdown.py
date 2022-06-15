@@ -6,13 +6,13 @@ import sys
 init(autoreset=True)
 
 #TESTING! Optimized print functiond
-def BPrint(prent)
+def BPrint(prent):
     print(Fore.BLUE + prent)
 
-def RPrint(prentr)
+def RPrint(prentr):
     print(Fore.RED + prentr)
 
-def WPrint(prentw)
+def WPrint(prentw):
     print(Fore.WHITE + prentw)
 
 def reporter(blocknum, blocksize, totalsize):
