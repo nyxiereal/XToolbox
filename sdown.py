@@ -5,6 +5,16 @@ from colorama import Fore, Back, Style, init
 import sys
 init(autoreset=True)
 
+#TESTING! Optimized print functiond
+def BPrint(prent)
+    print(Fore.BLUE + prent)
+
+def RPrint(prentr)
+    print(Fore.RED + prentr)
+
+def WPrint(prentw)
+    print(Fore.WHITE + prentw)
+
 def reporter(blocknum, blocksize, totalsize):
     readsofar = blocknum * blocksize
     if totalsize > 0:
@@ -20,38 +30,34 @@ def reporter(blocknum, blocksize, totalsize):
 def cls():
     system('cls')
 
-def powpow():
-    print(Fore.RED +"[S>] Downloading "+ name +"...")
+#UrlRetriever
+def powpow(name, repname, replink):
+    system('cls')
+    RPrint("[S>] Downloading "+ name +"...")
     urlretrieve(replink, repname, reporter)
-    print(Fore.RED +"[S>] " +name+ " Downloaded!")
-    startfile(repname)
+    RPrint("[S>] " +name+ " Downloaded, exiting...")
+    exit(sleep(3))
 
 cls()
-print(Fore.BLUE +"[I>] Welcome " + getlogin() + "!")
-print(Fore.BLUE +"[I>] This script will download selected software")
-print(Fore.WHITE +"[K>] Do you wanna install python?")
+BPrint("[I>] Welcome " + getlogin() + "!")
+BPrint("[I>] This script will download selected software")
+WPrint("[K>] Do you wanna install python?")
 pyinstall = input("(y/n): ")
-print(Fore.WHITE +"[K>] Do you wanna install LibreWolf?")
+WPrint("[K>] Do you wanna install LibreWolf?")
 libreinstall = input("(y/n): ")
-print(Fore.WHITE +"[K>] Do you wanna install BasicRedists?")
+WPrint("[K>] Do you wanna install BasicRedists?")
 redistinstall = input("(y/n): ")
 cls()
 
 if pyinstall == 'y':
-    replink = 'https://www.python.org/ftp/python/3.10.5/python-3.10.5-amd64.exe'
-    repname = 'Python 3.10.5 Setup.exe'
-    name = 'Python'
-    powpow()
+    powpow('Python', 'Python Setup.exe', 'https://www.python.org/ftp/python/3.10.5/python-3.10.5-amd64.exe')
+
 if redistinstall == 'y':
-    replink = 'https://github.com/xemulat/MyFilesForDDL/releases/download/BasicRedists/BasicRedists.exe'
-    repname = 'BasicRedists 2.0 SFX.exe'
-    name = 'BasicRedists v2.0'
-    powpow()
+    powpow('BasicRedists v2.0', 'BasicRedists v2.0 SFX.exe', 'https://github.com/xemulat/MyFilesForDDL/releases/download/BasicRedists/BasicRedists.exe')
+
 if libreinstall == 'y':
-    replink = 'https://gitlab.com/librewolf-community/browser/windows/uploads/fe06739b1a26002dae45b4b48f38aad2/librewolf-101.0-2.en-US.win64-setup.exe'
-    repname = 'LibreWolf 101.0.2 Setup.exe'
-    name = 'LibreWolf'
-    powpow()
+    powpow('LibreWolf', 'LibreWolf 101.0.2 Setup.exe', 'https://gitlab.com/librewolf-community/browser/windows/uploads/fe06739b1a26002dae45b4b48f38aad2/librewolf-101.0-2.en-US.win64-setup.exe')
+
 if libreinstall == 'n' and redistinstall == 'n' and pyinstall == 'n':
     print(Fore.RED +"[S>] Nothing Was Downloaded, Exiting...")
     exit(sleep(6))
