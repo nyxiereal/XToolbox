@@ -1,5 +1,5 @@
 # Windows Toolkit
-*do not touch updater.py if you cloned the repo*
+i'm fixing this app, give me some time!!!
 
 Version 1.0 is out!
 
