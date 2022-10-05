@@ -54,7 +54,7 @@ def p1():
            "│ [8] Win10Debloater       │ [8] LimitQoS           │ [8] 7-Zip                    │ [8] ESET Online Scanner     │\n",
            "│ [9] SadCoy               │ [9] OptimizeSSD        │ [9] Memory Cleaner           │                             │\n",
            "│                          │ [10] Insider Enroller  │ [10] qBittorrent             │                             │\n",
-           "│                          │ [11] Windows11Fixer    │                              │                             │\n",
+           "│                          │ [11] Windows11Fixer    │ [11] LibreWolf               │                             │\n",
            "│                          │ [12] Activator         │                              │                             │\n",
            "│                          │                        │                              │                             │\n"
           " ├──────────────────────────┴────────────────────────┴──────────────────────────────┴─────────────────────────────┤\n",
@@ -167,6 +167,9 @@ def p1():
 
         elif choose == "A10" or choose == "a10":
             system("choco install qbittorrent")
+
+        elif choose == "A11" or choose == "a11":
+            system("choco install librewolf")
 
         # =============< Cleanup
 
