@@ -83,7 +83,7 @@ def p1():
             dl(1, "https://github.com/Teraskull/PyDebloatX/releases/download/" + str(latest("Teraskull/PyDebloatX")) + "/PyDebloatX_portable.exe", "PyDebloatX.exe", "PyDebloatX")
 
         elif choose == "D6" or choose == "d6":
-            dl(1, "https://google.com/robots.txt", "WindowsOnReins.ps1", "WindowsOnReins")
+            dl(1, "https://raw.githubusercontent.com/gordonbay/Windows-On-Reins/master/wor.ps1", "WindowsOnReins.ps1", "WindowsOnReins")
 
         elif choose == "D7" or choose == "d7":
             dl(1, "https://github.com/SanGraphic/QuickBoost/releases/download/" + str(latest("SanGraphic/QuickBoost")) + "/QuickBoost.exe", "QuickBoost.exe", "QuickBoost")
@@ -93,9 +93,6 @@ def p1():
 
         elif choose == "D9" or choose == "d9":
             dl(1, "https://github.com/Jisll/Sadcoy/releases/download/v" + str(latest("Jisll/Sadcoy")) + "/Sadcoy.exe", "Sadcoy.exe", "Sadcoy")
-
-        elif choose == "n" or choose == "N":
-            p2()
 
         # =============< Tweaks
 
@@ -190,6 +187,9 @@ def p1():
 
         elif choose == "C5" or choose == "c5":
             dl(1, "", ".exe", "Malwarebytes")
+
+        elif choose == "n" or choose == "N":
+            p2()
 
         else:
             print("No option named " + choose)
