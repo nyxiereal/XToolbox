@@ -1,11 +1,12 @@
-from XeLib import cls, printer
-from os import system, startfile
-from sys import exit
+from os import startfile, system
 from os.path import isfile
+from sys import exit
 from time import sleep
 from urllib.request import urlretrieve
+from colorama import init, Fore, Back
 from lastversion import latest
-from psutil import virtual_memory, cpu_count, cpu_percent, disk_usage
+from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
+from XeLib import cls, printer
 
 def mbgb(input_megabyte):
     gigabyte = 1.0/1024
@@ -23,6 +24,7 @@ def reporter(block_num, block_size, total_size):
         print(f"read {read_so_far}", end='')
 
 def prep():
+    init(autoreset=True)
     cls()
 
 def dl(org, url, urlr, name):
@@ -34,8 +36,6 @@ def dl(org, url, urlr, name):
         elif chose == "N" or chose == "n":
             if org == 1:
                 p1()
-            elif org == 2:
-                p2()
     
     printer.lprint("Downloading " + name + " ...")
     urlretrieve(url, urlr, reporter)
@@ -43,48 +43,116 @@ def dl(org, url, urlr, name):
     if urlr != "WindowsOnReins.ps1":
         startfile(urlr)
     if org == 1:    p1()
-    elif org == 2:  p2()
+
+def eula():
+    cls()
+    print(" ┌─────────────────────────────────────────────────────────────────────────────┐\n"
+          ' │THE BEER-WARE LICENSE" (Revision 42):                                        │\n',
+           "│As long as you retain this notice you can do whatever you want with this     │\n",
+           "│stuff. If we meet someday, and you think this stuff is worth it, you can     │\n",
+           "│buy me a beer in return.                                                     │\n",
+           "│                                                                             │\n",
+           "│This project is distributed in the hope that it will be useful, but WITHOUT  │\n",
+           "│ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or        │\n",
+           "│FITNESS FOR A PARTICULAR PURPOSE. The owener will not be held responsible    │\n"
+          " │for any damage that may be caused by this project.                           │\n"
+          " └─────────────────────────────────────────────────────────────────────────────┘")
+
+    agree = input("Do you agree? (Y/n): ")
+    if agree == "y" or agree == "Y":
+        print("You agreed to the EULA.")
+        fp = open('EULA.XTB', 'w')
+        fp.write('True')
+        fp.close()
+        sleep(3)
+        p1()
+    elif agree == "n" or agree == "N":
+        print("Ok, so come back if you change your mind lol.")
+        exit(sleep(3))
+
+def helpe():
+    cls()
+    e = Back.RED+"Red"+Back.RESET
+    ree = Back.GREEN+"Green"+Back.RESET
+    print(" ┌────────────────────────────────────────┐\n",
+           "│ Keybind │ Command                      │\n",
+           "│    H    │ Help Page (this page)        │\n",
+           "│    N    │ Next Page                    │\n",
+           "│    99   │ Exit                         │\n",
+           "├────────────────────────────────────────┤\n",
+           "│ Colors  │ Meaning                      │\n",
+          f"│ {e}     │ Dangerous Option             │\n",
+          f"│ {ree}   │ Reccomended Option           │\n",
+           "│                                        │\n",
+           "├────────────────────────────────────────┤\n",
+           "│        Press ENTER to go back.         │\n",
+           "└────────────────────────────────────────┘\n")
+    input("> ")
 
 def p1():
     cls()
+    # Updater
     newver = latest("xemulat/XToolbox")
-    if "1.3" == str(newver):
-        Errorhd = "UpToDate "
-    elif str(newver) > "1.3":
-        Errorhd = "Outdated "
+    if "1.4" == str(newver):
+        Errorhd = Fore.GREEN+"UpToDate "+Fore.WHITE
+    elif str(newver) > "1.4":
+        Errorhd = Fore.RED+"Outdated "+Fore.WHITE
     else:
-        Errorhd = "Error    "
+        Errorhd = Fore.MAGENTA+"Error    "+Fore.WHITE
 
-    c = str(cpu_count(logical=False)) + "C / " + str(cpu_count(logical=True)).replace(".0", "") + "T"
-    ramavaili = str(virtual_memory().percent) + " / 100%"
-    cpuavailiffff = str(cpu_percent()) + " / 100%"
-    dusagehebed = str(disk_usage("/").used/1073741824).split(".", 1)[0] + "GB" + " / " + str(disk_usage("/").total/1073741824).split(".", 1)[0] + "GB"
-    print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
-           f"│ XToolBox v1.3                                     │ Made by Xemulated                                          │\n",
-           f"│ Update Status: {Errorhd} │ RAM: {ramavaili}       │ CPU: {cpuavailiffff} | {c}   │ Disk: {dusagehebed}         │\n",
-            "├──────────────────────────┼────────────────────────┼──────────────────────────────┼─────────────────────────────┤\n", 
-            "│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                     │ [C] Cleaning / Antiviruses  │\n",
-            "├──────────────────────────┼────────────────────────┼──────────────────────────────┼─────────────────────────────┤\n", 
-            "│ [1] EchoX                │ [1] PostTweaks         │ [1] Chocholatey              │ [1] ADW Cleaner             │\n",
-            "│ [2] HoneCtrl             │ [2] AntiTrackTime      │ [2] Brave Browser            │ [2] ATF Cleaner             │\n",
-            "│ [3] ShutUp10             │ [3] NoNetworkAutoTune  │ [3] FireFox                  │ [3] Defragmenter            │\n",
-            "│ [4] Optimizer            │ [4] NoActionCenter     │ [4] Lively Wallpaper         │ [4] Disk Cleaner            │\n",
-            "│ [5] PyDebloatX           │ [5] NoNews + R         │ [5] LibreWolf                │ [5] Registry Cleaner        │\n",
-            "│ [6] WindowsOnReins  DNGR │ [6] NoOneDrive         │ [6] qBittorrent              │ [6] Malwarebytes            │\n",
-            "│ [7] QuickBoost           │ [7] NoXboxBloat        │ [7] Rainmeter                │ [7] ESET Full               │\n",
-            "│ [8] Win10Debloater       │ [8] LimitQoS           │ [8] 7-Zip                    │ [8] ESET Online Scanner     │\n",
-            "│ [9] SadCoy               │ [9] OptimizeSSD        │ [9] Memory Cleaner           │                             │\n",
-            "│                          │ [10] Insider Enroller  │                              │                             │\n",
-            "│                          │ [11] Windows11Fixer    │                              │                             │\n",
-            "│                          │ [12] Activator         │                              │                             │\n",
-            "│                          │ [13] AntiRoundCorners  │                              │                             │\n",
-            "│                          │ [14] FixDrag&Drop      │                              │                             │\n",
-            "│                          │ [15] Winaero Tweaker   │                              │                             │\n",
-            "│                          │ [16]                   │                              │                             │\n",
-            "├──────────────────────────┴────────────────────────┴──────────────────────────────┴─────────────────────────────┤\n",
-            "│                                Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit                                │\n",
-            "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
-    choose = input(": ")
+    # Set vars (do math and some crap)
+    if cpu_count(logical=False) < 2 and cpu_count(logical=True) < 3:
+        c = Fore.RED+str(cpu_count(logical=False)) + "C / " + str(cpu_count(logical=True)).replace(".0", "") + "T "+Fore.WHITE
+    else:
+        c = str(cpu_count(logical=False)) + "C / " + str(cpu_count(logical=True)).replace(".0", "") + "T "
+
+    if int(virtual_memory().percent) > 60:
+        ramavailiz =  Fore.RED+str(virtual_memory().percent) + "%" + Fore.WHITE + " / 100%"
+    else:
+        ramavailiz =  str(virtual_memory().percent) + "% / 100%"
+
+    cpup = str(cpu_percent()).replace("%", "").split(".", 1)[0]
+    if int(cpup) > 60:
+        cpuavailiffff = Fore.RED+cpup+Fore.WHITE + " / 100%"
+    else:
+        cpuavailiffff = cpup + "% / 100%"
+
+    if (int(str(disk_usage("/").total/1073741824).split(".", 1)[0]))/(int(str(disk_usage("/").used/1073741824).split(".", 1)[0])) < 0.5:
+        dusagehebed = Fore.RED+str(disk_usage("/").used/1073741824).split(".", 1)[0] + "GB"+Fore.WHITE + " / " + str(disk_usage("/").total/1073741824).split(".", 1)[0] + "GB"
+    else:
+        dusagehebed = str(disk_usage("/").used/1073741824).split(".", 1)[0] + "GB" + " / " + str(disk_usage("/").total/1073741824).split(".", 1)[0] + "GB"
+
+    xtoolboxvv1 = Fore.RED+"XToolBox v1.4"+Fore.WHITE
+    # CLI-GUI
+    xemulat = Fore.RED+"Xemulated"+Fore.WHITE
+    windowsonreinddddddddd = Fore.RED+"[6] WindowsOnReins  DNGR"+Fore.WHITE
+    posttweaksjfjfjfjddd = Fore.RED+"[1] PostTweaks    DNGR"+Fore.WHITE
+    print(f" ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
+           f"│ {xtoolboxvv1}                                     │ Made by {xemulat}                                           │\n",
+           f"│ Update Status: {Errorhd} │ RAM: {ramavailiz}      │ CPU: {cpuavailiffff} | {c}   │ Disk: {dusagehebed}          │\n",
+            "├──────────────────────────┼────────────────────────┼──────────────────────────────┼──────────────────────────────┤\n", 
+            "│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                     │ [C] Cleaning / Antiviruses   │\n",
+            "├──────────────────────────┼────────────────────────┼──────────────────────────────┼──────────────────────────────┤\n", 
+           f"│ [1] EchoX                │ {posttweaksjfjfjfjddd} │ [1] Chocholatey              │ [1] ADW Cleaner              │\n",
+            "│ [2] HoneCtrl             │ [2] AntiTrackTime      │ [2] Brave Browser            │ [2] ATF Cleaner              │\n",
+            "│ [3] ShutUp10             │ [3] NoNetworkAutoTune  │ [3] FireFox                  │ [3] Defraggler               │\n",
+            "│ [4] Optimizer            │ [4] NoActionCenter     │ [4] Lively Wallpaper         │ [4] Malwarebytes             │\n",
+            "│ [5] PyDebloatX           │ [5] NoNews + R         │ [5] LibreWolf                │ [5] ESET Full                │\n",
+           f"│ {windowsonreinddddddddd} │ [6] NoOneDrive         │ [6] qBittorrent              │ [6] ESET Online Scanner      │\n",
+            "│ [7] QuickBoost           │ [7] NoXboxBloat        │ [7] Rainmeter                │                              │\n",
+            "│ [8] Win10Debloater       │ [8] LimitQoS           │ [8] 7-Zip                    │                              │\n",
+            "│ [9] SadCoy               │ [9] OptimizeSSD        │ [9] Memory Cleaner           │                              │\n",
+            "│ [10] SweetyLite          │ [10] Insider Enroller  │                              │                              │\n",
+            "│                          │ [11] Windows11Fixer    │                              │                              │\n",
+            "│                          │ [12] Activator         │                              │                              │\n",
+            "│                          │ [13] AntiRoundCorners  │                              │                              │\n",
+            "│                          │ [14] FixDrag&Drop      │                              │                              │\n",
+            "│                          │ [15] Winaero Tweaker   │                              │                              │\n",
+            "│                          │                        │                              │                              │\n",
+            "├──────────────────────────┴────────────────────────┴──────────────────────────────┴──────────────────────────────┤\n",
+            "│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           │\n",
+            "└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+    choose = input("> ")
 
     if choose == "99":
         exit()
@@ -116,6 +184,9 @@ def p1():
 
     elif choose == "D9" or choose == "d9":
         dl(1, "https://github.com/Jisll/Sadcoy/releases/download/v" + str(latest("Jisll/Sadcoy")) + "/Sadcoy.exe", "Sadcoy.exe", "Sadcoy")
+    
+    elif choose == "D10" or choose == "d10":
+        dl(1, "https://cdn.discordapp.com/attachments/953004468503461948/1031289678013411368/SweetyLite2.bat", "SweetyLite.bat", "SweetyLite")
 
     # =============< Tweaks
 
@@ -157,16 +228,13 @@ def p1():
         dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/MAS.bat", "MAS.bat", "MAS")
 
     elif choose == "T13" or choose == "t13":
-        dl(1, "", "", "AntiRoundCorners")
+        dl(1, "https://github.com/valinet/Win11DisableRoundedCorners/releases/download/" + str(latest("valinet/Win11DisableRoundedCorners")) + "/Win11DisableOrRestoreRoundedCorners.exe", "AntiRoundCorners.exe", "AntiRoundCorners")
 
     elif choose == "T14" or choose == "t14":
-        dl(1, "", "", "Fix Drag&Drop")
+        dl(1, "https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix/releases/download/v." + str(latest("HerMajestyDrMona/Windows11DragAndDropToTaskbarFix")) + "-release/Windows11DragAndDropToTaskbarFix.exe", "FixDragAndDrop.exe", "Fix Drag&Drop")
         
     elif choose == "T15" or choose == "t15":
-        dl(1, "", "", "Winaero Tweaker")
-        
-    elif choose == "T16" or choose == "t16":
-        dl(1, "", "", "")
+        dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
 
     # =============< Apps
 
@@ -183,16 +251,16 @@ def p1():
         dl(1, "https://github.com/rocksdanister/lively/releases/download/v" + str(latest("rocksdanister/lively")) + "/lively_setup_x86_full_v" + str(latest("rocksdanister/lively")).replace(".", "") + ".exe", "LivelyWallpaper.exe", "Lively Wallpaper")
 
     elif choose == "A5" or choose == "a5":
-        dl(1, "", "LibreWolf.exe", "LibreWolf")
+        dl(1, "https://gitlab.com/librewolf-community/browser/windows/uploads/f5c35c96a94b78ac847f19f6c3d3e49e/librewolf-105.0.3-1.en-US.win64-setup.exe", "LibreWolf.exe", "LibreWolf")
 
     elif choose == "A6" or choose == "a6":
-        dl(1, "", "qBittorrent.exe", "qBittorrent")
+        dl(1, "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-" + str(latest("c0re100/qBittorrent-Enhanced-Edition")) + "/qbittorrent_enhanced_" + str(latest("c0re100/qBittorrent-Enhanced-Edition")) + "_Qt6_setup.exe", "qBittorrent.exe", "qBittorrent")
 
     elif choose == "A7" or choose == "a7":
-        dl(1, "", "Rainmeter.exe", "Rainmeter")
+        dl(1, "https://github.com/rainmeter/rainmeter/releases/download/v4.5.16.3687/Rainmeter-4.5.16.exe", "Rainmeter.exe", "Rainmeter")
 
     elif choose == "A8" or choose == "a8":
-        dl(1, "", "7Zip.exe", "7-Zip")
+        dl(1, "https://www.7-zip.org/a/7z2201-x64.exe", "7Zip.exe", "7-Zip")
 
     elif choose == "A9" or choose == "a9":
         dl(1, "https://www.koshyjohn.com/software/MemClean.exe", "MemoryCleaner.exe", "Memory Cleaner")
@@ -206,53 +274,35 @@ def p1():
         dl(1, "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drives/ATF-Cleaner.exe", "ATF-Cleaner.exe", "ATF Cleaner")
 
     elif choose == "C3" or choose == "c3":
-        dl(1, "", ".exe", "")
+        dl(1, "https://download.ccleaner.com/dfsetup222.exe", "Defraggler.exe", "Defraggler")
 
     elif choose == "C4" or choose == "c4":
-        dl(1, "", ".exe", "")
+        dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup-37335.37335.exe", "Malwarebytes.exe", "Malwarebytes")
 
     elif choose == "C5" or choose == "c5":
-        dl(1, "", ".exe", "")
+        dl(1, "https://liveinstaller.eset.systems/odc/4e8c5ac2-4b04-4580-b453-45e209c6850d/eset_smart_security_premium_live_installer.exe", "ESETSetup.exe", "ESET Full")
 
-    elif choose == "C5" or choose == "c5":
-        dl(1, "", ".exe", "Malwarebytes")
+    elif choose == "C5" or choose == "c6":
+        dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
 
     elif choose == "n" or choose == "N":
-        p2()
+        print("Option not finished (yet!)")
+        sleep(4)
+        p1()
+
+    elif choose == "h" or choose == "H":
+        helpe()
 
     else:
         print("No option named " + choose)
         sleep(3)
         p1()
-def p2():
-    cls()
-    print(" ┌──────────────────────────┬────────────────────────┬──────────────────────────────┬─────────────────────────┐\n", 
-          "│                          │                        │                              │                         │\n",
-          "├──────────────────────────┼────────────────────────┼──────────────────────────────┼─────────────────────────┤\n", 
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n",
-          "│                          │                        │                              │                         │\n"
-          " ├──────────────────────────┴────────────────────────┴──────────────────────────────┴─────────────────────────┤\n",
-          "│                              Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit                              │\n",
-          "└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
-    choose = input(": ")
-
-    if choose == "99":
-        exit()
-    
-    elif choose == "n" or "N":
-        p1()
 
 if __name__ == __name__:
+    # Checks if you agreed to the EULA
+    if isfile("EULA.XTB") == True:
+        p1()
+    elif isfile("EULA.XTB") == False:
+        eula()
     prep()
     p1()
