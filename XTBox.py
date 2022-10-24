@@ -215,6 +215,7 @@ def p1():
     malwarebyt = color("Malwarebytes", 1)
     rav = color("Brave", 1)
     firef = color("Firefox", 1)
+    ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
     print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
            f"│ {xtoolboxvv1}                                     │ Made by {xemulat} gg.gg/xemul  │ Internet: {qw()}              │\n",
            f"│ Update Status: {Errorhd} │ RAM: {ramavailiz}      │ CPU: {cpuavailiffff} | {c}     │ Disk: {dusagehebed}           │\n",
@@ -231,9 +232,9 @@ def p1():
             "│ [8] Win10Debloater       │ [8] LimitQoS           │ [8] 7-Zip                      │                               │\n",
             "│ [9] SadCoy               │ [9] OptimizeSSD        │ [9] Memory Cleaner             │                               │\n",
             "│ [10] SweetyLite          │ [10] Insider Enroller  │                                │                               │\n",
-            "│                          │ [11] Windows11Fixer    │                                │                               │\n",
-            "│                          │ [12] Activator         │                                │                               │\n",
-            "│                          │ [13] AntiRoundCorners  │                                │                               │\n",
+           f"│ [11] {ohdwindowwwwwwwww} │ [11] Windows11Fixer    │                                │                               │\n",
+            "│ [12] WindowsSpyBlocker   │ [12] Activator         │                                │                               │\n",
+            "│ [13] PrivateZilla        │ [13] AntiRoundCorners  │                                │                               │\n",
             "│                          │ [14] FixDrag&Drop      │                                │                               │\n",
             "│                          │ [15] Winaero Tweaker   │                                │                               │\n",
             "│                          │                        │                                │                               │\n",
@@ -275,6 +276,15 @@ def p1():
     
     elif choose == "D10" or choose == "d10":
         dl(1, "https://cdn.discordapp.com/attachments/953004468503461948/1031289678013411368/SweetyLite2.bat", "SweetyLite.bat", "SweetyLite")
+    
+    elif choose == "D11" or choose == "d11":
+        dl(1, "https://github.com/xemulat/XToolbox/raw/main/files/OHDW.bat", "OHDWindows.bat", "OHD Windows")
+    
+    elif choose == "d12" or choose == "d12":
+        dl(1, "https://github.com/crazy-max/WindowsSpyBlocker/releases/download/" + str(latest("crazy-max/WindowsSpyBlocker")) + "/WindowsSpyBlocker.exe", "WindowsSpyBlocker.exe", "WindowsSpyBlocker")
+
+    elif choose == "d13" or choose == "d13":
+        dl(1, "https://github.com/builtbybel/privatezilla/releases/download/" + str(latest("builtbybel/privatezilla")) + "/privatezilla.zip", "PrivateZilla.zip", "PrivateZilla")
 
     # =============< Tweaks
 
