@@ -135,7 +135,7 @@ def p1():
             "├──────────────────────────┼────────────────────────┼──────────────────────────────┼──────────────────────────────┤\n", 
            f"│ [1] EchoX                │ {posttweaksjfjfjfjddd} │ [1] Chocholatey              │ [1] ADW Cleaner              │\n",
             "│ [2] HoneCtrl             │ [2] AntiTrackTime      │ [2] Brave Browser            │ [2] ATF Cleaner              │\n",
-            "│ [3] ShutUp10             │ [3] NoNetworkAutoTune  │ [3] FireFox                  │ [3] Defraggler               │\n",
+            "│ [3] ShutUp10             │ [3] NoNetworkAutoTune  │ [3] Firefox                  │ [3] Defraggler               │\n",
             "│ [4] Optimizer            │ [4] NoActionCenter     │ [4] Lively Wallpaper         │ [4] Malwarebytes             │\n",
             "│ [5] PyDebloatX           │ [5] NoNews + R         │ [5] LibreWolf                │ [5] ESET Full                │\n",
            f"│ {windowsonreinddddddddd} │ [6] NoOneDrive         │ [6] qBittorrent              │ [6] ESET Online Scanner      │\n",
