@@ -25,18 +25,6 @@ def prep():
         input("> ")
     if not virtual_memory().total/1073741824<4 and cpu_count(logical=True)<3 and cpu_count(logical=False)<2:
         printer.lprint("All Hardware requirements met!")
-    if isfile('C:/Temp/XTB/RUNS.XTB') == False:
-        if isdir("C:/Temp") == False:
-            mkdir("C:/Temp")
-        if isdir("C:/Temp/XTB") == False:
-            mkdir("C:/Temp/XTB")
-        fp = open('C:/Temp/XTB/RUNS.XTB', 'w')
-        fp.write('Do not delete this file.')
-        fp.close()
-        printer.lprint("This is your first time running this program.")
-        helpe(True)
-    else:
-        printer.lprint("This is not your first time running this program.")
 
 def update():
     while True:
@@ -108,11 +96,8 @@ def eula():
             sleep(2)
             cls()
 
-def helpe(firstrun):
+def helpe():
     cls()
-    if firstrun == True:
-        print("Q: Why am I seeing this?\n"
-              "A: This is a little tutorial I wrote for first-time users.")
     e = Back.RED+"Red"+Back.RESET
     ree = Back.GREEN+"Green"+Back.RESET
     print(" ┌─────────────────────────────────────────────────────────────┐\n",
@@ -191,24 +176,25 @@ def p1():
             "│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses    │\n",
             "├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
            f"│ [1] EchoX                │ [1] {posttweaksjfjfjf} │ [1] Chocholatey                │ [1] ADW Cleaner               │\n",
-           f"│ [2] {neCtrl}             │ [2] AntiTrackTime      │ [2] {rav}                      │ [2] ATF Cleaner               │\n",
-           f"│ [3] ShutUp10             │ [3] NoNetworkAutoTune  │ [3] {firef}                    │ [3] Defraggler                │\n",
-           f"│ [4] Optimizer            │ [4] NoActionCenter     │ [4] Lively Wallpaper           │ [4] {malwarebyt}              │\n",
-            "│ [5] PyDebloatX           │ [5] NoNews + R         │ [5] LibreWolf                  │ [5] ESET Online Scanner       │\n",
-           f"│ [6] {windowsonreinddddd} │ [6] NoOneDrive         │ [6] qBittorrent                │ [6] ESET                      │\n",
-            "│ [7] QuickBoost           │ [7] NoXboxBloat        │ [7] Rainmeter                  │                               │\n",
-            "│ [8] Win10Debloater       │ [8] LimitQoS           │ [8] 7-Zip                      │                               │\n",
-            "│ [9] SadCoy               │ [9] OptimizeSSD        │ [9] Memory Cleaner             │                               │\n",
-            "│ [10] SweetyLite          │ [10] Insider Enroller  │                                │                               │\n",
-           f"│ [11] {ohdwindowwwwwwwww} │ [11] Windows11Fixer    │                                │                               │\n",
-            "│ [12] WindowsSpyBlocker   │ [12] Activator         │                                │                               │\n",
-            "│ [13] PrivateZilla        │ [13] AntiRoundCorners  │                                │                               │\n",
-            "│                          │ [14] FixDrag&Drop      │                                │                               │\n",
-            "│                          │ [15] Winaero Tweaker   │                                │                               │\n",
+           f"│ [2] {neCtrl}             │ [2] Insider Enroller   │ [2] {rav}                      │ [2] ATF Cleaner               │\n",
+           f"│ [3] ShutUp10             │ [3] Windows11Fixer     │ [3] {firef}                    │ [3] Defraggler                │\n",
+           f"│ [4] Optimizer            │ [4] Activator          │ [4] Lively Wallpaper           │ [4] {malwarebyt}              │\n",
+            "│ [5] PyDebloatX           │ [5] AntiRoundCorners   │ [5] LibreWolf                  │ [5] ESET Online Scanner       │\n",
+           f"│ [6] {windowsonreinddddd} │ [6] FixDrag&Drop       │ [6] qBittorrent                │ [6] ESET                      │\n",
+            "│ [7] QuickBoost           │ [7] Winaero Tweaker    │ [7] Rainmeter                  │                               │\n",
+            "│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │                               │\n",
+            "│ [9] SadCoy               │ [TN] Quicker Tweaks    │ [9] Memory Cleaner             │                               │\n",
+            "│ [10] SweetyLite          │                        │                                │                               │\n",
+           f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                               │\n",
+            "│ [12] WindowsSpyBlocker   │                        │                                │                               │\n",
+            "│ [13] PrivateZilla        │                        │                                │                               │\n",
+            "│                          │                        │                                │                               │\n",
+            "│                          │                        │                                │                               │\n",
             "│                          │                        │                                │                               │\n",
             "├──────────────────────────┴────────────────────────┴────────────────────────────────┴───────────────────────────────┤\n",
             "│                    Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ UN - Uninstall                    │\n",
-            "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+            "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘"
+            "AntiTrackTime NoNetworkAutoTune NoActionCenter NoActionCenter NoNews + R NoOneDrive NoXboxBloat LimitQoS OptimizeSSD")
     choose = input("> ")
 
     if choose == "99":
@@ -260,47 +246,63 @@ def p1():
         dl(1, "https://raw.githubusercontent.com/ArtanisInc/Post-Tweaks/main/PostTweaks.bat", "PostTweaks.bat", "PostTweaks")
         
     elif choose == "T2" or choose == "t2":
-        dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat", "AntiTrackTime.bat", "AntiTrackTime")
-        
-    elif choose == "T3" or choose == "t3":
-        urlretrieve("https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Enable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutotuneREVERT.bat")
-        dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Disable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutoTune.bat", "NoNetworkAutoTune")
-        
-    elif choose == "T4" or choose == "t4":
-        dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_Action_Center.reg", "NoActionCenter.reg", "NoActionCenter")
-        
-    elif choose == "T5" or choose == "t5":
-        dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_News_and_Interests_on_taskbar_feature_for_all_users.reg", "NoNews.reg", "NoNews")
-        
-    elif choose == "T6" or choose == "t6":
-        dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/OneDrive_Uninstaller_v1.2.bat", "NoOneDrive.bat", "NoOneDrive")
-        
-    elif choose == "T7" or choose == "t7":
-        dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/RemoveXboxAppsBloat.bat", "NoXboxBloat.bat", "NoXboxBloat")
-        
-    elif choose == "T8" or choose == "t8":
-        dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/QoS_Limiter.reg", "LimitQoS.reg", "LimitQoS")
-        
-    elif choose == "T9" or choose == "t9":
-        dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/SSD_Optimizations.reg", "OptimizeSSD.reg", "OptimizeSSD")
-        
-    elif choose == "T10" or choose == "t10":
         dl(1, "https://github.com/Jathurshan-2019/Insider-Enroller/releases/download/v" + str(latest("Jathurshan-2019/Insider-Enroller")) + "/Insider_Enrollerv" + str(latest("Jathurshan-2019/Insider-Enroller")) + ".zip", "InsiderEnroller.zip", "InsiderEnroller")
 
-    elif choose == "T11" or choose == "t11":
+    elif choose == "T3" or choose == "t3":
         dl(1, "https://github.com/99natmar99/Windows-11-Fixer/releases/download/v" + str(latest("99natmar99/Windows-11-Fixer")) + "/Windows.11.Fixer.v" + str(latest("99natmar99/Windows-11-Fixer")) + ".Portable.zip", "Windows11Fixer.zip", "Windows11Fixer")
 
-    elif choose == "T12" or choose == "t12":
+    elif choose == "T4" or choose == "t4":
         dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/MAS.bat", "MAS.bat", "MAS")
 
-    elif choose == "T13" or choose == "t13":
+    elif choose == "T5" or choose == "t5":
         dl(1, "https://github.com/valinet/Win11DisableRoundedCorners/releases/download/" + str(latest("valinet/Win11DisableRoundedCorners")) + "/Win11DisableOrRestoreRoundedCorners.exe", "AntiRoundCorners.exe", "AntiRoundCorners")
 
-    elif choose == "T14" or choose == "t14":
+    elif choose == "T6" or choose == "t6":
         dl(1, "https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix/releases/download/v." + str(latest("HerMajestyDrMona/Windows11DragAndDropToTaskbarFix")) + "-release/Windows11DragAndDropToTaskbarFix.exe", "FixDragAndDrop.exe", "Fix Drag&Drop")
         
-    elif choose == "T15" or choose == "t15":
+    elif choose == "T7" or choose == "t7":
         dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
+    
+    elif choose == "TN" or choose == "tn" or choose == "tN" or choose == "tN":
+        cls()
+        print(" ┌─────────────────────────────────────────────────────────────────────┐\n"
+              ' │ [1] AntiTrackTime                                                   │\n',
+               "│ [2] NoNetworkAuto-Tune                                              │\n",
+               "│ [3] Optimize SSD                                                    │\n",
+               "│ [4] NoActionCenter                                                  │\n",
+               "│ [5] NoNews                                                          │\n",
+               "│ [6] NoOneDrive                                                      │\n",
+               "│                                                                     │\n",
+               "├────────────┬────────────────────┬───────────┬──────────┬────────────┤\n"
+              " │            │ Choose your Tweaks │ 99 - Exit │ B - Back │            │\n"
+              " └────────────┴────────────────────┴───────────┴──────────┴────────────┘\n")
+        ctweak = input("> ")
+
+        if ctweak == "1":
+            dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat", "AntiTrackTime.bat", "AntiTrackTime")
+            
+        elif ctweak == "2":
+            urlretrieve("https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Enable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutotuneREVERT.bat")
+            dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Disable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutoTune.bat", "NoNetworkAutoTune")
+            
+        elif ctweak == "3":
+            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/SSD_Optimizations.reg", "OptimizeSSD.reg", "OptimizeSSD")
+
+        elif ctweak == "4":
+            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_Action_Center.reg", "NoActionCenter.reg", "NoActionCenter")
+            
+        elif ctweak == "5" or ctweak == "t5":
+            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_News_and_Interests_on_taskbar_feature_for_all_users.reg", "NoNews.reg", "NoNews")
+            
+        elif ctweak == "6":
+            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/OneDrive_Uninstaller_v1.2.bat", "NoOneDrive.bat", "NoOneDrive")
+            
+        elif ctweak == "7":
+            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/RemoveXboxAppsBloat.bat", "NoXboxBloat.bat", "NoXboxBloat")
+            
+        elif ctweak == "8" or ctweak == "t8":
+            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/QoS_Limiter.reg", "LimitQoS.reg", "LimitQoS")
+            
 
     # =============< Apps
 
@@ -400,9 +402,6 @@ def p1():
     elif choose == "un" or choose == "Un" or choose == "uN" or choose == "UN":
         areusure = input("Are you sure you want to uninstall? (Y/n): ")
         if areusure == "Y" or areusure == "y":
-            remove("EULA.XTB")
-            remove("C:/Temp/XTB/RUNS.XTB")
-            rmdir("C:/Temp/XTB")
             real = input("Do you want to uninstall this file too? (Y/n): ")
             if real == "y" or real == "Y":
                 fp = open('delxtb.bat', 'w')
