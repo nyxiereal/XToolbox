@@ -6,39 +6,8 @@ from urllib.request import urlretrieve
 from colorama import init, Fore, Back
 from lastversion import latest
 from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
-from XeLib import cls, printer
+from XeLib import cls, printer, getmyping, color, mbgb, download
 from ping3 import ping
-
-def mbgb(input_megabyte):
-    gigabyte = 1.0/1024
-    convert_gb = gigabyte * input_megabyte
-    return convert_gb
-
-
-def color(text, color):
-    if color == 1:
-        return(Fore.GREEN+text+Fore.WHITE)
-    elif color == 2:
-        return(Fore.RED+text+Fore.WHITE)
-    elif color == 3:
-        return(Fore.MAGENTA+text+Fore.WHITE)
-
-def qw():
-    if ping("github.com") == False or None:
-        return(color("None  ", 2))
-    else:
-        peng = (str(ping("github.com", unit='ms')).split(".", 1)[0])
-        return(color(peng + "ms  ", 1))
-
-def reporter(block_num, block_size, total_size):
-    read_so_far = block_num * block_size
-    if total_size > 0:
-        percent = read_so_far * 1e2 / total_size
-        print(f"\r{percent:5.1f}% {read_so_far:{len(str(total_size))}} out of {total_size}", end='')
-        if read_so_far >= total_size:
-            print()
-    else:
-        print(f"read {read_so_far}", end='')
 
 def prep():
     printer.lprint("Initializing Libraries...")
@@ -100,12 +69,10 @@ def dl(org, url, urlr, name):
             if org == 1:
                 p1()
     
-    printer.lprint("Downloading " + name + " ...")
-    urlretrieve(url, urlr, reporter)
-    printer.lprint(name + ' Downloaded!')
+    download(url, urlr, name)
     if urlr != "WindowsOnReins.ps1":
         startfile(urlr)
-    if org == 1:    p1()
+    if org == 1: p1()
 
 def eula():
     cls()
@@ -216,8 +183,9 @@ def p1():
     rav = color("Brave", 1)
     firef = color("Firefox", 1)
     ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
+    qw = getmyping()+""
     print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
-           f"│ {xtoolboxvv1}                                     │ Made by {xemulat} gg.gg/xemul  │ Internet: {qw()}              │\n",
+           f"│ {xtoolboxvv1}                                     │ Made by {xemulat} gg.gg/xemul  │ Internet: {qw}                │\n",
            f"│ Update Status: {Errorhd} │ RAM: {ramavailiz}      │ CPU: {cpuavailiffff} | {c}     │ Disk: {dusagehebed}           │\n",
             "├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
             "│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses    │\n",
@@ -226,8 +194,8 @@ def p1():
            f"│ [2] {neCtrl}             │ [2] AntiTrackTime      │ [2] {rav}                      │ [2] ATF Cleaner               │\n",
            f"│ [3] ShutUp10             │ [3] NoNetworkAutoTune  │ [3] {firef}                    │ [3] Defraggler                │\n",
            f"│ [4] Optimizer            │ [4] NoActionCenter     │ [4] Lively Wallpaper           │ [4] {malwarebyt}              │\n",
-            "│ [5] PyDebloatX           │ [5] NoNews + R         │ [5] LibreWolf                  │ [5] ESET                      │\n",
-           f"│ [6] {windowsonreinddddd} │ [6] NoOneDrive         │ [6] qBittorrent                │ [6] ESET Online Scanner       │\n",
+            "│ [5] PyDebloatX           │ [5] NoNews + R         │ [5] LibreWolf                  │ [5] ESET Online Scanner       │\n",
+           f"│ [6] {windowsonreinddddd} │ [6] NoOneDrive         │ [6] qBittorrent                │ [6] ESET                      │\n",
             "│ [7] QuickBoost           │ [7] NoXboxBloat        │ [7] Rainmeter                  │                               │\n",
             "│ [8] Win10Debloater       │ [8] LimitQoS           │ [8] 7-Zip                      │                               │\n",
             "│ [9] SadCoy               │ [9] OptimizeSSD        │ [9] Memory Cleaner             │                               │\n",
@@ -378,6 +346,9 @@ def p1():
         dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup-37335.37335.exe", "Malwarebytes.exe", "Malwarebytes")
 
     elif choose == "C5" or choose == "c5":
+        dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
+
+    elif choose == "C6" or choose == "c6":
         while True:
             cls()
             print(" ┌─────────────────────────────────────────────────────────────────────┐\n"
@@ -417,8 +388,6 @@ def p1():
                 print("No option named " + chooseeset)
                 sleep(3)
 
-    elif choose == "C6" or choose == "c6":
-        dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
 
     elif choose == "n" or choose == "N":
         print("Option not finished (yet!)")
