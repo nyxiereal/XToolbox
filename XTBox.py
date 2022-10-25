@@ -193,8 +193,7 @@ def p1():
             "│                          │                        │                                │                               │\n",
             "├──────────────────────────┴────────────────────────┴────────────────────────────────┴───────────────────────────────┤\n",
             "│                    Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ UN - Uninstall                    │\n",
-            "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘"
-            "AntiTrackTime NoNetworkAutoTune NoActionCenter NoActionCenter NoNews + R NoOneDrive NoXboxBloat LimitQoS OptimizeSSD")
+            "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
     choose = input("> ")
 
     if choose == "99":
@@ -265,15 +264,17 @@ def p1():
     
     elif choose == "TN" or choose == "tn" or choose == "tN" or choose == "tN":
         cls()
-        print(" ┌─────────────────────────────────────────────────────────────────────┐\n"
-              ' │ [1] AntiTrackTime                                                   │\n',
-               "│ [2] NoNetworkAuto-Tune                                              │\n",
-               "│ [3] Optimize SSD                                                    │\n",
-               "│ [4] NoActionCenter                                                  │\n",
-               "│ [5] NoNews                                                          │\n",
-               "│ [6] NoOneDrive                                                      │\n",
-               "│                                                                     │\n",
-               "├────────────┬────────────────────┬───────────┬──────────┬────────────┤\n"
+        LimitQ = color("LimitQoS", 2)
+        AntiTrackTi = color("AntiTrackTime", 1)
+        print(" ┌──────────────────────────┬──────────────────────────────────────────┐\n"
+             f' │ [1] {AntiTrackTi}        │ [8] {LimitQ}                             │\n',
+               "│ [2] NoNetworkAuto-Tune   │ [9]                                      │\n",
+               "│ [3] Optimize SSD         │ [10]                                     │\n",
+               "│ [4] NoActionCenter       │ [11]                                     │\n",
+               "│ [5] NoNews               │ [12]                                     │\n",
+               "│ [6] NoOneDrive           │ [13]                                     │\n",
+               "│ [7] NoXboxBloat          │ [14]                                     │\n",
+               "├────────────┬─────────────┴──────┬───────────┬──────────┬────────────┤\n"
               " │            │ Choose your Tweaks │ 99 - Exit │ B - Back │            │\n"
               " └────────────┴────────────────────┴───────────┴──────────┴────────────┘\n")
         ctweak = input("> ")
