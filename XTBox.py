@@ -99,16 +99,19 @@ def eula():
 def helpe():
     cls()
     e = Back.RED+"Red"+Back.RESET
+    ng = Back.RED+"DNGR"+Back.RESET
     ree = Back.GREEN+"Green"+Back.RESET
     print(" ┌─────────────────────────────────────────────────────────────┐\n",
            "│ Keybind │ Command                                           │\n",
            "│    H    │ Help Page (this page)                             │\n",
            "│    N    │ Next Page                                         │\n",
            "│    B    │ Back                                              │\n",
+           "|    UN   │ Uninstalls The Program                            │\n",
            "│    99   │ Exit                                              │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│ Color   │ Meaning                                           │\n",
           f"│ {e}     │ Dangerous Option                                  │\n",
+          f"│ {ng}    │ Option that can f*ck up your PC                   │\n",
           f"│ {ree}   │ Recommended Option                                │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│ If scrips won't execute run in PowerShell:                  │\n",
@@ -120,7 +123,7 @@ def helpe():
 
 def p1():
     cls()
-    version = "1.5"
+    version = "1.6"
     # Updater
     newver = latest("xemulat/XToolbox")
     if version == str(newver):
@@ -160,17 +163,18 @@ def p1():
 
     xtoolboxvv1 = color("XToolBox v"+version, 2)
     # CLI-GUI
-    xemulat = color("Xemulated", 2)
+    xemulatddddd = color("xemulated#2622", 2)
     windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
     posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
     neCtrl = color("HoneCtrl", 1)
     malwarebyt = color("Malwarebytes", 1)
     rav = color("Brave", 1)
     firef = color("Firefox", 1)
+    sweetyli = color("SweetyLite", 1)
     ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
     qw = getmyping()+""
     print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
-           f"│ {xtoolboxvv1}                                     │ Made by {xemulat} gg.gg/xemul  │ Internet: {qw}                │\n",
+           f"│ {xtoolboxvv1}                                     │ Made by {xemulatddddd}         │ Internet: {qw}                │\n",
            f"│ Update Status: {Errorhd} │ RAM: {ramavailiz}      │ CPU: {cpuavailiffff} | {c}     │ Disk: {dusagehebed}           │\n",
             "├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
             "│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses    │\n",
@@ -183,12 +187,12 @@ def p1():
            f"│ [6] {windowsonreinddddd} │ [6] FixDrag&Drop       │ [6] qBittorrent                │ [6] ESET                      │\n",
             "│ [7] QuickBoost           │ [7] Winaero Tweaker    │ [7] Rainmeter                  │                               │\n",
             "│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │                               │\n",
-            "│ [9] SadCoy               │ [TN] Quicker Tweaks    │ [9] Memory Cleaner             │                               │\n",
-            "│ [10] SweetyLite          │                        │                                │                               │\n",
+            "│ [9] SadCoy               │ [TN] Quick Tweaks      │ [9] Memory Cleaner             │                               │\n",
+           f"│ [10] {sweetyli}          │                        │                                │                               │\n",
            f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                               │\n",
             "│ [12] WindowsSpyBlocker   │                        │                                │                               │\n",
             "│ [13] PrivateZilla        │                        │                                │                               │\n",
-            "│                          │                        │                                │                               │\n",
+            "│ [14] ZusierAIO           │                        │                                │                               │\n",
             "│                          │                        │                                │                               │\n",
             "│                          │                        │                                │                               │\n",
             "├──────────────────────────┴────────────────────────┴────────────────────────────────┴───────────────────────────────┤\n",
@@ -233,11 +237,14 @@ def p1():
     elif choose == "D11" or choose == "d11":
         dl(1, "https://github.com/xemulat/XToolbox/raw/main/files/OHDW.bat", "OHDWindows.bat", "OHD Windows")
     
-    elif choose == "d12" or choose == "d12":
+    elif choose == "d12" or choose == "D12":
         dl(1, "https://github.com/crazy-max/WindowsSpyBlocker/releases/download/" + str(latest("crazy-max/WindowsSpyBlocker")) + "/WindowsSpyBlocker.exe", "WindowsSpyBlocker.exe", "WindowsSpyBlocker")
 
-    elif choose == "d13" or choose == "d13":
+    elif choose == "d13" or choose == "D13":
         dl(1, "https://github.com/builtbybel/privatezilla/releases/download/" + str(latest("builtbybel/privatezilla")) + "/privatezilla.zip", "PrivateZilla.zip", "PrivateZilla")
+
+    elif choose == "d14" or choose == "D14":
+        dl(1, "https://raw.githubusercontent.com/Zusier/Zusiers-optimization-Batch/master/Zusier%20AIO.bat", "ZusierAIO.bat", "ZusierAIO")
 
     # =============< Tweaks
 
@@ -263,46 +270,69 @@ def p1():
         dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
     
     elif choose == "TN" or choose == "tn" or choose == "tN" or choose == "tN":
-        cls()
-        LimitQ = color("LimitQoS", 2)
-        AntiTrackTi = color("AntiTrackTime", 1)
-        print(" ┌──────────────────────────┬──────────────────────────────────────────┐\n"
-             f' │ [1] {AntiTrackTi}        │ [8] {LimitQ}                             │\n',
-               "│ [2] NoNetworkAuto-Tune   │ [9]                                      │\n",
-               "│ [3] Optimize SSD         │ [10]                                     │\n",
-               "│ [4] NoActionCenter       │ [11]                                     │\n",
-               "│ [5] NoNews               │ [12]                                     │\n",
-               "│ [6] NoOneDrive           │ [13]                                     │\n",
-               "│ [7] NoXboxBloat          │ [14]                                     │\n",
-               "├────────────┬─────────────┴──────┬───────────┬──────────┬────────────┤\n"
-              " │            │ Choose your Tweaks │ 99 - Exit │ B - Back │            │\n"
-              " └────────────┴────────────────────┴───────────┴──────────┴────────────┘\n")
-        ctweak = input("> ")
+        while True:
+            cls()
+            LimitQ = color("LimitQoS", 2)
+            AntiTrackTi = color("AntiTrackTime", 1)
+            print(" ┌──────────────────────────┬─────────────────────────┬────────────────┐\n"
+                 f' │ [1] {AntiTrackTi}        │ [8] {LimitQ}           R│                │\n',
+                   "│ [2] NoNetworkAuto-Tune   │ [9] XanderTweak        R│                │\n",
+                   "│ [3] Optimize SSD        R│ [10] AddCopyPath       R│                │\n",
+                   "│ [4] NoActionCenter      R│ [11] DarkMode          R│                │\n",
+                   "│ [5] NoNews              R│ [12] AddTakeOwnership  R│                │\n",
+                   "│ [6] NoOneDrive           │ [13]                    │                │\n",
+                   "│ [7] NoXboxBloat         R│ [14]                    │                │\n",
+                   "├────────────┬─────────────┴──────┬───────────┬──────┴───┬────────────┤\n"
+                  " │            │ Choose your Tweaks │ 99 - Exit │ B - Back │            │\n"
+                  " └────────────┴────────────────────┴───────────┴──────────┴────────────┘\n")
+            ctweak = input("> ")
 
-        if ctweak == "1":
-            dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat", "AntiTrackTime.bat", "AntiTrackTime")
-            
-        elif ctweak == "2":
-            urlretrieve("https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Enable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutotuneREVERT.bat")
-            dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Disable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutoTune.bat", "NoNetworkAutoTune")
-            
-        elif ctweak == "3":
-            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/SSD_Optimizations.reg", "OptimizeSSD.reg", "OptimizeSSD")
+            if ctweak == "1":
+                dl(99, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat", "AntiTrackTime.bat", "AntiTrackTime")
+                
+            elif ctweak == "2":
+                urlretrieve("https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Enable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutotuneREVERT.bat")
+                dl(99, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Disable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutoTune.bat", "NoNetworkAutoTune")
+                
+            elif ctweak == "3":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/SSD_Optimizations.reg", "OptimizeSSD.reg", "OptimizeSSD")
 
-        elif ctweak == "4":
-            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_Action_Center.reg", "NoActionCenter.reg", "NoActionCenter")
+            elif ctweak == "4":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_Action_Center.reg", "NoActionCenter.reg", "NoActionCenter")
+                
+            elif ctweak == "5" or ctweak == "t5":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_News_and_Interests_on_taskbar_feature_for_all_users.reg", "NoNews.reg", "NoNews")
+                
+            elif ctweak == "6":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/OneDrive_Uninstaller_v1.2.bat", "NoOneDrive.bat", "NoOneDrive")
+                
+            elif ctweak == "7":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/RemoveXboxAppsBloat.bat", "NoXboxBloat.bat", "NoXboxBloat")
+                
+            elif ctweak == "8":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/QoS_Limiter.reg", "LimitQoS.reg", "LimitQoS")
             
-        elif ctweak == "5" or ctweak == "t5":
-            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_News_and_Interests_on_taskbar_feature_for_all_users.reg", "NoNews.reg", "NoNews")
+            elif ctweak == "9":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/other_scripts/XanderBaatzTweaks.reg", "XanderTweak.reg", "Xander Tweak")
             
-        elif ctweak == "6":
-            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/OneDrive_Uninstaller_v1.2.bat", "NoOneDrive.bat", "NoOneDrive")
+            elif ctweak == "10":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Add_Copy_path_to_context_menu.reg", "AddCopyPath.reg", "AddCopyPath")
+
+            elif ctweak == "11":
+                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/darkmodetoggle/darkmodeON.reg", "DarkModeON.reg", "DarkMode")
             
-        elif ctweak == "7":
-            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/RemoveXboxAppsBloat.bat", "NoXboxBloat.bat", "NoXboxBloat")
+            elif ctweak == "12":
+                dl(99, r"https://raw.githubusercontent.com/couleurm/couleurstoolbox/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu/Add%20Take%20Ownership.reg", "AddTakeOwnership.reg", "AddTakeOwnership")
             
-        elif ctweak == "8" or ctweak == "t8":
-            dl(1, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/QoS_Limiter.reg", "LimitQoS.reg", "LimitQoS")
+            elif ctweak == "B" or ctweak == "b":
+                    p1()
+
+            elif ctweak == "99":
+                exit()
+
+            else:
+                print("No option named " + ctweak)
+                sleep(3)
             
 
     # =============< Apps
@@ -398,7 +428,7 @@ def p1():
         p1()
 
     elif choose == "h" or choose == "H":
-        helpe(False)
+        helpe()
 
     elif choose == "un" or choose == "Un" or choose == "uN" or choose == "UN":
         areusure = input("Are you sure you want to uninstall? (Y/n): ")
