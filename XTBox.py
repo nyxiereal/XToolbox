@@ -161,20 +161,21 @@ def p1():
     else:
         dusagehebed = duss.split(".", 1)[0] + "GB" + " / " + dusa.split(".", 1)[0] + "GB"
 
+    # 1 is green, 2 is red, 3 is magenta
     xtoolboxvv1 = color("XToolBox v"+version, 2)
-    # CLI-GUI
     xemulatddddd = color("xemulated#2622", 2)
     windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
     posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
+    ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
     neCtrl = color("HoneCtrl", 1)
     malwarebyt = color("Malwarebytes", 1)
     rav = color("Brave", 1)
     firef = color("Firefox", 1)
     sweetyli = color("SweetyLite", 1)
-    ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
+    quicktwea = color("QuickTweaks", 1)
     qw = getmyping()+""
     print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
-           f"│ {xtoolboxvv1}                                     │ Made by {xemulatddddd}         │ Internet: {qw}                │\n",
+           f"│ {xtoolboxvv1}                                     │ Made by {xemulatddddd} For Dan │ Internet: {qw}                │\n",
            f"│ Update Status: {Errorhd} │ RAM: {ramavailiz}      │ CPU: {cpuavailiffff} | {c}     │ Disk: {dusagehebed}           │\n",
             "├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
             "│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses    │\n",
@@ -187,7 +188,7 @@ def p1():
            f"│ [6] {windowsonreinddddd} │ [6] FixDrag&Drop       │ [6] qBittorrent                │ [6] ESET                      │\n",
             "│ [7] QuickBoost           │ [7] Winaero Tweaker    │ [7] Rainmeter                  │                               │\n",
             "│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │                               │\n",
-            "│ [9] SadCoy               │ [TN] Quick Tweaks      │ [9] Memory Cleaner             │                               │\n",
+           f"│ [9] SadCoy               │ [QT] {quicktwea}       │ [9] Memory Cleaner             │                               │\n",
            f"│ [10] {sweetyli}          │                        │                                │                               │\n",
            f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                               │\n",
             "│ [12] WindowsSpyBlocker   │                        │                                │                               │\n",
@@ -269,22 +270,24 @@ def p1():
     elif choose == "T7" or choose == "t7":
         dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
     
-    elif choose == "TN" or choose == "tn" or choose == "tN" or choose == "tN":
+    elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT":
         while True:
+            #hibli bibly, your house is gone, quote the raven, nevermore
             cls()
             LimitQ = color("LimitQoS", 2)
+            optimizess = color("Optimize SSD", 2)
             AntiTrackTi = color("AntiTrackTime", 1)
-            print(" ┌──────────────────────────┬─────────────────────────┬────────────────┐\n"
-                 f' │ [1] {AntiTrackTi}        │ [8] {LimitQ}           R│                │\n',
-                   "│ [2] NoNetworkAuto-Tune   │ [9] XanderTweak        R│                │\n",
-                   "│ [3] Optimize SSD        R│ [10] AddCopyPath       R│                │\n",
-                   "│ [4] NoActionCenter      R│ [11] DarkMode          R│                │\n",
-                   "│ [5] NoNews              R│ [12] AddTakeOwnership  R│                │\n",
-                   "│ [6] NoOneDrive           │ [13]                    │                │\n",
-                   "│ [7] NoXboxBloat         R│ [14]                    │                │\n",
-                   "├────────────┬─────────────┴──────┬───────────┬──────┴───┬────────────┤\n"
-                  " │            │ Choose your Tweaks │ 99 - Exit │ B - Back │            │\n"
-                  " └────────────┴────────────────────┴───────────┴──────────┴────────────┘\n")
+            print(" ┌──────────────────────────┬──────────────────────────┐\n"
+                 f' │ [1] {AntiTrackTi}        │ [7] NoXboxBloat         R│\n',
+                  f"│ [2] NoNetworkAuto-Tune   │ [8] {LimitQ}            R│\n",
+                  f"│ [3] {optimizess}        R│ [9] XanderTweak         R│\n",
+                   "│ [4] NoActionCenter      R│ [10] AddCopyPath        R│\n",
+                   "│ [5] NoNews              R│ [11] DarkMode           R│\n",
+                   "│ [6] NoOneDrive           │ [12] AddTakeOwnership   R│\n",
+                   "│                          │                          │\n",
+                   "├────┬────────────────────┬┴──────────┬──────────┬────┤\n"
+                  " │    │ Choose your Tweaks │ 99 - Exit │ B - Back │    │\n"
+                  " └────┴────────────────────┴───────────┴──────────┴────┘\n")
             ctweak = input("> ")
 
             if ctweak == "1":
@@ -390,7 +393,6 @@ def p1():
                    "│ [3] ESET NOD32 Antivirus                                            │\n",
                    "│ [4] ESET NOD32 Antivirus Gamer Edition                              │\n",
                    "│ [5] ESET Security for Small Office                                  │\n",
-                   "│                                                                     │\n",
                    "│                                                                     │\n",
                    "├─────────┬──────────────────────────┬───────────┬──────────┬─────────┤\n"
                   " │         │ Choose your ESET version │ 99 - Exit │ B - Back │         │\n"
