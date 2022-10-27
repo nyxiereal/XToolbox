@@ -1,5 +1,5 @@
 # XToolBox
-A toolkit full of Windows 11 and 10 tweaking / debloating utilities!
+A toolbox full of Windows 11 and 10 tweaking / debloating utilities!
 
 If this program gets flagged as malware it's false positive. The program is literary open-source, there is nothing to worry.
 
