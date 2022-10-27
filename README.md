@@ -3,7 +3,7 @@ A toolkit full of Windows 11 and 10 tweaking / debloating utilities!
 
 If this program gets flagged as malware it's false positive. The program is literary open-source, there is nothing to worry.
 
-![image](https://user-images.githubusercontent.com/98595166/197456498-e864c64f-0d97-4b38-b5ee-dbf472c78c11.png)
+![image](https://user-images.githubusercontent.com/98595166/198212069-0d9f18ce-9cfe-4b43-a9ab-90afe52ab150.png)
 
 ## Links
 
