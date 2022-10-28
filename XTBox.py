@@ -6,7 +6,7 @@ from urllib.request import urlretrieve
 from colorama import init, Fore, Back
 from lastversion import latest
 from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
-from XeLib import cls, printer, getmyping, color, mbgb, download
+from XeLib import cls, printer,  color, mbgb, download, getmyping
 from ping3 import ping
 
 def prep():
@@ -114,55 +114,192 @@ def helpe():
           f"│ {ng}    │ Option that can f*ck up your PC                   │\n",
           f"│ {ree}   │ Recommended Option                                │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
-           "│ If scrips won't execute run in PowerShell:                  │\n",
+           "│ If scrips won't execute, run this in PowerShell:            │\n",
            "│ Set-ExecutionPolicy Unrestricted -Scope CurrentUser         │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│                   Press ENTER to go back.                   │\n",
            "└─────────────────────────────────────────────────────────────┘\n")
     input("> ")
 
+def chooseeset():
+    while True:
+        cls()
+        print(" ┌─────────────────────────────────────────────────────────────────────┐\n"
+              ' │ [1] ESET Smart Security Premium                                     │\n',
+               "│ [2] ESET Internet Security                                          │\n",
+               "│ [3] ESET NOD32 Antivirus                                            │\n",
+               "│ [4] ESET NOD32 Antivirus Gamer Edition                              │\n",
+               "│ [5] ESET Security for Small Office                                  │\n",
+               "│                                                                     │\n",
+               "├─────────┬──────────────────────────┬───────────┬──────────┬─────────┤\n"
+              " │         │ Choose your ESET version │ 99 - Exit │ B - Back │         │\n"
+              " └─────────┴──────────────────────────┴───────────┴──────────┴─────────┘\n")
+        choose = input("> ")
+        if choose == "1":
+            dl(1, "https://liveinstaller.eset.systems/odc/4e8c5ac2-4b04-4580-b453-45e209c6850d/eset_smart_security_premium_live_installer.exe", "ESETSmartSecurity.exe", "ESET Smart Security Premium")
+
+        elif choose == "2":
+            dl(1, "https://liveinstaller.eset.systems/odc/a2fae1b5-a31e-4f3a-a0c9-242f9f0cf51b/eset_internet_security_live_installer.exe", "ESETInternetSecurity.exe", "ESET Internet Security")
+
+        elif choose == "3":
+            dl(1, "https://liveinstaller.eset.systems/odc/f41b6af0-4718-4e4e-9ae5-ddf25b3ba713/eset_nod32_antivirus_live_installer.exe", "ESETNOD32.exe", "ESET NOD32 Antivirus")
+
+        elif choose == "4":
+            dl(1, "https://liveinstaller.eset.systems/odc/a9233029-a9e4-4a49-9005-82e4b994f765/eset_nod32_antivirus_live_installer.exe", "ESETNOD32Gamer.exe", "ESET NOD32 Antivirus Gamer Edition")
+
+        elif choose == "5":
+            dl(1, "https://liveinstaller.eset.systems/odc/0af63a7b-d4e0-4e5c-a4dc-c58fed3d6b78/eset_smart_security_premium_live_installer.exe", "ESETForSmallOffice.exe", "ESET Security for Small Office")
+
+        elif choose == "B" or chooseeset == "b":
+            p1()
+
+        elif choose == "99":
+            exit()
+
+        else:
+            print("No option named " + chooseeset)
+            sleep(3)
+
+def quicktweaks():
+    while True:
+        #hibli bibly, your house is gone, quote the raven, nevermore
+        cls()
+        LimitQ = color("LimitQoS", 2)
+        optimizess = color("Optimize SSD", 2)
+        AntiTrackTi = color("AntiTrackTime", 1)
+        print(" ┌──────────────────────────┬──────────────────────────┐\n"
+             f' │ [1] {AntiTrackTi}        │ [7] NoXboxBloat         R│\n',
+              f"│ [2] NoNetworkAuto-Tune   │ [8] {LimitQ}            R│\n",
+              f"│ [3] {optimizess}        R│ [9] XanderTweak         R│\n",
+               "│ [4] NoActionCenter      R│ [10] AddCopyPath        R│\n",
+               "│ [5] NoNews              R│ [11] DarkMode           R│\n",
+               "│ [6] NoOneDrive           │ [12] AddTakeOwnership   R│\n",
+               "│                          │                          │\n",
+               "├────┬────────────────────┬┴──────────┬──────────┬────┤\n"
+              " │    │ Choose your Tweaks │ 99 - Exit │ B - Back │    │\n"
+              " └────┴────────────────────┴───────────┴──────────┴────┘\n")
+        choose = input("> ")
+
+        if choose == "1":
+            dl(99, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat", "AntiTrackTime.bat", "AntiTrackTime")
+                
+        elif choose == "2":
+            urlretrieve("https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Enable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutotuneREVERT.bat")
+            dl(99, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Disable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutoTune.bat", "NoNetworkAutoTune")
+                
+        elif choose == "3":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/SSD_Optimizations.reg", "OptimizeSSD.reg", "OptimizeSSD")
+
+        elif choose == "4":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_Action_Center.reg", "NoActionCenter.reg", "NoActionCenter")
+                
+        elif choose == "5":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_News_and_Interests_on_taskbar_feature_for_all_users.reg", "NoNews.reg", "NoNews")
+                
+        elif choose == "6":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/OneDrive_Uninstaller_v1.2.bat", "NoOneDrive.bat", "NoOneDrive")
+                
+        elif choose == "7":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/RemoveXboxAppsBloat.bat", "NoXboxBloat.bat", "NoXboxBloat")
+                
+        elif choose == "8":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/QoS_Limiter.reg", "LimitQoS.reg", "LimitQoS")
+            
+        elif choose == "9":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/other_scripts/XanderBaatzTweaks.reg", "XanderTweak.reg", "Xander Tweak")
+            
+        elif choose == "10":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Add_Copy_path_to_context_menu.reg", "AddCopyPath.reg", "AddCopyPath")
+
+        elif choose == "11":
+            dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/darkmodetoggle/darkmodeON.reg", "DarkModeON.reg", "DarkMode")
+            
+        elif choose == "12":
+            dl(99, r"https://raw.githubusercontent.com/couleurm/couleurstoolbox/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu/Add%20Take%20Ownership.reg", "AddTakeOwnership.reg", "AddTakeOwnership")
+            
+        elif choose == "B" or choose == "b":
+            p1()
+
+        elif choose == "99":
+            exit()
+
+        else:
+            print("No option named " + choose)
+            sleep(3)
+
 def p1():
     cls()
-    version = "1.6"
+    pre = "-RC.DEV1"
+    version = "1.7"
     # Updater
     newver = latest("xemulat/XToolbox")
     if version == str(newver):
         Errorhd = color("UpToDate ", 1)
+        version = version+"        "
     elif str(newver) > version:
         Errorhd = color("Outdated ", 2)
+        version = version+"        "
         update()
     else:
-        Errorhd = color("Error    ", 3)
+        version = version+pre
+        Errorhd = color("DevBuild ", 3)
 
     # Set vars (do math and some crap)
+
+    # RAM / VMEM percent
+    vmp = str(virtual_memory().percent).split(".", 1)[0]
+    checkram =  len(vmp)
+    if checkram == 1:   helpline1 = "  "
+    elif checkram == 2: helpline1 = " "
+    elif checkram == 3: helpline1 = ""
+    else: helpline1 = ""
+    if float(vmp) > 60:
+        ramavailz =  color(vmp + "%", 2) + " / 100%"+helpline1
+    else:
+        ramavailz =  vmp + "% / 100%"+helpline1
+    
+    # CPU cores and threads
     lf = str(cpu_count(logical=False))
     lt = str(cpu_count(logical=True))
+    checklogict = len(lt)
+    if checklogict == 1:   helpline6 = " "
+    elif checklogict == 2: helpline6 = ""
+    else: helpline6 = ""
+    checklogicf = len(lf)
+    if checklogicf == 1:   helpline0 = " "
+    elif checklogicf == 2: helpline0 = ""
+    else: helpline0 = ""
     if int(lf) < 2 and int(lt) < 3:
-        c = color(lf + "C / " + lt.replace(".0", "") + "T ", 2)
+        c = color(lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6, 2)
     else:
-        c = lf + "C / " + lt.replace(".0", "") + "T "
+        c = lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6
 
-    vmp = str(virtual_memory().percent)
-    if float(vmp) > 60:
-        ramavailiz =  color(vmp + "%", 2) + " / 100%"
-    else:
-        ramavailiz =  vmp + "% / 100%"
-
+    # CPU utiliation
     cpup = str(cpu_percent()).replace("%", "").split(".", 1)[0]
+    checkcpu = len(cpup)
+    if checkcpu == 1:   helpline2 = " "
+    elif checkcpu == 2: helpline2 = ""
+    else: helpline2 = ""
     if int(cpup) > 60:
-        cpuavailiffff = color(cpup, 2) + " / 100%"
+        cpuavailifffff = color(cpup, 2) + "% / 100%" + helpline2
     else:
-        cpuavailiffff = cpup + "% / 100%"
+        cpuavailifffff = cpup + "% / 100%" + helpline2
 
+    # C:/ Disk usage
     dusa = str(disk_usage("/").total/1073741824)
     duss = str(disk_usage("/").used/1073741824)
+    checkdisk =  len(str(duss.split(".", 1)[0]))
+    if checkdisk == 2:   helpline3 = "   "
+    elif checkdisk == 3: helpline3 = "  "
+    elif checkdisk == 4: helpline3 = " "
+    else: helpline2 = ""
     if (int(dusa.split(".", 1)[0]))/(int(duss.split(".", 1)[0])) < 0.5:
-        dusagehebed = color(duss.split(".", 1)[0] + "GB", 2) + " / " + dusa.split(".", 1)[0] + "GB"
+        dusagehebeded = color(duss.split(".", 1)[0] + "GB", 2) + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
     else:
-        dusagehebed = duss.split(".", 1)[0] + "GB" + " / " + dusa.split(".", 1)[0] + "GB"
+        dusagehebeded = duss.split(".", 1)[0] + "GB" + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
 
     # 1 is green, 2 is red, 3 is magenta
-    xtoolboxvv1 = color("XToolBox v"+version, 2)
+    xtoolboxvv1asdfghjz = color("XToolBox v"+version, 2)
     xemulatddddd = color("xemulated#2622", 2)
     windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
     posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
@@ -173,10 +310,18 @@ def p1():
     firef = color("Firefox", 1)
     sweetyli = color("SweetyLite", 1)
     quicktwea = color("QuickTweaks", 1)
-    qw = getmyping()+""
+
+    #Check ping DON'T TOUCH IT!!!
+    checkping = len(str(getmyping().replace("ms", "").replace(Fore.RED or Fore.GREEN, "")))
+    if checkping == 6:   helpline4 = "    "
+    elif checkping == 7: helpline4 = "   "
+    elif checkping == 8: helpline4 = "  "
+    else: helpline4 = ""
+
+    qwert = getmyping()+Fore.RESET+helpline4
     print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
-           f"│ {xtoolboxvv1}                                     │ Made by {xemulatddddd} For Dan │ Internet: {qw}                │\n",
-           f"│ Update Status: {Errorhd} │ RAM: {ramavailiz}      │ CPU: {cpuavailiffff} | {c}     │ Disk: {dusagehebed}           │\n",
+           f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For Dan │ Internet: {qwert}             │\n",
+           f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}         │\n",
             "├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
             "│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses    │\n",
             "├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
@@ -271,72 +416,7 @@ def p1():
         dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
     
     elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT":
-        while True:
-            #hibli bibly, your house is gone, quote the raven, nevermore
-            cls()
-            LimitQ = color("LimitQoS", 2)
-            optimizess = color("Optimize SSD", 2)
-            AntiTrackTi = color("AntiTrackTime", 1)
-            print(" ┌──────────────────────────┬──────────────────────────┐\n"
-                 f' │ [1] {AntiTrackTi}        │ [7] NoXboxBloat         R│\n',
-                  f"│ [2] NoNetworkAuto-Tune   │ [8] {LimitQ}            R│\n",
-                  f"│ [3] {optimizess}        R│ [9] XanderTweak         R│\n",
-                   "│ [4] NoActionCenter      R│ [10] AddCopyPath        R│\n",
-                   "│ [5] NoNews              R│ [11] DarkMode           R│\n",
-                   "│ [6] NoOneDrive           │ [12] AddTakeOwnership   R│\n",
-                   "│                          │                          │\n",
-                   "├────┬────────────────────┬┴──────────┬──────────┬────┤\n"
-                  " │    │ Choose your Tweaks │ 99 - Exit │ B - Back │    │\n"
-                  " └────┴────────────────────┴───────────┴──────────┴────┘\n")
-            ctweak = input("> ")
-
-            if ctweak == "1":
-                dl(99, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat", "AntiTrackTime.bat", "AntiTrackTime")
-                
-            elif ctweak == "2":
-                urlretrieve("https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Enable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutotuneREVERT.bat")
-                dl(99, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Disable%20Window%20Network%20Auto-Tuning.bat", "NoNetworkAutoTune.bat", "NoNetworkAutoTune")
-                
-            elif ctweak == "3":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/SSD_Optimizations.reg", "OptimizeSSD.reg", "OptimizeSSD")
-
-            elif ctweak == "4":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_Action_Center.reg", "NoActionCenter.reg", "NoActionCenter")
-                
-            elif ctweak == "5" or ctweak == "t5":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_News_and_Interests_on_taskbar_feature_for_all_users.reg", "NoNews.reg", "NoNews")
-                
-            elif ctweak == "6":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/OneDrive_Uninstaller_v1.2.bat", "NoOneDrive.bat", "NoOneDrive")
-                
-            elif ctweak == "7":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/RemoveXboxAppsBloat.bat", "NoXboxBloat.bat", "NoXboxBloat")
-                
-            elif ctweak == "8":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/QoS_Limiter.reg", "LimitQoS.reg", "LimitQoS")
-            
-            elif ctweak == "9":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/other_scripts/XanderBaatzTweaks.reg", "XanderTweak.reg", "Xander Tweak")
-            
-            elif ctweak == "10":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Add_Copy_path_to_context_menu.reg", "AddCopyPath.reg", "AddCopyPath")
-
-            elif ctweak == "11":
-                dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/darkmodetoggle/darkmodeON.reg", "DarkModeON.reg", "DarkMode")
-            
-            elif ctweak == "12":
-                dl(99, r"https://raw.githubusercontent.com/couleurm/couleurstoolbox/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu/Add%20Take%20Ownership.reg", "AddTakeOwnership.reg", "AddTakeOwnership")
-            
-            elif ctweak == "B" or ctweak == "b":
-                    p1()
-
-            elif ctweak == "99":
-                exit()
-
-            else:
-                print("No option named " + ctweak)
-                sleep(3)
-            
+        quicktweaks()
 
     # =============< Apps
 
@@ -385,44 +465,7 @@ def p1():
         dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
 
     elif choose == "C6" or choose == "c6":
-        while True:
-            cls()
-            print(" ┌─────────────────────────────────────────────────────────────────────┐\n"
-                  ' │ [1] ESET Smart Security Premium                                     │\n',
-                   "│ [2] ESET Internet Security                                          │\n",
-                   "│ [3] ESET NOD32 Antivirus                                            │\n",
-                   "│ [4] ESET NOD32 Antivirus Gamer Edition                              │\n",
-                   "│ [5] ESET Security for Small Office                                  │\n",
-                   "│                                                                     │\n",
-                   "├─────────┬──────────────────────────┬───────────┬──────────┬─────────┤\n"
-                  " │         │ Choose your ESET version │ 99 - Exit │ B - Back │         │\n"
-                  " └─────────┴──────────────────────────┴───────────┴──────────┴─────────┘\n")
-            chooseeset = input("> ")
-            if chooseeset == "1":
-                dl(1, "https://liveinstaller.eset.systems/odc/4e8c5ac2-4b04-4580-b453-45e209c6850d/eset_smart_security_premium_live_installer.exe", "ESETSmartSecurity.exe", "ESET Smart Security Premium")
-
-            elif chooseeset == "2":
-                dl(1, "https://liveinstaller.eset.systems/odc/a2fae1b5-a31e-4f3a-a0c9-242f9f0cf51b/eset_internet_security_live_installer.exe", "ESETInternetSecurity.exe", "ESET Internet Security")
-
-            elif chooseeset == "3":
-                dl(1, "https://liveinstaller.eset.systems/odc/f41b6af0-4718-4e4e-9ae5-ddf25b3ba713/eset_nod32_antivirus_live_installer.exe", "ESETNOD32.exe", "ESET NOD32 Antivirus")
-
-            elif chooseeset == "4":
-                dl(1, "https://liveinstaller.eset.systems/odc/a9233029-a9e4-4a49-9005-82e4b994f765/eset_nod32_antivirus_live_installer.exe", "ESETNOD32Gamer.exe", "ESET NOD32 Antivirus Gamer Edition")
-
-            elif chooseeset == "5":
-                dl(1, "https://liveinstaller.eset.systems/odc/0af63a7b-d4e0-4e5c-a4dc-c58fed3d6b78/eset_smart_security_premium_live_installer.exe", "ESETForSmallOffice.exe", "ESET Security for Small Office")
-
-            elif chooseeset == "B" or chooseeset == "b":
-                p1()
-
-            elif chooseeset == "99":
-                exit()
-
-            else:
-                print("No option named " + chooseeset)
-                sleep(3)
-
+        chooseeset()
 
     elif choose == "n" or choose == "N":
         print("Option not finished (yet!)")
