@@ -1,13 +1,17 @@
-from os import startfile, system, mkdir, remove, rmdir
-from os.path import isfile, isdir
-from sys import exit
-from time import sleep
+from os import startfile, system, mkdir, remove, rmdir # Standard Python3 libs
 from urllib.request import urlretrieve
-from colorama import init, Fore, Back
-from lastversion import latest
-from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
-from XeLib import cls, printer,  color, mbgb, download, getmyping
-from ping3 import ping
+from os.path import isfile, isdir
+from time import sleep
+from sys import exit
+try:
+    # Custom / Community made libs
+    from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
+    from XeLib import cls, printer, download, color, mbgb, getmyping
+    from colorama import init, Fore, Back
+    from lastversion import latest
+except:
+    printer.lprint("Installing required libraries...")
+    system("pip install XeLib lastversion colorama")
 
 def prep():
     printer.lprint("Initializing Libraries...")
@@ -36,31 +40,44 @@ def update():
             sleep(2)
             p1()
         elif doupdate == "Y" or doupdate == "y":
-            printer.lprint("Downloading " + "XTBox "+str(latest("xemulat/XToolbox")) + " ...")
-            urlretrieve("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox"+str(latest("xemulat/XToolbox"))+".exe", reporter)
-            printer.lprint("XTBox "+str(latest("xemulat/XToolbox")) + ' Downloaded!')
-            print("This program will exit in 3s...")
-            sleep(3)
-            startfile("XTBox"+str(latest("xemulat/XToolbox"))+".exe")
-            exit()
+            try:
+                printer.lprint("Downloading " + "XTBox "+str(latest("xemulat/XToolbox")) + " ...")
+                urlretrieve("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox"+str(latest("xemulat/XToolbox"))+".exe", reporter)
+                printer.lprint("XTBox "+str(latest("xemulat/XToolbox")) + ' Downloaded!')
+                print("This program will exit in 3s...")
+                sleep(3)
+                startfile("XTBox"+str(latest("xemulat/XToolbox"))+".exe")
+                exit()
+            except:
+                printer.lprint("Can't complete updates, aborting...")
+                sleep(4)
         else:
             print(doupdate + " Isn't an option, try again.")
             sleep(2)
 
 def dl(org, url, urlr, name):
-    if isfile(urlr) == True:
-        printer.lprint("ERROR - File " + urlr + " already exists!")
-        chose = input("Overwrite? (Y/n): ")
-        if chose == "Y" or chose == "y":
-            pass
-        elif chose == "N" or chose == "n":
-            if org == 1:
-                p1()
+    try:
+        if isfile(urlr) == True:
+            printer.lprint("ERROR 1 - File " + urlr + " already exists!")
+            chose = input("Overwrite? (Y/n): ")
+            if chose == "Y" or chose == "y":
+                pass
+            elif chose == "N" or chose == "n":
+                if org == 1:
+                    p1()
+    except:
+        printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?")
+        sleep(6)
     
-    download(url, urlr, name)
-    if urlr != "WindowsOnReins.ps1":
-        startfile(urlr)
-    if org == 1: p1()
+    try:
+        download(url, urlr, name)
+        if urlr != "WindowsOnReins.ps1":
+            startfile(urlr)
+        if org == 1: p1()
+    except:
+        printer.lprint("ERROR 3: Can't download file from the server...")
+        sleep(5)
+        p1()
 
 def eula():
     cls()
@@ -106,7 +123,7 @@ def helpe():
            "│    H    │ Help Page (this page)                             │\n",
            "│    N    │ Next Page                                         │\n",
            "│    B    │ Back                                              │\n",
-           "|    UN   │ Uninstalls The Program                            │\n",
+           "│    UN   │ Uninstalls The Program                            │\n",
            "│    99   │ Exit                                              │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│ Color   │ Meaning                                           │\n",
@@ -114,12 +131,18 @@ def helpe():
           f"│ {ng}    │ Option that can f*ck up your PC                   │\n",
           f"│ {ree}   │ Recommended Option                                │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
+           "│ Error code │ Explanation                                    │\n",
+           "│      1     │ File already exists                            │\n",
+           "│      2     │ Can't check for file overwrite                 │\n",
+           "│      3     │ Can't download file from the server            │\n",
+           "├─────────────────────────────────────────────────────────────┤\n",
            "│ If scrips won't execute, run this in PowerShell:            │\n",
            "│ Set-ExecutionPolicy Unrestricted -Scope CurrentUser         │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│                   Press ENTER to go back.                   │\n",
            "└─────────────────────────────────────────────────────────────┘\n")
     input("> ")
+    p1()
 
 def chooseeset():
     while True:
@@ -227,9 +250,72 @@ def quicktweaks():
             print("No option named " + choose)
             sleep(3)
 
+class Setvars():
+    # Set vars (do math and some crap)
+    def rama():
+        # RAM / VMEM percent
+        vmp = str(virtual_memory().percent).split(".", 1)[0]
+        checkram =  len(vmp)
+        if checkram == 1:   helpline1 = "  "
+        elif checkram == 2: helpline1 = " "
+        elif checkram == 3: helpline1 = ""
+        else: helpline1 = ""
+        if float(vmp) > 60:
+            return color(vmp + "%", 2) + " / 100%"+helpline1
+        else:
+            return  vmp + "% / 100%"+helpline1
+    def c():
+        # CPU cores and threads
+        lf = str(cpu_count(logical=False))
+        lt = str(cpu_count(logical=True))
+        checklogict = len(lt)
+        if checklogict == 1:   helpline6 = " "
+        elif checklogict == 2: helpline6 = ""
+        else: helpline6 = ""
+        checklogicf = len(lf)
+        if checklogicf == 1:   helpline0 = " "
+        elif checklogicf == 2: helpline0 = ""
+        else: helpline0 = ""
+        if int(lf) < 2 and int(lt) < 3:
+            return color(lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6, 2)
+        else:
+            return lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6
+    def cpup():
+        # CPU utiliation
+        cpup = str(cpu_percent()).replace("%", "").split(".", 1)[0]
+        checkcpu = len(cpup)
+        if checkcpu == 1:   helpline2 = " "
+        elif checkcpu == 2: helpline2 = ""
+        else: helpline2 = ""
+        if int(cpup) > 60:
+            return color(cpup, 2) + "% / 100%" + helpline2
+        else:
+            return cpup + "% / 100%" + helpline2
+    def dusage():
+        # C:/ Disk usage
+        dusa = str(disk_usage("/").total/1073741824)
+        duss = str(disk_usage("/").used/1073741824)
+        checkdisk =  len(str(duss.split(".", 1)[0]))
+        if checkdisk == 2:   helpline3 = "   "
+        elif checkdisk == 3: helpline3 = "  "
+        elif checkdisk == 4: helpline3 = " "
+        else: helpline2 = ""
+        if (int(dusa.split(".", 1)[0]))/(int(duss.split(".", 1)[0])) < 0.5:
+            return color(duss.split(".", 1)[0] + "GB", 2) + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
+        else:
+            return duss.split(".", 1)[0] + "GB" + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
+    def qwert():
+        #Check ping DON'T TOUCH IT!!!
+        checkping = len(str(getmyping().replace("ms", "").replace(Fore.RED or Fore.GREEN, "")))
+        if checkping == 6:   helpline4 = "    "
+        elif checkping == 7: helpline4 = "   "
+        elif checkping == 8: helpline4 = "  "
+        else: helpline4 = ""
+        return getmyping()+Fore.RESET+helpline4
+
 def p1():
     cls()
-    pre = "-RC.DEV1"
+    pre = "-RC.DEV2"
     version = "1.7"
     # Updater
     newver = latest("xemulat/XToolbox")
@@ -244,59 +330,12 @@ def p1():
         version = version+pre
         Errorhd = color("DevBuild ", 3)
 
-    # Set vars (do math and some crap)
-
-    # RAM / VMEM percent
-    vmp = str(virtual_memory().percent).split(".", 1)[0]
-    checkram =  len(vmp)
-    if checkram == 1:   helpline1 = "  "
-    elif checkram == 2: helpline1 = " "
-    elif checkram == 3: helpline1 = ""
-    else: helpline1 = ""
-    if float(vmp) > 60:
-        ramavailz =  color(vmp + "%", 2) + " / 100%"+helpline1
-    else:
-        ramavailz =  vmp + "% / 100%"+helpline1
-    
-    # CPU cores and threads
-    lf = str(cpu_count(logical=False))
-    lt = str(cpu_count(logical=True))
-    checklogict = len(lt)
-    if checklogict == 1:   helpline6 = " "
-    elif checklogict == 2: helpline6 = ""
-    else: helpline6 = ""
-    checklogicf = len(lf)
-    if checklogicf == 1:   helpline0 = " "
-    elif checklogicf == 2: helpline0 = ""
-    else: helpline0 = ""
-    if int(lf) < 2 and int(lt) < 3:
-        c = color(lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6, 2)
-    else:
-        c = lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6
-
-    # CPU utiliation
-    cpup = str(cpu_percent()).replace("%", "").split(".", 1)[0]
-    checkcpu = len(cpup)
-    if checkcpu == 1:   helpline2 = " "
-    elif checkcpu == 2: helpline2 = ""
-    else: helpline2 = ""
-    if int(cpup) > 60:
-        cpuavailifffff = color(cpup, 2) + "% / 100%" + helpline2
-    else:
-        cpuavailifffff = cpup + "% / 100%" + helpline2
-
-    # C:/ Disk usage
-    dusa = str(disk_usage("/").total/1073741824)
-    duss = str(disk_usage("/").used/1073741824)
-    checkdisk =  len(str(duss.split(".", 1)[0]))
-    if checkdisk == 2:   helpline3 = "   "
-    elif checkdisk == 3: helpline3 = "  "
-    elif checkdisk == 4: helpline3 = " "
-    else: helpline2 = ""
-    if (int(dusa.split(".", 1)[0]))/(int(duss.split(".", 1)[0])) < 0.5:
-        dusagehebeded = color(duss.split(".", 1)[0] + "GB", 2) + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
-    else:
-        dusagehebeded = duss.split(".", 1)[0] + "GB" + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
+    # Ser vars (fr now)
+    ramavailz = Setvars.rama()
+    cpuavailifffff = Setvars.cpup()
+    dusagehebeded = Setvars.dusage()
+    qwert = Setvars.qwert()
+    c = Setvars.c()
 
     # 1 is green, 2 is red, 3 is magenta
     xtoolboxvv1asdfghjz = color("XToolBox v"+version, 2)
@@ -311,14 +350,6 @@ def p1():
     sweetyli = color("SweetyLite", 1)
     quicktwea = color("QuickTweaks", 1)
 
-    #Check ping DON'T TOUCH IT!!!
-    checkping = len(str(getmyping().replace("ms", "").replace(Fore.RED or Fore.GREEN, "")))
-    if checkping == 6:   helpline4 = "    "
-    elif checkping == 7: helpline4 = "   "
-    elif checkping == 8: helpline4 = "  "
-    else: helpline4 = ""
-
-    qwert = getmyping()+Fore.RESET+helpline4
     print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
            f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For Dan │ Internet: {qwert}             │\n",
            f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}         │\n",
@@ -332,14 +363,14 @@ def p1():
             "│ [5] PyDebloatX           │ [5] AntiRoundCorners   │ [5] LibreWolf                  │ [5] ESET Online Scanner       │\n",
            f"│ [6] {windowsonreinddddd} │ [6] FixDrag&Drop       │ [6] qBittorrent                │ [6] ESET                      │\n",
             "│ [7] QuickBoost           │ [7] Winaero Tweaker    │ [7] Rainmeter                  │                               │\n",
-            "│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │                               │\n",
-           f"│ [9] SadCoy               │ [QT] {quicktwea}       │ [9] Memory Cleaner             │                               │\n",
-           f"│ [10] {sweetyli}          │                        │                                │                               │\n",
+            "│ [8] Win10Debloater       │ [8] CTT WinUtil        │ [8] 7-Zip                      │                               │\n",
+           f"│ [9] SadCoy               │                        │ [9] Memory Cleaner             │                               │\n",
+           f"│ [10] {sweetyli}          │ [QT] {quicktwea}       │                                │                               │\n",
            f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                               │\n",
             "│ [12] WindowsSpyBlocker   │                        │                                │                               │\n",
             "│ [13] PrivateZilla        │                        │                                │                               │\n",
             "│ [14] ZusierAIO           │                        │                                │                               │\n",
-            "│                          │                        │                                │                               │\n",
+            "│ [15] Azurite             │                        │                                │                               │\n",
             "│                          │                        │                                │                               │\n",
             "├──────────────────────────┴────────────────────────┴────────────────────────────────┴───────────────────────────────┤\n",
             "│                    Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ UN - Uninstall                    │\n",
@@ -391,6 +422,9 @@ def p1():
 
     elif choose == "d14" or choose == "D14":
         dl(1, "https://raw.githubusercontent.com/Zusier/Zusiers-optimization-Batch/master/Zusier%20AIO.bat", "ZusierAIO.bat", "ZusierAIO")
+    
+    elif choose == "d15" or choose == "D15":
+        dl(1, "https://update.tweakcentral.net/azurite/Azurite%20Setup%201.1.7.exe", "Azurite.exe", "Azurite")
 
     # =============< Tweaks
 
@@ -414,6 +448,9 @@ def p1():
         
     elif choose == "T7" or choose == "t7":
         dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
+    
+    elif choose == "T8" or choose == "t8":
+        dl(1, "https://raw.githubusercontent.com/xemulat/XToolbox/main/files/ctt.bat", "CTT.bat", "CTT WinUtil")
     
     elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT":
         quicktweaks()
