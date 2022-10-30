@@ -6,6 +6,7 @@ If this program gets flagged as malware it's false positive. The program is lite
 ## Screenshots:
 ![image](https://user-images.githubusercontent.com/98595166/198900432-1d295bb8-06d6-4721-a209-b0991badaad8.png)
 
+![image](https://user-images.githubusercontent.com/98595166/198900458-91d5eb40-a2ef-4ddb-8a59-ae96feccd26a.png)
 
 ## Links
 
