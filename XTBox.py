@@ -14,6 +14,7 @@ except:
     system("pip install XeLib lastversion colorama psutil")
 
 def prep():
+    cls()
     printer.lprint("Initializing Libraries...")
     init(autoreset=True)
     printer.lprint("Checking hardware requirements...")
@@ -38,7 +39,7 @@ def update():
         if doupdate == "n" or doupdate == "N":
             print("Okey.")
             sleep(2)
-            p1()
+            p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
         elif doupdate == "Y" or doupdate == "y":
             try:
                 printer.lprint("Downloading " + "XTBox "+str(latest("xemulat/XToolbox")) + " ...")
@@ -63,8 +64,8 @@ def dl(org, url, urlr, name):
             if chose == "Y" or chose == "y":
                 pass
             elif chose == "N" or chose == "n":
-                if org == 1: p1()
-                if org == 2: p2()
+                if org == 1: p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+                if org == 2: p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
     except:
         printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?")
         sleep(6)
@@ -73,35 +74,36 @@ def dl(org, url, urlr, name):
         download(url, urlr, name)
         if urlr != "WindowsOnReins.ps1":
             startfile(urlr)
-        if org == 1: p1()
+        if org == 1: p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
     except:
         printer.lprint("ERROR 3: Can't download file from the server...")
         sleep(3)
 def eula():
     cls()
+    z = True
     readityoucanacceptin5sorels = Fore.RED + "Read it, You can accept in 5s" + Fore.WHITE
-    print(" ┌───────────────────────────────────────────────────────────────────────────────┐\n"
-          ' │ THE BEER-WARE LICENSE" (Revision 42):                                         │\n',
-           "│ As long as you retain this notice you can do whatever you want with this      │\n",
-           "│ stuff. If we meet someday, and you think this stuff is worth it, you can      │\n",
-           "│ buy me a beer in return.                                                      │\n",
-           "│                                                                               │\n",
-           "│ This project is distributed in the hope that it will be useful, but WITHOUT   │\n",
-           "│ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or         │\n",
-           "│ FITNESS FOR A PARTICULAR PURPOSE. The owner will not be held responsible      │\n"
-          " │ for any damage that may be caused by this project.                            │\n"
-          " ├───────────────────────┬───────────────────────────────┬───────────────────────┤\n"
-         f" │                       │ {readityoucanacceptin5sorels} │                       │\n"
-          " └───────────────────────┴───────────────────────────────┴───────────────────────┘\n")
-    sleep(5)
-    while True:
+    while z == True:
+        print(" ┌───────────────────────────────────────────────────────────────────────────────┐\n"
+              ' │ THE BEER-WARE LICENSE" (Revision 42):                                         │\n',
+               "│ As long as you retain this notice you can do whatever you want with this      │\n",
+               "│ stuff. If we meet someday, and you think this stuff is worth it, you can      │\n",
+               "│ buy me a beer in return.                                                      │\n",
+               "│                                                                               │\n",
+               "│ This project is distributed in the hope that it will be useful, but WITHOUT   │\n",
+               "│ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or         │\n",
+               "│ FITNESS FOR A PARTICULAR PURPOSE. The owner will not be held responsible      │\n"
+              " │ for any damage that may be caused by this project.                            │\n"
+              " ├───────────────────────┬───────────────────────────────┬───────────────────────┤\n"
+             f" │                       │ {readityoucanacceptin5sorels} │                       │\n"
+              " └───────────────────────┴───────────────────────────────┴───────────────────────┘\n")
+        sleep(5)
         agree = input("Do you agree? ("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
         if agree == "y" or agree == "Y":
             print("You agreed to the EULA.")
             fp = open('EULA.XTB', 'w')
             fp.write('True')
             fp.close()
-            sleep(3)
+            z = False
         elif agree == "n" or agree == "N":
             print("Ok, come back if you change your mind.")
             exit(sleep(3))
@@ -109,7 +111,8 @@ def eula():
             print("That wasn't one of the options...")
             sleep(2)
             cls()
-def helpe():
+    del z
+def helpe(origin):
     cls()
     e = Back.RED+"Red"+Back.RESET
     ng = Back.RED+"DNGR"+Back.RESET
@@ -138,7 +141,8 @@ def helpe():
            "│                   Press ENTER to go back.                   │\n",
            "└─────────────────────────────────────────────────────────────┘\n")
     input("> ")
-    p1()
+    if origin == 1:   p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+    elif origin == 2: p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
 
 def chooseeset():
     while True:
@@ -159,7 +163,7 @@ def chooseeset():
         elif choose == "3": dl(1, "https://liveinstaller.eset.systems/odc/f41b6af0-4718-4e4e-9ae5-ddf25b3ba713/eset_nod32_antivirus_live_installer.exe", "ESETNOD32.exe", "ESET NOD32 Antivirus")
         elif choose == "4": dl(1, "https://liveinstaller.eset.systems/odc/a9233029-a9e4-4a49-9005-82e4b994f765/eset_nod32_antivirus_live_installer.exe", "ESETNOD32Gamer.exe", "ESET NOD32 Antivirus Gamer Edition")
         elif choose == "5": dl(1, "https://liveinstaller.eset.systems/odc/0af63a7b-d4e0-4e5c-a4dc-c58fed3d6b78/eset_smart_security_premium_live_installer.exe", "ESETForSmallOffice.exe", "ESET Security for Small Office")
-        elif choose == "B" or chooseeset == "b": p1()
+        elif choose == "B" or chooseeset == "b": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
         elif choose == "99": exit()
         else: print("No option named " + chooseeset) ; sleep(3)
 
@@ -194,7 +198,7 @@ def quicktweaks():
         elif choose == "10": dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Add_Copy_path_to_context_menu.reg", "AddCopyPath.reg", "AddCopyPath")
         elif choose == "11": dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/darkmodetoggle/darkmodeON.reg", "DarkModeON.reg", "DarkMode")
         elif choose == "12": dl(99, r"https://raw.githubusercontent.com/couleurm/couleurstoolbox/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu/Add%20Take%20Ownership.reg", "AddTakeOwnership.reg", "AddTakeOwnership")
-        elif choose == "B" or choose == "b": p1()
+        elif choose == "B" or choose == "b": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
         elif choose == "99": exit()
         else: print("No option named " + choose) ; sleep(3)
 
@@ -266,6 +270,7 @@ class Setvars():
         return getmyping()+Fore.RESET+helpline4
 
 def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a):
+    
     windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
     posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
     ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
@@ -279,7 +284,7 @@ def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
     while True:
         cls()
         print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For Dan │ Internet: {qwert}             │\n",
+               f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For {a} │ Internet: {qwert}             │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}         │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
                f"│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses    │\n",
@@ -289,8 +294,8 @@ def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
                f"│ [3] ShutUp10             │ [3] Windows11Fixer     │ [3] {firef}                    │ [3] Defraggler                │\n",
                f"│ [4] Optimizer            │ [4] Activator          │ [4] Lively Wallpaper           │ [4] {malwarebyt}              │\n",
                f"│ [5] PyDebloatX           │ [5] AntiRoundCorners   │ [5] LibreWolf                  │ [5] ESET Online Scanner       │\n",
-               f"│ [6] {windowsonreinddddd} │ [6] FixDrag&Drop       │ [6] qBittorrent                │ [6] ESET                      │\n",
-               f"│ [7] QuickBoost           │ [7] Winaero Tweaker    │ [7] Rainmeter                  │                               │\n",
+               f"│ [6] {windowsonreinddddd} │ [6] FixDrag&Drop       │ [6] qBittorrent                │ [6] ESET                      │")
+        print(f" │ [7] QuickBoost           │ [7] Winaero Tweaker    │ [7] Rainmeter                  │                               │\n",
                f"│ [8] Win10Debloater       │ [8] CTT WinUtil        │ [8] 7-Zip                      │                               │\n",
                f"│ [9] SadCoy               │                        │ [9] Memory Cleaner             │                               │\n",
                f"│ [10] {sweetyli}          │ [QT] {quicktwea}       │                                │                               │\n",
@@ -305,11 +310,8 @@ def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
                f"└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
-        if choose == "99":
-            exit()
-
         # =============< Debloat
-        elif choose == "D1" or choose == "d1":   dl(1, "https://raw.githubusercontent.com/UnLovedCookie/EchoX/main/EchoX.bat", "EchoX.bat", "EchoX")
+        if   choose == "D1" or choose == "d1":   dl(1, "https://raw.githubusercontent.com/UnLovedCookie/EchoX/main/EchoX.bat", "EchoX.bat", "EchoX")
         elif choose == "D2" or choose == "d2":   dl(1, "https://raw.githubusercontent.com/auraside/HoneCtrl/main/HoneCtrl.bat", "HoneCtrl.bat", "HoneCtrl")
         elif choose == "D3" or choose == "d3":   dl(1, "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe", "ShutUp10.exe", "ShutUp10")
         elif choose == "D4" or choose == "d4":   dl(1, "https://github.com/hellzerg/optimizer/releases/download/" + str(latest("hellzerg/optimizer")) + "/Optimizer-" + str(latest("hellzerg/optimizer")) + ".exe", "Optimizer.exe", "Optimizer")
@@ -323,7 +325,7 @@ def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
         elif choose == "d12" or choose == "D12": dl(1, "https://github.com/crazy-max/WindowsSpyBlocker/releases/download/" + str(latest("crazy-max/WindowsSpyBlocker")) + "/WindowsSpyBlocker.exe", "WindowsSpyBlocker.exe", "WindowsSpyBlocker")
         elif choose == "d13" or choose == "D13": dl(1, "https://github.com/builtbybel/privatezilla/releases/download/" + str(latest("builtbybel/privatezilla")) + "/privatezilla.zip", "PrivateZilla.zip", "PrivateZilla")
         elif choose == "d14" or choose == "D14": dl(1, "https://raw.githubusercontent.com/Zusier/Zusiers-optimization-Batch/master/Zusier%20AIO.bat", "ZusierAIO.bat", "ZusierAIO")
-        elif choose == "d15" or choose == "D15": dl(1, "https://update.tweakcentral.net/azurite/Azurite%20Setup%201.1.7.exe", "Azurite.exe", "Azurite")
+        elif choose == "d15" or choose == "D15": dl(1, r"https://archive.org/download/azurite-v1.1.7-setup/Azurite%20Setup%201.1.7.exe", "Azurite.exe", "Azurite")
 
         # =============< Tweaks
         elif choose == "T1" or choose == "t1":   dl(1, "https://raw.githubusercontent.com/ArtanisInc/Post-Tweaks/main/PostTweaks.bat", "PostTweaks.bat", "PostTweaks")
@@ -348,30 +350,30 @@ def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
         elif choose == "A9" or choose == "a9":  dl(1, "https://www.koshyjohn.com/software/MemClean.exe", "MemoryCleaner.exe", "Memory Cleaner")
         
         # =============< Cleanup
-
         elif choose == "C1" or choose == "c1":  dl(1, "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", ".exe", "ADW Cleaner")
         elif choose == "C2" or choose == "c2":  dl(1, "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drives/ATF-Cleaner.exe", "ATF-Cleaner.exe", "ATF Cleaner")
         elif choose == "C3" or choose == "c3":  dl(1, "https://download.ccleaner.com/dfsetup222.exe", "Defraggler.exe", "Defraggler")
         elif choose == "C4" or choose == "c4":  dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup-37335.37335.exe", "Malwarebytes.exe", "Malwarebytes")
         elif choose == "C5" or choose == "c5":  dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
         elif choose == "C6" or choose == "c6":  chooseeset()
+
+        # =============< QOL Lines
         elif choose == "n" or choose == "N":    p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-        elif choose == "h" or choose == "H": helpe()
+        elif choose == "h" or choose == "H": helpe(1)
+        if choose == "99": exit()
         elif choose == "un" or choose == "Un" or choose == "uN" or choose == "UN":
-            areusure = input("Are you sure you want to uninstall? (Y/n): ")
-            if areusure == "Y" or areusure == "y":
-                real = input("Do you want to uninstall this file too? (Y/n): ")
-                if real == "y" or real == "Y":
-                    fp = open('delxtb.bat', 'w')
-                    fp.write('del XTBox.exe\n'
-                            'start /b "" cmd /c del "%~f0"&exit /b')
-                    fp.close()
-                    startfile("delxtb.bat")
-                    exit()
+            real = input("Are you sure (Y/n): ")
+            if real == "y" or real == "Y":
+                fp = open('delxtb.bat', 'w')
+                fp.write('del XTBox.exe\n'
+                         'del EULA.XTB\n'
+                        'start /b "" cmd /c del "%~f0"&exit /b')
+                fp.close()
+                startfile("delxtb.bat")
+                exit()
         else: print("No option named " + choose); sleep(3)
 
 def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
-    # TODO: Fix some shit
     while True:
         print(f" ┌───────────────────────────────┐\n",
                f'│ {line1ddddddd}                │\n',
@@ -446,28 +448,37 @@ def linuxdl(distro):
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS - 16.2
 
 def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a):
+    window11 = color("Windows 11", 1)
+    minttuxe = color("Linux Mint", 1)
+    zorino = color("Zorin OS", 1)
+    rectify = color("Rectify11", 1)
+    atlaso = color("Atlas OS", 1)
+    ruf = color("Rufus", 1)
+    unetboot = color("UNetBootin", 2)
+    windowssimpli = color("WindowsSimplify", 2)
+    aero = color("Aero10", 2)
     while True:
         cls()
-        print(f" ┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For {a} │ Internet: {qwert}            │\n",
-               f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}        │\n",
-               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼──────────────────────────────┤\n", 
-               f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ [T] Tools                    │\n",
-               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼──────────────────────────────┤\n", 
-               f"│ [1] Linux Mint           │ [1] Windows 11         │ [1] Rectify11                  │ [1] Rufus                    │\n",
-               f"│ [2] Pop!_OS              │ [2] Windows 10         │ [2] Atlas OS                   │ [2] Balena Etcher            │\n",
-               f"│ [3] Ubuntu               │ [3] Windows 8.1        │ [3] Ghost Spectre              │ [3] UNetBootin               │\n",
-               f"│ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │                              │\n",
-               f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                              │\n",
-               f"│ [6] Solus                │                        │ [6] WindowsSimplify            │                              │\n",
-               f"│ [7] Debian               │                        │ [7] Aero10                     │                              │\n",
-               f"│ [8] Garuda               │                        │ [8] Tiny10                     │                              │\n",
-               f"│ [9] Zorin OS             │                        │ [9] KernelOS                   │                              │\n",
-               f"│                          │                        │ [10] Windows 7 Super Nano      │                              │\n",
-               f"│                          │                        │                                │                              │\n",
-               f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴──────────────────────────────┤\n",
-               f"│                            Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                            │\n",
-               f"└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+        print(f" ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
+               f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For {a} │ Internet: {qwert}             │\n",
+               f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}         │\n",
+               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
+               f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ [T] Tools                     │\n",
+               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼───────────────────────────────┤\n", 
+               f"│ [1] {minttuxe}           │ [1] {window11}         │ [1] {rectify}                  │ [1] {ruf}                     │\n",
+               f"│ [2] Pop!_OS              │ [2] Windows 10         │ [2] {atlaso}                   │ [2] Balena Etcher             │\n",
+               f"│ [3] Ubuntu               │ [3] Windows 8.1        │ [3] Ghost Spectre              │ [3] {unetboot}                │")
+        print(f" │ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │                               │\n",
+               f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                               │\n",
+               f"│ [6] Solus                │                        │ [6] {windowssimpli}            │                               │\n",
+               f"│ [7] Debian               │                        │ [7] {aero}                     │                               │\n",
+               f"│ [8] Garuda               │                        │ [8] Tiny10                     │                               │\n",
+               f"│ [9] {zorino}             │                        │ [9] KernelOS                   │                               │\n",
+               f"│                          │                        │ [10] Windows 7 Super Nano      │                               │\n",
+               f"│                          │                        │                                │                               │\n",
+               f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴───────────────────────────────┤\n",
+               f"│                            Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                             │\n",
+               f"└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
         # =============< TUX BLOCK
@@ -532,47 +543,41 @@ def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
         # =============< QOL
         elif choose == "99": exit()
         elif choose == "n" or choose == "N": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-        elif choose == "h" or choose == "H": helpe()
+        elif choose == "h" or choose == "H": helpe(2)
         else: print("No option named " + choose) ; sleep(3)
 
-def launch():
-    # Basically main^2
-    if isfile("EULA.XTB") == False:
-        eula()
-    prep()
+# Basically main^2
+if isfile("EULA.XTB") == False:
+    eula()
+prep()
 
-    printer.lprint("Running Pre-Startup tasks...")
-    # Set vars pre startup
-    pre = ""
-    version = "1.7"
-    if pre == "":
-        pre = "        "
-    # Updater
-    printer.lprint("Task 1/3...")
-    newver = latest("xemulat/XToolbox")
-    if version == str(newver):
-        Errorhd = color("UpToDate ", 1)
-        version = version+"        "
-    elif str(newver) > version:
-        Errorhd = color("Outdated ", 2)
-        version = version+"        "
-        update()
-    else:
-        version = version+pre
-        Errorhd = color("DevBuild ", 3)
-        
-    printer.lprint("Task 2/3...")
-    ramavailz = Setvars.rama()
-    cpuavailifffff = Setvars.cpup()
-    dusagehebeded = Setvars.dusage()
-    qwert = Setvars.qwert()
-    c = Setvars.c()
-
-    printer.lprint("Task 3/3...")
-    xtoolboxvv1asdfghjz = color("XToolBox v"+version, 2)
-    xemulatddddd = color("xemulated#2622", 2)
-    a = color("Dan", 1)
-
-    printer.lprint("Launching...")
-    p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-launch()
+printer.lprint("Running Pre-Startup tasks...")
+# Set vars pre startup
+pre = ""
+version = "1.7"
+if pre == "":
+    pre = "        "
+# Updater
+printer.lprint("Task 1/1...")
+newver = latest("xemulat/XToolbox")
+if version == str(newver):
+    Errorhd = color("UpToDate ", 1)
+    version = version+"        "
+elif str(newver) > version:
+    Errorhd = color("Outdated ", 2)
+    version = version+"        "
+    update()
+else:
+    version = version+pre
+    Errorhd = color("DevBuild ", 3)
+printer.lprint("Launching...")
+xtoolboxvv1asdfghjz = color("XToolBox v"+version, 2)
+ramavailz = Setvars.rama()
+cpuavailifffff = Setvars.cpup()
+dusagehebeded = Setvars.dusage()
+qwert = Setvars.qwert()
+c = Setvars.c()
+xemulatddddd = color("xemulated#2622", 2)
+Errorhd = Errorhd
+a = color("Dan", 1)
+p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
