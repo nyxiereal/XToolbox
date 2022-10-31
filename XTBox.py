@@ -76,8 +76,7 @@ def dl(org, url, urlr, name):
         if org == 1: p1()
     except:
         printer.lprint("ERROR 3: Can't download file from the server...")
-        sleep(5)
-        p1()
+        sleep(3)
 def eula():
     cls()
     readityoucanacceptin5sorels = Fore.RED + "Read it, You can accept in 5s" + Fore.WHITE
@@ -162,14 +161,10 @@ def chooseeset():
         elif choose == "5": dl(1, "https://liveinstaller.eset.systems/odc/0af63a7b-d4e0-4e5c-a4dc-c58fed3d6b78/eset_smart_security_premium_live_installer.exe", "ESETForSmallOffice.exe", "ESET Security for Small Office")
         elif choose == "B" or chooseeset == "b": p1()
         elif choose == "99": exit()
-
-        else:
-            print("No option named " + chooseeset)
-            sleep(3)
+        else: print("No option named " + chooseeset) ; sleep(3)
 
 def quicktweaks():
     while True:
-        #hibli bibly, your house is gone, quote the raven, nevermore
         cls()
         LimitQ = color("LimitQoS", 2)
         optimizess = color("Optimize SSD", 2)
@@ -217,6 +212,7 @@ class Setvars():
             return color(vmp + "%", 2) + " / 100%"+helpline1
         else:
             return  vmp + "% / 100%"+helpline1
+
     def c():
         # CPU cores and threads
         lf = str(cpu_count(logical=False))
@@ -233,6 +229,7 @@ class Setvars():
             return color(lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6, 2)
         else:
             return lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6
+
     def cpup():
         # CPU utiliation
         cpup = str(cpu_percent()).replace("%", "").split(".", 1)[0]
@@ -244,6 +241,7 @@ class Setvars():
             return color(cpup, 2) + "% / 100%" + helpline2
         else:
             return cpup + "% / 100%" + helpline2
+
     def dusage():
         # C:/ Disk usage
         dusa = str(disk_usage("/").total/1073741824)
@@ -257,6 +255,7 @@ class Setvars():
             return color(duss.split(".", 1)[0] + "GB", 2) + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
         else:
             return duss.split(".", 1)[0] + "GB" + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
+
     def qwert():
         #Check ping DON'T TOUCH IT!!!
         checkping = len(str(getmyping().replace("ms", "").replace(Fore.RED or Fore.GREEN, "")))
@@ -266,7 +265,7 @@ class Setvars():
         else: helpline4 = ""
         return getmyping()+Fore.RESET+helpline4
 
-def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd):
+def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a):
     windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
     posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
     ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
@@ -356,7 +355,7 @@ def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
         elif choose == "C4" or choose == "c4":  dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup-37335.37335.exe", "Malwarebytes.exe", "Malwarebytes")
         elif choose == "C5" or choose == "c5":  dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
         elif choose == "C6" or choose == "c6":  chooseeset()
-        elif choose == "n" or choose == "N":    p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd)
+        elif choose == "n" or choose == "N":    p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
         elif choose == "h" or choose == "H": helpe()
         elif choose == "un" or choose == "Un" or choose == "uN" or choose == "UN":
             areusure = input("Are you sure you want to uninstall? (Y/n): ")
@@ -446,28 +445,29 @@ def linuxdl(distro):
     elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux - Auto-Updates
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS - 16.2
 
-def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd):
+def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a):
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n", 
-            f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For Dan │ Internet: {qwert}            │\n",
-            f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}        │\n",
-            f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼──────────────────────────────┤\n", 
-            f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ ducking placeholder bruh     │\n",
-            f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼──────────────────────────────┤\n", 
-            f"│ [1] Linux Mint           │ [1] Windows 11         │ [1] Rectify11                  │                              │\n",
-            f"│ [2] Pop!_OS              │ [2] Windows 10         │ [2] Atlas OS                   │                              │\n",
-            f"│ [3] Ubuntu               │ [3] Windows 8.1        │ [3] Ghost Spectre              │                              │\n",
-            f"│ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │                              │\n",
-            f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                              │\n",
-            f"│ [6] Solus                │                        │ [6] WindowsSimplify            │                              │\n",
-            f"│ [7] Debian               │                        │ [7] Aero10                     │                              │\n",
-            f"│ [8] Garuda               │                        │ [8] Tiny10                     │                              │\n",
-            f"│ [9] Zorin OS             │                        │ [9] KernelOS                   │                              │\n",
-            f"│                          │                        │                                │                              │\n",
-            f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴──────────────────────────────┤\n",
-            f"│                            Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                            │\n",
-            f"└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+               f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For {a} │ Internet: {qwert}            │\n",
+               f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}        │\n",
+               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼──────────────────────────────┤\n", 
+               f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ [T] Tools                    │\n",
+               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼──────────────────────────────┤\n", 
+               f"│ [1] Linux Mint           │ [1] Windows 11         │ [1] Rectify11                  │ [1] Rufus                    │\n",
+               f"│ [2] Pop!_OS              │ [2] Windows 10         │ [2] Atlas OS                   │ [2] Balena Etcher            │\n",
+               f"│ [3] Ubuntu               │ [3] Windows 8.1        │ [3] Ghost Spectre              │ [3] UNetBootin               │\n",
+               f"│ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │                              │\n",
+               f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                              │\n",
+               f"│ [6] Solus                │                        │ [6] WindowsSimplify            │                              │\n",
+               f"│ [7] Debian               │                        │ [7] Aero10                     │                              │\n",
+               f"│ [8] Garuda               │                        │ [8] Tiny10                     │                              │\n",
+               f"│ [9] Zorin OS             │                        │ [9] KernelOS                   │                              │\n",
+               f"│                          │                        │ [10] Windows 7 Super Nano      │                              │\n",
+               f"│                          │                        │                                │                              │\n",
+               f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴──────────────────────────────┤\n",
+               f"│                            Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                            │\n",
+               f"└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
         # =============< TUX BLOCK
@@ -486,36 +486,52 @@ def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
         elif choose == "w2" or choose == "W2": dl(2, r"https://software.download.prss.microsoft.com/dbazure/Win10_22H2_EnglishInternational_x64.iso?t=7ec8b9b3-28fd-450a-8318-8577e6c17b12&e=1667248241&h=041331f504341b6f9a242563152566872829eccc22b6b60a66f70e4ac843c589", "Windows-10.iso", "Windows 10")
         elif choose == "w3" or choose == "W3": dl(2, r"https://archive.org/download/w8.1.vpro/W8.1.vPro.iso", "Windows-8.1.iso", "Windows 8.1")
         elif choose == "w4" or choose == "W4": dl(2, r"https://archive.org/download/windows-8_202210/Windows%208.iso", "Windows-8.iso", "Windows 8")
-        elif choose == "w5" or choose == "W5": dl(2, r"https://dl.malwarewatch.org/windows/Windows%207%20%28x64%29.iso", "Windows-7.iso", "Windows 7")
+        elif choose == "w5" or choose == "W5": dl(2, r"https://archive.org/download/windows-7-x64-2/Windows%207%20%28x64%29.iso", "Windows-7.iso", "Windows 7")
 
         # =============< Modded isos
         elif choose == "m1" or choose == "M1": dl(2, r"https://archive.org/download/rectify-11-v-2/Rectify11%20%28v2%29.iso", "Rectify11.iso", "Rectify11 v2")
-        elif choose == "m2" or choose == "M2": dl(2, r"https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2_21H2.iso", "AtlasOS.iso", "AtlasOS")
+        elif choose == "m2" or choose == "M2":
+            print("What version to choose:\n"
+                  "[1] 21H2 + Faceit\n"
+                  "[2] 20H2 + Better than Old\n"
+                  "[3] 1803 + Old version")
+            choose = input("> ")
+            if choose == "1": dl(2, r"https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2_21H2.iso", "AtlasOS-21H2.iso", "AtlasOS 21H2")
+            elif choose == "2": dl(2, r"https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2_21H2.iso", "AtlasOS-20H2.iso", "AtlasOS 20H2")
+            elif choose == "3": dl(2, r"https://github.com/Atlas-OS/atlas-releases/releases/download/1803/Atlas_1803_v0.2.iso", "AtlasOS-1803.iso", "AtlasOS 1803")
+            else: print("No option named " + choose) ; sleep(3)
         elif choose == "m3" or choose == "M3": dl(2, r"https://download2390.mediafire.com/kpvhnmu3vfng/2z30tuoy3ojsp3h/WIN10.PRO.20H2.SUPERLITE%2BCOMPACT.U3.X64.GHOSTSPECTRE.%28W%29.iso", "GhostSpectre.iso", "Ghost Spectre")
+
         elif choose == "m4" or choose == "M4":
-            print("What version to choose:\n[1] ReviOS 11\n[2] ReviOS 10"); choose = input("> ")
+            print("What version to choose:\n[1] ReviOS 11\n[2] ReviOS 10")
+            choose = input("> ")
             if choose == "1": dl(2, "https://archive.org/download/revi-os-11-22.10/ReviOS-11-22.10.iso", "ReviOS 11", "ReviOS 11")
             elif choose == "2": dl(2, "https://archive.org/download/revi-os-10-22.10/ReviOS-10-22.10.iso", "ReviOS 10", "ReviOS 10")
             else: print("No option named " + choose) ; sleep(3)
+
         elif choose == "m5" or choose == "M5": dl(2, r"https://archive.org/download/ggos-0.8.20/ggos-0.8.20.iso", "GGOS.iso", "GGOS 0.8.20")
+
         elif choose == "m6" or choose == "M6":
-            print("What version to choose:\n"
-                "[1] 1.66GB - Extreme Lite with Store\n"
-                "[2] 1.73GB - No Windows Update\n"
-                "[3] 1.83GB - Max Debloat\n")
+            print("What version to choose:\n[1] 1.66GB - Extreme Lite with Store\n[2] 1.73GB - No Windows Update\n[3] 1.83GB - Max Debloat\n")
             choose = input("> ")
             if   choose == "1": dl(2, "https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22621.525_221014.iso", "WindowsStimplfy-1.iso", "WindowsSimplify-1.66GB")
             elif choose == "2": dl(2, "https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22623.746_221018.iso", "WindowsSimplify-2.iso", "WindowsSimplify-1.73GB")
-            elif choose == "3": dl(2, r"https://gmnfuedutw-my.sharepoint.com/personal/40543229_gm_nfu_edu_tw/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2F40543229%5Fgm%5Fnfu%5Fedu%5Ftw%2FDocuments%2FModded%5FISO%2F22621%2E317%5F220811%2D2%2Eiso", "WindowsStimplfy-3.iso", "WindowsSimplify-1.83GB")
+            elif choose == "3": dl(2, r"https://archive.org/download/simplify-windows-v2/22621.317_220811-2.iso", "WindowsStimplfy-3.iso", "WindowsSimplify-1.83GB")
             else: print("No option named " + choose) ; sleep(3)
             
-        elif choose == "m7" or choose == "M7": dl(2, r"https://archive.org/download/aero-10/Aero10.iso", "Aero10.iso", "Aero10")
-        elif choose == "m8" or choose == "M8": dl(2, r"https://archive.org/download/tiny-10_202210/Tiny%2010.iso", "Tiny10.iso", "Tiny10")
-        elif choose == "m9" or choose == "M9": dl(2, r"", "KernelOS.iso", "KernelOS")
+        elif choose == "m7" or choose == "M7": dl(2, "https://archive.org/download/aero-10/Aero10.iso", "Aero10.iso", "Aero10")
+        elif choose == "m8" or choose == "M8": dl(2, "https://archive.org/download/tiny-10_202210/Tiny%2010.iso", "Tiny10.iso", "Tiny10")
+        elif choose == "m9" or choose == "M9": dl(2, "https://archive.org/download/kernel-os-22-h-2-beta/KernelOS%2022H2%20BETA.iso", "KernelOS.iso", "KernelOS")
+        elif choose == "m10" or choose == "M10": dl(2, r"https://archive.org/download/windows-7-super-nano-2/Windows%207%20%28SuperNano%29.iso", "Windows-7-SuperNano.iso", "Windows 7 Super Nano")
+
+        # =============< Tools
+        elif choose == "t1" or choose == "T1": dl(2, "https://github.com/pbatard/rufus/releases/download/v"+str(latest("pbatard/rufus"))+"/rufus-"+str(latest("pbatard/rufus"))+".exe", "Rufus.exe", "Rufus")
+        elif choose == "t2" or choose == "T2": dl(2, "https://github.com/balena-io/etcher/releases/download/v"+str(latest("balena-io/etcher"))+"/balenaEtcher-Portable-"+str(latest("balena-io/etcher"))+".exe", "Etcher-Portable.exe", "Balena Etcher")
+        elif choose == "t3" or choose == "T3": dl(2, "https://github.com/unetbootin/unetbootin/releases/download/"+str(latest("unetbootin/unetbootin"))+"/unetbootin-windows-"+str(latest("unetbootin/unetbootin"))+".exe", "UNetBootin.exe", "UNetBootin")
 
         # =============< QOL
         elif choose == "99": exit()
-        elif choose == "n" or choose == "N": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd)
+        elif choose == "n" or choose == "N": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
         elif choose == "h" or choose == "H": helpe()
         else: print("No option named " + choose) ; sleep(3)
 
@@ -527,8 +543,10 @@ def launch():
 
     printer.lprint("Running Pre-Startup tasks...")
     # Set vars pre startup
-    pre = "-RC.DEV4"
+    pre = ""
     version = "1.7"
+    if pre == "":
+        pre = "        "
     # Updater
     printer.lprint("Task 1/3...")
     newver = latest("xemulat/XToolbox")
@@ -553,7 +571,8 @@ def launch():
     printer.lprint("Task 3/3...")
     xtoolboxvv1asdfghjz = color("XToolBox v"+version, 2)
     xemulatddddd = color("xemulated#2622", 2)
+    a = color("Dan", 1)
 
     printer.lprint("Launching...")
-    p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd)
+    p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
 launch()
