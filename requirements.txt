@@ -1,3 +1,1 @@
-pip install lastversion
-pip install colorama
-pip install xelib
+pip install XeLib lastversion colorama psutil
