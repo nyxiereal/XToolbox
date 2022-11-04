@@ -39,7 +39,7 @@ def update():
         if doupdate == "n" or doupdate == "N":
             print("Okey.")
             sleep(2)
-            p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+            p1()
         elif doupdate == "Y" or doupdate == "y":
             try:
                 printer.lprint("Downloading " + "XTBox "+str(latest("xemulat/XToolbox")) + " ...")
@@ -64,9 +64,9 @@ def dl(org, url, urlr, name):
             if chose == "Y" or chose == "y":
                 pass
             elif chose == "N" or chose == "n":
-                if org == 1: p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-                if org == 2: p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-                if org == "3": p3(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+                if org == 1: p1()
+                if org == 2: p2()
+                if org == "3": p3()
     except:
         printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?")
         sleep(6)
@@ -75,7 +75,7 @@ def dl(org, url, urlr, name):
         download(url, urlr, name)
         if urlr != "WindowsOnReins.ps1":
             startfile(urlr)
-        if org == 1: p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+        if org == 1: p1()
     except:
         printer.lprint("ERROR 3: Can't download file from the server...")
         sleep(3)
@@ -144,8 +144,9 @@ def helpe(origin):
            "│                   Press ENTER to go back.                   │\n",
            "└─────────────────────────────────────────────────────────────┘\n")
     input("> ")
-    if origin == 1:   p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-    elif origin == 2: p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+    if origin == 1:   p1()
+    elif origin == 2: p2()
+    elif origin == 3: p3()
 
 def chooseeset():
     while True:
@@ -166,7 +167,7 @@ def chooseeset():
         elif choose == "3": dl(1, "https://liveinstaller.eset.systems/odc/f41b6af0-4718-4e4e-9ae5-ddf25b3ba713/eset_nod32_antivirus_live_installer.exe", "ESETNOD32.exe", "ESET NOD32 Antivirus")
         elif choose == "4": dl(1, "https://liveinstaller.eset.systems/odc/a9233029-a9e4-4a49-9005-82e4b994f765/eset_nod32_antivirus_live_installer.exe", "ESETNOD32Gamer.exe", "ESET NOD32 Antivirus Gamer Edition")
         elif choose == "5": dl(1, "https://liveinstaller.eset.systems/odc/0af63a7b-d4e0-4e5c-a4dc-c58fed3d6b78/eset_smart_security_premium_live_installer.exe", "ESETForSmallOffice.exe", "ESET Security for Small Office")
-        elif choose == "B" or chooseeset == "b": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+        elif choose == "B" or chooseeset == "b": p1()
         elif choose == "99": exit()
         else: print("No option named " + chooseeset) ; sleep(3)
 
@@ -201,7 +202,7 @@ def quicktweaks():
         elif choose == "10": dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Add_Copy_path_to_context_menu.reg", "AddCopyPath.reg", "AddCopyPath")
         elif choose == "11": dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/darkmodetoggle/darkmodeON.reg", "DarkModeON.reg", "DarkMode")
         elif choose == "12": dl(99, r"https://raw.githubusercontent.com/couleurm/couleurstoolbox/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu/Add%20Take%20Ownership.reg", "AddTakeOwnership.reg", "AddTakeOwnership")
-        elif choose == "B" or choose == "b": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+        elif choose == "B" or choose == "b": p1()
         elif choose == "99": exit()
         else: print("No option named " + choose) ; sleep(3)
 
@@ -290,11 +291,11 @@ def pcstats(origin):
           f"│ RAM   │ {ram}\n",
            "└───────┴───────────")
     input("> ")
-    if origin == 1:   p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-    elif origin == 2: p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+    if origin == 1:   p1()
+    elif origin == 2: p2()
     
 
-def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a):
+def p1():
     windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
     posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
     ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
@@ -308,7 +309,7 @@ def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses     │\n",
@@ -382,8 +383,8 @@ def p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
         elif choose == "C6" or choose == "c6":  chooseeset()
 
         # =============< QOL Lines
-        elif choose == "n" or choose == "N": p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-        elif choose == "b" or choose == "B": p3(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+        elif choose == "n" or choose == "N": p2()
+        elif choose == "b" or choose == "B": p3()
         elif choose == "h" or choose == "H": helpe(1)
         elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(1)
         if choose == "99": exit()
@@ -486,12 +487,27 @@ def multidl(file):
     elif file == "SimplifyWindows": muulter(2, "https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22621.525_221014.iso", "1.66GB - Extreme Lite with Store", "WindowsSimplify-1.66GB", "WindowsStimplfy-1.iso", 
                                                "https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22623.746_221018.iso", "1.73GB - No Windows Update", "WindowsSimplify-1.73GB", "WindowsSimplify-2.iso",
                                                "https://archive.org/download/simplify-windows-v2/22621.317_220811-2.iso", "1.83GB - Max Debloat", "WindowsSimplify-1.83GB", "WindowsStimplfy-3.iso")
-    
-    ############################################################################################
 
     elif file == "Prism": muulter(3, "https://github.com/PrismLauncher/PrismLauncher/releases/download/"+str(latest("PrismLauncher/PrismLauncher"))+"/PrismLauncher-Windows-Portable-"+str(latest("PrismLauncher/PrismLauncher"))+".zip", "PrismLauncher Portable", "Portable", "PrismLauncher-Portable.zip", 
                                      "https://github.com/PrismLauncher/PrismLauncher/releases/download/"+str(latest("PrismLauncher/PrismLauncher"))+"/PrismLauncher-Windows-Setup-"+str(latest("PrismLauncher/PrismLauncher"))+".exe", "PrismLauncher Setup", "Setup", "PrismLauncher-Setup.exe", False, False, False, False)
     
+    elif file == "GDLauncher": muulter(3, "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-portable.zip", "GDLauncher Portable", "Portable", "GDLauncher-Portable.zip", 
+                                          "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-setup.exe", "GDLauncher Setup", "Setup", "GDLauncher-Setup.exe", False, False, False, False)
+
+    elif file == "OpenAsar":
+        fp = open('openasar.bat', 'w')
+        fp.write('@echo off\n'
+                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                 r'C:\Windows\System32\TIMEOUT.exe /t 5 /nobreak' + "\n"
+                 r'copy /y "%localappdata%\Discord\app-1.0.9007\resources\app.asar" "%localappdata%\Discord\app-1.0.9007\resources\app.asar.backup"' + "\n"
+                 r'powershell -Command "Invoke-WebRequest https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar -OutFile \"$Env:LOCALAPPDATA\Discord\app-1.0.9007\resources\app.asar\""' + "\n"
+                 r'start "" "%localappdata%\Discord\Update.exe" --processStart Discord.exe' + "\n"
+                 r'goto 2>nul & del "%~f0"')
+        fp.close()
+        startfile("openasar.bat")
+
 def linuxdl(distro):
     cls()
     if   distro == 1: tuxdl("[1] Cinnamon  ", "[2] MATE      ", "[3] Xfce      ", distro) # Linux Mint 21 - Vanessa
@@ -504,7 +520,7 @@ def linuxdl(distro):
     elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux - Auto-Updates
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS - 16.2
 
-def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a):
+def p2():
     window11 = color("Windows 11", 1)
     minttuxe = color("Linux Mint", 1)
     zorino = color("Zorin OS", 1)
@@ -517,7 +533,7 @@ def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ [T] Tools                      │\n",
@@ -525,7 +541,7 @@ def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
                f"│ [1] {minttuxe}           │ [1] {window11}         │ [1] {rectify}                  │ [1] {ruf}                      │\n",
                f"│ [2] Pop!_OS              │ [2] Windows 10         │ [2] {atlaso}                   │ [2] Balena Etcher              │\n",
                f"│ [3] Ubuntu               │ [3] Windows 8.1        │ [3] Ghost Spectre              │ [3] {unetboot}                 │")
-        print(f" │ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │                                │\n",
+        print(f" │ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │ [4] HeiDoc Iso Downloader      │\n",
                f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                                │\n",
                f"│ [6] Solus                │                        │ [6] {windowssimpli}            │                                │\n",
                f"│ [7] Debian               │                        │ [7] {aero}                     │                                │\n",
@@ -578,47 +594,40 @@ def p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
         elif choose == "t1" or choose == "T1": dl(2, "https://github.com/pbatard/rufus/releases/download/v"+str(latest("pbatard/rufus"))+"/rufus-"+str(latest("pbatard/rufus"))+".exe", "Rufus.exe", "Rufus")
         elif choose == "t2" or choose == "T2": dl(2, "https://github.com/balena-io/etcher/releases/download/v"+str(latest("balena-io/etcher"))+"/balenaEtcher-Portable-"+str(latest("balena-io/etcher"))+".exe", "Etcher-Portable.exe", "Balena Etcher")
         elif choose == "t3" or choose == "T3": dl(2, "https://github.com/unetbootin/unetbootin/releases/download/"+str(latest("unetbootin/unetbootin"))+"/unetbootin-windows-"+str(latest("unetbootin/unetbootin"))+".exe", "UNetBootin.exe", "UNetBootin")
+        elif choose == "t4" or choose == "T4": dl(2, "https://www.heidoc.net/php/Windows-ISO-Downloader.exe", "HeiDoc-ISO-Downloader.exe", "HeiDoc Ios Downloader")
 
         # =============< QOL
         elif choose == "99": exit()
-        elif choose == "n" or choose == "N": p3(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-        elif choose == "b" or choose == "B": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+        elif choose == "n" or choose == "N": p3()
+        elif choose == "b" or choose == "B": p1()
         elif choose == "h" or choose == "H": helpe(2)
         elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(2)
         else: print("No option named " + choose) ; sleep(3)
 
-def p3(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a):
-    window11 = color("Windows 11", 1)
-    minttuxe = color("Linux Mint", 1)
-    zorino = color("Zorin OS", 1)
-    rectify = color("Rectify11", 1)
-    atlaso = color("Atlas OS", 1)
-    ruf = color("Rufus", 1)
-    unetboot = color("UNetBootin", 2)
-    windowssimpli = color("WindowsSimplify", 2)
-    aero = color("Aero10", 2)
+def p3():
+    prismlaunch = color("PrismLauncher", 1)
+    ste = color("Steam", 1)
+    feath = color("Feather", 1)
+    lunarclien = color("Lunar Client", 1)
+    disco = color("Discord", 1)
+    openas = color("OpenAsar", 1)
+    
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjz}                             │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [L] Minecraft Launchers  │ [M] Minecraft Mods     │ []                             │ [I] Misc                            │\n",
+               f"│ [L] Minecraft Launchers  │ [G] Game Launchers     │ [C] Minecraft Clients          │ [I] Misc                       │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [1] Official             │ [1]                    │ [1]                            │ [1] Achivment Watcher                           │\n",
-               f"│ [2] PrismLauncher        │ [2]                    │ [2]                            │ [2] Discord                           │\n",
-               f"│ [3] ATLaucnher           │ [3]                    │ [3]                            │ [3]                            │\n",
-               f"│ [4] HMCL                 │ [4]                    │ [4]                            │ [4]                            │\n",
-               f"│ [5] XMCL                 │ [5]                    │ [5]                            │ [5]                            │\n",
-               f"│ [6] GDLauncher           │ [6]                    │ [6]                            │ [6]                            │\n",
-               f"│ [7]                      │ [7]                    │ [7]                            │ [7]                            │")
-        print(f" │ [8]                      │ [8]                    │ [8]                            │ [8]                            │\n",
-               f"│ [9]                      │ [9]                    │ [9]                            │ [9]                            │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
+               f"│ [1] Official             │ [1] {ste}              │ [1] Tecknix                    │ [1] Achivment Watcher          │\n",
+               f"│ [2] {prismlaunch}        │ [2] Uplay              │ [2] Salwyrr                    │ [2] {disco}                    │\n",
+               f"│ [3] ATLaucnher           │ [3] Origin             │ [3] LabyMod                    │ [3] Spotify                    │\n",
+               f"│ [4] HMCL                 │ [4] Epic Games         │ [4] {feath}                    │ [4] {openas}                   │")
+        print(f" │ [5] XMCL                 │ [5] GOG Galaxy         │ [5] {lunarclien}               │                                │\n",
+               f"│ [6] GDLauncher           │ [6] Paradox            │ [6] Cheat Breaker              │                                │\n",
+               f"│                          │ [7] Roblox             │ [7] Badlion                    │                                │\n",
+               f"│                          │                        │ [8] Crystal Client             │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
@@ -626,24 +635,43 @@ def p3(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, 
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
-        # =============< Launchers
-        if choose == "l1" or choose == "L1":   dl(3, "https://launcher.mojang.com/download/MinecraftInstaller.exe", "MinecraftInstaller.exe", "Minecraft Launcher")
-        ########################################################################################
+        # =============< Minecraft Launchers
+        if   choose == "l1" or choose == "L1": dl(3, "https://launcher.mojang.com/download/MinecraftInstaller.exe", "MinecraftInstaller.exe", "Minecraft Launcher")
         elif choose == "l2" or choose == "L2": multidl("Prism")
-        ########################################################################################
         elif choose == "l3" or choose == "L3": dl(3, "https://github.com/ATLauncher/ATLauncher/releases/download/v"+str(latest("ATLauncher/ATLauncher"))+"/ATLauncher-"+str(latest("ATLauncher/ATLauncher"))+".exe", "ATLauncher.exe", "ATLauncher")
         elif choose == "l4" or choose == "L4": dl(3, "https://github.com/huanghongxun/HMCL/releases/download/v"+str(latest("huanghongxun/HMCL"))+"/HMCL-"+str(latest("huanghongxun/HMCL"))+".exe", "HMCL.exe", "HMCL")
         elif choose == "l5" or choose == "L5": dl(3, "https://github.com/Voxelum/x-minecraft-launcher/releases/download/v"+str(latest("Voxelum/x-minecraft-launcher"))+"/xmcl-"+str(latest("Voxelum/x-minecraft-launcher"))+"-win32-x64.zip", "XMCL.zip", "XMCL")
-        elif choose == "l6" or choose == "L6": 
-            print("Version: \n[2] Portable \n[2] Setup")
-            choose = input("> ")
-            if choose == "1":   dl(3, "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-portable.zip", "GDLauncher-Portable.zip", "GDLauncher Portable")
-            elif choose == "2": dl(3, "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-setup.exe", "GDLauncher-Setup.exe", "GDLauncher-Setup.exe")
+        elif choose == "l6" or choose == "L6": multidl("GDLauncher")
+
+        # =============< Game Launchers
+        elif choose == "g1" or choose == "G1": dl(3, "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe", "Steam.exe", "Steam")
+        elif choose == "g2" or choose == "G2": dl(3, "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe", "Uplay.exe", "Uplay")
+        elif choose == "g3" or choose == "G3": dl(3, "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe", "Origin.exe", "Origin")
+        elif choose == "g4" or choose == "G4": dl(3, "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi", "Epic-Games.msi", "Epic Games")
+        elif choose == "g5" or choose == "G5": dl(3, "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe", "GOG-Galaxy.exe", "GOG Galaxy")
+        elif choose == "g6" or choose == "G6": dl(3, "https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2022_12.msi", "Paradox.msi", "Paradox")
+        elif choose == "g7" or choose == "G7": dl(3, "https://setup.roblox.com/Roblox.exe", "Roblox.exe", "Roblox")
+
+        # =============< Minecraft Clients
+        elif choose == "c1" or choose == "C1": dl(3, "https://tecknix.com/client/TecknixClient.exe", "", "Tecknix Client")
+        elif choose == "c2" or choose == "C2": dl(3, r"https://www.salwyrr.com/4/download/Salwyrr%20Launcher%20Installer.exe", "Salwyrr.exe", "Salwyrr CLients")
+        elif choose == "c3" or choose == "C3": dl(3, "https://dl.labymod.net/latest/install/LabyMod3_Installer.exe", "LabyMod.exe", "LabyMod")
+        elif choose == "c4" or choose == "C4": dl(3, r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.4.4.exe", "FeatherLauncher.exe", "Feather Launcher")
+        elif choose == "c5" or choose == "C5": dl(3, r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v2.14.0.exe", "LunarClient.exe", "Lunar Client")
+        elif choose == "c6" or choose == "C6": dl(3, "https://github.com/Offline-CheatBreaker/Launcher/releases/download/"+str(latest("Offline-CheatBreaker/Launcher"))+"/Offline_CheatBreaker_Setup.exe", "Offline-CheatBreaker.exe", "Offline CheatBreaker")
+        elif choose == "c7" or choose == "C7": dl(3, r"https://client-updates-cdn77.badlion.net/Badlion%20Client%20Setup%203.12.0.exe", "BadlionClient.exe", "Badlion Client")
+        elif choose == "c8" or choose == "C8": dl(3, "https://github.com/Crystal-Development-LLC/launcher-releases/releases/download/v"+str(latest("Crystal-Development-LLC/launcher-releases"))+"/crystal-client-launcher-setup.exe", "CrystalClient.exe", "Crystal Client")
+        
+        # =============< Misc
+        elif choose == "i1" or choose == "I1": dl(3, "https://github.com/xan105/Achievement-Watcher/releases/download/"+str(latest("xan105/Achievement-Watcher"))+"/Achievement.Watcher.Setup.exe", "Achievement-Watcher.exe", "Achievement Watcher")
+        elif choose == "i2" or choose == "I2": dl(3, "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86", "Discord.exe", "Discord")
+        elif choose == "i3" or choose == "I3": dl(3, "https://download.scdn.co/SpotifySetup.exe", "Spotify.exe", "Spotify")
+        elif choose == "i4" or choose == "I4": multidl("OpenAsar")
 
         # =============< QOL
         elif choose == "99": exit()
-        elif choose == "n" or choose == "N": p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
-        elif choose == "b" or choose == "B": p2(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+        elif choose == "n" or choose == "N": p1()
+        elif choose == "b" or choose == "B": p2()
         elif choose == "h" or choose == "H": helpe(2)
         elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(2)
         else: print("No option named " + choose) ; sleep(3)
@@ -656,10 +684,10 @@ prep()
 
 printer.lprint("Running Pre-Startup tasks...")
 # Set vars pre startup
-pre = ""
-version = "1.7"
+pre = "-PRE.PROD"
+version = "1.8"
 if pre == "":
-    pre = "        "
+    pre = "         "
 # Updater
 printer.lprint("Task 1/1...")
 newver = latest("xemulat/XToolbox")
@@ -674,7 +702,7 @@ else:
     version = version+pre
     Errorhd = color("DevBuild ", 3)
 printer.lprint("Launching...")
-xtoolboxvv1asdfghjz = color("XToolBox v"+version, 2)
+xtoolboxvv1asdfghjzz = color("XToolBox v"+version, 2)
 ramavailz = Setvars.rama()
 cpuavailifffff = Setvars.cpup()
 dusagehebeded = Setvars.dusage()
@@ -683,4 +711,4 @@ c = Setvars.c()
 xemulatddddd = color("xemulated#2622", 2)
 Errorhd = Errorhd
 a = color("Dan", 1)
-p1(xtoolboxvv1asdfghjz, ramavailz, cpuavailifffff, dusagehebeded, qwert, c, xemulatddddd, Errorhd, a)
+p1()
