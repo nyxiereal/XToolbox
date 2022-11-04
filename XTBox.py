@@ -80,6 +80,12 @@ def dl(org, url, urlr, name):
         printer.lprint("ERROR 3: Can't download file from the server...")
         sleep(3)
 
+def runaspowershell(command, filename):
+    fp = open(filename+".bat", 'w')
+    fp.write(r'@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "'+command+'"')
+    fp.close()
+    startfile(filename+".bat")
+
 def eula():
     cls()
     z = True
@@ -138,12 +144,12 @@ def helpe(origin):
            "│      2     │ Can't check for file overwrite                 │\n",
            "│      3     │ Can't download file from the server            │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
-           "│ If scrips won't execute, run this in PowerShell:            │\n",
-           "│ Set-ExecutionPolicy Unrestricted -Scope CurrentUser         │\n",
+           "│ If scrips won't execute, run this in PowerShell press P     │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│                   Press ENTER to go back.                   │\n",
            "└─────────────────────────────────────────────────────────────┘\n")
-    input("> ")
+    d = input("> ")
+    if d == "p" or d == "P": runaspowershell("Set-ExecutionPolicy Unrestricted -Scope CurrentUser", "SetExecutionPolicy")
     if origin == 1:   p1()
     elif origin == 2: p2()
     elif origin == 3: p3()
@@ -343,10 +349,10 @@ def p1():
         elif choose == "D5" or choose == "d5":   dl(1, "https://github.com/Teraskull/PyDebloatX/releases/download/" + str(latest("Teraskull/PyDebloatX")) + "/PyDebloatX_portable.exe", "PyDebloatX.exe", "PyDebloatX")
         elif choose == "D6" or choose == "d6":   dl(1, "https://raw.githubusercontent.com/gordonbay/Windows-On-Reins/master/wor.ps1", "WindowsOnReins.ps1", "WindowsOnReins")
         elif choose == "D7" or choose == "d7":   dl(1, "https://github.com/SanGraphic/QuickBoost/releases/download/" + str(latest("SanGraphic/QuickBoost")) + "/QuickBoost.exe", "QuickBoost.exe", "QuickBoost")
-        elif choose == "D8" or choose == "d8":   dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/win10debloater.bat", "Win10Debloater.bat", "Win10Debloater")
+        elif choose == "D8" or choose == "d8":   runaspowershell("iwr -useb https://git.io/debloat|iex", "Win10Debloat")
         elif choose == "D9" or choose == "d9":   dl(1, "https://github.com/Jisll/Sadcoy/releases/download/v" + str(latest("Jisll/Sadcoy")) + "/Sadcoy.exe", "Sadcoy.exe", "Sadcoy")
         elif choose == "D10" or choose == "d10": dl(1, "https://cdn.discordapp.com/attachments/953004468503461948/1031289678013411368/SweetyLite2.bat", "SweetyLite.bat", "SweetyLite")
-        elif choose == "D11" or choose == "d11": dl(1, "https://github.com/xemulat/XToolbox/raw/main/files/OHDW.bat", "OHDWindows.bat", "OHD Windows")
+        elif choose == "D11" or choose == "d11": runaspowershell("iwr -useb 'https://simeononsecurity.ch/scripts/windowsoptimizeandharden.ps1'|iex", "OHDWindows")
         elif choose == "d12" or choose == "D12": dl(1, "https://github.com/crazy-max/WindowsSpyBlocker/releases/download/" + str(latest("crazy-max/WindowsSpyBlocker")) + "/WindowsSpyBlocker.exe", "WindowsSpyBlocker.exe", "WindowsSpyBlocker")
         elif choose == "d13" or choose == "D13": dl(1, "https://github.com/builtbybel/privatezilla/releases/download/" + str(latest("builtbybel/privatezilla")) + "/privatezilla.zip", "PrivateZilla.zip", "PrivateZilla")
         elif choose == "d14" or choose == "D14": dl(1, "https://raw.githubusercontent.com/Zusier/Zusiers-optimization-Batch/master/Zusier%20AIO.bat", "ZusierAIO.bat", "ZusierAIO")
@@ -356,11 +362,11 @@ def p1():
         elif choose == "T1" or choose == "t1":   dl(1, "https://raw.githubusercontent.com/ArtanisInc/Post-Tweaks/main/PostTweaks.bat", "PostTweaks.bat", "PostTweaks")
         elif choose == "T2" or choose == "t2":   dl(1, "https://github.com/Jathurshan-2019/Insider-Enroller/releases/download/v" + str(latest("Jathurshan-2019/Insider-Enroller")) + "/Insider_Enrollerv" + str(latest("Jathurshan-2019/Insider-Enroller")) + ".zip", "InsiderEnroller.zip", "InsiderEnroller")
         elif choose == "T3" or choose == "t3":   dl(1, "https://github.com/99natmar99/Windows-11-Fixer/releases/download/v" + str(latest("99natmar99/Windows-11-Fixer")) + "/Windows.11.Fixer.v" + str(latest("99natmar99/Windows-11-Fixer")) + ".Portable.zip", "Windows11Fixer.zip", "Windows11Fixer")
-        elif choose == "T4" or choose == "t4":   dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/MAS.bat", "MAS.bat", "MAS")
+        elif choose == "T4" or choose == "t4":   runaspowershell("iwr -useb https://massgrave.dev/get | iex", "MAS")
         elif choose == "T5" or choose == "t5":   dl(1, "https://github.com/valinet/Win11DisableRoundedCorners/releases/download/" + str(latest("valinet/Win11DisableRoundedCorners")) + "/Win11DisableOrRestoreRoundedCorners.exe", "AntiRoundCorners.exe", "AntiRoundCorners")
         elif choose == "T6" or choose == "t6":   dl(1, "https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix/releases/download/v." + str(latest("HerMajestyDrMona/Windows11DragAndDropToTaskbarFix")) + "-release/Windows11DragAndDropToTaskbarFix.exe", "FixDragAndDrop.exe", "Fix Drag&Drop")
         elif choose == "T7" or choose == "t7":   dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
-        elif choose == "T8" or choose == "t8":   dl(1, "https://raw.githubusercontent.com/xemulat/XToolbox/main/files/ctt.bat", "CTT.bat", "CTT WinUtil")
+        elif choose == "T8" or choose == "t8":   runaspowershell("irm christitus.com/win | iex", "CTT")
         elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT": quicktweaks()
 
         # =============< Apps
@@ -507,7 +513,7 @@ def multidl(file):
                  r'goto 2>nul & del "%~f0"')
         fp.close()
         startfile("openasar.bat")
-
+    
 def linuxdl(distro):
     cls()
     if   distro == 1: tuxdl("[1] Cinnamon  ", "[2] MATE      ", "[3] Xfce      ", distro) # Linux Mint 21 - Vanessa
