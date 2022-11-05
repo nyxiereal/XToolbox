@@ -143,7 +143,7 @@ def helpe(origin):
            "│      2     │ Can't check for file overwrite                 │\n",
            "│      3     │ Can't download file from the server            │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
-           "│ If scrips won't execute, run this in PowerShell press P     │\n",
+           "│ If scrips won't execute, press P                            │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│                   Press ENTER to go back.                   │\n",
            "└─────────────────────────────────────────────────────────────┘\n")
@@ -322,11 +322,11 @@ def p1():
                f"│ [1] EchoX                │ [1] {posttweaksjfjfjf} │ [1] Chocholatey                │ [1] ADW Cleaner                │\n",
                f"│ [2] {neCtrl}             │ [2] Insider Enroller   │ [2] {rav}                      │ [2] ATF Cleaner                │\n",
                f"│ [3] ShutUp10             │ [3] Windows11Fixer     │ [3] {firef}                    │ [3] Defraggler                 │\n",
-               f"│ [4] Optimizer            │ [4] Activator          │ [4] Lively Wallpaper           │ [4] {malwarebyt}               │\n",
-               f"│ [5] PyDebloatX           │ [5] AntiRoundCorners   │ [5] LibreWolf                  │ [5] ESET Online Scanner        │\n",
-               f"│ [6] {windowsonreinddddd} │ [6] FixDrag&Drop       │ [6] qBittorrent                │ [6] ESET                       │")
-        print(f" │ [7] QuickBoost           │ [7] Winaero Tweaker    │ [7] Rainmeter                  │                                │\n",
-               f"│ [8] Win10Debloater       │ [8] CTT WinUtil        │ [8] 7-Zip                      │                                │\n",
+               f"│ [4] Optimizer            │ [4] AntiRoundCorners   │ [4] Lively Wallpaper           │ [4] {malwarebyt}               │\n",
+               f"│ [5] PyDebloatX           │ [5] FixDrag&Drop       │ [5] LibreWolf                  │ [5] ESET Online Scanner        │\n",
+               f"│ [6] {windowsonreinddddd} │ [6] Winaero Tweaker    │ [6] qBittorrent                │ [6] ESET                       │")
+        print(f" │ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │                                │\n",
+               f"│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │                                │\n",
                f"│ [9] SadCoy               │                        │ [9] Memory Cleaner             │                                │\n",
                f"│ [10] {sweetyli}          │ [QT] {quicktwea}       │                                │                                │\n",
                f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                                │\n",
@@ -701,7 +701,7 @@ prep()
 
 printer.lprint("Running Pre-Startup tasks...")
 # Set vars pre startup
-pre = "-PRE.PROD"
+pre = ""
 version = "1.8"
 if pre == "":
     pre = "         "
@@ -710,17 +710,14 @@ printer.lprint("Checking updates...")
 newver = latest("xemulat/XToolbox")
 if version == str(newver):
     Errorhd = color("UpToDate ", 1)
-    version = version+"        "
 elif str(newver) > version:
     Errorhd = color("Outdated ", 2)
-    version = version+"        "
     update()
 else:
-    version = version+pre
     Errorhd = color("DevBuild ", 3)
 printer.lprint("Setting color vars...")
 # Set color vars
-xtoolboxvv1asdfghjzz = color("XToolBox v"+version, 2)
+xtoolboxvv1asdfghjzz = color("XToolBox v"+version+pre, 2)
 ramavailz = Setvars.rama()
 cpuavailifffff = Setvars.cpup()
 dusagehebeded = Setvars.dusage()
