@@ -11,7 +11,7 @@ try:
     from lastversion import latest
 except:
     printer.lprint("Installing required libraries, please wait...")
-    system("pip install XeLib lastversion colorama psutil")
+    system("pip install -U XeLib lastversion colorama psutil")
     printer.lprint("Libraries installed successfully!")
 def prep():
     cls()
@@ -50,11 +50,9 @@ def update():
                 startfile("XTBox"+str(latest("xemulat/XToolbox"))+".exe")
                 exit()
             except:
-                printer.lprint("Can't complete updates, aborting...")
-                sleep(4)
+                printer.lprint("Can't complete updates, aborting...") ; sleep(4)
         else:
-            print(doupdate + " Isn't an option, try again.")
-            sleep(2)
+            print(doupdate + " Isn't an option, try again.") ; sleep(2)
 
 def dl(org, url, urlr, name):
     try:
@@ -133,6 +131,7 @@ def helpe(origin):
            "│    B    │ Back                                              │\n",
            "│    UN   │ Uninstalls The Program                            │\n",
            "│    99   │ Exit                                              │\n",
+           "│    PC   │ PC Stats                                          │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│ Color   │ Meaning                                           │\n",
           f"│ {e}     │ Dangerous Option                                  │\n",
@@ -337,7 +336,7 @@ def p1():
                f"│ [15] Azurite             │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│             Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ UN - Uninstall │ [PC] PcStats             │\n",
+               f"│             Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ UN - Uninstall │ PC - PcStats             │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -561,7 +560,7 @@ def p2():
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                     Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ [PC] PcStats                      │\n",
+               f"│                     Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                      │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -611,12 +610,18 @@ def p2():
         else: print("No option named " + choose) ; sleep(3)
 
 def p3():
+    # GREEN color
     prismlaunch = color("PrismLauncher", 1)
     ste = color("Steam", 1)
     feath = color("Feather", 1)
     lunarclien = color("Lunar Client", 1)
     disco = color("Discord", 1)
     openas = color("OpenAsar", 1)
+    # RED color
+    offici = color("Official", 2)
+    hm = color("HMCL", 2)
+    upl = color("Uplay", 2)
+    cheatbreake = color("Cheat Breaker", 2)
     
     while True:
         cls()
@@ -626,18 +631,24 @@ def p3():
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [L] Minecraft Launchers  │ [G] Game Launchers     │ [C] Minecraft Clients          │ [I] Misc                       │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [1] Official             │ [1] {ste}              │ [1] Tecknix                    │ [1] Achivment Watcher          │\n",
-               f"│ [2] {prismlaunch}        │ [2] Uplay              │ [2] Salwyrr                    │ [2] {disco}                    │\n",
+               f"│ [1] {offici}             │ [1] {ste}              │ [1] Tecknix                    │ [1] Achivment Watcher          │\n",
+               f"│ [2] {prismlaunch}        │ [2] {upl}              │ [2] Salwyrr                    │ [2] {disco}                    │\n",
                f"│ [3] ATLaucnher           │ [3] Origin             │ [3] LabyMod                    │ [3] Spotify                    │\n",
-               f"│ [4] HMCL                 │ [4] Epic Games         │ [4] {feath}                    │ [4] {openas}                   │")
-        print(f" │ [5] XMCL                 │ [5] GOG Galaxy         │ [5] {lunarclien}               │                                │\n",
-               f"│ [6] GDLauncher           │ [6] Paradox            │ [6] Cheat Breaker              │                                │\n",
-               f"│                          │ [7] Roblox             │ [7] Badlion                    │                                │\n",
-               f"│                          │                        │ [8] Crystal Client             │                                │\n",
+               f"│ [4] {hm}                 │ [4] Epic Games         │ [4] {feath}                    │ [4] {openas}                   │\n",
+               f"│ [5] XMCL                 │ [5] GOG Galaxy         │ [5] {lunarclien}               │                                │\n",
+               f"│ [6] GDLauncher           │ [6] Paradox            │ [6] {cheatbreake}              │                                │\n",
+               f"│                          │ [7] Roblox             │ [7] Badlion                    │                                │")
+        print(f" │                          │                        │ [8] Crystal Client             │                                │\n",
+               f"│                          │                        │                                │                                │\n",
+               f"│                          │                        │                                │                                │\n",
+               f"│                          │                        │                                │                                │\n",
+               f"│                          │                        │                                │                                │\n",
+               f"│                          │                        │                                │                                │\n",
+               f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                     Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ [PC] PcStats                      │\n",
+               f"│                     Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                      │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -695,7 +706,7 @@ version = "1.8"
 if pre == "":
     pre = "         "
 # Updater
-printer.lprint("Task 1/1...")
+printer.lprint("Checking updates...")
 newver = latest("xemulat/XToolbox")
 if version == str(newver):
     Errorhd = color("UpToDate ", 1)
@@ -707,7 +718,8 @@ elif str(newver) > version:
 else:
     version = version+pre
     Errorhd = color("DevBuild ", 3)
-printer.lprint("Launching...")
+printer.lprint("Setting color vars...")
+# Set color vars
 xtoolboxvv1asdfghjzz = color("XToolBox v"+version, 2)
 ramavailz = Setvars.rama()
 cpuavailifffff = Setvars.cpup()
@@ -717,4 +729,6 @@ c = Setvars.c()
 xemulatddddd = color("xemulated#2622", 2)
 Errorhd = Errorhd
 a = color("Dan", 1)
+# Run normal UI (Page 1)
+printer.lprint("Tasks completed!")
 p1()
