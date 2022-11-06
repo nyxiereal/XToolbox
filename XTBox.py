@@ -9,10 +9,14 @@ try:
     from XeLib import cls, printer, download, color, getmyping
     from colorama import init, Fore, Back
     from lastversion import latest
+    from XTLLib import SetVars
 except:
-    printer.lprint("Installing required libraries, please wait...")
-    system("pip install -U XeLib lastversion colorama psutil")
+    printer.lprint("Fixing libraries, wait...")
+    """
+    system("pip install -U XeLib lastversion colorama psutil XTLLib")
     printer.lprint("Libraries installed successfully!")
+    """
+
 def prep():
     cls()
     printer.lprint("Initializing Libraries...")
@@ -42,7 +46,7 @@ def update():
             p1()
         elif doupdate == "Y" or doupdate == "y":
             try:
-                printer.lprint("Downloading " + "XTBox "+str(latest("xemulat/XToolbox")) + " ...")
+                printer.lprint("Downloading " + "XTBox "+str(latest("xemulat/XToolbox")) + "...")
                 urlretrieve("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox"+str(latest("xemulat/XToolbox"))+".exe")
                 printer.lprint("XTBox "+str(latest("xemulat/XToolbox")) + ' Downloaded!')
                 print("This program will exit in 3s...")
@@ -64,7 +68,7 @@ def dl(org, url, urlr, name):
             elif chose == "N" or chose == "n":
                 if org == 1: p1()
                 if org == 2: p2()
-                if org == "3": p3()
+                if org == 3: p3()
     except:
         printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?")
         sleep(6)
@@ -211,81 +215,13 @@ def quicktweaks():
         elif choose == "99": exit()
         else: print("No option named " + choose) ; sleep(3)
 
-# Set variables for later use
-class Setvars():
-    def rama():
-        # RAM / VMEM percent
-        vmp = str(virtual_memory().percent).split(".", 1)[0]
-        checkram =  len(vmp)
-        if checkram == 1:   helpline1 = "  "
-        elif checkram == 2: helpline1 = " "
-        elif checkram == 3: helpline1 = ""
-        else: helpline1 = ""
-        if float(vmp) > 60:
-            return color(vmp + "%", 2) + " / 100%"+helpline1
-        else:
-            return  vmp + "% / 100%"+helpline1
-
-    def c():
-        # CPU cores and threads
-        lf = str(cpu_count(logical=False))
-        lt = str(cpu_count(logical=True))
-        checklogict = len(lt)
-        if checklogict == 1:   helpline6 = " "
-        elif checklogict == 2: helpline6 = ""
-        else: helpline6 = ""
-        checklogicf = len(lf)
-        if checklogicf == 1:   helpline0 = " "
-        elif checklogicf == 2: helpline0 = ""
-        else: helpline0 = ""
-        if int(lf) < 2 and int(lt) < 3:
-            return color(lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6, 2)
-        else:
-            return lf + "C / " + lt.replace(".0", "") + "T"+helpline0+helpline6
-
-    def cpup():
-        # CPU utiliation
-        cpup = str(cpu_percent()).replace("%", "").split(".", 1)[0]
-        checkcpu = len(cpup)
-        if checkcpu == 1:   helpline2 = " "
-        elif checkcpu == 2: helpline2 = ""
-        else: helpline2 = ""
-        if int(cpup) > 60:
-            return color(cpup, 2) + "% / 100%" + helpline2
-        else:
-            return cpup + "% / 100%" + helpline2
-
-    def dusage():
-        # C:/ Disk usage
-        dusa = str(disk_usage("/").total/1073741824)
-        duss = str(disk_usage("/").used/1073741824)
-        checkdisk =  len(str(duss.split(".", 1)[0]))
-        if checkdisk == 2:   helpline3 = "   "
-        elif checkdisk == 3: helpline3 = "  "
-        elif checkdisk == 4: helpline3 = " "
-        else: helpline2 = ""
-        if (int(dusa.split(".", 1)[0]))/(int(duss.split(".", 1)[0])) < 0.5:
-            return color(duss.split(".", 1)[0] + "GB", 2) + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
-        else:
-            return duss.split(".", 1)[0] + "GB" + " / " + dusa.split(".", 1)[0] + "GB" + helpline3
-
-    def qwert():
-        #Check ping DON'T TOUCH IT!!!
-        checkping = len(str(getmyping().replace("ms", "").replace(Fore.RED or Fore.GREEN, "")))
-        if checkping == 6:   helpline4 = "    "
-        elif checkping == 7: helpline4 = "   "
-        elif checkping == 8: helpline4 = "  "
-        else: helpline4 = ""
-        return getmyping()+Fore.RESET+helpline4
-
-
 def pcstats(origin):
     printer.lprint("Checking Your PC...")
-    ram = Setvars.rama()
-    cpupercent = Setvars.cpup()
-    diskusage = Setvars.dusage()
-    ping = Setvars.qwert()
-    cpu = Setvars.c()
+    ram = SetVars.rama()
+    cpupercent = SetVars.cpup()
+    diskusage = SetVars.dusage()
+    ping = SetVars.qwert()
+    cpu = SetVars.c()
     printer.lprint("PC Check done!")
     cls()
     print(" ┌───────┬───────────\n",
@@ -299,18 +235,9 @@ def pcstats(origin):
     if origin == 1:   p1()
     elif origin == 2: p2()
     
+# ==========< Main program loops
 
 def p1():
-    windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
-    posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
-    ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
-    neCtrl = color("HoneCtrl", 1)
-    malwarebyt = color("Malwarebytes", 1)
-    rav = color("Brave", 1)
-    firef = color("Firefox", 1)
-    sweetyli = color("SweetyLite", 1)
-    quicktwea = color("QuickTweaks", 1)
-
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────┐\n", 
@@ -336,7 +263,7 @@ def p1():
                f"│ [15] Azurite             │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│             Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ UN - Uninstall │ PC - PcStats             │\n",
+               f"│                   Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                    1/3 │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -361,11 +288,10 @@ def p1():
         elif choose == "T1" or choose == "t1":   dl(1, "https://raw.githubusercontent.com/ArtanisInc/Post-Tweaks/main/PostTweaks.bat", "PostTweaks.bat", "PostTweaks")
         elif choose == "T2" or choose == "t2":   dl(1, "https://github.com/Jathurshan-2019/Insider-Enroller/releases/download/v" + str(latest("Jathurshan-2019/Insider-Enroller")) + "/Insider_Enrollerv" + str(latest("Jathurshan-2019/Insider-Enroller")) + ".zip", "InsiderEnroller.zip", "InsiderEnroller")
         elif choose == "T3" or choose == "t3":   dl(1, "https://github.com/99natmar99/Windows-11-Fixer/releases/download/v" + str(latest("99natmar99/Windows-11-Fixer")) + "/Windows.11.Fixer.v" + str(latest("99natmar99/Windows-11-Fixer")) + ".Portable.zip", "Windows11Fixer.zip", "Windows11Fixer")
-        elif choose == "T4" or choose == "t4":   runaspowershell("iwr -useb https://massgrave.dev/get | iex", "MAS")
-        elif choose == "T5" or choose == "t5":   dl(1, "https://github.com/valinet/Win11DisableRoundedCorners/releases/download/" + str(latest("valinet/Win11DisableRoundedCorners")) + "/Win11DisableOrRestoreRoundedCorners.exe", "AntiRoundCorners.exe", "AntiRoundCorners")
-        elif choose == "T6" or choose == "t6":   dl(1, "https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix/releases/download/v." + str(latest("HerMajestyDrMona/Windows11DragAndDropToTaskbarFix")) + "-release/Windows11DragAndDropToTaskbarFix.exe", "FixDragAndDrop.exe", "Fix Drag&Drop")
-        elif choose == "T7" or choose == "t7":   dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
-        elif choose == "T8" or choose == "t8":   runaspowershell("irm christitus.com/win | iex", "CTT")
+        elif choose == "T5" or choose == "t4":   dl(1, "https://github.com/valinet/Win11DisableRoundedCorners/releases/download/" + str(latest("valinet/Win11DisableRoundedCorners")) + "/Win11DisableOrRestoreRoundedCorners.exe", "AntiRoundCorners.exe", "AntiRoundCorners")
+        elif choose == "T6" or choose == "t5":   dl(1, "https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix/releases/download/v." + str(latest("HerMajestyDrMona/Windows11DragAndDropToTaskbarFix")) + "-release/Windows11DragAndDropToTaskbarFix.exe", "FixDragAndDrop.exe", "Fix Drag&Drop")
+        elif choose == "T7" or choose == "t6":   dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
+        elif choose == "T8" or choose == "t7":   runaspowershell("irm christitus.com/win | iex", "CTT")
         elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT": quicktweaks()
 
         # =============< Apps
@@ -390,20 +316,7 @@ def p1():
         # =============< QOL Lines
         elif choose == "n" or choose == "N": p2()
         elif choose == "b" or choose == "B": p3()
-        elif choose == "h" or choose == "H": helpe(1)
-        elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(1)
-        if choose == "99": exit()
-        elif choose == "un" or choose == "Un" or choose == "uN" or choose == "UN":
-            real = input("Are you sure (Y/n): ")
-            if real == "y" or real == "Y":
-                fp = open('delxtb.bat', 'w')
-                fp.write('del XTBox.exe\n'
-                         'del EULA.XTB\n'
-                        'start /b "" cmd /c del "%~f0"&exit /b')
-                fp.close()
-                startfile("delxtb.bat")
-                exit()
-        else: print("No option named " + choose); sleep(3)
+        runqol(1, choose)
 
 def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
     while True:
@@ -526,15 +439,6 @@ def linuxdl(distro):
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS - 16.2
 
 def p2():
-    window11 = color("Windows 11", 1)
-    minttuxe = color("Linux Mint", 1)
-    zorino = color("Zorin OS", 1)
-    rectify = color("Rectify11", 1)
-    atlaso = color("Atlas OS", 1)
-    ruf = color("Rufus", 1)
-    unetboot = color("UNetBootin", 2)
-    windowssimpli = color("WindowsSimplify", 2)
-    aero = color("Aero10", 2)
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
@@ -560,7 +464,7 @@ def p2():
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                     Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                      │\n",
+               f"│                   Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                    2/3 │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -602,27 +506,17 @@ def p2():
         elif choose == "t4" or choose == "T4": dl(2, "https://www.heidoc.net/php/Windows-ISO-Downloader.exe", "HeiDoc-ISO-Downloader.exe", "HeiDoc Ios Downloader")
 
         # =============< QOL
-        elif choose == "99": exit()
         elif choose == "n" or choose == "N": p3()
         elif choose == "b" or choose == "B": p1()
-        elif choose == "h" or choose == "H": helpe(2)
-        elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(2)
-        else: print("No option named " + choose) ; sleep(3)
+        runqol(2, choose)
+
+def runqol(froms, choose):
+    if   choose == "99": exit()
+    elif choose == "h" or choose == "H": helpe(froms)
+    elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(froms)
+    else: print("No option named " + choose) ; sleep(3)
 
 def p3():
-    # GREEN color
-    prismlaunch = color("PrismLauncher", 1)
-    ste = color("Steam", 1)
-    feath = color("Feather", 1)
-    lunarclien = color("Lunar Client", 1)
-    disco = color("Discord", 1)
-    openas = color("OpenAsar", 1)
-    # RED color
-    offici = color("Official", 2)
-    hm = color("HMCL", 2)
-    upl = color("Uplay", 2)
-    cheatbreake = color("Cheat Breaker", 2)
-    
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
@@ -648,7 +542,7 @@ def p3():
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                     Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                      │\n",
+               f"│                   Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                    3/3 │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -689,22 +583,23 @@ def p3():
         elif choose == "99": exit()
         elif choose == "n" or choose == "N": p1()
         elif choose == "b" or choose == "B": p2()
-        elif choose == "h" or choose == "H": helpe(2)
-        elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(2)
-        else: print("No option named " + choose) ; sleep(3)
+        runqol(3, choose)
+
 
 # Basically main^2
 cls()
+printer.lprint("Starting...")
 if isfile("EULA.XTB") == False:
     eula()
 prep()
 
-printer.lprint("Running Pre-Startup tasks...")
 # Set vars pre startup
+printer.lprint("Running Pre-Startup tasks...")
 pre = ""
-version = "1.8"
+version = "1.9"
 if pre == "":
-    pre = "         "
+    pre = "-Alpha.1 "
+
 # Updater
 printer.lprint("Checking updates...")
 newver = latest("xemulat/XToolbox")
@@ -715,17 +610,57 @@ elif str(newver) > version:
     update()
 else:
     Errorhd = color("DevBuild ", 3)
-printer.lprint("Setting color vars...")
+
 # Set color vars
+printer.lprint("Setting color vars...\n"
+               "Global...")
 xtoolboxvv1asdfghjzz = color("XToolBox v"+version+pre, 2)
-ramavailz = Setvars.rama()
-cpuavailifffff = Setvars.cpup()
-dusagehebeded = Setvars.dusage()
-qwert = Setvars.qwert()
-c = Setvars.c()
+ramavailz = SetVars.rama()
+cpuavailifffff = SetVars.cpup()
+dusagehebeded = SetVars.dusage()
+qwert = SetVars.qwert()
+c = SetVars.c()
 xemulatddddd = color("xemulated#2622", 2)
 Errorhd = Errorhd
 a = color("Dan", 1)
+
+# Page 1 Vairables
+printer.lprint("Setting Page 1 Vars...")
+windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
+ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
+posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
+malwarebyt = color("Malwarebytes", 1)
+quicktwea = color("QuickTweaks", 1)
+sweetyli = color("SweetyLite", 1)
+neCtrl = color("HoneCtrl", 1)
+firef = color("Firefox", 1)
+rav = color("Brave", 1)
+
+# Page 2 Vairables
+printer.lprint("Setting Page 2 Vars...")
+windowssimpli = color("WindowsSimplify", 2)
+unetboot = color("UNetBootin", 2)
+aero = color("Aero10", 2)
+window11 = color("Windows 11", 1)
+minttuxe = color("Linux Mint", 1)
+rectify = color("Rectify11", 1)
+zorino = color("Zorin OS", 1)
+atlaso = color("Atlas OS", 1)
+ruf = color("Rufus", 1)
+
+# Page 3 Variables
+printer.lprint("Setting Page 3 Vars...")
+cheatbreake = color("Cheat Breaker", 2)
+offici = color("Official", 2)
+upl = color("Uplay", 2)
+hm = color("HMCL", 2)
+prismlaunch = color("PrismLauncher", 1)
+lunarclien = color("Lunar Client", 1)
+openas = color("OpenAsar", 1)
+disco = color("Discord", 1)
+feath = color("Feather", 1)
+ste = color("Steam", 1)
+
 # Run normal UI (Page 1)
 printer.lprint("Tasks completed!")
 p1()
