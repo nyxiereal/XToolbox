@@ -1,5 +1,15 @@
+<p align="center">
+<img align=center src="https://cdn.discordapp.com/attachments/820745488231301215/1038559936852013116/toolbox_1.png" alt="Bento box" width="75" />
+</br>
+</br>
+XToolBox
+</br>
+<strong>A toolbox full of Windows 11 and 10 debloating utilities!</strong>
+</br>
+</br>
+
 # XToolBox
-A toolbox full of Windows 11 and 10 tweaking / debloating utilities!
+A toolbox full of Windows 11 and 10 debloating utilities!
 
 If this program gets flagged as malware it's false positive. The program is literary open-source, there is nothing to worry.
 
