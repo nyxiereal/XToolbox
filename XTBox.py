@@ -17,6 +17,54 @@ except:
     printer.lprint("Libraries installed successfully!")
     """
 
+# Stuff for XTLLib
+def runqol(froms, choose):
+    if   choose == "99": exit()
+    elif achooser == "h" or choose == "H": helpe(froms)
+    elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(froms)
+    else: print("No option named " + choose); sleep(3)
+
+def achooser(choose, option):
+    if option == choose or option.upper == choose or option.capitalize == choose or option.lower == choose or option.title == choose:
+        return True
+
+def fwrite(filename, content):
+    fp = open(filename, 'w')
+    fp.write(content)
+    fp.close()
+
+def runaspowershell(command, filename):
+    fwrite(filename+'.bat', r'@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "'+command+'"')
+    startfile(filename+".bat")
+
+def muulter(org, file1, name1, namez1, fname1, 
+                 file2, name2, namez2, fname2,
+                 file3, name3, namez3, fname3):
+    print("Version:\n"
+         f"[1] {name1}\n"
+         f"[2] {name2}")
+    if name3 and file3 and namez3 and fname3 != False: print(f"[3] {name3}") ; f3 = False
+    choose = input("> ")
+    if choose == "1": dl(org, file1, fname1, namez1)
+    elif choose == "2": dl(org, file2, fname2, namez2)
+    elif choose == "3" and f3 == True: dl(org, file3, fname3, namez3)
+    else: print("No option named " + choose) ; sleep(3)
+
+def linuxdl(distro):
+    cls()
+    if   distro == 1: tuxdl("[1] Cinnamon  ", "[2] MATE      ", "[3] Xfce      ", distro) # Linux Mint
+    elif distro == 2: tuxdl("[1] Nvidia    ", "[2] RPI4      ", "[3] LTS       ", distro) # Pop!_OS
+    elif distro == 3: tuxdl("[1] Ubuntu    ", "[2] Kubuntu   ", "[3] Lubuntu   ", distro) # Ubuntu
+    elif distro == 4: tuxdl("[1] Latest    ", "[2] Bootstrap ", "              ", distro) # Arch Linux
+    elif distro == 5: tuxdl("[1] Plasma    ", "[2] Xfce      ", "[3] MATE      ", distro) # Artix Linux OpenRC
+    elif distro == 6: tuxdl("[1] Budgie    ", "[2] Plasma    ", "[3] GNOME     ", distro) # Solus
+    elif distro == 7: tuxdl("[1] NetInst   ", "              ", "              ", distro) # Debian
+    elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux
+    elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS
+
+### Accual code
+
+
 def prep():
     cls()
     printer.lprint("Initializing Libraries...")
@@ -62,7 +110,7 @@ def dl(org, url, urlr, name):
     try:
         if isfile(urlr) == True:
             printer.lprint("ERROR 1 - File " + urlr + " already exists!")
-            chose = input("Overwrite? (Y/n): ")
+            chose = input(Fore.RED+"[S>] Overwrite?"+Fore.RESET+" ("+Fore.GREEN+"Y"+Fore.RESET+"/"+Fore.RED+"n"+Fore.RESET+"): ")
             if chose == "Y" or chose == "y":
                 pass
             elif chose == "N" or chose == "n":
@@ -81,12 +129,6 @@ def dl(org, url, urlr, name):
     except:
         printer.lprint("ERROR 3: Can't download file from the server...")
         sleep(3)
-
-def runaspowershell(command, filename):
-    fp = open(filename+".bat", 'w')
-    fp.write(r'@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "'+command+'"')
-    fp.close()
-    startfile(filename+".bat")
 
 def eula():
     cls()
@@ -115,12 +157,8 @@ def eula():
             fp.close()
             z = False
         elif agree == "n" or agree == "N":
-            print("Ok, come back if you change your mind.")
-            exit(sleep(3))
-        else:
-            print("That wasn't one of the options...")
-            sleep(2)
-            cls()
+            print("Ok, come back if you change your mind."); exit(sleep(3))
+        else: print("No option named " + chooseeset) ; sleep(3)
     del z
 
 def helpe(origin):
@@ -214,33 +252,102 @@ def quicktweaks():
         elif choose == "B" or choose == "b": p1()
         elif choose == "99": exit()
         else: print("No option named " + choose) ; sleep(3)
-
-def achooser(choose, option):
-    if option == choose or option.upper == choose or option.capitalize == choose or option.lower == choose or option.title == choose:
-        return True
-
-def pcstats(origin):
-    printer.lprint("Checking Your PC...")
-    ram = SetVars.rama()
-    cpupercent = SetVars.cpup()
-    diskusage = SetVars.dusage()
-    ping = SetVars.qwert()
-    cpu = SetVars.c()
-    printer.lprint("PC Check done!")
-    cls()
-    print(" ┌───────┬───────────\n",
-          f"│ Ping  │ {ping}\n",
-          f"│ Disk  │ {diskusage}\n",
-          f"│ CPU   │ {cpu}\n",
-          f"│ CPUP  │ {cpupercent}\n",
-          f"│ RAM   │ {ram}\n",
-           "└───────┴───────────")
-    input("> ")
-    if origin == 1:   p1()
-    elif origin == 2: p2()
     
-# ==========< Main program loops
+def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
+    while True:
+        print(f" ┌───────────────────────────────┐\n",
+               f'│ {line1ddddddd}                │\n',
+               f"│ {line2ddddddd}                │\n",
+               f"│ {line3ddddddd}                │\n",
+               f"│                               │\n",
+               f"├───────────────────────────────┤\n",
+               f"│    Choose your Distro Type    │\n",
+               f"└───────────────────────────────┘\n")
+        choose = input("> ")
 
+        if   distro == 1: # Linux Mint 21 - Vanessa
+            if   choose == "1":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-cinnamon-64bit.iso", "LinuxMint-21.3-Cinnamon.iso", "Linux Mint Cinnamon")
+            elif choose == "2":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-mate-64bit.iso", "LinuxMint-21.3-MATE.iso", "Linux Mint MATE")
+            elif choose == "3":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-xfce-64bit.iso", "LinuxMint-21.3-Xfce.iso", "Linux Mint Xfce")
+            else: print("No option named" + choose); sleep(4)
+
+        elif distro == 2: # Pop!_OS - 22.04
+            if   choose == "1":  dl(2, "https://iso.pop-os.org/22.04/amd64/nvidia/16/pop-os_22.04_amd64_nvidia_16.iso", "PopOS-Nvidia.iso", "Pop!_OS Nvidia")
+            elif choose == "2":  dl(2, "https://iso.pop-os.org/22.04/arm64/raspi/2/pop-os_22.04_arm64_raspi_2.img.xz", "PopOS-RPI4.img.xz", "Pop!_OS RPI 4 Tech Previwe")
+            elif choose == "3":  dl(2, "https://iso.pop-os.org/22.04/amd64/intel/16/pop-os_22.04_amd64_intel_16.iso", "PopOS-LTS.iso", "Pop!_OS LTS")
+            else: print("No option named" + choose); sleep(4)
+
+        elif distro == 3: # Ubuntu - 22.10 Kinetic Kudu
+            if   choose == "1":  dl(2, "https://releases.ubuntu.com/22.10/ubuntu-22.10-desktop-amd64.iso", "Ubuntu.iso", "Ubuntu")
+            elif choose == "2":  dl(2, "https://cdimage.ubuntu.com/kubuntu/releases/22.10/release/kubuntu-22.10-desktop-amd64.iso", "Kubuntu.iso", "Kubuntu")
+            elif choose == "3":  dl(2, "https://cdimage.ubuntu.com/lubuntu/releases/22.10/release/lubuntu-22.10-desktop-amd64.iso", "Lubuntu.iso", "Lubuntu")
+            else: print("No option named" + choose); sleep(4)
+
+        elif distro == 4: # Arch Linux - 2022.10.01
+            if   choose == "1":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-2022.10.01-x86_64.iso", "Arch-2022.10.iso", "Arch 2022.10")
+            elif choose == "2":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-x86_64.iso", "Arch-Old.iso", "")
+            else: print("No option named" + choose); sleep(4)
+
+        elif distro == 5: # Artix Linux OpenRC - 20220713
+            if   choose == "1":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-plasma-openrc-20220713-x86_64.iso", "Artix-Plasma.iso", "Artix Plasma")
+            elif choose == "2":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-xfce-openrc-20220713-x86_64.iso", "Artix-Xfce.iso", "Artix Xfce")
+            elif choose == "3":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-mate-openrc-20220713-x86_64.iso", "Artix-MATE.iso", "Artix MATE")
+            else: print("No option named" + choose); sleep(4)
+
+        elif distro == 6: # Solus - 4.3
+            if   choose == "1":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Budgie.iso", "Solus-Budgie.iso", "Solus Budgie")
+            elif choose == "2":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Plasma.iso", "Solus-Plasma.iso", "Solus Plasma")
+            elif choose == "3":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-GNOME.iso", "Solus-GNOME.iso", "Solus GNOME")
+            else: print("No option named" + choose); sleep(4)
+
+        elif distro == 7: # Debian - 11.5.0
+            if   choose == "1":  dl(2, "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.5.0-amd64-netinst.iso", "Debian-NetInst.iso", "Debian NetInstall")
+            else: print("No option named" + choose); sleep(4)
+
+        elif distro == 8: # Garuda Linux - Auto-Updates
+            if   choose == "1":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/dr460nized-gaming/latest.iso?fosshost=1", "Garuda-DR460NIZED.iso", "Garuda DR460NIZED Gaming")
+            elif choose == "2":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/gnome/latest.iso?fosshost=1", "Garuda-GNOME.iso", "Garuda GNOME")
+            elif choose == "3":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/xfce/latest.iso?fosshost=1", "Garuda-Xfce.iso", "Garuda Xfce")
+            else: print("No option named" + choose); sleep(4)
+        
+        elif distro == 9: # Zorin OS - 16.2
+            if   choose == "1":  dl(2, "https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Core-64-bit.iso", "ZorinOS-Core.iso", "Zorin OS Core")
+            elif choose == "2":  dl(2, "https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Lite-64-bit.iso", "ZorinOS-Lite.iso", "Zorin OS Lite")
+            else: print("No option named" + choose); sleep(4)
+
+def multidl(file):
+    if   file == "ReviOS": muulter(2, "https://archive.org/download/revi-os-11-22.10/ReviOS-11-22.10.iso", "ReviOS 11", "ReviOS 11", "ReviOS-11.iso", 
+                                      "https://archive.org/download/revi-os-10-22.10/ReviOS-10-22.10.iso", "ReviOS 10", "ReviOS 10", "ReviOS-10.iso", False, False, False, False)
+
+    elif file == "AtlasOS": muulter(2, "https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2_21H2.iso", "21H2 + Faceit", "AtlasOS 21H2", "AtlasOS-21H2.iso",
+                                       "https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2.iso", "20H2 + Better than Old", "AtlasOS 20H2", "AtlasOS-20H2.iso",
+                                       "https://github.com/Atlas-OS/atlas-releases/releases/download/1803/Atlas_1803_v0.2.iso", "1803 + Old version", "AtlasOS 1803", "AtlasOS-1803.iso")
+
+    elif file == "SimplifyWindows": muulter(2, "https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22621.525_221014.iso", "1.66GB - Extreme Lite with Store", "WindowsSimplify-1.66GB", "WindowsStimplfy-1.iso", 
+                                               "https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22623.746_221018.iso", "1.73GB - No Windows Update", "WindowsSimplify-1.73GB", "WindowsSimplify-2.iso",
+                                               "https://archive.org/download/simplify-windows-v2/22621.317_220811-2.iso", "1.83GB - Max Debloat", "WindowsSimplify-1.83GB", "WindowsStimplfy-3.iso")
+
+    elif file == "Prism": muulter(3, "https://github.com/PrismLauncher/PrismLauncher/releases/download/"+str(latest("PrismLauncher/PrismLauncher"))+"/PrismLauncher-Windows-Portable-"+str(latest("PrismLauncher/PrismLauncher"))+".zip", "PrismLauncher Portable", "Portable", "PrismLauncher-Portable.zip", 
+                                     "https://github.com/PrismLauncher/PrismLauncher/releases/download/"+str(latest("PrismLauncher/PrismLauncher"))+"/PrismLauncher-Windows-Setup-"+str(latest("PrismLauncher/PrismLauncher"))+".exe", "PrismLauncher Setup", "Setup", "PrismLauncher-Setup.exe", False, False, False, False)
+    
+    elif file == "GDLauncher": muulter(3, "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-portable.zip", "GDLauncher Portable", "Portable", "GDLauncher-Portable.zip", 
+                                          "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-setup.exe", "GDLauncher Setup", "Setup", "GDLauncher-Setup.exe", False, False, False, False)
+
+    elif file == "OpenAsar":
+        fp = open('openasar.bat', 'w')
+        fp.write('@echo off\n'
+                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                 r'C:\Windows\System32\TIMEOUT.exe /t 5 /nobreak' + "\n"
+                 r'copy /y "%localappdata%\Discord\app-1.0.9007\resources\app.asar" "%localappdata%\Discord\app-1.0.9007\resources\app.asar.backup"' + "\n"
+                 r'powershell -Command "Invoke-WebRequest https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar -OutFile \"$Env:LOCALAPPDATA\Discord\app-1.0.9007\resources\app.asar\""' + "\n"
+                 r'start "" "%localappdata%\Discord\Update.exe" --processStart Discord.exe' + "\n"
+                 r'goto 2>nul & del "%~f0"')
+        fp.close()
+        startfile("openasar.bat")
+
+# ==========< Main program loops
 def p1():
     while True:
         cls()
@@ -323,126 +430,6 @@ def p1():
         elif choose == "b" or choose == "B": p3()
         runqol(1, choose)
 
-def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
-    while True:
-        print(f" ┌───────────────────────────────┐\n",
-               f'│ {line1ddddddd}                │\n',
-               f"│ {line2ddddddd}                │\n",
-               f"│ {line3ddddddd}                │\n",
-               f"│                               │\n",
-               f"├───────────────────────────────┤\n",
-               f"│    Choose your Distro Type    │\n",
-               f"└───────────────────────────────┘\n")
-        choose = input("> ")
-
-        if   distro == 1: # Linux Mint 21 - Vanessa
-            if   choose == "1":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-cinnamon-64bit.iso", "LinuxMint-21.3-Cinnamon.iso", "Linux Mint Cinnamon")
-            elif choose == "2":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-mate-64bit.iso", "LinuxMint-21.3-MATE.iso", "Linux Mint MATE")
-            elif choose == "3":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-xfce-64bit.iso", "LinuxMint-21.3-Xfce.iso", "Linux Mint Xfce")
-            else: print("No option named" + choose); sleep(4)
-
-        elif distro == 2: # Pop!_OS - 22.04
-            if   choose == "1":  dl(2, "https://iso.pop-os.org/22.04/amd64/nvidia/16/pop-os_22.04_amd64_nvidia_16.iso", "PopOS-Nvidia.iso", "Pop!_OS Nvidia")
-            elif choose == "2":  dl(2, "https://iso.pop-os.org/22.04/arm64/raspi/2/pop-os_22.04_arm64_raspi_2.img.xz", "PopOS-RPI4.img.xz", "Pop!_OS RPI 4 Tech Previwe")
-            elif choose == "3":  dl(2, "https://iso.pop-os.org/22.04/amd64/intel/16/pop-os_22.04_amd64_intel_16.iso", "PopOS-LTS.iso", "Pop!_OS LTS")
-            else: print("No option named" + choose); sleep(4)
-
-        elif distro == 3: # Ubuntu - 22.10 Kinetic Kudu
-            if   choose == "1":  dl(2, "https://releases.ubuntu.com/22.10/ubuntu-22.10-desktop-amd64.iso", "Ubuntu.iso", "Ubuntu")
-            elif choose == "2":  dl(2, "https://cdimage.ubuntu.com/kubuntu/releases/22.10/release/kubuntu-22.10-desktop-amd64.iso", "Kubuntu.iso", "Kubuntu")
-            elif choose == "3":  dl(2, "https://cdimage.ubuntu.com/lubuntu/releases/22.10/release/lubuntu-22.10-desktop-amd64.iso", "Lubuntu.iso", "Lubuntu")
-            else: print("No option named" + choose); sleep(4)
-
-        elif distro == 4: # Arch Linux - 2022.10.01
-            if   choose == "1":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-2022.10.01-x86_64.iso", "Arch-2022.10.iso", "Arch 2022.10")
-            elif choose == "2":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-x86_64.iso", "Arch-Old.iso", "")
-            else: print("No option named" + choose); sleep(4)
-
-        elif distro == 5: # Artix Linux OpenRC - 20220713
-            if   choose == "1":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-plasma-openrc-20220713-x86_64.iso", "Artix-Plasma.iso", "Artix Plasma")
-            elif choose == "2":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-xfce-openrc-20220713-x86_64.iso", "Artix-Xfce.iso", "Artix Xfce")
-            elif choose == "3":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-mate-openrc-20220713-x86_64.iso", "Artix-MATE.iso", "Artix MATE")
-            else: print("No option named" + choose); sleep(4)
-
-        elif distro == 6: # Solus - 4.3
-            if   choose == "1":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Budgie.iso", "Solus-Budgie.iso", "Solus Budgie")
-            elif choose == "2":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Plasma.iso", "Solus-Plasma.iso", "Solus Plasma")
-            elif choose == "3":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-GNOME.iso", "Solus-GNOME.iso", "Solus GNOME")
-            else: print("No option named" + choose); sleep(4)
-
-        elif distro == 7: # Debian - 11.5.0
-            if   choose == "1":  dl(2, "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.5.0-amd64-netinst.iso", "Debian-NetInst.iso", "Debian NetInstall")
-            else: print("No option named" + choose); sleep(4)
-
-        elif distro == 8: # Garuda Linux - Auto-Updates
-            if   choose == "1":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/dr460nized-gaming/latest.iso?fosshost=1", "Garuda-DR460NIZED.iso", "Garuda DR460NIZED Gaming")
-            elif choose == "2":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/gnome/latest.iso?fosshost=1", "Garuda-GNOME.iso", "Garuda GNOME")
-            elif choose == "3":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/xfce/latest.iso?fosshost=1", "Garuda-Xfce.iso", "Garuda Xfce")
-            else: print("No option named" + choose); sleep(4)
-        
-        elif distro == 9: # Zorin OS - 16.2
-            if   choose == "1":  dl(2, "https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Core-64-bit.iso", "ZorinOS-Core.iso", "Zorin OS Core")
-            elif choose == "2":  dl(2, "https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Lite-64-bit.iso", "ZorinOS-Lite.iso", "Zorin OS Lite")
-            else: print("No option named" + choose); sleep(4)
-
-def muulter(org, file1, name1, namez1, fname1, 
-                 file2, name2, namez2, fname2,
-                 file3, name3, namez3, fname3):
-    print("Version:\n"
-         f"[1] {name1}\n"
-         f"[2] {name2}")
-    if name3 and file3 and namez3 and fname3 != False: print(f"[3] {name3}") ; f3 = False
-    choose = input("> ")
-    if choose == "1": dl(org, file1, fname1, namez1)
-    elif choose == "2": dl(org, file2, fname2, namez2)
-    elif choose == "3" and f3 == True: dl(org, file3, fname3, namez3)
-    else: print("No option named " + choose) ; sleep(3)
-
-
-def multidl(file):
-    if   file == "ReviOS": muulter(2, "https://archive.org/download/revi-os-11-22.10/ReviOS-11-22.10.iso", "ReviOS 11", "ReviOS 11", "ReviOS-11.iso", 
-                                      "https://archive.org/download/revi-os-10-22.10/ReviOS-10-22.10.iso", "ReviOS 10", "ReviOS 10", "ReviOS-10.iso", False, False, False, False)
-
-    elif file == "AtlasOS": muulter(2, "https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2_21H2.iso", "21H2 + Faceit", "AtlasOS 21H2", "AtlasOS-21H2.iso",
-                                       "https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2.iso", "20H2 + Better than Old", "AtlasOS 20H2", "AtlasOS-20H2.iso",
-                                       "https://github.com/Atlas-OS/atlas-releases/releases/download/1803/Atlas_1803_v0.2.iso", "1803 + Old version", "AtlasOS 1803", "AtlasOS-1803.iso")
-
-    elif file == "SimplifyWindows": muulter(2, "https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22621.525_221014.iso", "1.66GB - Extreme Lite with Store", "WindowsSimplify-1.66GB", "WindowsStimplfy-1.iso", 
-                                               "https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22623.746_221018.iso", "1.73GB - No Windows Update", "WindowsSimplify-1.73GB", "WindowsSimplify-2.iso",
-                                               "https://archive.org/download/simplify-windows-v2/22621.317_220811-2.iso", "1.83GB - Max Debloat", "WindowsSimplify-1.83GB", "WindowsStimplfy-3.iso")
-
-    elif file == "Prism": muulter(3, "https://github.com/PrismLauncher/PrismLauncher/releases/download/"+str(latest("PrismLauncher/PrismLauncher"))+"/PrismLauncher-Windows-Portable-"+str(latest("PrismLauncher/PrismLauncher"))+".zip", "PrismLauncher Portable", "Portable", "PrismLauncher-Portable.zip", 
-                                     "https://github.com/PrismLauncher/PrismLauncher/releases/download/"+str(latest("PrismLauncher/PrismLauncher"))+"/PrismLauncher-Windows-Setup-"+str(latest("PrismLauncher/PrismLauncher"))+".exe", "PrismLauncher Setup", "Setup", "PrismLauncher-Setup.exe", False, False, False, False)
-    
-    elif file == "GDLauncher": muulter(3, "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-portable.zip", "GDLauncher Portable", "Portable", "GDLauncher-Portable.zip", 
-                                          "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-setup.exe", "GDLauncher Setup", "Setup", "GDLauncher-Setup.exe", False, False, False, False)
-
-    elif file == "OpenAsar":
-        fp = open('openasar.bat', 'w')
-        fp.write('@echo off\n'
-                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
-                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
-                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
-                 r'C:\Windows\System32\TIMEOUT.exe /t 5 /nobreak' + "\n"
-                 r'copy /y "%localappdata%\Discord\app-1.0.9007\resources\app.asar" "%localappdata%\Discord\app-1.0.9007\resources\app.asar.backup"' + "\n"
-                 r'powershell -Command "Invoke-WebRequest https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar -OutFile \"$Env:LOCALAPPDATA\Discord\app-1.0.9007\resources\app.asar\""' + "\n"
-                 r'start "" "%localappdata%\Discord\Update.exe" --processStart Discord.exe' + "\n"
-                 r'goto 2>nul & del "%~f0"')
-        fp.close()
-        startfile("openasar.bat")
-    
-def linuxdl(distro):
-    cls()
-    if   distro == 1: tuxdl("[1] Cinnamon  ", "[2] MATE      ", "[3] Xfce      ", distro) # Linux Mint 21 - Vanessa
-    elif distro == 2: tuxdl("[1] Nvidia    ", "[2] RPI4      ", "[3] LTS       ", distro) # Pop!_OS - 22.
-    elif distro == 3: tuxdl("[1] Ubuntu    ", "[2] Kubuntu   ", "[3] Lubuntu   ", distro) # Ubuntu - 22.10 Kinetic Kudu
-    elif distro == 4: tuxdl("[1] 2022.10   ", "[2] Bootstrap ", "              ", distro) # Arch Linux - 2022.10.01
-    elif distro == 5: tuxdl("[1] Plasma    ", "[2] Xfce      ", "[3] MATE      ", distro) # Artix Linux OpenRC - 20220713
-    elif distro == 6: tuxdl("[1] Budgie    ", "[2] Plasma    ", "[3] GNOME     ", distro) # Solus - 4.3
-    elif distro == 7: tuxdl("[1] NetInst   ", "              ", "              ", distro) # Debian - 11.5.0
-    elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux - Auto-Updates
-    elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS - 16.2
-
 def p2():
     while True:
         cls()
@@ -515,11 +502,6 @@ def p2():
         elif achooser(choose, "b"): p1()
         runqol(2, choose)
 
-def runqol(froms, choose):
-    if   choose == "99": exit()
-    elif achooser == "h" or choose == "H": helpe(froms)
-    elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(froms)
-    else: print("No option named " + choose) ; sleep(3)
 
 def p3():
     while True:
@@ -603,7 +585,7 @@ printer.lprint("Running Pre-Startup tasks...")
 pre = ""
 version = "1.9"
 if pre == "":
-    pre = "-Alpha.1 "
+    pre = "-DEV3    "
 
 # Updater
 printer.lprint("Checking updates...")
