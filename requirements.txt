@@ -1,1 +1,1 @@
-pip install XeLib lastversion colorama psutil
+pip install -U XeLib lastversion colorama psutil XTLLib
