@@ -3,52 +3,18 @@ from urllib.request import urlretrieve
 from os.path import isfile
 from time import sleep
 from sys import exit
+from webbrowser import open as webopen
 try:
     # Custom / Community made libs
     from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
     from XeLib import cls, printer, download, color, getmyping
     from colorama import init, Fore, Back
     from lastversion import latest
-    from XTLLib import SetVars
+    from XTLLib import *
 except:
     printer.lprint("Fixing libraries, wait...")
-    """
     system("pip install -U XeLib lastversion colorama psutil XTLLib")
     printer.lprint("Libraries installed successfully!")
-    """
-
-# Stuff for XTLLib
-def runqol(froms, choose):
-    if   choose == "99": exit()
-    elif achooser == "h" or choose == "H": helpe(froms)
-    elif choose == "PC" or choose == "Pc" or choose == "pc" or choose == "pC": pcstats(froms)
-    else: print("No option named " + choose); sleep(3)
-
-def achooser(choose, option):
-    if option == choose or option.upper == choose or option.capitalize == choose or option.lower == choose or option.title == choose:
-        return True
-
-def fwrite(filename, content):
-    fp = open(filename, 'w')
-    fp.write(content)
-    fp.close()
-
-def runaspowershell(command, filename):
-    fwrite(filename+'.bat', r'@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "'+command+'"')
-    startfile(filename+".bat")
-
-def muulter(org, file1, name1, namez1, fname1, 
-                 file2, name2, namez2, fname2,
-                 file3, name3, namez3, fname3):
-    print("Version:\n"
-         f"[1] {name1}\n"
-         f"[2] {name2}")
-    if name3 and file3 and namez3 and fname3 != False: print(f"[3] {name3}") ; f3 = False
-    choose = input("> ")
-    if choose == "1": dl(org, file1, fname1, namez1)
-    elif choose == "2": dl(org, file2, fname2, namez2)
-    elif choose == "3" and f3 == True: dl(org, file3, fname3, namez3)
-    else: print("No option named " + choose) ; sleep(3)
 
 def linuxdl(distro):
     cls()
@@ -62,8 +28,7 @@ def linuxdl(distro):
     elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS
 
-### Accual code
-
+### App code
 
 def prep():
     cls()
@@ -88,11 +53,11 @@ def update():
         print("It seems your version of XToolBox is outdated!\n"
             "Do you want me to update it for you?")
         doupdate = input("(Y/n): ")
-        if doupdate == "n" or doupdate == "N":
+        if achooser(doupdate, "n"):
             print("Okey.")
             sleep(2)
             p1()
-        elif doupdate == "Y" or doupdate == "y":
+        elif achooser(doupdate, "y"):
             try:
                 printer.lprint("Downloading " + "XTBox "+str(latest("xemulat/XToolbox")) + "...")
                 urlretrieve("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox"+str(latest("xemulat/XToolbox"))+".exe")
@@ -103,8 +68,7 @@ def update():
                 exit()
             except:
                 printer.lprint("Can't complete updates, aborting...") ; sleep(4)
-        else:
-            print(doupdate + " Isn't an option, try again.") ; sleep(2)
+        runqol(0, doupdate)
 
 def dl(org, url, urlr, name):
     try:
@@ -117,6 +81,7 @@ def dl(org, url, urlr, name):
                 if org == 1: p1()
                 if org == 2: p2()
                 if org == 3: p3()
+            runqol(0, chose)
     except:
         printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?")
         sleep(6)
@@ -133,7 +98,7 @@ def dl(org, url, urlr, name):
 def eula():
     cls()
     z = True
-    readityoucanacceptin5sorels = Fore.RED + "Read it, You can accept in 5s" + Fore.WHITE
+    readityoucanacceptin3sorels = Fore.RED + "Read it, You can accept in 3s" + Fore.WHITE
     while z == True:
         print(" ┌───────────────────────────────────────────────────────────────────────────────┐\n"
               ' │ THE BEER-WARE LICENSE" (Revision 42):                                         │\n',
@@ -146,19 +111,17 @@ def eula():
                "│ FITNESS FOR A PARTICULAR PURPOSE. The owner will not be held responsible      │\n"
               " │ for any damage that may be caused by this project.                            │\n"
               " ├───────────────────────┬───────────────────────────────┬───────────────────────┤\n"
-             f" │                       │ {readityoucanacceptin5sorels} │                       │\n"
+             f" │                       │ {readityoucanacceptin3sorels} │                       │\n"
               " └───────────────────────┴───────────────────────────────┴───────────────────────┘\n")
-        sleep(5)
+        sleep(3)
         agree = input("Do you agree? ("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
-        if agree == "y" or agree == "Y":
+        if achooser(agree, "y"):
             print("You agreed to the EULA.")
-            fp = open('EULA.XTB', 'w')
-            fp.write('True')
-            fp.close()
+            fwrite(0, 'EULA.XTB', 'True')
             z = False
-        elif agree == "n" or agree == "N":
+        elif achooser(agree, "n"):
             print("Ok, come back if you change your mind."); exit(sleep(3))
-        else: print("No option named " + chooseeset) ; sleep(3)
+        runqol(0, agree)
     del z
 
 def helpe(origin):
@@ -209,14 +172,13 @@ def chooseeset():
               " │         │ Choose your ESET version │ 99 - Exit │ B - Back │         │\n"
               " └─────────┴──────────────────────────┴───────────┴──────────┴─────────┘\n")
         choose = input("> ")
-        if choose == "1": dl(1, "https://liveinstaller.eset.systems/odc/4e8c5ac2-4b04-4580-b453-45e209c6850d/eset_smart_security_premium_live_installer.exe", "ESETSmartSecurity.exe", "ESET Smart Security Premium")
-        elif choose == "2": dl(1, "https://liveinstaller.eset.systems/odc/a2fae1b5-a31e-4f3a-a0c9-242f9f0cf51b/eset_internet_security_live_installer.exe", "ESETInternetSecurity.exe", "ESET Internet Security")
-        elif choose == "3": dl(1, "https://liveinstaller.eset.systems/odc/f41b6af0-4718-4e4e-9ae5-ddf25b3ba713/eset_nod32_antivirus_live_installer.exe", "ESETNOD32.exe", "ESET NOD32 Antivirus")
-        elif choose == "4": dl(1, "https://liveinstaller.eset.systems/odc/a9233029-a9e4-4a49-9005-82e4b994f765/eset_nod32_antivirus_live_installer.exe", "ESETNOD32Gamer.exe", "ESET NOD32 Antivirus Gamer Edition")
-        elif choose == "5": dl(1, "https://liveinstaller.eset.systems/odc/0af63a7b-d4e0-4e5c-a4dc-c58fed3d6b78/eset_smart_security_premium_live_installer.exe", "ESETForSmallOffice.exe", "ESET Security for Small Office")
+        if choose == "1": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oks9ghjy5s2i61au5rnrfg0r1ykid0rnhqtbtnqroh93wfb7038207oeqw049nznldnid&branch=us&prod=essp", "ESETSmartSecurity.exe", "ESET Smart Security Premium")
+        elif choose == "2": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oksm3adws43jeih7v7q1yzoind790asam1cuq0unxeww9d63ebma9syry3brmbass36id&branch=us&prod=eis", "ESETInternetSecurity.exe", "ESET Internet Security")
+        elif choose == "3": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oksrvu6kmvzgtlav8e9m5ptig5lrtrx88hbdf3n6wqs2j3i3sniyl9slhlibh6t2vf7id&branch=us&prod=eav", "ESETNOD32.exe", "ESET NOD32 Antivirus")
+        elif choose == "4": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|okseuzentzl4e6u8vrufel57sww7unp7uwgtyg0na2e4o2bxmq4r8fds6qmfjz6fj6zid&branch=us&prod=eav", "ESETNOD32Gamer.exe", "ESET NOD32 Antivirus Gamer Edition")
+        elif choose == "5": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|okszgg8un2iekhydiszxmhrdmvxdo8aupvot9y3d5ifkm9rzslti7t5r2xitfxrefj4id&branch=us&prod=essp", "ESETForSmallOffice.exe", "ESET Security for Small Office")
         elif choose == "B" or chooseeset == "b": p1()
-        elif choose == "99": exit()
-        else: print("No option named " + chooseeset) ; sleep(3)
+        runqol(0, )
 
 def quicktweaks():
     while True:
@@ -250,8 +212,7 @@ def quicktweaks():
         elif choose == "11": dl(99, "https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/darkmodetoggle/darkmodeON.reg", "DarkModeON.reg", "DarkMode")
         elif choose == "12": dl(99, r"https://raw.githubusercontent.com/couleurm/couleurstoolbox/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu/Add%20Take%20Ownership.reg", "AddTakeOwnership.reg", "AddTakeOwnership")
         elif choose == "B" or choose == "b": p1()
-        elif choose == "99": exit()
-        else: print("No option named " + choose) ; sleep(3)
+        runqol(0, choose)
     
 def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
     while True:
@@ -269,51 +230,51 @@ def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
             if   choose == "1":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-cinnamon-64bit.iso", "LinuxMint-21.3-Cinnamon.iso", "Linux Mint Cinnamon")
             elif choose == "2":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-mate-64bit.iso", "LinuxMint-21.3-MATE.iso", "Linux Mint MATE")
             elif choose == "3":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-xfce-64bit.iso", "LinuxMint-21.3-Xfce.iso", "Linux Mint Xfce")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
 
         elif distro == 2: # Pop!_OS - 22.04
             if   choose == "1":  dl(2, "https://iso.pop-os.org/22.04/amd64/nvidia/16/pop-os_22.04_amd64_nvidia_16.iso", "PopOS-Nvidia.iso", "Pop!_OS Nvidia")
             elif choose == "2":  dl(2, "https://iso.pop-os.org/22.04/arm64/raspi/2/pop-os_22.04_arm64_raspi_2.img.xz", "PopOS-RPI4.img.xz", "Pop!_OS RPI 4 Tech Previwe")
             elif choose == "3":  dl(2, "https://iso.pop-os.org/22.04/amd64/intel/16/pop-os_22.04_amd64_intel_16.iso", "PopOS-LTS.iso", "Pop!_OS LTS")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
 
         elif distro == 3: # Ubuntu - 22.10 Kinetic Kudu
             if   choose == "1":  dl(2, "https://releases.ubuntu.com/22.10/ubuntu-22.10-desktop-amd64.iso", "Ubuntu.iso", "Ubuntu")
             elif choose == "2":  dl(2, "https://cdimage.ubuntu.com/kubuntu/releases/22.10/release/kubuntu-22.10-desktop-amd64.iso", "Kubuntu.iso", "Kubuntu")
             elif choose == "3":  dl(2, "https://cdimage.ubuntu.com/lubuntu/releases/22.10/release/lubuntu-22.10-desktop-amd64.iso", "Lubuntu.iso", "Lubuntu")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
 
         elif distro == 4: # Arch Linux - 2022.10.01
             if   choose == "1":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-2022.10.01-x86_64.iso", "Arch-2022.10.iso", "Arch 2022.10")
             elif choose == "2":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-x86_64.iso", "Arch-Old.iso", "")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
 
         elif distro == 5: # Artix Linux OpenRC - 20220713
             if   choose == "1":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-plasma-openrc-20220713-x86_64.iso", "Artix-Plasma.iso", "Artix Plasma")
             elif choose == "2":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-xfce-openrc-20220713-x86_64.iso", "Artix-Xfce.iso", "Artix Xfce")
             elif choose == "3":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-mate-openrc-20220713-x86_64.iso", "Artix-MATE.iso", "Artix MATE")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
 
         elif distro == 6: # Solus - 4.3
             if   choose == "1":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Budgie.iso", "Solus-Budgie.iso", "Solus Budgie")
             elif choose == "2":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Plasma.iso", "Solus-Plasma.iso", "Solus Plasma")
             elif choose == "3":  dl(2, "https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-GNOME.iso", "Solus-GNOME.iso", "Solus GNOME")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
 
         elif distro == 7: # Debian - 11.5.0
             if   choose == "1":  dl(2, "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.5.0-amd64-netinst.iso", "Debian-NetInst.iso", "Debian NetInstall")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
 
         elif distro == 8: # Garuda Linux - Auto-Updates
             if   choose == "1":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/dr460nized-gaming/latest.iso?fosshost=1", "Garuda-DR460NIZED.iso", "Garuda DR460NIZED Gaming")
             elif choose == "2":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/gnome/latest.iso?fosshost=1", "Garuda-GNOME.iso", "Garuda GNOME")
             elif choose == "3":  dl(2, "https://iso.builds.garudalinux.org/iso/latest/garuda/xfce/latest.iso?fosshost=1", "Garuda-Xfce.iso", "Garuda Xfce")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
         
         elif distro == 9: # Zorin OS - 16.2
             if   choose == "1":  dl(2, "https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Core-64-bit.iso", "ZorinOS-Core.iso", "Zorin OS Core")
             elif choose == "2":  dl(2, "https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Lite-64-bit.iso", "ZorinOS-Lite.iso", "Zorin OS Lite")
-            else: print("No option named" + choose); sleep(4)
+            runqol(0, choose)
 
 def multidl(file):
     if   file == "ReviOS": muulter(2, "https://archive.org/download/revi-os-11-22.10/ReviOS-11-22.10.iso", "ReviOS 11", "ReviOS 11", "ReviOS-11.iso", 
@@ -334,18 +295,15 @@ def multidl(file):
                                           "https://github.com/gorilla-devs/GDLauncher/releases/download/v"+str(latest("gorilla-devs/GDLauncher"))+"/GDLauncher-win-setup.exe", "GDLauncher Setup", "Setup", "GDLauncher-Setup.exe", False, False, False, False)
 
     elif file == "OpenAsar":
-        fp = open('openasar.bat', 'w')
-        fp.write('@echo off\n'
-                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
-                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
-                 r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
-                 r'C:\Windows\System32\TIMEOUT.exe /t 5 /nobreak' + "\n"
-                 r'copy /y "%localappdata%\Discord\app-1.0.9007\resources\app.asar" "%localappdata%\Discord\app-1.0.9007\resources\app.asar.backup"' + "\n"
-                 r'powershell -Command "Invoke-WebRequest https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar -OutFile \"$Env:LOCALAPPDATA\Discord\app-1.0.9007\resources\app.asar\""' + "\n"
-                 r'start "" "%localappdata%\Discord\Update.exe" --processStart Discord.exe' + "\n"
-                 r'goto 2>nul & del "%~f0"')
-        fp.close()
-        startfile("openasar.bat")
+        fwrite(1, 'openasar.bat', r'@echo off\n'
+                                  r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                                  r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                                  r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
+                                  r'C:\Windows\System32\TIMEOUT.exe /t 5 /nobreak' + "\n"
+                                  r'copy /y "%localappdata%\Discord\app-1.0.9007\resources\app.asar" "%localappdata%\Discord\app-1.0.9007\resources\app.asar.backup"' + "\n"
+                                  r'powershell -Command "Invoke-WebRequest https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar -OutFile \"$Env:LOCALAPPDATA\Discord\app-1.0.9007\resources\app.asar\""' + "\n"
+                                  r'start "" "%localappdata%\Discord\Update.exe" --processStart Discord.exe' + "\n"
+                                  r'goto 2>nul & del "%~f0"')
 
 # ==========< Main program loops
 def p1():
@@ -418,7 +376,7 @@ def p1():
         
 
         # =============< Cleanup
-        elif achooser(choose, "c1"):  dl(1, "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", ".exe", "ADW Cleaner")
+        elif achooser(choose, "c1"):  dl(1, "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", "ADW-Cleaner.exe", "ADW Cleaner")
         elif achooser(choose, "c2"):  dl(1, "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drives/ATF-Cleaner.exe", "ATF-Cleaner.exe", "ATF Cleaner")
         elif achooser(choose, "c3"):  dl(1, "https://download.ccleaner.com/dfsetup222.exe", "Defraggler.exe", "Defraggler")
         elif achooser(choose, "c4"):  dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup-37335.37335.exe", "Malwarebytes.exe", "Malwarebytes")
@@ -472,8 +430,8 @@ def p2():
         elif achooser(choose, "l9"): linuxdl(9) # Zorin OS - 16.2
 
         # =============< Windows isos
-        elif achooser(choose, "w1"): dl(2, r"https://software.download.prss.microsoft.com/dbazure/Win11_22H2_EnglishInternational_x64v1.iso?t=3d974f1b-41e2-498d-8f99-77de72bf8786&e=1667248289&h=666d856a07511e309a27d6c8bcda83731278dc4e8f09a3b0b7e9a6e71830a484", "Windows-11.iso", "Windows 11")
-        elif achooser(choose, "w2"): dl(2, r"https://software.download.prss.microsoft.com/dbazure/Win10_22H2_EnglishInternational_x64.iso?t=7ec8b9b3-28fd-450a-8318-8577e6c17b12&e=1667248241&h=041331f504341b6f9a242563152566872829eccc22b6b60a66f70e4ac843c589", "Windows-10.iso", "Windows 10")
+        elif achooser(choose, "w1"): webopen("https://www.microsoft.com/software-download/windows11"); p2()
+        elif achooser(choose, "w2"): webopen("https://www.microsoft.com/software-download/windows10"); p2()
         elif achooser(choose, "w3"): dl(2, r"https://archive.org/download/w8.1.vpro/W8.1.vPro.iso", "Windows-8.1.iso", "Windows 8.1")
         elif achooser(choose, "w4"): dl(2, r"https://archive.org/download/windows-8_202210/Windows%208.iso", "Windows-8.iso", "Windows 8")
         elif achooser(choose, "w5"): dl(2, r"https://archive.org/download/windows-7-x64-2/Windows%207%20%28x64%29.iso", "Windows-7.iso", "Windows 7")
@@ -501,7 +459,6 @@ def p2():
         elif achooser(choose, "n"): p3()
         elif achooser(choose, "b"): p1()
         runqol(2, choose)
-
 
 def p3():
     while True:
@@ -567,7 +524,6 @@ def p3():
         elif achooser(choose, "i4"): multidl("OpenAsar")
 
         # =============< QOL
-        elif choose == "99": exit()
         elif achooser(choose, "n"): p1()
         elif achooser(choose, "b"): p2()
         runqol(3, choose)
