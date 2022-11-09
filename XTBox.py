@@ -10,11 +10,17 @@ try:
     from XeLib import cls, printer, download, color, getmyping
     from colorama import init, Fore, Back
     from lastversion import latest
-    from XTLLib import *
+    from XTLLib import achooser, fwrite, muulter, runaspowershell, SetVars
 except:
     printer.lprint("Fixing libraries, wait...")
     system("pip install -U XeLib lastversion colorama psutil XTLLib")
     printer.lprint("Libraries installed successfully!")
+
+# Some crap that can't be inside XTLLib
+def runqol(froms, choose):
+    if choose == "99": exit()
+    if froms != 0 and (choose == "h" or choose == "H"): helpe(froms)
+    else: print("No option named " + choose); sleep(3)
 
 def linuxdl(distro):
     cls()
@@ -28,8 +34,7 @@ def linuxdl(distro):
     elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS
 
-### App code
-
+# App code
 def prep():
     cls()
     printer.lprint("Initializing Libraries...")
@@ -59,33 +64,28 @@ def update():
             p1()
         elif achooser(doupdate, "y"):
             try:
-                printer.lprint("Downloading " + "XTBox "+str(latest("xemulat/XToolbox")) + "...")
-                urlretrieve("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox"+str(latest("xemulat/XToolbox"))+".exe")
-                printer.lprint("XTBox "+str(latest("xemulat/XToolbox")) + ' Downloaded!')
-                print("This program will exit in 3s...")
-                sleep(3)
-                startfile("XTBox"+str(latest("xemulat/XToolbox"))+".exe")
-                exit()
+                download("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox"+str(latest("xemulat/XToolbox"))+".exe", "XTBox "+str(latest("xemulat/XToolbox")))
+                print("This program will exit in 3s..."); sleep(3)
+                exit(startfile("XTBox"+str(latest("xemulat/XToolbox"))+".exe"))
             except:
                 printer.lprint("Can't complete updates, aborting...") ; sleep(4)
         runqol(0, doupdate)
 
 def dl(org, url, urlr, name):
+    # Try and except because of constant crashes lol
     try:
         if isfile(urlr) == True:
             printer.lprint("ERROR 1 - File " + urlr + " already exists!")
             chose = input(Fore.RED+"[S>] Overwrite?"+Fore.RESET+" ("+Fore.GREEN+"Y"+Fore.RESET+"/"+Fore.RED+"n"+Fore.RESET+"): ")
-            if chose == "Y" or chose == "y":
-                pass
+            if chose == "Y" or chose == "y": pass
             elif chose == "N" or chose == "n":
                 if org == 1: p1()
                 if org == 2: p2()
                 if org == 3: p3()
             runqol(0, chose)
     except:
-        printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?")
-        sleep(6)
-    
+        printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?"); sleep(6)
+    # Download module here vvv
     try:
         download(url, urlr, name)
         if urlr != "WindowsOnReins.ps1":
@@ -121,7 +121,7 @@ def eula():
             z = False
         elif achooser(agree, "n"):
             print("Ok, come back if you change your mind."); exit(sleep(3))
-        runqol(0, agree)
+        else: runqol(0, agree)
     del z
 
 def helpe(origin):
@@ -177,8 +177,8 @@ def chooseeset():
         elif choose == "3": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oksrvu6kmvzgtlav8e9m5ptig5lrtrx88hbdf3n6wqs2j3i3sniyl9slhlibh6t2vf7id&branch=us&prod=eav", "ESETNOD32.exe", "ESET NOD32 Antivirus")
         elif choose == "4": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|okseuzentzl4e6u8vrufel57sww7unp7uwgtyg0na2e4o2bxmq4r8fds6qmfjz6fj6zid&branch=us&prod=eav", "ESETNOD32Gamer.exe", "ESET NOD32 Antivirus Gamer Edition")
         elif choose == "5": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|okszgg8un2iekhydiszxmhrdmvxdo8aupvot9y3d5ifkm9rzslti7t5r2xitfxrefj4id&branch=us&prod=essp", "ESETForSmallOffice.exe", "ESET Security for Small Office")
-        elif choose == "B" or chooseeset == "b": p1()
-        runqol(0, )
+        elif choose == "B" or choose == "b": p1()
+        runqol(0, choose)
 
 def quicktweaks():
     while True:
