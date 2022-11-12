@@ -22,8 +22,9 @@ If this program gets flagged as malware it's a false positive. The program is li
 ![image](https://user-images.githubusercontent.com/98595166/200167164-8de86066-8987-43da-8a32-416da7aa2971.png)
 
 ## 📌 Todo
-- [ ] Optimize code (working on it)
-- [ ] Use fewer libs
+- [x] Optimize code
+- [x] Add ExplorerPatcher
+- [x] Use fewer libs
 - [ ] Try other compilers (?)
 
 ## 🔗 Links
