@@ -12,9 +12,9 @@ try:
     from lastversion import latest
     from XTLLib import achooser, fwrite, muulter, runaspowershell, SetVars
 except:
-    printer.lprint("Fixing libraries, wait...")
+    print("Fixing libraries, wait...")
     system("pip install -U XeLib lastversion colorama psutil XTLLib")
-    printer.lprint("Libraries installed successfully!")
+    print("Libraries installed successfully!")
 
 # Some crap that can't be inside XTLLib
 def runqol(froms, choose):
