@@ -13,6 +13,7 @@ Made by xemulated#2622
 
 ## 📑 Important
 If this program gets flagged as malware it's a false positive. The program is literary open-source, don't worry.
+Nope, this program won't run on windows 7, 8 and 8.1. Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
 
 ## 📸 Screenshots
 ![image](https://user-images.githubusercontent.com/98595166/200167126-d13b0f6e-8539-4930-9548-6d1a74977f75.png)
@@ -22,10 +23,7 @@ If this program gets flagged as malware it's a false positive. The program is li
 ![image](https://user-images.githubusercontent.com/98595166/200167164-8de86066-8987-43da-8a32-416da7aa2971.png)
 
 ## 📌 Todo
-- [x] Optimize code
-- [x] Add ExplorerPatcher
-- [x] Use fewer libs
-- [ ] Try other compilers (?)
+- [ ] FIXXXXXXXXXXXXX
 
 ## 🔗 Links
 - RepoTracker link: [here](https://repo-tracker.com/r/gh/xemulat/XToolBox)
