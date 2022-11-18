@@ -4,13 +4,14 @@ from os.path import isfile
 from time import sleep
 from sys import exit
 from webbrowser import open as webopen
+from os.path import isfile
 try:
     # Custom / Community made libs
     from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
     from XeLib import cls, printer, download, color, getmyping
     from colorama import init, Fore, Back
     from lastversion import latest
-    from XTLLib import achooser, fwrite, muulter, runaspowershell, SetVars
+    from XTLLib import fwrite, muulter, runaspowershell, SetVars
 except:
     print("Fixing libraries, wait...")
     system("pip install -U XeLib lastversion colorama psutil XTLLib")
@@ -21,6 +22,10 @@ def runqol(froms, choose):
     if choose == "99": exit()
     if froms != 0 and (choose == "h" or choose == "H"): helpe(froms)
     else: print("No option named " + choose); sleep(3)
+
+def achooser(choose, option):
+    if option == choose or option.upper() == choose or option.capitalize() == choose or option.title() == choose: return True
+    if option.lower() == choose: return True
 
 def linuxdl(distro):
     cls()
@@ -88,31 +93,20 @@ def dl(org, url, urlr, name):
     # Download module here vvv
     try:
         download(url, urlr, name)
-        if urlr != "WindowsOnReins.ps1":
+        if name != "WindowsOnReins":
             startfile(urlr)
         if org == 1: p1()
+        if org == 2: p2()
+        if org == 3: p3()
     except:
-        printer.lprint("ERROR 3: Can't download file from the server...")
-        sleep(3)
+        printer.lprint("ERROR 3: Can't download file from the server...") ; sleep(3)
 
 def eula():
     cls()
     z = True
-    readityoucanacceptin3sorels = Fore.RED + "Read it, You can accept in 3s" + Fore.WHITE
     while z == True:
-        print(" ┌───────────────────────────────────────────────────────────────────────────────┐\n"
-              ' │ THE BEER-WARE LICENSE" (Revision 42):                                         │\n',
-               "│ As long as you retain this notice you can do whatever you want with this      │\n",
-               "│ stuff. If we meet someday, and you think this stuff is worth it, you can      │\n",
-               "│ buy me a beer in return.                                                      │\n",
-               "│                                                                               │\n",
-               "│ This project is distributed in the hope that it will be useful, but WITHOUT   │\n",
-               "│ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or         │\n",
-               "│ FITNESS FOR A PARTICULAR PURPOSE. The owner will not be held responsible      │\n"
-              " │ for any damage that may be caused by this project.                            │\n"
-              " ├───────────────────────┬───────────────────────────────┬───────────────────────┤\n"
-             f" │                       │ {readityoucanacceptin3sorels} │                       │\n"
-              " └───────────────────────┴───────────────────────────────┴───────────────────────┘\n")
+        print("Do Not Dumb License v1\n"
+              "I'm not responsible for your dumb.")
         sleep(3)
         agree = input("Do you agree? ("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
         if achooser(agree, "y"):
@@ -321,7 +315,7 @@ def p1():
                f"│ [4] Optimizer            │ [4] AntiRoundCorners   │ [4] Lively Wallpaper           │ [4] {malwarebyt}               │\n",
                f"│ [5] PyDebloatX           │ [5] FixDrag&Drop       │ [5] LibreWolf                  │ [5] ESET Online Scanner        │\n",
                f"│ [6] {windowsonreinddddd} │ [6] Winaero Tweaker    │ [6] qBittorrent                │ [6] ESET                       │")
-        print(f" │ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │                                │\n",
+        print(f" │ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │ [7] Kaspersky                  │\n",
                f"│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │                                │\n",
                f"│ [9] SadCoy               │                        │ [9] Memory Cleaner             │                                │\n",
                f"│ [10] {sweetyli}          │ [QT] {quicktwea}       │ [10] Compact Memory Cleaner    │                                │\n",
@@ -337,29 +331,29 @@ def p1():
         choose = input("> ")
 
         # =============< Debloat
-        if   achooser(choose, "d1"):  dl(1, "https://raw.githubusercontent.com/UnLovedCookie/EchoX/main/EchoX.bat", "EchoX.bat", "EchoX")
-        elif achooser(choose, "d2"):  dl(1, "https://raw.githubusercontent.com/auraside/HoneCtrl/main/HoneCtrl.bat", "HoneCtrl.bat", "HoneCtrl")
+        if   achooser(choose, "d1"):  dl(1, "https://github.com/UnLovedCookie/EchoX/releases/latest/download/EchoX.bat", "EchoX.bat", "EchoX")
+        elif achooser(choose, "d2"):  dl(1, "https://github.com/auraside/HoneCtrl/releases/latest/download/HoneCtrl.bat", "HoneCtrl.bat", "HoneCtrl")
         elif achooser(choose, "d3"):  dl(1, "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe", "ShutUp10.exe", "ShutUp10")
-        elif achooser(choose, "d4"):  dl(1, "https://github.com/hellzerg/optimizer/releases/download/" + str(latest("hellzerg/optimizer")) + "/Optimizer-" + str(latest("hellzerg/optimizer")) + ".exe", "Optimizer.exe", "Optimizer")
-        elif achooser(choose, "d5"):  dl(1, "https://github.com/Teraskull/PyDebloatX/releases/download/" + str(latest("Teraskull/PyDebloatX")) + "/PyDebloatX_portable.exe", "PyDebloatX.exe", "PyDebloatX")
+        elif achooser(choose, "d4"):  dl(1, "https://github.com/hellzerg/optimizer/releases/latest/download/Optimizer-" + str(latest("hellzerg/optimizer")) + ".exe", "Optimizer.exe", "Optimizer")
+        elif achooser(choose, "d5"):  dl(1, "https://github.com/Teraskull/PyDebloatX/releases/latest/download/PyDebloatX_portable.exe", "PyDebloatX.exe", "PyDebloatX")
         elif achooser(choose, "d6"):  dl(1, "https://raw.githubusercontent.com/gordonbay/Windows-On-Reins/master/wor.ps1", "WindowsOnReins.ps1", "WindowsOnReins")
-        elif achooser(choose, "d7"):  dl(1, "https://github.com/SanGraphic/QuickBoost/releases/download/" + str(latest("SanGraphic/QuickBoost")) + "/QuickBoost.exe", "QuickBoost.exe", "QuickBoost")
+        elif achooser(choose, "d7"):  dl(1, "https://github.com/SanGraphic/QuickBoost/releases/latest/download/QuickBoost.exe", "QuickBoost.exe", "QuickBoost")
         elif achooser(choose, "d8"):  runaspowershell("iwr -useb https://git.io/debloat|iex", "Win10Debloat")
-        elif achooser(choose, "d9"):  dl(1, "https://github.com/Jisll/Sadcoy/releases/download/v" + str(latest("Jisll/Sadcoy")) + "/Sadcoy.exe", "Sadcoy.exe", "Sadcoy")
+        elif achooser(choose, "d9"):  dl(1, "https://github.com/Jisll/Sadcoy/releases/latest/download/Sadcoy.exe", "Sadcoy.exe", "Sadcoy")
         elif achooser(choose, "d10"): dl(1, "https://raw.githubusercontent.com/xemulat/MyFilesForDDL/main/SweetyLite2.bat", "SweetyLite.bat", "SweetyLite")
         elif achooser(choose, "d11"): runaspowershell("iwr -useb 'https://simeononsecurity.ch/scripts/windowsoptimizeandharden.ps1'|iex", "OHDWindows")
-        elif achooser(choose, "d12"): dl(1, "https://github.com/crazy-max/WindowsSpyBlocker/releases/download/" + str(latest("crazy-max/WindowsSpyBlocker")) + "/WindowsSpyBlocker.exe", "WindowsSpyBlocker.exe", "WindowsSpyBlocker")
-        elif achooser(choose, "d13"): dl(1, "https://github.com/builtbybel/privatezilla/releases/download/" + str(latest("builtbybel/privatezilla")) + "/privatezilla.zip", "PrivateZilla.zip", "PrivateZilla")
+        elif achooser(choose, "d12"): dl(1, "https://github.com/crazy-max/WindowsSpyBlocker/releases/latest/download/WindowsSpyBlocker.exe", "WindowsSpyBlocker.exe", "WindowsSpyBlocker")
+        elif achooser(choose, "d13"): dl(1, "https://github.com/builtbybel/privatezilla/releases/latest/download/privatezilla.zip", "PrivateZilla.zip", "PrivateZilla")
         elif achooser(choose, "d14"): dl(1, "https://raw.githubusercontent.com/Zusier/Zusiers-optimization-Batch/master/Zusier%20AIO.bat", "ZusierAIO.bat", "ZusierAIO")
         elif achooser(choose, "d15"): dl(1, r"https://archive.org/download/azurite-v1.1.7-setup/Azurite%20Setup%201.1.7.exe", "Azurite.exe", "Azurite")
 
         # =============< Tweaks
         elif achooser(choose, "t1"):   dl(1, "https://raw.githubusercontent.com/ArtanisInc/Post-Tweaks/main/PostTweaks.bat", "PostTweaks.bat", "PostTweaks")
-        elif achooser(choose, "t2"):   dl(1, "https://github.com/Jathurshan-2019/Insider-Enroller/releases/download/v" + str(latest("Jathurshan-2019/Insider-Enroller")) + "/Insider_Enrollerv" + str(latest("Jathurshan-2019/Insider-Enroller")) + ".zip", "InsiderEnroller.zip", "InsiderEnroller")
-        elif achooser(choose, "t3"):   dl(1, "https://github.com/99natmar99/Windows-11-Fixer/releases/download/v" + str(latest("99natmar99/Windows-11-Fixer")) + "/Windows.11.Fixer.v" + str(latest("99natmar99/Windows-11-Fixer")) + ".Portable.zip", "Windows11Fixer.zip", "Windows11Fixer")
-        elif achooser(choose, "t4"):   dl(1, "https://github.com/valinet/Win11DisableRoundedCorners/releases/download/" + str(latest("valinet/Win11DisableRoundedCorners")) + "/Win11DisableOrRestoreRoundedCorners.exe", "AntiRoundCorners.exe", "AntiRoundCorners")
-        elif achooser(choose, "t5"):   dl(1, "https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix/releases/download/v." + str(latest("HerMajestyDrMona/Windows11DragAndDropToTaskbarFix")) + "-release/Windows11DragAndDropToTaskbarFix.exe", "FixDragAndDrop.exe", "Fix Drag&Drop")
-        elif achooser(choose, "t6"):   dl(1, "https://winaero.com/downloads/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
+        elif achooser(choose, "t2"):   dl(1, "https://github.com/Jathurshan-2019/Insider-Enroller/releases/latest/download/Insider_Enrollerv" + str(latest("Jathurshan-2019/Insider-Enroller")) + ".zip", "InsiderEnroller.zip", "InsiderEnroller")
+        elif achooser(choose, "t3"):   dl(1, "https://github.com/99natmar99/Windows-11-Fixer/releases/latest/download/Windows.11.Fixer.v" + str(latest("99natmar99/Windows-11-Fixer")) + ".Portable.zip", "Windows11Fixer.zip", "Windows11Fixer")
+        elif achooser(choose, "t4"):   dl(1, "https://github.com/valinet/Win11DisableRoundedCorners/releases/latest/download/Win11DisableOrRestoreRoundedCorners.exe", "AntiRoundCorners.exe", "AntiRoundCorners")
+        elif achooser(choose, "t5"):   dl(1, "https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix/releases/latest/download/Windows11DragAndDropToTaskbarFix.exe", "FixDragAndDrop.exe", "Fix Drag&Drop")
+        elif achooser(choose, "t6"):   dl(1, "https://winaerotweaker.com/download/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
         elif achooser(choose, "t7"):   runaspowershell("irm christitus.com/win | iex", "CTT")
         elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT": quicktweaks()
 
@@ -367,12 +361,13 @@ def p1():
         elif achooser(choose, "a1"):  dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/choco.bat", "choco.bat", "Choco")
         elif achooser(choose, "a2"):  dl(1, "https://referrals.brave.com/latest/BraveBrowserSetup.exe", "Brave.exe", "Brave Browser")
         elif achooser(choose, "a3"):  dl(1, "https://download-installer.cdn.mozilla.net/pub/firefox/releases/105.0.3/win32/en-US/Firefox%20Installer.exe", "Firefox.exe", "Firefox")
-        elif achooser(choose, "a4"):  dl(1, "https://github.com/rocksdanister/lively/releases/download/v" + str(latest("rocksdanister/lively")) + "/lively_setup_x86_full_v" + str(latest("rocksdanister/lively")).replace(".", "") + ".exe", "LivelyWallpaper.exe", "Lively Wallpaper")
-        elif achooser(choose, "a5"):  dl(1, "https://gitlab.com/librewolf-community/browser/windows/uploads/f5c35c96a94b78ac847f19f6c3d3e49e/librewolf-105.0.3-1.en-US.win64-setup.exe", "LibreWolf.exe", "LibreWolf")
-        elif achooser(choose, "a6"):  dl(1, "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-" + str(latest("c0re100/qBittorrent-Enhanced-Edition")) + "/qbittorrent_enhanced_" + str(latest("c0re100/qBittorrent-Enhanced-Edition")) + "_Qt6_setup.exe", "qBittorrent.exe", "qBittorrent")
+        elif achooser(choose, "a4"):  dl(1, "https://github.com/rocksdanister/lively/releases/latest/download/lively_setup_x86_full_v" + str(latest("rocksdanister/lively")).replace(".", "") + ".exe", "LivelyWallpaper.exe", "Lively Wallpaper")
+        elif achooser(choose, "a5"):  dl(1, "https://gitlab.com/librewolf-community/browser/windows/uploads/0d58d5bec60813087b17a865533914d5/librewolf-106.0.5-1.en-US.win64-setup.exe", "LibreWolf.exe", "LibreWolf")
+        elif achooser(choose, "a6"):  dl(1, "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/latest/download/qbittorrent-enhanced-" + str(latest("c0re100/qBittorrent-Enhanced-Edition")) + "-Qt6-setup.exe", "qBittorrent.exe", "qBittorrent")
         elif achooser(choose, "a7"):  dl(1, "https://github.com/rainmeter/rainmeter/releases/download/v4.5.16.3687/Rainmeter-4.5.16.exe", "Rainmeter.exe", "Rainmeter")
         elif achooser(choose, "a8"):  dl(1, "https://www.7-zip.org/a/7z2201-x64.exe", "7Zip.exe", "7-Zip")
         elif achooser(choose, "a9"):  dl(1, "https://www.koshyjohn.com/software/MemClean.exe", "MemoryCleaner.exe", "Memory Cleaner")
+        elif achooser(choose, "a10"): dl(1, "", "CompactMemoryCleaner.exe", "Compact Memory Cleaner")
         
 
         # =============< Cleanup
@@ -386,7 +381,7 @@ def p1():
         # =============< QOL Lines
         elif choose == "n" or choose == "N": p2()
         elif choose == "b" or choose == "B": p3()
-        runqol(1, choose)
+        else: runqol(1, choose)
 
 def p2():
     while True:
@@ -439,7 +434,7 @@ def p2():
         # =============< Modded isos
         elif achooser(choose, "m1"): dl(2, r"https://archive.org/download/rectify-11-v-2/Rectify11%20%28v2%29.iso", "Rectify11.iso", "Rectify11 v2")
         elif achooser(choose, "m2"): multidl("AtlasOS")
-        elif achooser(choose, "m3"): dl(2, r"https://download2390.mediafire.com/kpvhnmu3vfng/2z30tuoy3ojsp3h/WIN10.PRO.20H2.SUPERLITE%2BCOMPACT.U3.X64.GHOSTSPECTRE.%28W%29.iso", "GhostSpectre.iso", "Ghost Spectre")
+        elif achooser(choose, "m3"): webopen("https://www.mediafire.com/file/2z30tuoy3ojsp3h/WIN10.PRO.20H2.SUPERLITE%2BCOMPACT.U3.X64.GHOSTSPECTRE.%28W%29.iso")
         elif achooser(choose, "m4"): multidl("ReviOS")
         elif achooser(choose, "m5"): dl(2, r"https://archive.org/download/ggos-0.8.20/ggos-0.8.20.iso", "GGOS.iso", "GGOS 0.8.20")
         elif achooser(choose, "m6"): multidl("SimplifyWindows")
@@ -447,18 +442,18 @@ def p2():
         elif achooser(choose, "m8"): dl(2, "https://archive.org/download/tiny-10_202210/Tiny%2010.iso", "Tiny10.iso", "Tiny10")
         elif achooser(choose, "m9"): dl(2, "https://archive.org/download/kernel-os-22-h-2-beta/KernelOS%2022H2%20BETA.iso", "KernelOS.iso", "KernelOS")
         elif achooser(choose, "m10"): dl(2, r"https://archive.org/download/windows-7-super-nano-2/Windows%207%20%28SuperNano%29.iso", "Windows-7-SuperNano.iso", "Windows 7 Super Nano")
-        elif achooser(choose, "m11"): dl(2, r"", "Windows-11-Debloated.iso", "Windows 11 Debloated")
+        elif achooser(choose, "m11"): dl(2, r"https://archive.org/download/windows-11-debloated/Windows%2011%20Debloated.iso", "Windows-11-Debloated.iso", "Windows 11 Debloated")
 
         # =============< Tools
-        elif achooser(choose, "t1"): dl(2, "https://github.com/pbatard/rufus/releases/download/v"+str(latest("pbatard/rufus"))+"/rufus-"+str(latest("pbatard/rufus"))+".exe", "Rufus.exe", "Rufus")
-        elif achooser(choose, "t2"): dl(2, "https://github.com/balena-io/etcher/releases/download/v"+str(latest("balena-io/etcher"))+"/balenaEtcher-Portable-"+str(latest("balena-io/etcher"))+".exe", "Etcher-Portable.exe", "Balena Etcher")
-        elif achooser(choose, "t3"): dl(2, "https://github.com/unetbootin/unetbootin/releases/download/"+str(latest("unetbootin/unetbootin"))+"/unetbootin-windows-"+str(latest("unetbootin/unetbootin"))+".exe", "UNetBootin.exe", "UNetBootin")
+        elif achooser(choose, "t1"): dl(2, "https://github.com/pbatard/rufus/releases/latest/download/rufus-"+str(latest("pbatard/rufus"))+".exe", "Rufus.exe", "Rufus")
+        elif achooser(choose, "t2"): dl(2, "https://github.com/balena-io/etcher/releases/latest/download/balenaEtcher-Portable-"+str(latest("balena-io/etcher"))+".exe", "Etcher-Portable.exe", "Balena Etcher")
+        elif achooser(choose, "t3"): dl(2, "https://github.com/unetbootin/unetbootin/releases/latest/download/unetbootin-windows-"+str(latest("unetbootin/unetbootin"))+".exe", "UNetBootin.exe", "UNetBootin")
         elif achooser(choose, "t4"): dl(2, "https://www.heidoc.net/php/Windows-ISO-Downloader.exe", "HeiDoc-ISO-Downloader.exe", "HeiDoc Ios Downloader")
 
         # =============< QOL
         elif achooser(choose, "n"): p3()
         elif achooser(choose, "b"): p1()
-        runqol(2, choose)
+        else: runqol(2, choose)
 
 def p3():
     while True:
@@ -472,15 +467,15 @@ def p3():
                f"│ [1] {offici}             │ [1] {ste}              │ [1] Tecknix                    │ [1] Achivment Watcher          │\n",
                f"│ [2] {prismlaunch}        │ [2] {upl}              │ [2] Salwyrr                    │ [2] {disco}                    │\n",
                f"│ [3] ATLaucnher           │ [3] Origin             │ [3] LabyMod                    │ [3] Spotify                    │\n",
-               f"│ [4] {hm}                 │ [4] Epic Games         │ [4] {feath}                    │ [4] {openas}                   │\n",
+               f"│ [4] {hm}                 │ [4] Epic Games         │ [4] {feath}                    │                                │\n",
                f"│ [5] XMCL                 │ [5] GOG Galaxy         │ [5] {lunarclien}               │                                │\n",
                f"│ [6] GDLauncher           │ [6] Paradox            │ [6] {cheatbreake}              │                                │\n",
-               f"│                          │ [7] Roblox             │ [7] Badlion                    │                                │")
-        print(f" │                          │                        │ [8] Crystal Client             │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
+               f"│                          │ [7] Roblox             │ [7] Badlion                    ├────────────────────────────────┤")
+        print(f" │                          │                        │ [8] Crystal Client             │ [T] Tools                      │\n",
+               f"│                          │                        │                                ├────────────────────────────────┤\n",
+               f"│                          │                        │                                │ [1] {openas}                   │\n",
+               f"│                          │                        │                                │ [2] BlockTheSpot               │\n",
+               f"│                          │                        │                                │ [3] Spicefy                    │\n",
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
@@ -493,9 +488,9 @@ def p3():
         # =============< Minecraft Launchers
         if   achooser(choose, "l1"): dl(3, "https://launcher.mojang.com/download/MinecraftInstaller.exe", "MinecraftInstaller.exe", "Minecraft Launcher")
         elif achooser(choose, "l2"): multidl("Prism")
-        elif achooser(choose, "l3"): dl(3, "https://github.com/ATLauncher/ATLauncher/releases/download/v"+str(latest("ATLauncher/ATLauncher"))+"/ATLauncher-"+str(latest("ATLauncher/ATLauncher"))+".exe", "ATLauncher.exe", "ATLauncher")
-        elif achooser(choose, "l4"): dl(3, "https://github.com/huanghongxun/HMCL/releases/download/v"+str(latest("huanghongxun/HMCL"))+"/HMCL-"+str(latest("huanghongxun/HMCL"))+".exe", "HMCL.exe", "HMCL")
-        elif achooser(choose, "l5"): dl(3, "https://github.com/Voxelum/x-minecraft-launcher/releases/download/v"+str(latest("Voxelum/x-minecraft-launcher"))+"/xmcl-"+str(latest("Voxelum/x-minecraft-launcher"))+"-win32-x64.zip", "XMCL.zip", "XMCL")
+        elif achooser(choose, "l3"): dl(3, "https://github.com/ATLauncher/ATLauncher/releases/latest/download/ATLauncher-"+str(latest("ATLauncher/ATLauncher"))+".exe", "ATLauncher.exe", "ATLauncher")
+        elif achooser(choose, "l4"): dl(3, "https://github.com/huanghongxun/HMCL/releases/latest/download/HMCL-"+str(latest("huanghongxun/HMCL"))+".exe", "HMCL.exe", "HMCL")
+        elif achooser(choose, "l5"): dl(3, "https://github.com/Voxelum/x-minecraft-launcher/releases/latest/download/xmcl-"+str(latest("Voxelum/x-minecraft-launcher"))+"-win32-x64.zip", "XMCL.zip", "XMCL")
         elif achooser(choose, "l6"): multidl("GDLauncher")
 
         # =============< Game Launchers
@@ -513,20 +508,22 @@ def p3():
         elif achooser(choose, "c3"): dl(3, "https://dl.labymod.net/latest/install/LabyMod3_Installer.exe", "LabyMod.exe", "LabyMod")
         elif achooser(choose, "c4"): dl(3, r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.4.4.exe", "FeatherLauncher.exe", "Feather Launcher")
         elif achooser(choose, "c5"): dl(3, r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v2.14.0.exe", "LunarClient.exe", "Lunar Client")
-        elif achooser(choose, "c6"): dl(3, "https://github.com/Offline-CheatBreaker/Launcher/releases/download/"+str(latest("Offline-CheatBreaker/Launcher"))+"/Offline_CheatBreaker_Setup.exe", "Offline-CheatBreaker.exe", "Offline CheatBreaker")
+        elif achooser(choose, "c6"): dl(3, "https://github.com/Offline-CheatBreaker/Launcher/releases/latest/download/Offline_CheatBreaker_Setup.exe", "Offline-CheatBreaker.exe", "Offline CheatBreaker")
         elif achooser(choose, "c7"): dl(3, r"https://client-updates-cdn77.badlion.net/Badlion%20Client%20Setup%203.12.0.exe", "BadlionClient.exe", "Badlion Client")
-        elif achooser(choose, "c8"): dl(3, "https://github.com/Crystal-Development-LLC/launcher-releases/releases/download/v"+str(latest("Crystal-Development-LLC/launcher-releases"))+"/crystal-client-launcher-setup.exe", "CrystalClient.exe", "Crystal Client")
+        elif achooser(choose, "c8"): dl(3, "https://github.com/Crystal-Development-LLC/launcher-releases/releases/latest/download/crystal-client-launcher-setup.exe", "CrystalClient.exe", "Crystal Client")
         
         # =============< Misc
-        elif achooser(choose, "i1"): dl(3, "https://github.com/xan105/Achievement-Watcher/releases/download/"+str(latest("xan105/Achievement-Watcher"))+"/Achievement.Watcher.Setup.exe", "Achievement-Watcher.exe", "Achievement Watcher")
+        elif achooser(choose, "i1"): dl(3, "https://github.com/xan105/Achievement-Watcher/releases/latest/download/Achievement.Watcher.Setup.exe", "Achievement-Watcher.exe", "Achievement Watcher")
         elif achooser(choose, "i2"): dl(3, "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86", "Discord.exe", "Discord")
         elif achooser(choose, "i3"): dl(3, "https://download.scdn.co/SpotifySetup.exe", "Spotify.exe", "Spotify")
-        elif achooser(choose, "i4"): multidl("OpenAsar")
+        
+        # =============< Tools
+        elif achooser(choose, "t1"): multidl("OpenAsar")
 
         # =============< QOL
         elif achooser(choose, "n"): p1()
         elif achooser(choose, "b"): p2()
-        runqol(3, choose)
+        else: runqol(3, choose)
 
 
 # Basically main^2
@@ -538,21 +535,27 @@ prep()
 
 # Set vars pre startup
 printer.lprint("Running Pre-Startup tasks...")
-pre = ""
-version = "1.9"
+pre = " Cum Dev "
+version = "2.0"
 if pre == "":
-    pre = "-DEV3    "
+    pre = "         "
 
 # Updater
+dev = False
+isupdates = (isfile("noupdates"))
 printer.lprint("Checking updates...")
-newver = latest("xemulat/XToolbox")
-if version == str(newver):
-    Errorhd = color("UpToDate ", 1)
-elif str(newver) > version:
-    Errorhd = color("Outdated ", 2)
-    update()
+
+if dev == True: printer.lprint("DevBuild Detected, not checking for updates."); Errorhd = color("DevBuild ", 3)
+if isupdates == True: printer.lprint("NoUpdates Detected, not checking for updates."); Errorhd = color("NoUpdates", 3)
 else:
-    Errorhd = color("DevBuild ", 3)
+    newver = latest("xemulat/xtoolbox")
+    if version == str(newver):
+        Errorhd = color("UpToDate ", 1)
+    elif str(newver) > version:
+        Errorhd = color("Outdated ", 2)
+        update()
+    else:
+        Errorhd = color("DevBuild ", 3)
 
 # Set color vars
 printer.lprint("Setting color vars...\n"
