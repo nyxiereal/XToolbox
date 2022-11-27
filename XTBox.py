@@ -12,9 +12,10 @@ try:
     from colorama import init, Fore, Back
     from lastversion import latest
     from XTLLib import fwrite, muulter, runaspowershell, SetVars
+    from ping3 import ping
 except:
     print("Fixing libraries, wait...")
-    system("pip install -U XeLib lastversion colorama psutil XTLLib")
+    system("pip install -U psutil XeLib colorama lastversion XTLLib ping3")
     print("Libraries installed successfully!")
 
 # Some crap that can't be inside XTLLib
@@ -39,7 +40,7 @@ def linuxdl(distro):
     elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS
 
-# App code
+# Other functions required to do useful shit
 def prep():
     cls()
     printer.lprint("Initializing Libraries...")
@@ -58,6 +59,8 @@ def prep():
     if not virtual_memory().total/1073741824<4 and cpu_count(logical=True)<3 and cpu_count(logical=False)<2:
         printer.lprint("All Hardware requirements met!")
 
+# Waltuh we need to code
+# TODO: Fix this crap
 def update():
     while True:
         print("It seems your version of XToolBox is outdated!\n"
@@ -77,7 +80,7 @@ def update():
         runqol(0, doupdate)
 
 def dl(org, url, urlr, name):
-    # Try and except because of constant crashes lol
+    # Try and except so the program won't crash when the website isn't accesible
     try:
         if isfile(urlr) == True:
             printer.lprint("ERROR 1 - File " + urlr + " already exists!")
@@ -90,7 +93,7 @@ def dl(org, url, urlr, name):
             runqol(0, chose)
     except:
         printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?"); sleep(6)
-    # Download module here vvv
+    # Download module is located here.
     try:
         download(url, urlr, name)
         if name != "WindowsOnReins":
@@ -98,6 +101,7 @@ def dl(org, url, urlr, name):
         if org == 1: p1()
         if org == 2: p2()
         if org == 3: p3()
+        # Only `if` statements will work with this
     except:
         printer.lprint("ERROR 3: Can't download file from the server...") ; sleep(3)
 
@@ -124,18 +128,18 @@ def helpe(origin):
     ng = Back.RED+"DNGR"+Back.RESET
     ree = Back.GREEN+"Green"+Back.RESET
     print(" ┌─────────────────────────────────────────────────────────────┐\n",
-           "│ Keybind │ Command                                           │\n",
-           "│    H    │ Help Page (this page)                             │\n",
-           "│    N    │ Next Page                                         │\n",
-           "│    B    │ Back                                              │\n",
-           "│    UN   │ Uninstalls The Program                            │\n",
-           "│    99   │ Exit                                              │\n",
-           "│    PC   │ PC Stats                                          │\n",
+           "│  Keybind  │ Command                                         │\n",
+           "│     H     │ Help Page (this page)                           │\n",
+           "│     N     │ Next Page                                       │\n",
+           "│     B     │ Back                                            │\n",
+           "│     UN    │ Uninstalls The Program                          │\n",
+           "│     99    │ Exit                                            │\n",
+           "│     PC    │ PC Stats                                        │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
-           "│ Color   │ Meaning                                           │\n",
-          f"│ {e}     │ Dangerous Option                                  │\n",
-          f"│ {ng}    │ Option that can f*ck up your PC                   │\n",
-          f"│ {ree}   │ Recommended Option                                │\n",
+           "│ Color     │ Meaning                                         │\n",
+          f"│ {e}       │ Dangerous Option                                │\n",
+          f"│ {ng}      │ Option that can f*ck up your PC                 │\n",
+          f"│ {ree}     │ Recommended Option                              │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│ Error code │ Explanation                                    │\n",
            "│      1     │ File already exists                            │\n",
@@ -304,7 +308,7 @@ def p1():
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses     │\n",
@@ -387,7 +391,7 @@ def p2():
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ [T] Tools                      │\n",
@@ -413,7 +417,7 @@ def p2():
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
-        # =============< TUX BLOCK
+        # =============< TUX BLOCK | BOTTOM TEXT
         if   achooser(choose, "l1"): linuxdl(1) # Linux Mint 21 - Vanessa
         elif achooser(choose, "l2"): linuxdl(2) # Pop!_OS - 22.04
         elif achooser(choose, "l3"): linuxdl(3) # Ubuntu - 22.10 Kinetic Kudu
@@ -451,6 +455,7 @@ def p2():
         elif achooser(choose, "t4"): dl(2, "https://www.heidoc.net/php/Windows-ISO-Downloader.exe", "HeiDoc-ISO-Downloader.exe", "HeiDoc Ios Downloader")
 
         # =============< QOL
+        # Lines repeated every fucking time
         elif achooser(choose, "n"): p3()
         elif achooser(choose, "b"): p1()
         else: runqol(2, choose)
@@ -459,7 +464,7 @@ def p3():
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd} For {a} │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [L] Minecraft Launchers  │ [G] Game Launchers     │ [C] Minecraft Clients          │ [I] Misc                       │\n",
@@ -529,46 +534,70 @@ def p3():
 # Basically main^2
 cls()
 printer.lprint("Starting...")
+# Runs EULA check before prep to prevent issues.
 if isfile("EULA.XTB") == False:
     eula()
 prep()
 
 # Set vars pre startup
 printer.lprint("Running Pre-Startup tasks...")
-pre = " Cum Dev "
-version = "2.0"
-if pre == "":
-    pre = "         "
 
 # Updater
-dev = False
-isupdates = (isfile("noupdates"))
-printer.lprint("Checking updates...")
+pre = ""
+version = "2.0"
+if pre == "": pre = "         " # Sets `pre` to this long space to prevent some sort of bugs
+def update(isdev):
+    # Check for internet connection BEFORE trying to update the program.
+    # This should fix some issues with the updater.
+    if ping("github.com") == None or False:
+        # No internet access, the program will not crash.
+        Errorhd = color("NoNet    ", 2)
 
-if dev == True: printer.lprint("DevBuild Detected, not checking for updates."); Errorhd = color("DevBuild ", 3)
-if isupdates == True: printer.lprint("NoUpdates Detected, not checking for updates."); Errorhd = color("NoUpdates", 3)
-else:
-    newver = latest("xemulat/xtoolbox")
-    if version == str(newver):
-        Errorhd = color("UpToDate ", 1)
-    elif str(newver) > version:
-        Errorhd = color("Outdated ", 2)
-        update()
+
+
+if ping("github.com") != False or ping("github.com") != None:
+    dev = False
+    isupdates = (isfile("noupdates"))
+    printer.lprint("Checking updates...")
+
+    if isupdates == True: printer.lprint("NoUpdates Detected, not checking for updates."); Errorhd = color("NoUpdates", 3)
+    elif dev == True: printer.lprint("DevBuild Detected, not checking for updates."); Errorhd = color("DevBuild ", 3)
     else:
-        Errorhd = color("DevBuild ", 3)
+        newver = latest("xemulat/xtoolbox")
+        if version == str(newver):
+            Errorhd = color("UpToDate ", 1)
+        elif str(newver) > version:
+            Errorhd = color("Outdated ", 2)
+            update()
+        else:
+            Errorhd = color("DevBuild ", 3)
+else: printer.lprint("No internet not checking for updates.") ; Errorhd = color("NoNet    ", 2)
 
 # Set color vars
 printer.lprint("Setting color vars...\n"
                "Global...")
 xtoolboxvv1asdfghjzz = color("XToolBox v"+version+pre, 2)
-ramavailz = SetVars.rama()
-cpuavailifffff = SetVars.cpup()
-dusagehebeded = SetVars.dusage()
-qwert = SetVars.qwert()
-c = SetVars.c()
+# ISSUES FIXED, STOP ASKING
+try:
+    ramavailz = SetVars.rama()
+except: ramavailz = "error"
+
+try:
+    cpuavailifffff = SetVars.cpup()
+except: cpuavailifffff = "error"
+
+try:
+    dusagehebeded = SetVars.dusage()
+except: dusagehebeded = "error"
+
+try:
+    qwert = SetVars.qwert()
+except: qwert = "error"
+
+try:
+    c = SetVars.c()
+except: c = "error"
 xemulatddddd = color("xemulated#2622", 2)
-Errorhd = Errorhd
-a = color("Dan", 1)
 
 # Page 1 Vairables
 printer.lprint("Setting Page 1 Vars...")
