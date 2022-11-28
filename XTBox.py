@@ -45,39 +45,37 @@ def prep():
     cls()
     printer.lprint("Initializing Libraries...")
     init(autoreset=True)
+    # Check for 2 cores and 3 threads minimum and 4GiB of RAM
     printer.lprint("Checking hardware requirements...")
     if cpu_count(logical=True)<3 and cpu_count(logical=False)<2:
         printer.lprint("Your Processor don't meet the minimum hardware requirements (2C / 3T).\n"
-                       "Do You want to continue anyways?\n"
-                       "(Y/n)")
-        input("> ")
+                       "Do You want to continue anyways?")
+        choose = input("("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
+        if achooser(choose, "n"): exit()
+
     if virtual_memory().total/1073741824<4:
         printer.lprint("Your RAM don't meet the minimum hardware requirements (4GB RAM).\n"
-                       "Do You want to continue anyways?\n"
-                       "(Y/n)")
-        input("> ")
+                       "Do You want to continue anyways?")
+        choose = input("("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
+        if achooser(choose, "n"): exit()
+
     if not virtual_memory().total/1073741824<4 and cpu_count(logical=True)<3 and cpu_count(logical=False)<2:
         printer.lprint("All Hardware requirements met!")
 
-# Waltuh we need to code
-# TODO: Fix this crap
 def update():
-    while True:
-        print("It seems your version of XToolBox is outdated!\n"
-            "Do you want me to update it for you?")
-        doupdate = input("(Y/n): ")
-        if achooser(doupdate, "n"):
-            print("Okey.")
-            sleep(2)
-            p1()
-        elif achooser(doupdate, "y"):
-            try:
-                download("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox"+str(latest("xemulat/XToolbox"))+".exe", "XTBox "+str(latest("xemulat/XToolbox")))
-                print("This program will exit in 3s..."); sleep(3)
-                exit(startfile("XTBox"+str(latest("xemulat/XToolbox"))+".exe"))
-            except:
-                printer.lprint("Can't complete updates, aborting...") ; sleep(4)
-        runqol(0, doupdate)
+    print('Update?')
+    choose = input("("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
+    if achooser(doupdate, "n"):
+        print("Okey.")
+        sleep(2)
+        p1()
+    elif achooser(dopudate, "y"):
+        try:
+            download("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox."+str(latest("xemulat/XToolbox"))+".exe", "XTBox "+str(latest("xemulat/XToolbox")))
+        except:
+            printer.lprint("Can't complete updates, aborting...") ; sleep(4) ; exit()
+
+    else: runqol(0, doupdate) ; update()
 
 def dl(org, url, urlr, name):
     # Try and except so the program won't crash when the website isn't accesible
@@ -124,9 +122,6 @@ def eula():
 
 def helpe(origin):
     cls()
-    e = Back.RED+"Red"+Back.RESET
-    ng = Back.RED+"DNGR"+Back.RESET
-    ree = Back.GREEN+"Green"+Back.RESET
     print(" ┌─────────────────────────────────────────────────────────────┐\n",
            "│  Keybind  │ Command                                         │\n",
            "│     H     │ Help Page (this page)                           │\n",
@@ -181,9 +176,6 @@ def chooseeset():
 def quicktweaks():
     while True:
         cls()
-        LimitQ = color("LimitQoS", 2)
-        optimizess = color("Optimize SSD", 2)
-        AntiTrackTi = color("AntiTrackTime", 1)
         print(" ┌──────────────────────────┬──────────────────────────┐\n"
              f' │ [1] {AntiTrackTi}        │ [7] NoXboxBloat         R│\n',
               f"│ [2] NoNetworkAuto-Tune   │ [8] {LimitQ}            R│\n",
@@ -543,35 +535,44 @@ prep()
 printer.lprint("Running Pre-Startup tasks...")
 
 # Updater
-pre = ""
+pre = "-Femboys "
 version = "2.0"
-if pre == "": pre = "         " # Sets `pre` to this long space to prevent some sort of bugs
-def update(isdev):
-    # Check for internet connection BEFORE trying to update the program.
-    # This should fix some issues with the updater.
-    if ping("github.com") == None or False:
-        # No internet access, the program will not crash.
-        Errorhd = color("NoNet    ", 2)
+if pre == "": pre = "         "
+# Sets `pre` to this long space to prevent some sort of bugs
+# Can't be a defined function
+printer.lprint("Checking updates...")
+# Check for internet connection BEFORE trying to update the program.
+# This should fix some issues with the updater.
 
+isdev = True
 
+if ping("github.com") == None or False:
+    # No internet access, the program will not crash.
+    Errorhd = color("NoNet    ", 2)
 
-if ping("github.com") != False or ping("github.com") != None:
-    dev = False
-    isupdates = (isfile("noupdates"))
-    printer.lprint("Checking updates...")
+# Checks for the `noupdates` file 
+if isfile("noupdates.xtb") == True:
+    printer.lprint("NoUpdates Detected, not checking for updates.")
+    Errorhd = color("NoUpdates", 3)
 
-    if isupdates == True: printer.lprint("NoUpdates Detected, not checking for updates."); Errorhd = color("NoUpdates", 3)
-    elif dev == True: printer.lprint("DevBuild Detected, not checking for updates."); Errorhd = color("DevBuild ", 3)
+# Checks for DEV version  
+if isdev == True:
+    printer.lprint("DevBuild Detected, not checking for updates.")
+    Errorhd = color("DevBuild ", 3)
+
+else:
+    # After all the checks
+    newver = latest("xemulat/xtoolbox")
+    if version == str(newver):
+        Errorhd = color("UpToDate ", 1)
+
+    elif str(newver) > version:
+        # Triggers the update after outdated version is detected
+        Errorhd = color("Outdated ", 2)
+        update()
+
     else:
-        newver = latest("xemulat/xtoolbox")
-        if version == str(newver):
-            Errorhd = color("UpToDate ", 1)
-        elif str(newver) > version:
-            Errorhd = color("Outdated ", 2)
-            update()
-        else:
-            Errorhd = color("DevBuild ", 3)
-else: printer.lprint("No internet not checking for updates.") ; Errorhd = color("NoNet    ", 2)
+        Errorhd = color("DevBuild ", 3)
 
 # Set color vars
 printer.lprint("Setting color vars...\n"
@@ -582,12 +583,10 @@ try:
     ramavailz = SetVars.rama()
 except: ramavailz = "error"
 
-try:
-    cpuavailifffff = SetVars.cpup()
+try:    cpuavailifffff = SetVars.cpup()
 except: cpuavailifffff = "error"
 
-try:
-    dusagehebeded = SetVars.dusage()
+try:    dusagehebeded = SetVars.dusage()
 except: dusagehebeded = "error"
 
 try:
@@ -600,7 +599,6 @@ except: c = "error"
 xemulatddddd = color("xemulated#2622", 2)
 
 # Page 1 Vairables
-printer.lprint("Setting Page 1 Vars...")
 windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
 ohdwindowwwwwwwww = color("OHD Windows    DNGR", 2)
 posttweaksjfjfjf = color("PostTweaks    DNGR", 2)
@@ -612,7 +610,6 @@ firef = color("Firefox", 1)
 rav = color("Brave", 1)
 
 # Page 2 Vairables
-printer.lprint("Setting Page 2 Vars...")
 windowssimpli = color("WindowsSimplify", 2)
 unetboot = color("UNetBootin", 2)
 aero = color("Aero10", 2)
@@ -624,7 +621,6 @@ atlaso = color("Atlas OS", 1)
 ruf = color("Rufus", 1)
 
 # Page 3 Variables
-printer.lprint("Setting Page 3 Vars...")
 cheatbreake = color("Cheat Breaker", 2)
 offici = color("Official", 2)
 upl = color("Uplay", 2)
@@ -636,6 +632,16 @@ disco = color("Discord", 1)
 feath = color("Feather", 1)
 ste = color("Steam", 1)
 
+# Help Page Vars
+e = Back.RED+"Red"+Back.RESET
+ng = Back.RED+"DNGR"+Back.RESET
+ree = Back.GREEN+"Green"+Back.RESET
+
+# QuickTweaks Page Vars
+LimitQ = color("LimitQoS", 2)
+optimizess = color("Optimize SSD", 2)
+AntiTrackTi = color("AntiTrackTime", 1)
+
 # Run normal UI (Page 1)
-printer.lprint("Tasks completed!")
+printer.lprint("Starting...")
 p1()
