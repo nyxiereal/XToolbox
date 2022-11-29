@@ -64,14 +64,17 @@ def prep():
 
 def update():
     print('Update?')
-    choose = input("("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
+    doupdate = input("("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
     if achooser(doupdate, "n"):
         print("Okey.")
         sleep(2)
-        p1()
-    elif achooser(dopudate, "y"):
+        pass
+    elif achooser(doupdate, "y"):
+        printer.lprint("Updating...")
         try:
             download("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox."+str(latest("xemulat/XToolbox"))+".exe", "XTBox "+str(latest("xemulat/XToolbox")))
+            startfile("XTBox."+str(latest("xemulat/XToolbox"))+".exe")
+            exit()
         except:
             printer.lprint("Can't complete updates, aborting...") ; sleep(4) ; exit()
 
@@ -88,7 +91,7 @@ def dl(org, url, urlr, name):
                 if org == 1: p1()
                 if org == 2: p2()
                 if org == 3: p3()
-            runqol(0, chose)
+            else: runqol(0, chose)
     except:
         printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?"); sleep(6)
     # Download module is located here.
@@ -129,7 +132,6 @@ def helpe(origin):
            "│     B     │ Back                                            │\n",
            "│     UN    │ Uninstalls The Program                          │\n",
            "│     99    │ Exit                                            │\n",
-           "│     PC    │ PC Stats                                        │\n",
            "├─────────────────────────────────────────────────────────────┤\n",
            "│ Color     │ Meaning                                         │\n",
           f"│ {e}       │ Dangerous Option                                │\n",
@@ -146,7 +148,7 @@ def helpe(origin):
            "│                   Press ENTER to go back.                   │\n",
            "└─────────────────────────────────────────────────────────────┘\n")
     d = input("> ")
-    if d == "p" or d == "P": runaspowershell("Set-ExecutionPolicy Unrestricted -Scope CurrentUser", "SetExecutionPolicy")
+    if achooser(d, 'p'): runaspowershell("Set-ExecutionPolicy Unrestricted -Scope CurrentUser", "SetExecutionPolicy")
     if origin == 1:   p1()
     elif origin == 2: p2()
     elif origin == 3: p3()
@@ -322,7 +324,7 @@ def p1():
                f"│ [15] Azurite             │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                   Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                    1/3 │\n",
+               f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           1/3 │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -364,7 +366,6 @@ def p1():
         elif achooser(choose, "a8"):  dl(1, "https://www.7-zip.org/a/7z2201-x64.exe", "7Zip.exe", "7-Zip")
         elif achooser(choose, "a9"):  dl(1, "https://www.koshyjohn.com/software/MemClean.exe", "MemoryCleaner.exe", "Memory Cleaner")
         elif achooser(choose, "a10"): dl(1, "", "CompactMemoryCleaner.exe", "Compact Memory Cleaner")
-        
 
         # =============< Cleanup
         elif achooser(choose, "c1"):  dl(1, "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", "ADW-Cleaner.exe", "ADW Cleaner")
@@ -405,7 +406,7 @@ def p2():
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                   Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                    2/3 │\n",
+               f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           2/3 │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -471,14 +472,14 @@ def p3():
         print(f" │                          │                        │ [8] Crystal Client             │ [T] Tools                      │\n",
                f"│                          │                        │                                ├────────────────────────────────┤\n",
                f"│                          │                        │                                │ [1] {openas}                   │\n",
-               f"│                          │                        │                                │ [2] BlockTheSpot               │\n",
-               f"│                          │                        │                                │ [3] Spicefy                    │\n",
+               f"│                          │                        │                                │ [2] Spicefy                    │\n",
+               f"│                          │                        │                                │ [3] VenCord                    │\n",
+               f"│                          │                        │                                │ [4] BetterDiscord              │\n",
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
+               f"│                          │                        │                                │ // Sorry for so little files   │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                   Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help │ PC - PcStats                    3/3 │\n",
+               f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           3/3 │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
@@ -500,7 +501,7 @@ def p3():
         elif achooser(choose, "g7"): dl(3, "https://setup.roblox.com/Roblox.exe", "Roblox.exe", "Roblox")
 
         # =============< Minecraft Clients
-        elif achooser(choose, "c1"): dl(3, "https://tecknix.com/client/TecknixClient.exe", "", "Tecknix Client")
+        elif achooser(choose, "c1"): dl(3, "https://tecknix.com/client/TecknixClient.exe", "Tecknix.exe", "Tecknix Client")
         elif achooser(choose, "c2"): dl(3, r"https://www.salwyrr.com/4/download/Salwyrr%20Launcher%20Installer.exe", "Salwyrr.exe", "Salwyrr CLients")
         elif achooser(choose, "c3"): dl(3, "https://dl.labymod.net/latest/install/LabyMod3_Installer.exe", "LabyMod.exe", "LabyMod")
         elif achooser(choose, "c4"): dl(3, r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.4.4.exe", "FeatherLauncher.exe", "Feather Launcher")
@@ -516,6 +517,9 @@ def p3():
         
         # =============< Tools
         elif achooser(choose, "t1"): multidl("OpenAsar")
+        elif achooser(choose, "t2"): runaspowershell("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex | iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex", "Spicefy")
+        elif achooser(choose, "t3"): dl(3, "https://github.com/Vendicated/VencordInstaller/releases/latest/download/VencordInstaller.exe", ".exe", "VenCord")
+        elif achooser(choose, "t4"): dl(3, "https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Windows.exe", "BetterDiscord.exe", "BetterDiscord")
 
         # =============< QOL
         elif achooser(choose, "n"): p1()
@@ -535,8 +539,8 @@ prep()
 printer.lprint("Running Pre-Startup tasks...")
 
 # Updater
-pre = "-Femboys "
-version = "2.0"
+pre = ""
+version = "1.8"
 if pre == "": pre = "         "
 # Sets `pre` to this long space to prevent some sort of bugs
 # Can't be a defined function
@@ -544,7 +548,7 @@ printer.lprint("Checking updates...")
 # Check for internet connection BEFORE trying to update the program.
 # This should fix some issues with the updater.
 
-isdev = True
+isdev = False
 
 if ping("github.com") == None or False:
     # No internet access, the program will not crash.
