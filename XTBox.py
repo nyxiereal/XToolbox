@@ -5,6 +5,7 @@ from time import sleep
 from sys import exit
 from webbrowser import open as webopen
 from os.path import isfile
+from platform import release
 try:
     # Custom / Community made libs
     from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
@@ -59,7 +60,10 @@ def prep():
         choose = input("("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
         if achooser(choose, "n"): exit()
 
-    if not virtual_memory().total/1073741824<4 and cpu_count(logical=True)<3 and cpu_count(logical=False)<2:
+    if int(release())<10:
+        printer.lprint("Your windows version is older than 10, this program won't run. Upgrade to Windows 10/11 if you want to use this program.") ; exit(sleep(15))
+
+    if not virtual_memory().total/1073741824<4 and cpu_count(logical=True)<3 and cpu_count(logical=False)<2 and int(release())<10:
         printer.lprint("All Hardware requirements met!")
 
 def update():
@@ -175,6 +179,24 @@ def chooseeset():
         elif choose == "B" or choose == "b": p1()
         runqol(0, choose)
 
+def choosekas():
+    while True:
+        cls()
+        print(" ┌──────────────────────────────────────────────────────────────────────┐\n"
+              ' │ [1] Kaspersky Internet Security                                      │\n',
+               "│ [2] Kaspersky Anti-Virus                                             │\n",
+               "│ [3] Kaspersky Total Security                                         │\n",
+               "│                                                                      │\n",
+               "├───────┬───────────────────────────────┬───────────┬──────────┬───────┤\n"
+              " │       │ Choose your Kaspersky version │ 99 - Exit │ B - Back │       │\n"
+              " └───────┴───────────────────────────────┴───────────┴──────────┴───────┘\n")
+        choose = input("> ")
+        if choose == "1": dl(1, "https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/68/b8/68b8f8f6-bdc4-4c66-8443-eadeca7f06b4/kis21.3.10.391en_26096.exe", "KasperskyInternetSecurity.exe", "Kaspersky Internet Security")
+        elif choose == "2": dl(1, "https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/c6/25/c6250217-9ffe-44e1-8688-03b1a35548eb/kav21.3.10.391en_26075.exe", "KasperskyAnti-Virus.exe", "Kaspersky Anti-Virus")
+        elif choose == "3": dl(1, "https://pdc1.fra5.pdc.kaspersky.com/DownloadManagers/51/45/51454099-c33b-41aa-955d-13965a37f561/kts21.3.10.391en_26099.exe", "KasperskyTotalSecurity.exe", "Kaspersky Total Security")
+        elif choose == "B" or choose == "b": p1()
+        runqol(0, choose)
+
 def quicktweaks():
     while True:
         cls()
@@ -238,7 +260,7 @@ def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
 
         elif distro == 4: # Arch Linux - 2022.10.01
             if   choose == "1":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-2022.10.01-x86_64.iso", "Arch-2022.10.iso", "Arch 2022.10")
-            elif choose == "2":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-x86_64.iso", "Arch-Old.iso", "")
+            elif choose == "2":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-x86_64.iso", "Arch-Old.iso", "Arch Old")
             runqol(0, choose)
 
         elif distro == 5: # Artix Linux OpenRC - 20220713
@@ -314,8 +336,8 @@ def p1():
                f"│ [5] PyDebloatX           │ [5] FixDrag&Drop       │ [5] LibreWolf                  │ [5] ESET Online Scanner        │\n",
                f"│ [6] {windowsonreinddddd} │ [6] Winaero Tweaker    │ [6] qBittorrent                │ [6] ESET                       │")
         print(f" │ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │ [7] Kaspersky                  │\n",
-               f"│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │                                │\n",
-               f"│ [9] SadCoy               │                        │ [9] Memory Cleaner             │                                │\n",
+               f"│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n",
+               f"│ [9] SadCoy               │                        │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n",
                f"│ [10] {sweetyli}          │ [QT] {quicktwea}       │ [10] Compact Memory Cleaner    │                                │\n",
                f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                                │\n",
                f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n",
@@ -365,7 +387,7 @@ def p1():
         elif achooser(choose, "a7"):  dl(1, "https://github.com/rainmeter/rainmeter/releases/download/v4.5.16.3687/Rainmeter-4.5.16.exe", "Rainmeter.exe", "Rainmeter")
         elif achooser(choose, "a8"):  dl(1, "https://www.7-zip.org/a/7z2201-x64.exe", "7Zip.exe", "7-Zip")
         elif achooser(choose, "a9"):  dl(1, "https://www.koshyjohn.com/software/MemClean.exe", "MemoryCleaner.exe", "Memory Cleaner")
-        elif achooser(choose, "a10"): dl(1, "", "CompactMemoryCleaner.exe", "Compact Memory Cleaner")
+        elif achooser(choose, "a10"): dl(1, "https://github.com/qualcosa/Compact-RAM-Cleaner/releases/latest/download/Compact.RAM.Cleaner.exe", "CompactMemoryCleaner.exe", "Compact Memory Cleaner")
 
         # =============< Cleanup
         elif achooser(choose, "c1"):  dl(1, "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", "ADW-Cleaner.exe", "ADW Cleaner")
@@ -374,6 +396,9 @@ def p1():
         elif achooser(choose, "c4"):  dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup-37335.37335.exe", "Malwarebytes.exe", "Malwarebytes")
         elif achooser(choose, "c5"):  dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
         elif achooser(choose, "c6"):  chooseeset()
+        elif achooser(choose, "c7"):  choosekas()
+        elif achooser(choose, "c7"):  dl(1, "https://github.com/builtbybel/CleanmgrPlus/releases/latest/download/cleanmgrplus.zip", "CleanmgrPlus.zip", "CleanmgrPlus")
+        elif achooser(choose, "c7"):  dl(1, "https://download.glarysoft.com/gu5setup.exe", "GlaryUtilities.exe", "Glary Utilities")
 
         # =============< QOL Lines
         elif choose == "n" or choose == "N": p2()
@@ -395,15 +420,15 @@ def p2():
         print(f" │ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │ [4] HeiDoc Iso Downloader      │\n",
                f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                                │\n",
                f"│ [6] Solus                │                        │ [6] {windowssimpli}            │                                │\n",
-               f"│ [7] Debian               │                        │ [7] {aero}                     │                                │\n",
-               f"│ [8] Garuda               │                        │ [8] Tiny10                     │                                │\n",
-               f"│ [9] {zorino}             │                        │ [9] KernelOS                   │                                │\n",
-               f"│                          │                        │ [10] Windows 7 Super Nano      │                                │\n",
-               f"│                          │                        │ [11] Windows 11 Debloated      │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
+               f"│ [7] Debian               │                        │ [7] {aero}                     ├────────────────────────────────┤\n",
+               f"│ [8] Garuda               │                        │ [8] Tiny10                     │ [A] Apps                       │\n",
+               f"│ [9] {zorino}             │                        │ [9] KernelOS                   ├────────────────────────────────┤\n",
+               f"│                          │                        │ [10] Windows 7 Super Nano      │ [1] KeePassXC                  │\n",
+               f"│                          │                        │ [11] Windows 11 Debloated      │ [2] PowerToys                  │\n",
+               f"│                          │                        │                                │ [3] Alacritty                  │\n",
+               f"│                          │                        │                                │ [4] PowerShell                 │\n",
+               f"│                          │                        │                                │ [5] Motrix                     │\n",
+               f"│                          │                        │                                │ [6] Files                      │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
                f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           2/3 │\n",
@@ -411,15 +436,15 @@ def p2():
         choose = input("> ")
 
         # =============< TUX BLOCK | BOTTOM TEXT
-        if   achooser(choose, "l1"): linuxdl(1) # Linux Mint 21 - Vanessa
-        elif achooser(choose, "l2"): linuxdl(2) # Pop!_OS - 22.04
-        elif achooser(choose, "l3"): linuxdl(3) # Ubuntu - 22.10 Kinetic Kudu
-        elif achooser(choose, "l4"): linuxdl(4) # Arch Linux - 2022.10.01
-        elif achooser(choose, "l5"): linuxdl(5) # Artix Linux OpenRC - 20220713
-        elif achooser(choose, "l6"): linuxdl(6) # Solus - 4.3
-        elif achooser(choose, "l7"): linuxdl(7) # Debian - 11.5.0
-        elif achooser(choose, "l8"): linuxdl(8) # Garuda Linux - Auto-Updates
-        elif achooser(choose, "l9"): linuxdl(9) # Zorin OS - 16.2
+        if   achooser(choose, "l1"): linuxdl(1) # Linux Mint 21         Vanessa
+        elif achooser(choose, "l2"): linuxdl(2) # Pop!_OS               22.04
+        elif achooser(choose, "l3"): linuxdl(3) # Ubuntu                22.10 Kinetic Kudu
+        elif achooser(choose, "l4"): linuxdl(4) # Arch Linux            2022.10.01
+        elif achooser(choose, "l5"): linuxdl(5) # Artix Linux           20220713
+        elif achooser(choose, "l6"): linuxdl(6) # Solus                 4.3
+        elif achooser(choose, "l7"): linuxdl(7) # Debian                11.5.0
+        elif achooser(choose, "l8"): linuxdl(8) # Garuda Linux          Auto-Updates
+        elif achooser(choose, "l9"): linuxdl(9) # Zorin OS              16.2
 
         # =============< Windows isos
         elif achooser(choose, "w1"): webopen("https://www.microsoft.com/software-download/windows11"); p2()
@@ -446,6 +471,14 @@ def p2():
         elif achooser(choose, "t2"): dl(2, "https://github.com/balena-io/etcher/releases/latest/download/balenaEtcher-Portable-"+str(latest("balena-io/etcher"))+".exe", "Etcher-Portable.exe", "Balena Etcher")
         elif achooser(choose, "t3"): dl(2, "https://github.com/unetbootin/unetbootin/releases/latest/download/unetbootin-windows-"+str(latest("unetbootin/unetbootin"))+".exe", "UNetBootin.exe", "UNetBootin")
         elif achooser(choose, "t4"): dl(2, "https://www.heidoc.net/php/Windows-ISO-Downloader.exe", "HeiDoc-ISO-Downloader.exe", "HeiDoc Ios Downloader")
+
+        # =============< Tools
+        elif achooser(choose, "a1"): dl(2, "https://github.com/keepassxreboot/keepassxc/releases/latest/download/KeePassXC-"+str(latest('keepassxreboot/keepassxc'))+"-Win64.msi", "KeePassXC.msi", "KeePassXC")
+        elif achooser(choose, "a2"): dl(2, "https://github.com/microsoft/PowerToys/releases/latest/download/PowerToysSetup-"+(str(latest('microsoft/PowerToys'))).replace("v", "")+"-x64.exe", "PowerToys.exe", "PowerToys")
+        elif achooser(choose, "a3"): dl(2, "https://github.com/alacritty/alacritty/releases/latest/download/Alacritty-"+str(latest('alacritty/alacritty'))+"-installer.msi", "", "Alacritty")
+        elif achooser(choose, "a4"): dl(2, "https://github.com/PowerShell/PowerShell/releases/latest/download/PowerShell-"+(str(latest('PowerShell/PowerShell'))).replace("v", "")+"-win-x64.msi", "PowerShell.msi", "PowerShell")
+        elif achooser(choose, "a5"): dl(2, "https://github.com/agalwood/Motrix/releases/latest/download/Motrix-Setup-"+(str(latest('agalwood/Motrix'))).replace("v", "")+".exe", "", "Motrix")
+        elif achooser(choose, "a6"): dl(2, "https://files.community/appinstallers/Files.stable.appinstaller", "Files.appinstaller", "Files")
 
         # =============< QOL
         # Lines repeated every fucking time
@@ -526,8 +559,7 @@ def p3():
         elif achooser(choose, "b"): p2()
         else: runqol(3, choose)
 
-
-# Basically main^2
+# Basically a main function
 cls()
 printer.lprint("Starting...")
 # Runs EULA check before prep to prevent issues.
@@ -540,7 +572,7 @@ printer.lprint("Running Pre-Startup tasks...")
 
 # Updater
 pre = ""
-version = "1.8"
+version = "2.0"
 if pre == "": pre = "         "
 # Sets `pre` to this long space to prevent some sort of bugs
 # Can't be a defined function
@@ -548,7 +580,7 @@ printer.lprint("Checking updates...")
 # Check for internet connection BEFORE trying to update the program.
 # This should fix some issues with the updater.
 
-isdev = False
+isdev = True
 
 if ping("github.com") == None or False:
     # No internet access, the program will not crash.
