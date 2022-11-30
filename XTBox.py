@@ -1,11 +1,14 @@
-from os import startfile, system # Standard Python3 libs
+from time import sleep
+from timeit import default_timer
+from os import startfile, system
 from urllib.request import urlretrieve
 from os.path import isfile
-from time import sleep
 from sys import exit
 from webbrowser import open as webopen
 from os.path import isfile
 from platform import release
+# This has to be here
+start = default_timer()
 try:
     # Custom / Community made libs
     from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
@@ -510,7 +513,7 @@ def p3():
                f"│                          │                        │                                │ [4] BetterDiscord              │\n",
                f"│                          │                        │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │ // Sorry for so little files   │\n",
+               f"│                          │                        │                                │ // Sorry for so little tools   │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
                f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           3/3 │\n",
                f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
@@ -580,7 +583,7 @@ printer.lprint("Checking updates...")
 # Check for internet connection BEFORE trying to update the program.
 # This should fix some issues with the updater.
 
-isdev = True
+isdev = False
 
 if ping("github.com") == None or False:
     # No internet access, the program will not crash.
@@ -611,8 +614,7 @@ else:
         Errorhd = color("DevBuild ", 3)
 
 # Set color vars
-printer.lprint("Setting color vars...\n"
-               "Global...")
+printer.lprint("Setting vars...")
 xtoolboxvv1asdfghjzz = color("XToolBox v"+version+pre, 2)
 # ISSUES FIXED, STOP ASKING
 try:
@@ -680,4 +682,6 @@ AntiTrackTi = color("AntiTrackTime", 1)
 
 # Run normal UI (Page 1)
 printer.lprint("Starting...")
+printer.lprint("Loaded in " + str(str(default_timer() - start).split(".")[0]) + "s")
+sleep(0.55)
 p1()
