@@ -18,6 +18,8 @@ Nope, this program won't run on windows 7, 8 and 8.1. Adressing [Issue #9](https
 
 v2.0 on 01.12.2022
 
+Just add some stuff and optimize shit
+
 ## 📸 Screenshots
 ![image](https://user-images.githubusercontent.com/98595166/200167126-d13b0f6e-8539-4930-9548-6d1a74977f75.png)
 
@@ -26,7 +28,8 @@ v2.0 on 01.12.2022
 ![image](https://user-images.githubusercontent.com/98595166/200167164-8de86066-8987-43da-8a32-416da7aa2971.png)
 
 ## 📌 Todo
-- [ ] FIXXXXXXXXXXXXX
+- [ ] Optimize my shitty code
+- [ ] Add some programs
 
 ## 🔗 Links
 - RepoTracker link: [here](https://repo-tracker.com/r/gh/xemulat/XToolBox)
