@@ -16,10 +16,6 @@ If this program gets flagged as malware it's a false positive. The program is li
 
 Nope, this program won't run on windows 7, 8 and 8.1. Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
 
-v2.0 on 01.12.2022
-
-Just add some stuff and optimize shit
-
 ## 📸 Screenshots
 ![image](https://user-images.githubusercontent.com/98595166/200167126-d13b0f6e-8539-4930-9548-6d1a74977f75.png)
 
