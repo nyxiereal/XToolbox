@@ -1,36 +1,43 @@
-from time import sleep
-from timeit import default_timer
 from os import startfile, system
-from urllib.request import urlretrieve
 from os.path import isfile
 from sys import exit
+from time import sleep
+from timeit import default_timer
+from urllib.request import urlretrieve
 from webbrowser import open as webopen
-from os.path import isfile
 from platform import release
 # This has to be here
 start = default_timer()
 try:
     # Custom / Community made libs
-    from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
-    from XeLib import cls, printer, download, color, getmyping
     from colorama import init, Fore, Back
     from lastversion import latest
-    from XTLLib import fwrite, muulter, runaspowershell, SetVars
     from ping3 import ping
+    from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
+    from XeLib import cls, printer, download, color, getmyping
+    from XTLLib import fwrite, muulter, runaspowershell, SetVars
 except:
     print("Fixing libraries, wait...")
     system("pip install -U psutil XeLib colorama lastversion XTLLib ping3")
     print("Libraries installed successfully!")
 
-# Some crap that can't be inside XTLLib
+# This function provides some "quality of life" features to the program.
 def runqol(froms, choose):
-    if choose == "99": exit()
-    if froms != 0 and (choose == "h" or choose == "H"): helpe(froms)
-    else: print("No option named " + choose); sleep(3)
+    # If the user inputs "99", exit the program.
+    if choose == "99": 
+        exit()
+        
+    # If the user inputs "h" or "H" and the `froms` parameter is not 0,
+    # call the `helpe()` function with the `froms` parameter as an argument.
+    if froms != 0 and (choose == "h" or choose == "H"): 
+        helpe(froms)
+    else: 
+        # Otherwise, print an error message and sleep for 3 seconds.
+        print("No option named " + choose)
+        sleep(3)
 
 def achooser(choose, option):
-    if option == choose or option.upper() == choose or option.capitalize() == choose or option.title() == choose: return True
-    if option.lower() == choose: return True
+    if option == choose or option.upper() == choose or option.capitalize() == choose or option.title() or option.lower() == choose: return True
 
 def linuxdl(distro):
     cls()
@@ -44,12 +51,19 @@ def linuxdl(distro):
     elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS
 
-# Other functions required to do useful shit
+# This function defines a function called `prep()`
+# that checks the hardware requirements of the system
+# and exits if they are not met.
 def prep():
+    # Clear the screen and print a message
     cls()
     printer.lprint("Initializing Libraries...")
+    
+    # Initialize the autoreset option of the colorama module
     init(autoreset=True)
-    # Check for 2 cores and 3 threads minimum and 4GiB of RAM
+    
+    # Check the hardware requirements and ask the user
+    # if they want to continue if the requirements are not met.
     printer.lprint("Checking hardware requirements...")
     if cpu_count(logical=True)<3 and cpu_count(logical=False)<2:
         printer.lprint("Your Processor don't meet the minimum hardware requirements (2C / 3T).\n"
@@ -69,22 +83,35 @@ def prep():
     if not virtual_memory().total/1073741824<4 and cpu_count(logical=True)<3 and cpu_count(logical=False)<2 and int(release())<10:
         printer.lprint("All Hardware requirements met!")
 
+# This function defines a function called `update()`
+# that checks if the program is up to date and
+# allows the user to update it if necessary.
 def update():
+    # Ask the user if they want to update the program
     print('Update?')
     doupdate = input("("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
+    
+    # If the user does not want to update, print a message and do nothing
     if achooser(doupdate, "n"):
         print("Okey.")
         sleep(2)
         pass
+    
+    # If the user wants to update, try to download the latest version of the program
+    # and run it. If the download fails, print an error message and exit.
     elif achooser(doupdate, "y"):
         printer.lprint("Updating...")
         try:
+            # Download the latest version of the program
             download("https://github.com/xemulat/XToolbox/releases/download/v"+str(latest("xemulat/XToolbox"))+"/XTBox.exe", "XTBox."+str(latest("xemulat/XToolbox"))+".exe", "XTBox "+str(latest("xemulat/XToolbox")))
             startfile("XTBox."+str(latest("xemulat/XToolbox"))+".exe")
             exit()
+        
+        # If the download fails, print an error message and exit
         except:
             printer.lprint("Can't complete updates, aborting...") ; sleep(4) ; exit()
 
+    # If the user's input is not "y" or "n", call the runqol() function and try updating again
     else: runqol(0, doupdate) ; update()
 
 def dl(org, url, urlr, name):
@@ -113,21 +140,37 @@ def dl(org, url, urlr, name):
     except:
         printer.lprint("ERROR 3: Can't download file from the server...") ; sleep(3)
 
+# This function defines a function called `eula()`
+# that prints a warning message and asks the user
+# to agree to a license agreement.
 def eula():
     cls()
     z = True
+    
+    # Run a loop as long as z is True
     while z == True:
+        # Print a warning message and sleep for 3 seconds
         print("Do Not Dumb License v1\n"
               "I'm not responsible for your dumb.")
         sleep(3)
+        
+        # Ask the user if they agree to the license agreement
         agree = input("Do you agree? ("+Fore.GREEN+"Y"+Fore.WHITE+"/"+Fore.RED+"n"+Fore.WHITE + "): ")
+        
+        # If the user agrees, write "True" to the file EULA.XTB and set z to False
         if achooser(agree, "y"):
             print("You agreed to the EULA.")
             fwrite(0, 'EULA.XTB', 'True')
             z = False
+        
+        # If the user does not agree, exit the program
         elif achooser(agree, "n"):
             print("Ok, come back if you change your mind."); exit(sleep(3))
+        
+        # If the user's input is not "y" or "n", call the runqol() function
         else: runqol(0, agree)
+    
+    # Delete the variable z
     del z
 
 def helpe(origin):
@@ -553,7 +596,7 @@ def p3():
         
         # =============< Tools
         elif achooser(choose, "t1"): multidl("OpenAsar")
-        elif achooser(choose, "t2"): runaspowershell("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex | iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex", "Spicefy")
+        elif achooser(choose, "t2"): runaspowershell("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex && iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex", "Spicefy")
         elif achooser(choose, "t3"): dl(3, "https://github.com/Vendicated/VencordInstaller/releases/latest/download/VencordInstaller.exe", ".exe", "VenCord")
         elif achooser(choose, "t4"): dl(3, "https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Windows.exe", "BetterDiscord.exe", "BetterDiscord")
 
@@ -617,8 +660,7 @@ else:
 printer.lprint("Setting vars...")
 xtoolboxvv1asdfghjzz = color("XToolBox v"+version+pre, 2)
 # ISSUES FIXED, STOP ASKING
-try:
-    ramavailz = SetVars.rama()
+try:    ramavailz = SetVars.rama()
 except: ramavailz = "error"
 
 try:    cpuavailifffff = SetVars.cpup()
@@ -627,12 +669,10 @@ except: cpuavailifffff = "error"
 try:    dusagehebeded = SetVars.dusage()
 except: dusagehebeded = "error"
 
-try:
-    qwert = SetVars.qwert()
+try:    qwert = SetVars.qwert()
 except: qwert = "error"
 
-try:
-    c = SetVars.c()
+try:    c = SetVars.c()
 except: c = "error"
 xemulatddddd = color("xemulated#2622", 2)
 
