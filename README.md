@@ -10,6 +10,8 @@ XToolBox
 </br>
 Made by xemulated#2622
 </br>
+<strong>Message me before sending a friend request, my dms are open.</strong>
+</br>
 
 ## 📑 Important
 If this program gets flagged as malware it's a false positive. The program is literary open-source, don't worry.
