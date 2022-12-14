@@ -29,7 +29,7 @@ def runqol(froms, choose):
         
     # If the user inputs "h" or "H" and the `froms` parameter is not 0,
     # call the `helpe()` function with the `froms` parameter as an argument.
-    if froms != 0 and (choose == "h" or choose == "H"): 
+    elif froms != 0 and (choose == "h" or choose == "H"): 
         helpe(froms)
     else: 
         # Otherwise, print an error message and sleep for 3 seconds.
@@ -37,7 +37,7 @@ def runqol(froms, choose):
         sleep(3)
 
 def achooser(choose, option):
-    if option == choose or option.upper() == choose or option.capitalize() == choose or option.title() or option.lower() == choose: return True
+    if option in choose or option.upper() in choose or option.capitalize() in choose or option.title() in choose or option.lower() in choose: return True
 
 def linuxdl(distro):
     cls()
@@ -292,10 +292,10 @@ def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
             elif choose == "3":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-xfce-64bit.iso", "LinuxMint-21.3-Xfce.iso", "Linux Mint Xfce")
             runqol(0, choose)
 
-        elif distro == 2: # Pop!_OS - 22.04
-            if   choose == "1":  dl(2, "https://iso.pop-os.org/22.04/amd64/nvidia/16/pop-os_22.04_amd64_nvidia_16.iso", "PopOS-Nvidia.iso", "Pop!_OS Nvidia")
+        elif distro == 2: # Pop!_OS - 19
+            if   choose == "1":  dl(2, "https://iso.pop-os.org/22.04/amd64/nvidia/19/pop-os_22.04_amd64_nvidia_19.iso", "PopOS-Nvidia.iso", "Pop!_OS Nvidia")
             elif choose == "2":  dl(2, "https://iso.pop-os.org/22.04/arm64/raspi/2/pop-os_22.04_arm64_raspi_2.img.xz", "PopOS-RPI4.img.xz", "Pop!_OS RPI 4 Tech Previwe")
-            elif choose == "3":  dl(2, "https://iso.pop-os.org/22.04/amd64/intel/16/pop-os_22.04_amd64_intel_16.iso", "PopOS-LTS.iso", "Pop!_OS LTS")
+            elif choose == "3":  dl(2, "https://iso.pop-os.org/22.04/amd64/intel/19/pop-os_22.04_amd64_intel_19.iso", "PopOS-LTS.iso", "Pop!_OS LTS")
             runqol(0, choose)
 
         elif distro == 3: # Ubuntu - 22.10 Kinetic Kudu
@@ -382,14 +382,14 @@ def p1():
                f"│ [5] PyDebloatX           │ [5] FixDrag&Drop       │ [5] LibreWolf                  │ [5] ESET Online Scanner        │\n",
                f"│ [6] {windowsonreinddddd} │ [6] Winaero Tweaker    │ [6] qBittorrent                │ [6] ESET                       │")
         print(f" │ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │ [7] Kaspersky                  │\n",
-               f"│ [8] Win10Debloater       │                        │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n",
-               f"│ [9] SadCoy               │                        │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n",
-               f"│ [10] {sweetyli}          │ [QT] {quicktwea}       │ [10] Compact Memory Cleaner    │                                │\n",
+               f"│ [8] Win10Debloater       │ [8] REAL               │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n",
+               f"│ [9] SadCoy               │ [9] NVSlimmer          │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n",
+               f"│ [10] {sweetyli}          │                        │ [10] Compact Memory Cleaner    │                                │\n",
                f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                                │\n",
                f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n",
                f"│ [13] PrivateZilla        │                        │                                │                                │\n",
                f"│ [14] ZusierAIO           │                        │                                │                                │\n",
-               f"│ [15] Azurite             │                        │                                │                                │\n",
+               f"│ [15] Azurite             │ [QT] {quicktwea}       │                                │                                │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
                f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           1/3 │\n",
@@ -421,6 +421,8 @@ def p1():
         elif achooser(choose, "t5"):   dl(1, "https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix/releases/latest/download/Windows11DragAndDropToTaskbarFix.exe", "FixDragAndDrop.exe", "Fix Drag&Drop")
         elif achooser(choose, "t6"):   dl(1, "https://winaerotweaker.com/download/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
         elif achooser(choose, "t7"):   runaspowershell("irm christitus.com/win | iex", "CTT")
+        elif achooser(choose, "t8"):   dl(1, "https://github.com/miniant-git/REAL/releases/latest/download/REAL.exe", "REAL.exe", "REAL")
+        elif achooser(choose, "t9"):   dl(1, "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drivers/NVSlimmer_v0.13.zip", "NVSlimmer.zip", "NVSlimmer") # Mirror provided by majorgeeks
         elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT": quicktweaks()
 
         # =============< Apps
@@ -443,8 +445,8 @@ def p1():
         elif achooser(choose, "c5"):  dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
         elif achooser(choose, "c6"):  chooseeset()
         elif achooser(choose, "c7"):  choosekas()
-        elif achooser(choose, "c7"):  dl(1, "https://github.com/builtbybel/CleanmgrPlus/releases/latest/download/cleanmgrplus.zip", "CleanmgrPlus.zip", "CleanmgrPlus")
-        elif achooser(choose, "c7"):  dl(1, "https://download.glarysoft.com/gu5setup.exe", "GlaryUtilities.exe", "Glary Utilities")
+        elif achooser(choose, "c8"):  dl(1, "https://github.com/builtbybel/CleanmgrPlus/releases/latest/download/cleanmgrplus.zip", "CleanmgrPlus.zip", "CleanmgrPlus")
+        elif achooser(choose, "c9"):  dl(1, "https://download.glarysoft.com/gu5setup.exe", "GlaryUtilities.exe", "Glary Utilities")
 
         # =============< QOL Lines
         elif choose == "n" or choose == "N": p2()
@@ -466,14 +468,14 @@ def p2():
         print(f" │ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │ [4] HeiDoc Iso Downloader      │\n",
                f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                                │\n",
                f"│ [6] Solus                │                        │ [6] {windowssimpli}            │                                │\n",
-               f"│ [7] Debian               │                        │ [7] {aero}                     ├────────────────────────────────┤\n",
-               f"│ [8] Garuda               │                        │ [8] Tiny10                     │ [A] Apps                       │\n",
-               f"│ [9] {zorino}             │                        │ [9] KernelOS                   ├────────────────────────────────┤\n",
-               f"│                          │                        │ [10] Windows 7 Super Nano      │ [1] KeePassXC                  │\n",
-               f"│                          │                        │ [11] Windows 11 Debloated      │ [2] PowerToys                  │\n",
-               f"│                          │                        │                                │ [3] Alacritty                  │\n",
-               f"│                          │                        │                                │ [4] PowerShell                 │\n",
-               f"│                          │                        │                                │ [5] Motrix                     │\n",
+               f"│ [7] Debian               ├────────────────────────┤ [7] {aero}                     ├────────────────────────────────┤\n",
+               f"│ [8] Garuda               │ [O] Other              │ [8] Tiny10                     │ [A] Apps                       │\n",
+               f"│ [9] {zorino}             ├────────────────────────┤ [9] KernelOS                   ├────────────────────────────────┤\n",
+               f"│                          │ [1] .NET 4.8 SDK       │ [10] Windows 7 Super Nano      │ [1] KeePassXC                  │\n",
+               f"│                          │ [2] DirectX AIO        │ [11] Windows 11 Debloated      │ [2] PowerToys                  │\n",
+               f"│                          │ [3] VisualCppRedist    │                                │ [3] Alacritty                  │\n",
+               f"│                          │ [4] XNA Framework      │                                │ [4] PowerShell                 │\n",
+               f"│                          │ [5] Python             │                                │ [5] Motrix                     │\n",
                f"│                          │                        │                                │ [6] Files                      │\n",
                f"│                          │                        │                                │                                │\n",
                f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
@@ -495,9 +497,16 @@ def p2():
         # =============< Windows isos
         elif achooser(choose, "w1"): webopen("https://www.microsoft.com/software-download/windows11"); p2()
         elif achooser(choose, "w2"): webopen("https://www.microsoft.com/software-download/windows10"); p2()
-        elif achooser(choose, "w3"): dl(2, r"https://archive.org/download/w8.1.vpro/W8.1.vPro.iso", "Windows-8.1.iso", "Windows 8.1")
-        elif achooser(choose, "w4"): dl(2, r"https://archive.org/download/windows-8_202210/Windows%208.iso", "Windows-8.iso", "Windows 8")
-        elif achooser(choose, "w5"): dl(2, r"https://archive.org/download/windows-7-x64-2/Windows%207%20%28x64%29.iso", "Windows-7.iso", "Windows 7")
+        elif achooser(choose, "w3"): dl(2, r"https://dl.malwarewatch.org/windows/Windows%208.1%20%28x64%29.iso", "Windows-8.1.iso", "Windows 8.1")
+        elif achooser(choose, "w4"): dl(2, r"https://dl.malwarewatch.org/windows/Windows%208%20%28x64%29.iso", "Windows-8.iso", "Windows 8")
+        elif achooser(choose, "w5"): dl(2, r"https://dl.malwarewatch.org/windows/Windows%207%20%28x64%29.iso", "Windows-7.iso", "Windows 7")
+
+        # =============< Other
+        elif achooser(choose, "o1"): dl(2, "https://download.visualstudio.microsoft.com/download/pr/6f083c7e-bd40-44d4-9e3f-ffba71ec8b09/d05099507287c103a91bb68994498bde/ndp481-web.exe", ".NET-4.8-SDK.exe", ".NET 4.8 SDK")
+        elif achooser(choose, "o2"): dl(2, "https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe", "DirectX-AIO.exe", "DirectX AIO")
+        elif achooser(choose, "o3"): dl(2, "https://github.com/abbodi1406/vcredist/releases/download/v0.64.0/VisualCppRedist_AIO_x86_x64_64.zip", "VisualCppRedist.zip", "VisualCppRedist")
+        elif achooser(choose, "o4"): dl(2, "https://download.microsoft.com/download/A/C/2/AC2C903B-E6E8-42C2-9FD7-BEBAC362A930/xnafx40_redist.msi", "XNAF.msi", "XNAF")
+        elif achooser(choose, "o4"): dl(2, "https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe", "Python.exe", "Python")
 
         # =============< Modded isos
         elif achooser(choose, "m1"): dl(2, r"https://archive.org/download/rectify-11-v-2/Rectify11%20%28v2%29.iso", "Rectify11.iso", "Rectify11 v2")
@@ -506,10 +515,10 @@ def p2():
         elif achooser(choose, "m4"): multidl("ReviOS")
         elif achooser(choose, "m5"): dl(2, r"https://archive.org/download/ggos-0.8.20/ggos-0.8.20.iso", "GGOS.iso", "GGOS 0.8.20")
         elif achooser(choose, "m6"): multidl("SimplifyWindows")
-        elif achooser(choose, "m7"): dl(2, "https://archive.org/download/aero-10/Aero10.iso", "Aero10.iso", "Aero10")
-        elif achooser(choose, "m8"): dl(2, "https://archive.org/download/tiny-10_202210/Tiny%2010.iso", "Tiny10.iso", "Tiny10")
-        elif achooser(choose, "m9"): dl(2, "https://archive.org/download/kernel-os-22-h-2-beta/KernelOS%2022H2%20BETA.iso", "KernelOS.iso", "KernelOS")
-        elif achooser(choose, "m10"): dl(2, r"https://archive.org/download/windows-7-super-nano-2/Windows%207%20%28SuperNano%29.iso", "Windows-7-SuperNano.iso", "Windows 7 Super Nano")
+        elif achooser(choose, "m7"): dl(2, r"https://dl.malwarewatch.org/windows/mods/Aero%2010%20%28x64%29.iso", "Aero10.iso", "Aero10")
+        elif achooser(choose, "m8"): dl(2, r"https://dl.malwarewatch.org/windows/mods/Tiny%2010.iso", "Tiny10.iso", "Tiny10")
+        elif achooser(choose, "m9"): dl(2, r"https://archive.org/download/kernel-os-22-h-2-beta/KernelOS%2022H2%20BETA.iso", "KernelOS.iso", "KernelOS")
+        elif achooser(choose, "m10"): dl(2, r"https://dl.malwarewatch.org/windows/Windows%207%20%28SuperNano%29.iso", "Windows-7-SuperNano.iso", "Windows 7 Super Nano")
         elif achooser(choose, "m11"): dl(2, r"https://archive.org/download/windows-11-debloated/Windows%2011%20Debloated.iso", "Windows-11-Debloated.iso", "Windows 11 Debloated")
 
         # =============< Tools
@@ -618,7 +627,7 @@ printer.lprint("Running Pre-Startup tasks...")
 
 # Updater
 pre = ""
-version = "2.0"
+version = "2.1"
 if pre == "": pre = "         "
 # Sets `pre` to this long space to prevent some sort of bugs
 # Can't be a defined function
@@ -660,6 +669,7 @@ else:
 printer.lprint("Setting vars...")
 xtoolboxvv1asdfghjzz = color("XToolBox v"+version+pre, 2)
 # ISSUES FIXED, STOP ASKING
+# Un-Fucked, don't touch
 try:    ramavailz = SetVars.rama()
 except: ramavailz = "error"
 
@@ -669,7 +679,7 @@ except: cpuavailifffff = "error"
 try:    dusagehebeded = SetVars.dusage()
 except: dusagehebeded = "error"
 
-try:    qwert = SetVars.qwert()
+try:    qwert = SetVars.qwert() + "   "
 except: qwert = "error"
 
 try:    c = SetVars.c()
