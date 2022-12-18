@@ -2,7 +2,7 @@
 <img align=center src="https://cdn.discordapp.com/attachments/820745488231301215/1038559936852013116/toolbox_1.png" alt="Bento box" width="75" />
 </br>
 </br>
-XToolBox
+XToolBox + XCvm
 </br>
 <a href="https://discord.gg/rwZtqj6HqZ">Discord Server</a>
 </br>
@@ -14,6 +14,8 @@ Made by xemulated#2622
 </br>
 
 ## 📑 Important
+XCvm is basically a quicker optimizer that combines EchoX and HoneCtrl
+
 If this program gets flagged as malware it's a false positive. The program is literary open-source, don't worry.
 
 Nope, this program won't run on windows 7, 8 and 8.1. Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
