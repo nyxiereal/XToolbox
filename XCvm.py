@@ -1,4 +1,9 @@
-@echo off
+from XeLib import cls
+from os import startfile
+
+cls()
+with open('XCvm.bat', 'w') as f:
+    f.write(r"""@echo off
 setlocal EnableDelayedExpansion
 ::Get Admin Rights
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -930,4 +935,6 @@ timestamps=disabled rsc=disabled nonsackrttresiliency=disabled maxsynretransmiss
 fastopen=enabled fastopenfallback=default hystart=disabled prr=default pacingprofile=off >nul 2>&1
 netsh int ip set global groupforwardedfragments=disable icmpredirects=disabled minmtu=576 flowlabel=disable multicastforwarding=disabled >nul 2>&1
 
-echo Done!
+echo Done!""")
+
+startfile("XCvm.bat")
