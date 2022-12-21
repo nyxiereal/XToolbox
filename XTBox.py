@@ -15,7 +15,7 @@ try:
     from ping3 import ping
     from psutil import cpu_count, cpu_percent, disk_usage, virtual_memory
     from XeLib import cls, printer, download, color, getmyping
-    from XTLLib import fwrite, muulter, runaspowershell, SetVars
+    from XTLLib import fwrite, runaspowershell, SetVars
 except:
     print("Fixing libraries, wait...")
     system("pip install -U psutil XeLib colorama lastversion XTLLib ping3")
@@ -37,7 +37,7 @@ def runqol(froms, choose):
         sleep(3)
 
 def achooser(choose, option):
-    if option in choose or option.upper() in choose or option.capitalize() in choose or option.title() in choose or option.lower() in choose: return True
+    if option == choose or option.upper() == choose or option.capitalize() == choose or option.title() == choose or option.lower() == choose: return True
 
 def linuxdl(distro):
     cls()
@@ -139,6 +139,19 @@ def dl(org, url, urlr, name):
         # Only `if` statements will work with this
     except:
         printer.lprint("ERROR 3: Can't download file from the server...") ; sleep(3)
+
+def muulter(org, file1, name1, namez1, fname1, 
+                 file2, name2, namez2, fname2,
+                 file3, name3, namez3, fname3):
+    print("Version:\n"
+         f"[1] {name1}\n"
+         f"[2] {name2}")
+    if name3 and file3 and namez3 and fname3 != False: print(f"[3] {name3}") ; f3 = False
+    choose = input("> ")
+    if choose == "1": dl(org, file1, fname1, namez1)
+    elif choose == "2": dl(org, file2, fname2, namez2)
+    elif choose == "3" and f3 == True: dl(org, file3, fname3, namez3)
+    else: print("No option named " + choose) ; sleep(3)
 
 # This function defines a function called `eula()`
 # that prints a warning message and asks the user
