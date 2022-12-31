@@ -382,7 +382,7 @@ def multidl(file):
 def p1():
     while True:
         cls()
-        print(f" ┌───────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────┐\n", 
+        print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
                f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
@@ -640,7 +640,7 @@ printer.lprint("Running Pre-Startup tasks...")
 
 # Updater
 pre = ""
-version = "2.1"
+version = "2.2"
 if pre == "": pre = "         "
 # Sets `pre` to this long space to prevent some sort of bugs
 # Can't be a defined function
