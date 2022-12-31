@@ -1,1 +1,1 @@
-pip install -U XeLib lastversion colorama psutil XTLLib
+pip install -U psutil XeLib colorama lastversion XTLLib ping3
