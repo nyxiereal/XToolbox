@@ -16,11 +16,11 @@ If this program gets flagged as malware it's a false positive. The program is li
 Nope, this program won't run on windows 7, 8 and 8.1. Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
 
 ## 📸 Screenshots
-![image](https://user-images.githubusercontent.com/98595166/200167126-d13b0f6e-8539-4930-9548-6d1a74977f75.png)
+![image](https://user-images.githubusercontent.com/98595166/219062987-6979a3bb-bef1-4b56-b677-51bc7ab7a8b8.png)
 
-![image](https://user-images.githubusercontent.com/98595166/200167145-d36f64c6-ba13-471f-9dff-92bef6c89d83.png)
+![image](https://user-images.githubusercontent.com/98595166/219063050-5a968709-255f-465c-85fd-9a86b754b00b.png)
 
-![image](https://user-images.githubusercontent.com/98595166/200167164-8de86066-8987-43da-8a32-416da7aa2971.png)
+![image](https://user-images.githubusercontent.com/98595166/219063111-6cc5a01c-f480-4705-806c-35986b953766.png)
 
 ## 📌 Todo
 - [ ] Optimize my shitty code
