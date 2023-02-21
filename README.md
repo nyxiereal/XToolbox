@@ -11,7 +11,7 @@ Made by xemulated#2622
 </br>
 
 ## 📑 Important
-If this program gets flagged as malware it's a false positive. The program is literary open-source, don't worry.
+If this program gets flagged as malware it's a false positive. The program is literally open-source, don't worry.
 
 Nope, this program won't run on windows 7, 8 and 8.1. Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
 
