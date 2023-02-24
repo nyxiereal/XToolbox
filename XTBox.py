@@ -300,9 +300,9 @@ def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
         choose = input("> ")
 
         if   distro == 1: # Linux Mint 21 - Vanessa
-            if   choose == "1":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-cinnamon-64bit.iso", "LinuxMint-21.3-Cinnamon.iso", "Linux Mint Cinnamon")
-            elif choose == "2":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-mate-64bit.iso", "LinuxMint-21.3-MATE.iso", "Linux Mint MATE")
-            elif choose == "3":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21/linuxmint-21-xfce-64bit.iso", "LinuxMint-21.3-Xfce.iso", "Linux Mint Xfce")
+            if   choose == "1":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21.1/linuxmint-21.1-cinnamon-64bit.iso", "LinuxMint-21.3-Cinnamon.iso", "Linux Mint Cinnamon")
+            elif choose == "2":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21.1/linuxmint-21.1-mate-64bit.iso", "LinuxMint-21.3-MATE.iso", "Linux Mint MATE")
+            elif choose == "3":  dl(2, "https://mirror.rackspace.com/linuxmint/iso/stable/21.1/linuxmint-21.1-xfce-64bit.iso", "LinuxMint-21.3-Xfce.iso", "Linux Mint Xfce")
             runqol(0, choose)
 
         elif distro == 2: # Pop!_OS - 19
@@ -322,7 +322,7 @@ def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
             elif choose == "2":  dl(2, "https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-x86_64.iso", "Arch-Old.iso", "Arch Old")
             runqol(0, choose)
 
-        elif distro == 5: # Artix Linux OpenRC - 20220713
+        elif distro == 5: # Artix Linux OpenRC - AutoUpdate (?)
             if   choose == "1":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-plasma-openrc-20220713-x86_64.iso", "Artix-Plasma.iso", "Artix Plasma")
             elif choose == "2":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-xfce-openrc-20220713-x86_64.iso", "Artix-Xfce.iso", "Artix Xfce")
             elif choose == "3":  dl(2, "https://mirrors.dotsrc.org/artix-linux/iso/artix-mate-openrc-20220713-x86_64.iso", "Artix-MATE.iso", "Artix MATE")
@@ -335,7 +335,7 @@ def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
             runqol(0, choose)
 
         elif distro == 7: # Debian - 11.5.0
-            if   choose == "1":  dl(2, "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.5.0-amd64-netinst.iso", "Debian-NetInst.iso", "Debian NetInstall")
+            if   choose == "1":  dl(2, "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso", "Debian-NetInst.iso", "Debian NetInstall")
             runqol(0, choose)
 
         elif distro == 8: # Garuda Linux - Auto-Updates
@@ -350,8 +350,8 @@ def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
             runqol(0, choose)
 
 def multidl(file):
-    if   file == "ReviOS": muulter(2, "https://archive.org/download/revi-os-11-22.10/ReviOS-11-22.10.iso", "ReviOS 11", "ReviOS 11", "ReviOS-11.iso", 
-                                      "https://archive.org/download/revi-os-10-22.10/ReviOS-10-22.10.iso", "ReviOS 10", "ReviOS 10", "ReviOS-10.iso", False, False, False, False)
+    if   file == "ReviOS": muulter(2, "https://pixeldrain.com/api/file/DAatLgjZ?download", "ReviOS 11", "ReviOS 11", "ReviOS-11.iso", 
+                                      "https://pixeldrain.com/api/file/hyVCKphd?download", "ReviOS 10", "ReviOS 10", "ReviOS-10.iso", False, False, False, False)
 
     elif file == "AtlasOS": muulter(2, "https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2_21H2.iso", "21H2 + Faceit", "AtlasOS 21H2", "AtlasOS-21H2.iso",
                                        "https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2.iso", "20H2 + Better than Old", "AtlasOS 20H2", "AtlasOS-20H2.iso",
@@ -373,17 +373,19 @@ def multidl(file):
                                   r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
                                   r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe' + "\n"
                                   r'C:\Windows\System32\TIMEOUT.exe /t 5 /nobreak' + "\n"
-                                  r'copy /y "%localappdata%\Discord\app-1.0.9007\resources\app.asar" "%localappdata%\Discord\app-1.0.9007\resources\app.asar.backup"' + "\n"
+                                  r'copy /y "%localappdata%\Discord\app-1.0.9011\resources\app.asar" "%localappdata%\Discord\app-1.0.9011\resources\app.asar.backup"' + "\n"
                                   r'powershell -Command "Invoke-WebRequest https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar -OutFile \"$Env:LOCALAPPDATA\Discord\app-1.0.9007\resources\app.asar\""' + "\n"
                                   r'start "" "%localappdata%\Discord\Update.exe" --processStart Discord.exe' + "\n"
                                   r'goto 2>nul & del "%~f0"')
 
 # ==========< Main program loops
-def p1():
+def p1(preprint=False):
     while True:
         cls()
+        if preprint is not False:
+            print(preprint)
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzzzz}                          │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses     │\n",
@@ -396,7 +398,7 @@ def p1():
                f"│ [6] {windowsonreinddddd} │ [6] Winaero Tweaker    │ [6] qBittorrent                │ [6] ESET                       │")
         print(f" │ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │ [7] Kaspersky                  │\n",
                f"│ [8] Win10Debloater       │ [8] REAL               │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n",
-               f"│ [9] SadCoy               │ [9] NVSlimmer          │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n",
+               f"│ [9] SadCoy               │ [9] NVCleanInstall     │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n",
                f"│ [10] {sweetyli}          │                        │ [10] Compact Memory Cleaner    │                                │\n",
                f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                                │\n",
                f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n",
@@ -424,7 +426,7 @@ def p1():
         elif achooser(choose, "d12"): dl(1, "https://github.com/crazy-max/WindowsSpyBlocker/releases/latest/download/WindowsSpyBlocker.exe", "WindowsSpyBlocker.exe", "WindowsSpyBlocker")
         elif achooser(choose, "d13"): dl(1, "https://github.com/builtbybel/privatezilla/releases/latest/download/privatezilla.zip", "PrivateZilla.zip", "PrivateZilla")
         elif achooser(choose, "d14"): dl(1, "https://raw.githubusercontent.com/Zusier/Zusiers-optimization-Batch/master/Zusier%20AIO.bat", "ZusierAIO.bat", "ZusierAIO")
-        elif achooser(choose, "d15"): dl(1, r"https://archive.org/download/azurite-v1.1.7-setup/Azurite%20Setup%201.1.7.exe", "Azurite.exe", "Azurite")
+        elif achooser(choose, "d15"): dl(1, r"https://update.tweakcentral.net/azurite/Azurite%20Setup%201.1.8.exe", "Azurite.exe", "Azurite")
 
         # =============< Tweaks
         elif achooser(choose, "t1"):   dl(1, "https://raw.githubusercontent.com/ArtanisInc/Post-Tweaks/main/PostTweaks.bat", "PostTweaks.bat", "PostTweaks")
@@ -435,17 +437,17 @@ def p1():
         elif achooser(choose, "t6"):   dl(1, "https://winaerotweaker.com/download/winaerotweaker.zip", "WinaeroTweaker.zip", "Winaero Tweaker")
         elif achooser(choose, "t7"):   runaspowershell("irm christitus.com/win | iex", "CTT")
         elif achooser(choose, "t8"):   dl(1, "https://github.com/miniant-git/REAL/releases/latest/download/REAL.exe", "REAL.exe", "REAL")
-        elif achooser(choose, "t9"):   dl(1, "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drivers/NVSlimmer_v0.13.zip", "NVSlimmer.zip", "NVSlimmer") # Mirror provided by majorgeeks
+        elif achooser(choose, "t9"):   dl(1, "https://cdn.discordapp.com/attachments/1045063596134117456/1074431416152105090/NVCleanstall_1.15.1.exe", "NVCleanstall.exe", "NVCleanstall") # Mirror provided by my deezcord server loll
         elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT": quicktweaks()
 
         # =============< Apps
         elif achooser(choose, "a1"):  dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/choco.bat", "choco.bat", "Choco")
         elif achooser(choose, "a2"):  dl(1, "https://referrals.brave.com/latest/BraveBrowserSetup.exe", "Brave.exe", "Brave Browser")
-        elif achooser(choose, "a3"):  dl(1, "https://download-installer.cdn.mozilla.net/pub/firefox/releases/105.0.3/win32/en-US/Firefox%20Installer.exe", "Firefox.exe", "Firefox")
+        elif achooser(choose, "a3"):  dl(1, "https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US", "Firefox-Setup.exe", "Firefox Setup")
         elif achooser(choose, "a4"):  dl(1, "https://github.com/rocksdanister/lively/releases/latest/download/lively_setup_x86_full_v" + str(latest("rocksdanister/lively")).replace(".", "") + ".exe", "LivelyWallpaper.exe", "Lively Wallpaper")
-        elif achooser(choose, "a5"):  dl(1, "https://gitlab.com/librewolf-community/browser/windows/uploads/0d58d5bec60813087b17a865533914d5/librewolf-106.0.5-1.en-US.win64-setup.exe", "LibreWolf.exe", "LibreWolf")
+        elif achooser(choose, "a5"):  dl(1, "https://gitlab.com/librewolf-community/browser/windows/-/package_files/69100828/download", "LibreWolf.exe", "LibreWolf")
         elif achooser(choose, "a6"):  dl(1, "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/latest/download/qbittorrent-enhanced-" + str(latest("c0re100/qBittorrent-Enhanced-Edition")) + "-Qt6-setup.exe", "qBittorrent.exe", "qBittorrent")
-        elif achooser(choose, "a7"):  dl(1, "https://github.com/rainmeter/rainmeter/releases/download/v4.5.16.3687/Rainmeter-4.5.16.exe", "Rainmeter.exe", "Rainmeter")
+        elif achooser(choose, "a7"):  dl(1, "https://github.com/rainmeter/rainmeter/releases/download/v4.5.17.3700/Rainmeter-4.5.17.exe", "Rainmeter.exe", "Rainmeter")
         elif achooser(choose, "a8"):  dl(1, "https://www.7-zip.org/a/7z2201-x64.exe", "7Zip.exe", "7-Zip")
         elif achooser(choose, "a9"):  dl(1, "https://www.koshyjohn.com/software/MemClean.exe", "MemoryCleaner.exe", "Memory Cleaner")
         elif achooser(choose, "a10"): dl(1, "https://github.com/qualcosa/Compact-RAM-Cleaner/releases/latest/download/Compact.RAM.Cleaner.exe", "CompactMemoryCleaner.exe", "Compact Memory Cleaner")
@@ -454,7 +456,7 @@ def p1():
         elif achooser(choose, "c1"):  dl(1, "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", "ADW-Cleaner.exe", "ADW Cleaner")
         elif achooser(choose, "c2"):  dl(1, "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drives/ATF-Cleaner.exe", "ATF-Cleaner.exe", "ATF Cleaner")
         elif achooser(choose, "c3"):  dl(1, "https://download.ccleaner.com/dfsetup222.exe", "Defraggler.exe", "Defraggler")
-        elif achooser(choose, "c4"):  dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup-37335.37335.exe", "Malwarebytes.exe", "Malwarebytes")
+        elif achooser(choose, "c4"):  dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup.exe", "Malwarebytes.exe", "Malwarebytes")
         elif achooser(choose, "c5"):  dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
         elif achooser(choose, "c6"):  chooseeset()
         elif achooser(choose, "c7"):  choosekas()
@@ -470,7 +472,7 @@ def p2():
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzzzz}                          │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ [T] Tools                      │\n",
@@ -517,9 +519,9 @@ def p2():
         # =============< Other
         elif achooser(choose, "o1"): dl(2, "https://download.visualstudio.microsoft.com/download/pr/6f083c7e-bd40-44d4-9e3f-ffba71ec8b09/d05099507287c103a91bb68994498bde/ndp481-web.exe", ".NET-4.8-SDK.exe", ".NET 4.8 SDK")
         elif achooser(choose, "o2"): dl(2, "https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe", "DirectX-AIO.exe", "DirectX AIO")
-        elif achooser(choose, "o3"): dl(2, "https://github.com/abbodi1406/vcredist/releases/download/v0.64.0/VisualCppRedist_AIO_x86_x64_64.zip", "VisualCppRedist.zip", "VisualCppRedist")
+        elif achooser(choose, "o3"): dl(2, "https://github.com/abbodi1406/vcredist/releases/download/v0.66.0/VisualCppRedist_AIO_x86_x64_66.zip", "VisualCppRedist.zip", "VisualCppRedist")
         elif achooser(choose, "o4"): dl(2, "https://download.microsoft.com/download/A/C/2/AC2C903B-E6E8-42C2-9FD7-BEBAC362A930/xnafx40_redist.msi", "XNAF.msi", "XNAF")
-        elif achooser(choose, "o4"): dl(2, "https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe", "Python.exe", "Python")
+        elif achooser(choose, "o4"): dl(2, "https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe", "Python.exe", "Python")
 
         # =============< Modded isos
         elif achooser(choose, "m1"): dl(2, r"https://archive.org/download/rectify-11-v-2/Rectify11%20%28v2%29.iso", "Rectify11.iso", "Rectify11 v2")
@@ -558,7 +560,7 @@ def p3():
     while True:
         cls()
         print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzz}                            │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
+               f"│ {xtoolboxvv1asdfghjzzzz}                          │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
                f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
                f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
                f"│ [L] Minecraft Launchers  │ [G] Game Launchers     │ [C] Minecraft Clients          │ [I] Misc                       │\n",
@@ -598,18 +600,17 @@ def p3():
         elif achooser(choose, "g3"): dl(3, "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe", "Origin.exe", "Origin")
         elif achooser(choose, "g4"): dl(3, "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi", "Epic-Games.msi", "Epic Games")
         elif achooser(choose, "g5"): dl(3, "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe", "GOG-Galaxy.exe", "GOG Galaxy")
-        elif achooser(choose, "g6"): dl(3, "https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2022_12.msi", "Paradox.msi", "Paradox")
+        elif achooser(choose, "g6"): dl(3, "https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2023_2_1.msi", "Paradox.msi", "Paradox")
         elif achooser(choose, "g7"): dl(3, "https://setup.roblox.com/Roblox.exe", "Roblox.exe", "Roblox")
 
         # =============< Minecraft Clients
         elif achooser(choose, "c1"): dl(3, "https://tecknix.com/client/TecknixClient.exe", "Tecknix.exe", "Tecknix Client")
         elif achooser(choose, "c2"): dl(3, r"https://www.salwyrr.com/4/download/Salwyrr%20Launcher%20Installer.exe", "Salwyrr.exe", "Salwyrr CLients")
         elif achooser(choose, "c3"): dl(3, "https://dl.labymod.net/latest/install/LabyMod3_Installer.exe", "LabyMod.exe", "LabyMod")
-        elif achooser(choose, "c4"): dl(3, r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.4.4.exe", "FeatherLauncher.exe", "Feather Launcher")
-        elif achooser(choose, "c5"): dl(3, r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v2.14.0.exe", "LunarClient.exe", "Lunar Client")
+        elif achooser(choose, "c4"): dl(3, r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.4.8.exe", "FeatherLauncher.exe", "Feather Launcher")
+        elif achooser(choose, "c5"): dl(3, r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v2.15.1.exe", "LunarClient.exe", "Lunar Client")
         elif achooser(choose, "c6"): dl(3, "https://github.com/Offline-CheatBreaker/Launcher/releases/latest/download/Offline_CheatBreaker_Setup.exe", "Offline-CheatBreaker.exe", "Offline CheatBreaker")
-        elif achooser(choose, "c7"): dl(3, r"https://client-updates-cdn77.badlion.net/Badlion%20Client%20Setup%203.12.0.exe", "BadlionClient.exe", "Badlion Client")
-        elif achooser(choose, "c8"): dl(3, "https://github.com/Crystal-Development-LLC/launcher-releases/releases/latest/download/crystal-client-launcher-setup.exe", "CrystalClient.exe", "Crystal Client")
+        elif achooser(choose, "c7"): dl(3, r"https://client-updates.badlion.net/Badlion%20Client%20Setup%203.12.2.exe", "BadlionClient.exe", "Badlion Client")
         
         # =============< Misc
         elif achooser(choose, "i1"): dl(3, "https://github.com/xan105/Achievement-Watcher/releases/latest/download/Achievement.Watcher.Setup.exe", "Achievement-Watcher.exe", "Achievement Watcher")
@@ -640,8 +641,8 @@ printer.lprint("Running Pre-Startup tasks...")
 
 # Updater
 pre = ""
-version = "2.2"
-if pre == "": pre = "         "
+version = "2.3"
+if pre == "": pre = "           "
 # Sets `pre` to this long space to prevent some sort of bugs
 # Can't be a defined function
 printer.lprint("Checking updates...")
@@ -680,7 +681,7 @@ else:
 
 # Set color vars
 printer.lprint("Setting vars...")
-xtoolboxvv1asdfghjzz = color("XToolBox v"+version+pre, 2)
+xtoolboxvv1asdfghjzzzz = color("XToolBox v"+version+pre, 2)
 # ISSUES FIXED, STOP ASKING
 # Un-Fucked, don't touch
 try:    ramavailz = SetVars.rama()
@@ -745,6 +746,4 @@ AntiTrackTi = color("AntiTrackTime", 1)
 
 # Run normal UI (Page 1)
 printer.lprint("Starting...")
-printer.lprint("Loaded in " + str(str(default_timer() - start).split(".")[0]) + "s")
-sleep(0.55)
-p1()
+p1(preprint=("Loaded in " + str(str(default_timer() - start).split(".")[0]) + "s"))
