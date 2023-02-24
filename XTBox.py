@@ -399,7 +399,7 @@ def p1(preprint=False):
         print(f" │ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │ [7] Kaspersky                  │\n",
                f"│ [8] Win10Debloater       │ [8] REAL               │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n",
                f"│ [9] SadCoy               │ [9] NVCleanInstall     │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n",
-               f"│ [10] {sweetyli}          │                        │ [10] Compact Memory Cleaner    │                                │\n",
+               f"│ [10] {sweetyli}          │ [10] Twinker           │ [10] Compact Memory Cleaner    │                                │\n",
                f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                                │\n",
                f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n",
                f"│ [13] PrivateZilla        │                        │                                │                                │\n",
@@ -416,7 +416,7 @@ def p1(preprint=False):
         elif achooser(choose, "d2"):  dl(1, "https://github.com/auraside/HoneCtrl/releases/latest/download/HoneCtrl.bat", "HoneCtrl.bat", "HoneCtrl")
         elif achooser(choose, "d3"):  dl(1, "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe", "ShutUp10.exe", "ShutUp10")
         elif achooser(choose, "d4"):  dl(1, "https://github.com/hellzerg/optimizer/releases/latest/download/Optimizer-" + str(latest("hellzerg/optimizer")) + ".exe", "Optimizer.exe", "Optimizer")
-        elif achooser(choose, "d5"):  dl(1, "https://github.com/Teraskull/PyDebloatX/releases/latest/download/PyDebloatX_portable.exe", "PyDebloatX.exe", "PyDebloatX")
+        elif achooser(choose, "d5"):  dl(1, "https://github.com/Teraskull/PyDebloatX/releases/latest/download/PyDebloatX_portable.exe", "PyDebloatX-Portable.exe", "PyDebloatX")
         elif achooser(choose, "d6"):  dl(1, "https://raw.githubusercontent.com/gordonbay/Windows-On-Reins/master/wor.ps1", "WindowsOnReins.ps1", "WindowsOnReins")
         elif achooser(choose, "d7"):  dl(1, "https://github.com/SanGraphic/QuickBoost/releases/latest/download/QuickBoost.exe", "QuickBoost.exe", "QuickBoost")
         elif achooser(choose, "d8"):  runaspowershell("iwr -useb https://git.io/debloat|iex", "Win10Debloat")
@@ -438,16 +438,17 @@ def p1(preprint=False):
         elif achooser(choose, "t7"):   runaspowershell("irm christitus.com/win | iex", "CTT")
         elif achooser(choose, "t8"):   dl(1, "https://github.com/miniant-git/REAL/releases/latest/download/REAL.exe", "REAL.exe", "REAL")
         elif achooser(choose, "t9"):   dl(1, "https://cdn.discordapp.com/attachments/1045063596134117456/1074431416152105090/NVCleanstall_1.15.1.exe", "NVCleanstall.exe", "NVCleanstall") # Mirror provided by my deezcord server loll
+        elif achooser(choose, "t9"):   dl(1, "https://github.com/xemulat/twinker/releases/latest/download/Twinker-Setup.exe", "Twinker-Setup.exe", "Twinker")
         elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT": quicktweaks()
 
         # =============< Apps
         elif achooser(choose, "a1"):  dl(1, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/choco.bat", "choco.bat", "Choco")
-        elif achooser(choose, "a2"):  dl(1, "https://referrals.brave.com/latest/BraveBrowserSetup.exe", "Brave.exe", "Brave Browser")
+        elif achooser(choose, "a2"):  dl(1, "https://referrals.brave.com/latest/BraveBrowserSetup.exe", "Brave-Setup.exe", "Brave Browser")
         elif achooser(choose, "a3"):  dl(1, "https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US", "Firefox-Setup.exe", "Firefox Setup")
-        elif achooser(choose, "a4"):  dl(1, "https://github.com/rocksdanister/lively/releases/latest/download/lively_setup_x86_full_v" + str(latest("rocksdanister/lively")).replace(".", "") + ".exe", "LivelyWallpaper.exe", "Lively Wallpaper")
-        elif achooser(choose, "a5"):  dl(1, "https://gitlab.com/librewolf-community/browser/windows/-/package_files/69100828/download", "LibreWolf.exe", "LibreWolf")
-        elif achooser(choose, "a6"):  dl(1, "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/latest/download/qbittorrent-enhanced-" + str(latest("c0re100/qBittorrent-Enhanced-Edition")) + "-Qt6-setup.exe", "qBittorrent.exe", "qBittorrent")
-        elif achooser(choose, "a7"):  dl(1, "https://github.com/rainmeter/rainmeter/releases/download/v4.5.17.3700/Rainmeter-4.5.17.exe", "Rainmeter.exe", "Rainmeter")
+        elif achooser(choose, "a4"):  dl(1, "https://github.com/rocksdanister/lively/releases/latest/download/lively_setup_x86_full_v" + str(latest("rocksdanister/lively")).replace(".", "") + ".exe", "LivelyWallpaper-Setup.exe", "Lively Wallpaper")
+        elif achooser(choose, "a5"):  dl(1, "https://gitlab.com/librewolf-community/browser/windows/-/package_files/69100828/download", "LibreWolf-Setup.exe", "LibreWolf")
+        elif achooser(choose, "a6"):  dl(1, "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/latest/download/qbittorrent-enhanced-" + str(latest("c0re100/qBittorrent-Enhanced-Edition")) + "-Qt6-setup.exe", "qBittorrent-EE-Setup.exe", "qBittorrent Enhanced Edition")
+        elif achooser(choose, "a7"):  dl(1, "https://github.com/rainmeter/rainmeter/releases/download/v4.5.17.3700/Rainmeter-4.5.17.exe", "Rainmeter-Setup.exe", "Rainmeter")
         elif achooser(choose, "a8"):  dl(1, "https://www.7-zip.org/a/7z2201-x64.exe", "7Zip.exe", "7-Zip")
         elif achooser(choose, "a9"):  dl(1, "https://www.koshyjohn.com/software/MemClean.exe", "MemoryCleaner.exe", "Memory Cleaner")
         elif achooser(choose, "a10"): dl(1, "https://github.com/qualcosa/Compact-RAM-Cleaner/releases/latest/download/Compact.RAM.Cleaner.exe", "CompactMemoryCleaner.exe", "Compact Memory Cleaner")
@@ -455,7 +456,7 @@ def p1(preprint=False):
         # =============< Cleanup
         elif achooser(choose, "c1"):  dl(1, "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", "ADW-Cleaner.exe", "ADW Cleaner")
         elif achooser(choose, "c2"):  dl(1, "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drives/ATF-Cleaner.exe", "ATF-Cleaner.exe", "ATF Cleaner")
-        elif achooser(choose, "c3"):  dl(1, "https://download.ccleaner.com/dfsetup222.exe", "Defraggler.exe", "Defraggler")
+        elif achooser(choose, "c3"):  dl(1, "https://download.ccleaner.com/dfsetup222.exe", "Defraggler-Setup.exe", "Defraggler")
         elif achooser(choose, "c4"):  dl(1, "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup.exe", "Malwarebytes.exe", "Malwarebytes")
         elif achooser(choose, "c5"):  dl(1, "https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe", "ESETOnlineScanner.exe", "ESET Online Scanner")
         elif achooser(choose, "c6"):  chooseeset()
@@ -520,8 +521,8 @@ def p2():
         elif achooser(choose, "o1"): dl(2, "https://download.visualstudio.microsoft.com/download/pr/6f083c7e-bd40-44d4-9e3f-ffba71ec8b09/d05099507287c103a91bb68994498bde/ndp481-web.exe", ".NET-4.8-SDK.exe", ".NET 4.8 SDK")
         elif achooser(choose, "o2"): dl(2, "https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe", "DirectX-AIO.exe", "DirectX AIO")
         elif achooser(choose, "o3"): dl(2, "https://github.com/abbodi1406/vcredist/releases/download/v0.66.0/VisualCppRedist_AIO_x86_x64_66.zip", "VisualCppRedist.zip", "VisualCppRedist")
-        elif achooser(choose, "o4"): dl(2, "https://download.microsoft.com/download/A/C/2/AC2C903B-E6E8-42C2-9FD7-BEBAC362A930/xnafx40_redist.msi", "XNAF.msi", "XNAF")
-        elif achooser(choose, "o4"): dl(2, "https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe", "Python.exe", "Python")
+        elif achooser(choose, "o4"): dl(2, "https://download.microsoft.com/download/A/C/2/AC2C903B-E6E8-42C2-9FD7-BEBAC362A930/xnafx40_redist.msi", "XNAF-Setup.msi", "XNAF")
+        elif achooser(choose, "o4"): dl(2, "https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe", "Python-Setup.exe", "Python")
 
         # =============< Modded isos
         elif achooser(choose, "m1"): dl(2, r"https://archive.org/download/rectify-11-v-2/Rectify11%20%28v2%29.iso", "Rectify11.iso", "Rectify11 v2")
@@ -543,12 +544,12 @@ def p2():
         elif achooser(choose, "t4"): dl(2, "https://www.heidoc.net/php/Windows-ISO-Downloader.exe", "HeiDoc-ISO-Downloader.exe", "HeiDoc Ios Downloader")
 
         # =============< Tools
-        elif achooser(choose, "a1"): dl(2, "https://github.com/keepassxreboot/keepassxc/releases/latest/download/KeePassXC-"+str(latest('keepassxreboot/keepassxc'))+"-Win64.msi", "KeePassXC.msi", "KeePassXC")
-        elif achooser(choose, "a2"): dl(2, "https://github.com/microsoft/PowerToys/releases/latest/download/PowerToysSetup-"+(str(latest('microsoft/PowerToys'))).replace("v", "")+"-x64.exe", "PowerToys.exe", "PowerToys")
-        elif achooser(choose, "a3"): dl(2, "https://github.com/alacritty/alacritty/releases/latest/download/Alacritty-"+str(latest('alacritty/alacritty'))+"-installer.msi", "", "Alacritty")
-        elif achooser(choose, "a4"): dl(2, "https://github.com/PowerShell/PowerShell/releases/latest/download/PowerShell-"+(str(latest('PowerShell/PowerShell'))).replace("v", "")+"-win-x64.msi", "PowerShell.msi", "PowerShell")
-        elif achooser(choose, "a5"): dl(2, "https://github.com/agalwood/Motrix/releases/latest/download/Motrix-Setup-"+(str(latest('agalwood/Motrix'))).replace("v", "")+".exe", "", "Motrix")
-        elif achooser(choose, "a6"): dl(2, "https://files.community/appinstallers/Files.stable.appinstaller", "Files.appinstaller", "Files")
+        elif achooser(choose, "a1"): dl(2, "https://github.com/keepassxreboot/keepassxc/releases/latest/download/KeePassXC-"+str(latest('keepassxreboot/keepassxc'))+"-Win64.msi", "KeePassXC-Setup.msi", "KeePassXC")
+        elif achooser(choose, "a2"): dl(2, "https://github.com/microsoft/PowerToys/releases/latest/download/PowerToysSetup-"+(str(latest('microsoft/PowerToys'))).replace("v", "")+"-x64.exe", "PowerToys-Setup.exe", "PowerToys")
+        elif achooser(choose, "a3"): dl(2, "https://github.com/alacritty/alacritty/releases/latest/download/Alacritty-"+str(latest('alacritty/alacritty'))+"-installer.msi", "Alacritty-Setup.exe", "Alacritty")
+        elif achooser(choose, "a4"): dl(2, "https://github.com/PowerShell/PowerShell/releases/latest/download/PowerShell-"+(str(latest('PowerShell/PowerShell'))).replace("v", "")+"-win-x64.msi", "PowerShell-Setup.msi", "PowerShell")
+        elif achooser(choose, "a5"): dl(2, "https://github.com/agalwood/Motrix/releases/latest/download/Motrix-Setup-"+(str(latest('agalwood/Motrix'))).replace("v", "")+".exe", "Motrix-Setup.exe", "Motrix")
+        elif achooser(choose, "a6"): dl(2, "https://files.community/appinstallers/Files.preview.appinstaller", "Files.appinstaller", "Files")
 
         # =============< QOL
         # Lines repeated every fucking time
@@ -589,39 +590,39 @@ def p3():
         # =============< Minecraft Launchers
         if   achooser(choose, "l1"): dl(3, "https://launcher.mojang.com/download/MinecraftInstaller.exe", "MinecraftInstaller.exe", "Minecraft Launcher")
         elif achooser(choose, "l2"): multidl("Prism")
-        elif achooser(choose, "l3"): dl(3, "https://github.com/ATLauncher/ATLauncher/releases/latest/download/ATLauncher-"+str(latest("ATLauncher/ATLauncher"))+".exe", "ATLauncher.exe", "ATLauncher")
+        elif achooser(choose, "l3"): dl(3, "https://github.com/ATLauncher/ATLauncher/releases/latest/download/ATLauncher-"+str(latest("ATLauncher/ATLauncher"))+".exe", "ATLauncher-Setup.exe", "ATLauncher")
         elif achooser(choose, "l4"): dl(3, "https://github.com/huanghongxun/HMCL/releases/latest/download/HMCL-"+str(latest("huanghongxun/HMCL"))+".exe", "HMCL.exe", "HMCL")
         elif achooser(choose, "l5"): dl(3, "https://github.com/Voxelum/x-minecraft-launcher/releases/latest/download/xmcl-"+str(latest("Voxelum/x-minecraft-launcher"))+"-win32-x64.zip", "XMCL.zip", "XMCL")
         elif achooser(choose, "l6"): multidl("GDLauncher")
 
         # =============< Game Launchers
-        elif achooser(choose, "g1"): dl(3, "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe", "Steam.exe", "Steam")
-        elif achooser(choose, "g2"): dl(3, "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe", "Uplay.exe", "Uplay")
-        elif achooser(choose, "g3"): dl(3, "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe", "Origin.exe", "Origin")
-        elif achooser(choose, "g4"): dl(3, "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi", "Epic-Games.msi", "Epic Games")
-        elif achooser(choose, "g5"): dl(3, "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe", "GOG-Galaxy.exe", "GOG Galaxy")
-        elif achooser(choose, "g6"): dl(3, "https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2023_2_1.msi", "Paradox.msi", "Paradox")
+        elif achooser(choose, "g1"): dl(3, "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe", "Steam-Setup.exe", "Steam")
+        elif achooser(choose, "g2"): dl(3, "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe", "Uplay-Setup.exe", "Uplay")
+        elif achooser(choose, "g3"): dl(3, "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe", "Origin-Setup.exe", "Origin")
+        elif achooser(choose, "g4"): dl(3, "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi", "Epic-Games-Setup.msi", "Epic Games")
+        elif achooser(choose, "g5"): dl(3, "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe", "GOG-Galaxy-Setup.exe", "GOG Galaxy")
+        elif achooser(choose, "g6"): dl(3, "https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2023_2_1.msi", "Paradox-Setup.msi", "Paradox")
         elif achooser(choose, "g7"): dl(3, "https://setup.roblox.com/Roblox.exe", "Roblox.exe", "Roblox")
 
         # =============< Minecraft Clients
-        elif achooser(choose, "c1"): dl(3, "https://tecknix.com/client/TecknixClient.exe", "Tecknix.exe", "Tecknix Client")
-        elif achooser(choose, "c2"): dl(3, r"https://www.salwyrr.com/4/download/Salwyrr%20Launcher%20Installer.exe", "Salwyrr.exe", "Salwyrr CLients")
-        elif achooser(choose, "c3"): dl(3, "https://dl.labymod.net/latest/install/LabyMod3_Installer.exe", "LabyMod.exe", "LabyMod")
-        elif achooser(choose, "c4"): dl(3, r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.4.8.exe", "FeatherLauncher.exe", "Feather Launcher")
-        elif achooser(choose, "c5"): dl(3, r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v2.15.1.exe", "LunarClient.exe", "Lunar Client")
-        elif achooser(choose, "c6"): dl(3, "https://github.com/Offline-CheatBreaker/Launcher/releases/latest/download/Offline_CheatBreaker_Setup.exe", "Offline-CheatBreaker.exe", "Offline CheatBreaker")
-        elif achooser(choose, "c7"): dl(3, r"https://client-updates.badlion.net/Badlion%20Client%20Setup%203.12.2.exe", "BadlionClient.exe", "Badlion Client")
+        elif achooser(choose, "c1"): dl(3, "https://tecknix.com/client/TecknixClient.exe", "Tecknix-Setup.exe", "Tecknix Client")
+        elif achooser(choose, "c2"): dl(3, r"https://www.salwyrr.com/4/download/Salwyrr%20Launcher%20Installer.exe", "Salwyrr-Setup.exe", "Salwyrr CLients")
+        elif achooser(choose, "c3"): dl(3, "https://dl.labymod.net/latest/install/LabyMod3_Installer.exe", "LabyMod-Setup.exe", "LabyMod")
+        elif achooser(choose, "c4"): dl(3, r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.4.8.exe", "FeatherLauncher-Setup.exe", "Feather Launcher")
+        elif achooser(choose, "c5"): dl(3, r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v2.15.1.exe", "LunarClient-Setup.exe", "Lunar Client")
+        elif achooser(choose, "c6"): dl(3, "https://github.com/Offline-CheatBreaker/Launcher/releases/latest/download/Offline_CheatBreaker_Setup.exe", "Offline-CheatBreaker-Setup.exe", "Offline CheatBreaker")
+        elif achooser(choose, "c7"): dl(3, r"https://client-updates.badlion.net/Badlion%20Client%20Setup%203.12.2.exe", "BadlionClient-Setup.exe", "Badlion Client")
         
         # =============< Misc
         elif achooser(choose, "i1"): dl(3, "https://github.com/xan105/Achievement-Watcher/releases/latest/download/Achievement.Watcher.Setup.exe", "Achievement-Watcher.exe", "Achievement Watcher")
-        elif achooser(choose, "i2"): dl(3, "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86", "Discord.exe", "Discord")
+        elif achooser(choose, "i2"): dl(3, "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86", "Discord-Setup.exe", "Discord")
         elif achooser(choose, "i3"): dl(3, "https://download.scdn.co/SpotifySetup.exe", "Spotify.exe", "Spotify")
         
         # =============< Tools
         elif achooser(choose, "t1"): multidl("OpenAsar")
         elif achooser(choose, "t2"): runaspowershell("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex && iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex", "Spicefy")
-        elif achooser(choose, "t3"): dl(3, "https://github.com/Vendicated/VencordInstaller/releases/latest/download/VencordInstaller.exe", ".exe", "VenCord")
-        elif achooser(choose, "t4"): dl(3, "https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Windows.exe", "BetterDiscord.exe", "BetterDiscord")
+        elif achooser(choose, "t3"): dl(3, "https://github.com/Vendicated/VencordInstaller/releases/latest/download/VencordInstaller.exe", "VenCord.exe", "VenCord")
+        elif achooser(choose, "t4"): dl(3, "https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Windows.exe", "BetterDiscord-Setup.exe", "BetterDiscord")
 
         # =============< QOL
         elif achooser(choose, "n"): p1()
