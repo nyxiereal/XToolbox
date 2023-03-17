@@ -13,7 +13,7 @@ Made by xemulated#2622
 ## 📑 Important
 If this program gets flagged as malware it's a false positive. The program is literally open-source, don't worry.
 
-Nope, this program won't run on windows 7, 8 and 8.1. Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
+Nope, this program won't run on windows 7, 8 and 8.1 (or 32-bit systems). Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
 
 [![image](https://user-images.githubusercontent.com/98595166/219121380-9a0d0213-47db-41ea-8525-2b68d3388c44.png)](https://www.majorgeeks.com/files/details/xtoolbox.html)
 flex
