@@ -188,28 +188,28 @@ def eula():
 
 def helpe(origin):
     cls()
-    print(" ┌─────────────────────────────────────────────────────────────┐\n",
-           "│  Keybind  │ Command                                         │\n",
-           "│     H     │ Help Page (this page)                           │\n",
-           "│     N     │ Next Page                                       │\n",
-           "│     B     │ Back                                            │\n",
-           "│     UN    │ Uninstalls The Program                          │\n",
-           "│     99    │ Exit                                            │\n",
-           "├─────────────────────────────────────────────────────────────┤\n",
-           "│ Color     │ Meaning                                         │\n",
-          f"│ {e}       │ Dangerous Option                                │\n",
-          f"│ {ng}      │ Option that can f*ck up your PC                 │\n",
-          f"│ {ree}     │ Recommended Option                              │\n",
-           "├─────────────────────────────────────────────────────────────┤\n",
-           "│ Error code │ Explanation                                    │\n",
-           "│      1     │ File already exists                            │\n",
-           "│      2     │ Can't check for file overwrite                 │\n",
-           "│      3     │ Can't download file from the server            │\n",
-           "├─────────────────────────────────────────────────────────────┤\n",
-           "│ If scrips won't execute, press P                            │\n",
-           "├─────────────────────────────────────────────────────────────┤\n",
-           "│                   Press ENTER to go back.                   │\n",
-           "└─────────────────────────────────────────────────────────────┘\n")
+    print("┌─────────────────────────────────────────────────────────────┐\n"
+          "│  Keybind  │ Command                                         │\n"
+          "│     H     │ Help Page (this page)                           │\n"
+          "│     N     │ Next Page                                       │\n"
+          "│     B     │ Back                                            │\n"
+          "│     UN    │ Uninstalls The Program                          │\n"
+          "│     99    │ Exit                                            │\n"
+          "├─────────────────────────────────────────────────────────────┤\n"
+          "│ Color     │ Meaning                                         │\n"
+         f"│ {e}       │ Dangerous Option                                │\n"
+         f"│ {ng}      │ Option that can f*ck up your PC                 │\n"
+         f"│ {ree}     │ Recommended Option                              │\n"
+          "├─────────────────────────────────────────────────────────────┤\n"
+          "│ Error code │ Explanation                                    │\n"
+          "│      1     │ File already exists                            │\n"
+          "│      2     │ Can't check for file overwrite                 │\n"
+          "│      3     │ Can't download file from the server            │\n"
+          "├─────────────────────────────────────────────────────────────┤\n"
+          "│ If scrips won't execute, press P                            │\n"
+          "├─────────────────────────────────────────────────────────────┤\n"
+          "│                   Press ENTER to go back.                   │\n"
+          "└─────────────────────────────────────────────────────────────┘\n")
     d = input("> ")
     if achooser(d, 'p'): runaspowershell("Set-ExecutionPolicy Unrestricted -Scope CurrentUser", "SetExecutionPolicy")
     if origin == 1:   p1()
@@ -219,16 +219,16 @@ def helpe(origin):
 def chooseeset():
     while True:
         cls()
-        print(" ┌─────────────────────────────────────────────────────────────────────┐\n"
-              ' │ [1] ESET Smart Security Premium                                     │\n',
-               "│ [2] ESET Internet Security                                          │\n",
-               "│ [3] ESET NOD32 Antivirus                                            │\n",
-               "│ [4] ESET NOD32 Antivirus Gamer Edition                              │\n",
-               "│ [5] ESET Security for Small Office                                  │\n",
-               "│                                                                     │\n",
-               "├─────────┬──────────────────────────┬───────────┬──────────┬─────────┤\n"
-              " │         │ Choose your ESET version │ 99 - Exit │ B - Back │         │\n"
-              " └─────────┴──────────────────────────┴───────────┴──────────┴─────────┘\n")
+        print("┌─────────────────────────────────────────────────────────────────────┐\n"
+              "│ [1] ESET Smart Security Premium                                     │\n"
+              "│ [2] ESET Internet Security                                          │\n"
+              "│ [3] ESET NOD32 Antivirus                                            │\n"
+              "│ [4] ESET NOD32 Antivirus Gamer Edition                              │\n"
+              "│ [5] ESET Security for Small Office                                  │\n"
+              "│                                                                     │\n"
+              "├─────────┬──────────────────────────┬───────────┬──────────┬─────────┤\n"
+              "│         │ Choose your ESET version │ 99 - Exit │ B - Back │         │\n"
+              "└─────────┴──────────────────────────┴───────────┴──────────┴─────────┘\n")
         choose = input("> ")
         if choose == "1": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oks9ghjy5s2i61au5rnrfg0r1ykid0rnhqtbtnqroh93wfb7038207oeqw049nznldnid&branch=us&prod=essp", "ESETSmartSecurity.exe", "ESET Smart Security Premium")
         elif choose == "2": dl(1, "https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oksm3adws43jeih7v7q1yzoind790asam1cuq0unxeww9d63ebma9syry3brmbass36id&branch=us&prod=eis", "ESETInternetSecurity.exe", "ESET Internet Security")
@@ -241,14 +241,14 @@ def chooseeset():
 def choosekas():
     while True:
         cls()
-        print(" ┌──────────────────────────────────────────────────────────────────────┐\n"
-              ' │ [1] Kaspersky Internet Security                                      │\n',
-               "│ [2] Kaspersky Anti-Virus                                             │\n",
-               "│ [3] Kaspersky Total Security                                         │\n",
-               "│                                                                      │\n",
-               "├───────┬───────────────────────────────┬───────────┬──────────┬───────┤\n"
-              " │       │ Choose your Kaspersky version │ 99 - Exit │ B - Back │       │\n"
-              " └───────┴───────────────────────────────┴───────────┴──────────┴───────┘\n")
+        print("┌──────────────────────────────────────────────────────────────────────┐\n"
+              "│ [1] Kaspersky Internet Security                                      │\n"
+              "│ [2] Kaspersky Anti-Virus                                             │\n"
+              "│ [3] Kaspersky Total Security                                         │\n"
+              "│                                                                      │\n"
+              "├───────┬───────────────────────────────┬───────────┬──────────┬───────┤\n"
+              "│       │ Choose your Kaspersky version │ 99 - Exit │ B - Back │       │\n"
+              "└───────┴───────────────────────────────┴───────────┴──────────┴───────┘\n")
         choose = input("> ")
         if choose == "1": dl(1, "https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/68/b8/68b8f8f6-bdc4-4c66-8443-eadeca7f06b4/kis21.3.10.391en_26096.exe", "KasperskyInternetSecurity.exe", "Kaspersky Internet Security")
         elif choose == "2": dl(1, "https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/c6/25/c6250217-9ffe-44e1-8688-03b1a35548eb/kav21.3.10.391en_26075.exe", "KasperskyAnti-Virus.exe", "Kaspersky Anti-Virus")
@@ -259,17 +259,17 @@ def choosekas():
 def quicktweaks():
     while True:
         cls()
-        print(" ┌──────────────────────────┬──────────────────────────┐\n"
-             f' │ [1] {AntiTrackTi}        │ [7] NoXboxBloat         R│\n',
-              f"│ [2] NoNetworkAuto-Tune   │ [8] {LimitQ}            R│\n",
-              f"│ [3] {optimizess}        R│ [9] XanderTweak         R│\n",
-               "│ [4] NoActionCenter      R│ [10] AddCopyPath        R│\n",
-               "│ [5] NoNews              R│ [11] DarkMode           R│\n",
-               "│ [6] NoOneDrive           │ [12] AddTakeOwnership   R│\n",
-               "│                          │                          │\n",
-               "├────┬────────────────────┬┴──────────┬──────────┬────┤\n"
-              " │    │ Choose your Tweaks │ 99 - Exit │ B - Back │    │\n"
-              " └────┴────────────────────┴───────────┴──────────┴────┘\n")
+        print("┌──────────────────────────┬──────────────────────────┐\n"
+             f"│ [1] {AntiTrackTi}        │ [7] NoXboxBloat         R│\n"
+             f"│ [2] NoNetworkAuto-Tune   │ [8] {LimitQ}            R│\n"
+             f"│ [3] {optimizess}        R│ [9] XanderTweak         R│\n"
+              "│ [4] NoActionCenter      R│ [10] AddCopyPath        R│\n"
+              "│ [5] NoNews              R│ [11] DarkMode           R│\n"
+              "│ [6] NoOneDrive           │ [12] AddTakeOwnership   R│\n"
+              "│                          │                          │\n"
+              "├────┬────────────────────┬┴──────────┬──────────┬────┤\n"
+              "│    │ Choose your Tweaks │ 99 - Exit │ B - Back │    │\n"
+              "└────┴────────────────────┴───────────┴──────────┴────┘\n")
         choose = input("> ")
 
         if choose == "1": dl(99, "https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat", "AntiTrackTime.bat", "AntiTrackTime")
@@ -289,14 +289,14 @@ def quicktweaks():
     
 def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
     while True:
-        print(f" ┌───────────────────────────────┐\n",
-               f'│ {line1ddddddd}                │\n',
-               f"│ {line2ddddddd}                │\n",
-               f"│ {line3ddddddd}                │\n",
-               f"│                               │\n",
-               f"├───────────────────────────────┤\n",
-               f"│    Choose your Distro Type    │\n",
-               f"└───────────────────────────────┘\n")
+        print(f"┌───────────────────────────────┐\n"
+              f'│ {line1ddddddd}                │\n'
+              f"│ {line2ddddddd}                │\n"
+              f"│ {line3ddddddd}                │\n"
+              f"│                               │\n"
+              f"├───────────────────────────────┤\n"
+              f"│    Choose your Distro Type    │\n"
+              f"└───────────────────────────────┘\n")
         choose = input("> ")
 
         if   distro == 1: # Linux Mint 21 - Vanessa
@@ -384,31 +384,31 @@ def p1(preprint=False):
         cls()
         if preprint is not False:
             print(preprint)
-        print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzzzz}                          │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
-               f" │ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
-               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses     │\n",
-               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [1] EchoX                │ [1] {posttweaksjfjfjf} │ [1] Chocholatey                │ [1] ADW Cleaner                │\n",
-               f"│ [2] {neCtrl}             │ [2] Insider Enroller   │ [2] {rav}                      │ [2] ATF Cleaner                │\n",
-               f"│ [3] ShutUp10             │ [3] Windows11Fixer     │ [3] {firef}                    │ [3] Defraggler                 │\n",
-               f"│ [4] Optimizer            │ [4] AntiRoundCorners   │ [4] Lively Wallpaper           │ [4] {malwarebyt}               │\n",
-               f"│ [5] PyDebloatX           │ [5] FixDrag&Drop       │ [5] LibreWolf                  │ [5] ESET Online Scanner        │\n",
-               f"│ [6] {windowsonreinddddd} │ [6] Winaero Tweaker    │ [6] qBittorrent                │ [6] ESET                       │")
-        print(f" │ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │ [7] Kaspersky                  │\n",
-               f"│ [8] Win10Debloater       │ [8] REAL               │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n",
-               f"│ [9] SadCoy               │ [9] NVCleanInstall     │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n",
-               f"│ [10] {sweetyli}          │ [10] Twinker           │ [10] Compact Memory Cleaner    │                                │\n",
-               f"│ [11] {ohdwindowwwwwwwww} │                        │                                │                                │\n",
-               f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n",
-               f"│ [13] PrivateZilla        │                        │                                │                                │\n",
-               f"│ [14] ZusierAIO           │                        │                                │                                │\n",
-               f"│ [15] Azurite             │ [QT] {quicktwea}       │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           1/3 │\n",
-               f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+        print(f"┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n"
+              f"│ {xtoolbox00000000000000}                          │ Made by {xemulated000}         │ Internet: {ping0}              │\n"
+              f"│ Update Status: {update0} │ RAM: {ramavailz}       │ CPU: {cpu00000000000} | {c}    │ Disk: {diskusage0000}          │\n"
+              f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n"
+              f"│ [D] Debloat              │ [T] Tweaks             │ [A] Apps                       │ [C] Cleaning / Antiviruses     │\n"
+              f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n"
+              f"│ [1] EchoX                │ [1] {posttweaksjfjfjf} │ [1] Chocholatey                │ [1] ADW Cleaner                │\n"
+              f"│ [2] {neCtrl}             │ [2] Insider Enroller   │ [2] {rav}                      │ [2] ATF Cleaner                │\n"
+              f"│ [3] ShutUp10             │ [3] Windows11Fixer     │ [3] {firef}                    │ [3] Defraggler                 │\n"
+              f"│ [4] Optimizer            │ [4] AntiRoundCorners   │ [4] Lively Wallpaper           │ [4] {malwarebyt}               │\n"
+              f"│ [5] PyDebloatX           │ [5] FixDrag&Drop       │ [5] LibreWolf                  │ [5] ESET Online Scanner        │\n"
+              f"│ [6] {windowsonreinddddd} │ [6] Winaero Tweaker    │ [6] qBittorrent                │ [6] ESET                       │")
+        print(f"│ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │ [7] Kaspersky                  │\n"
+              f"│ [8] Win10Debloater       │ [8] REAL               │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n"
+              f"│ [9] SadCoy               │ [9] NVCleanstall       │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n"
+              f"│ [10] {sweetyli}          │ [10] Twinker           │ [10] Compact Memory Cleaner    │                                │\n"
+              f"│ [11] {ohdwindowwwwwwwww} │ [11] SpohiApp          │                                │                                │\n"
+              f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n"
+              f"│ [13] PrivateZilla        │                        │                                │                                │\n"
+              f"│ [14] ZusierAIO           │                        │                                │                                │\n"
+              f"│ [15] Azurite             │ [QT] {quicktwea}       │                                │                                │\n"
+              f"│                          │                        │                                │                                │\n"
+              f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
+              f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           1/3 │\n"
+              f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
         # =============< Debloat
@@ -438,7 +438,8 @@ def p1(preprint=False):
         elif achooser(choose, "t7"):   runaspowershell("irm christitus.com/win | iex", "CTT")
         elif achooser(choose, "t8"):   dl(1, "https://github.com/miniant-git/REAL/releases/latest/download/REAL.exe", "REAL.exe", "REAL")
         elif achooser(choose, "t9"):   dl(1, "https://cdn.discordapp.com/attachments/1045063596134117456/1074431416152105090/NVCleanstall_1.15.1.exe", "NVCleanstall.exe", "NVCleanstall") # Mirror provided by my deezcord server loll
-        elif achooser(choose, "t9"):   dl(1, "https://github.com/xemulat/twinker/releases/latest/download/Twinker-Setup.exe", "Twinker-Setup.exe", "Twinker")
+        elif achooser(choose, "t10"):  dl(1, "https://github.com/xemulat/twinker/releases/latest/download/Twinker-Setup.exe", "Twinker-Setup.exe", "Twinker")
+        elif achooser(choose, "t11"):  dl(1, "https://github.com/Sophia-Community/SophiApp/releases/download/1.0.94/SophiApp.zip", "SophiApp.zip", "SophiApp")
         elif choose == "QT" or choose == "qt" or choose == "Qt" or choose == "qT": quicktweaks()
 
         # =============< Apps
@@ -472,31 +473,31 @@ def p1(preprint=False):
 def p2():
     while True:
         cls()
-        print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzzzz}                          │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
-               f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
-               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ [T] Tools                      │\n",
-               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [1] {minttuxe}           │ [1] {window11}         │ [1] {rectify}                  │ [1] {ruf}                      │\n",
-               f"│ [2] Pop!_OS              │ [2] Windows 10         │ [2] {atlaso}                   │ [2] Balena Etcher              │\n",
-               f"│ [3] Ubuntu               │ [3] Windows 8.1        │ [3] Ghost Spectre              │ [3] {unetboot}                 │")
-        print(f" │ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │ [4] HeiDoc Iso Downloader      │\n",
-               f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                                │\n",
-               f"│ [6] Solus                │                        │ [6] {windowssimpli}            │                                │\n",
-               f"│ [7] Debian               ├────────────────────────┤ [7] {aero}                     ├────────────────────────────────┤\n",
-               f"│ [8] Garuda               │ [O] Other              │ [8] Tiny10                     │ [A] Apps                       │\n",
-               f"│ [9] {zorino}             ├────────────────────────┤ [9] KernelOS                   ├────────────────────────────────┤\n",
-               f"│                          │ [1] .NET 4.8 SDK       │ [10] Windows 7 Super Nano      │ [1] KeePassXC                  │\n",
-               f"│                          │ [2] DirectX AIO        │ [11] Windows 11 Debloated      │ [2] PowerToys                  │\n",
-               f"│                          │ [3] VisualCppRedist    │                                │ [3] Alacritty                  │\n",
-               f"│                          │ [4] XNA Framework      │                                │ [4] PowerShell                 │\n",
-               f"│                          │ [5] Python             │                                │ [5] Motrix                     │\n",
-               f"│                          │                        │                                │ [6] Files                      │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           2/3 │\n",
-               f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+        print(f"┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n"
+              f"│ {xtoolbox00000000000000}                          │ Made by {xemulated000}         │ Internet: {ping0}              │\n"
+              f"│ Update Status: {update0} │ RAM: {ramavailz}       │ CPU: {cpu00000000000} | {c}    │ Disk: {diskusage0000}          │\n"
+              f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n"
+              f"│ [L] Linux Distros        │ [W] Windows versions   │ [M] Modded Windows versions    │ [T] Tools                      │\n"
+              f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n"
+              f"│ [1] {minttuxe}           │ [1] {window11}         │ [1] {rectify}                  │ [1] {ruf}                      │\n"
+              f"│ [2] Pop!_OS              │ [2] Windows 10         │ [2] {atlaso}                   │ [2] Balena Etcher              │\n"
+              f"│ [3] Ubuntu               │ [3] Windows 8.1        │ [3] Ghost Spectre              │ [3] {unetboot}                 │")
+        print(f"│ [4] Arch Linux           │ [4] Windows 8          │ [4] ReviOS                     │ [4] HeiDoc Iso Downloader      │\n"
+              f"│ [5] Artix Linux          │ [5] Windows 7          │ [5] GGOS                       │                                │\n"
+              f"│ [6] Solus                │                        │ [6] {windowssimpli}            │                                │\n"
+              f"│ [7] Debian               ├────────────────────────┤ [7] {aero}                     ├────────────────────────────────┤\n"
+              f"│ [8] Garuda               │ [O] Other              │ [8] Tiny10                     │ [A] Apps                       │\n"
+              f"│ [9] {zorino}             ├────────────────────────┤ [9] KernelOS                   ├────────────────────────────────┤\n"
+              f"│                          │ [1] .NET 4.8 SDK       │ [10] Windows 7 Super Nano      │ [1] KeePassXC                  │\n"
+              f"│                          │ [2] DirectX AIO        │ [11] Windows 11 Debloated      │ [2] PowerToys                  │\n"
+              f"│                          │ [3] VisualCppRedist    │                                │ [3] Alacritty                  │\n"
+              f"│                          │ [4] XNA Framework      │                                │ [4] PowerShell                 │\n"
+              f"│                          │ [5] Python             │                                │ [5] Motrix                     │\n"
+              f"│                          │                        │                                │ [6] Files                      │\n"
+              f"│                          │                        │                                │                                │\n"
+              f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
+              f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           2/3 │\n"
+              f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
         # =============< TUX BLOCK | BOTTOM TEXT
@@ -522,7 +523,7 @@ def p2():
         elif achooser(choose, "o2"): dl(2, "https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe", "DirectX-AIO.exe", "DirectX AIO")
         elif achooser(choose, "o3"): dl(2, "https://github.com/abbodi1406/vcredist/releases/download/v0.66.0/VisualCppRedist_AIO_x86_x64_66.zip", "VisualCppRedist.zip", "VisualCppRedist")
         elif achooser(choose, "o4"): dl(2, "https://download.microsoft.com/download/A/C/2/AC2C903B-E6E8-42C2-9FD7-BEBAC362A930/xnafx40_redist.msi", "XNAF-Setup.msi", "XNAF")
-        elif achooser(choose, "o4"): dl(2, "https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe", "Python-Setup.exe", "Python")
+        elif achooser(choose, "o5"): dl(2, "https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe", "Python-Setup.exe", "Python")
 
         # =============< Modded isos
         elif achooser(choose, "m1"): dl(2, r"https://archive.org/download/rectify-11-v-2/Rectify11%20%28v2%29.iso", "Rectify11.iso", "Rectify11 v2")
@@ -560,31 +561,31 @@ def p2():
 def p3():
     while True:
         cls()
-        print(f" ┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n", 
-               f"│ {xtoolboxvv1asdfghjzzzz}                          │ Made by {xemulatddddd}         │ Internet: {qwert}              │\n",
-               f"│ Update Status: {Errorhd} │ RAM: {ramavailz}       │ CPU: {cpuavailifffff} | {c}    │ Disk: {dusagehebeded}          │\n",
-               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [L] Minecraft Launchers  │ [G] Game Launchers     │ [C] Minecraft Clients          │ [I] Misc                       │\n",
-               f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n", 
-               f"│ [1] {offici}             │ [1] {ste}              │ [1] Tecknix                    │ [1] Achivment Watcher          │\n",
-               f"│ [2] {prismlaunch}        │ [2] {upl}              │ [2] Salwyrr                    │ [2] {disco}                    │\n",
-               f"│ [3] ATLaucnher           │ [3] Origin             │ [3] LabyMod                    │ [3] Spotify                    │\n",
-               f"│ [4] {hm}                 │ [4] Epic Games         │ [4] {feath}                    │                                │\n",
-               f"│ [5] XMCL                 │ [5] GOG Galaxy         │ [5] {lunarclien}               │                                │\n",
-               f"│ [6] GDLauncher           │ [6] Paradox            │ [6] {cheatbreake}              │                                │\n",
-               f"│                          │ [7] Roblox             │ [7] Badlion                    ├────────────────────────────────┤")
-        print(f" │                          │                        │ [8] Crystal Client             │ [T] Tools                      │\n",
-               f"│                          │                        │                                ├────────────────────────────────┤\n",
-               f"│                          │                        │                                │ [1] {openas}                   │\n",
-               f"│                          │                        │                                │ [2] Spicefy                    │\n",
-               f"│                          │                        │                                │ [3] VenCord                    │\n",
-               f"│                          │                        │                                │ [4] BetterDiscord              │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │                                │\n",
-               f"│                          │                        │                                │ // Sorry for so little tools   │\n",
-               f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n",
-               f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           3/3 │\n",
-               f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+        print(f"┌───────────────────────────────────────────────────┬────────────────────────────────┬────────────────────────────────┐\n"
+              f"│ {xtoolbox00000000000000}                          │ Made by {xemulated000}         │ Internet: {ping0}              │\n"
+              f"│ Update Status: {update0} │ RAM: {ramavailz}       │ CPU: {cpu00000000000} | {c}    │ Disk: {diskusage0000}          │\n"
+              f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n"
+              f"│ [L] Minecraft Launchers  │ [G] Game Launchers     │ [C] Minecraft Clients          │ [I] Misc                       │\n"
+              f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n"
+              f"│ [1] {offici}             │ [1] {ste}              │ [1] Tecknix                    │ [1] Achivment Watcher          │\n"
+              f"│ [2] {prismlaunch}        │ [2] {upl}              │ [2] Salwyrr                    │ [2] {disco}                    │\n"
+              f"│ [3] ATLaucnher           │ [3] Origin             │ [3] LabyMod                    │ [3] Spotify                    │\n"
+              f"│ [4] {hm}                 │ [4] Epic Games         │ [4] {feath}                    │                                │\n"
+              f"│ [5] XMCL                 │ [5] GOG Galaxy         │ [5] {lunarclien}               │                                │\n"
+              f"│ [6] GDLauncher           │ [6] Paradox            │ [6] {cheatbreake}              │                                │\n"
+              f"│                          │ [7] Roblox             │ [7] Badlion                    ├────────────────────────────────┤")
+        print(f"│                          │                        │ [8] Crystal Client             │ [T] Tools                      │\n"
+              f"│                          │                        │                                ├────────────────────────────────┤\n"
+              f"│                          │                        │                                │ [1] {openas}                   │\n"
+              f"│                          │                        │                                │ [2] Spicefy                    │\n"
+              f"│                          │                        │                                │ [3] VenCord                    │\n"
+              f"│                          │                        │                                │ [4] BetterDiscord              │\n"
+              f"│                          │                        │                                │                                │\n"
+              f"│                          │                        │                                │                                │\n"
+              f"│                          │                        │                                │ // Sorry for so little tools   │\n"
+              f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
+              f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           3/3 │\n"
+              f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
         choose = input("> ")
 
         # =============< Minecraft Launchers
@@ -654,52 +655,54 @@ isdev = False
 
 if ping("github.com") == None or False:
     # No internet access, the program will not crash.
-    Errorhd = color("NoNet    ", 2)
+    update0 = color("NoNet    ", 2)
 
 # Checks for the `noupdates` file 
 if isfile("noupdates.xtb") == True:
     printer.lprint("NoUpdates Detected, not checking for updates.")
-    Errorhd = color("NoUpdates", 3)
+    update0 = color("NoUpdates", 3)
 
 # Checks for DEV version  
 if isdev == True:
     printer.lprint("DevBuild Detected, not checking for updates.")
-    Errorhd = color("DevBuild ", 3)
+    update0 = color("DevBuild ", 3)
 
 else:
     # After all the checks
     newver = latest("xemulat/xtoolbox")
     if version == str(newver):
-        Errorhd = color("UpToDate ", 1)
+        update0 = color("UpToDate ", 1)
 
     elif str(newver) > version:
         # Triggers the update after outdated version is detected
-        Errorhd = color("Outdated ", 2)
+        update0 = color("Outdated ", 2)
         update()
 
     else:
-        Errorhd = color("DevBuild ", 3)
+        update0 = color("DevBuild ", 3)
 
 # Set color vars
 printer.lprint("Setting vars...")
-xtoolboxvv1asdfghjzzzz = color("XToolBox v"+version+pre, 2)
+xtoolbox00000000000000 = color("XToolBox v"+version+pre, 2)
 # ISSUES FIXED, STOP ASKING
 # Un-Fucked, don't touch
-try:    ramavailz = SetVars.rama()
+SetVars.rama()
+try:    ramavailz = '00GB / 00GB'
 except: ramavailz = "error"
 
-try:    cpuavailifffff = SetVars.cpup()
-except: cpuavailifffff = "error"
+try:    cpu00000000000 = SetVars.cpup()
+except: cpu00000000000 = '000 / 100%'
 
-try:    dusagehebeded = SetVars.dusage()
-except: dusagehebeded = "error"
+try:    diskusage0000 = SetVars.dusage()
+except: diskusage0000 = '00GB / 00GB    '
 
-try:    qwert = SetVars.qwert() + "   "
-except: qwert = "error"
+try:    ping0 = SetVars.ping0() + "   "
+except: ping0 = "000ms  "
 
 try:    c = SetVars.c()
-except: c = "error"
-xemulatddddd = color("xemulated#2622", 2)
+except: c = '0000/0000'
+
+xemulated000 = color("xemulated#2622", 2)
 
 # Page 1 Vairables
 windowsonreinddddd = color("WindowsOnReins  DNGR", 2)
@@ -734,7 +737,6 @@ openas = color("OpenAsar", 1)
 disco = color("Discord", 1)
 feath = color("Feather", 1)
 ste = color("Steam", 1)
-
 # Help Page Vars
 e = Back.RED+"Red"+Back.RESET
 ng = Back.RED+"DNGR"+Back.RESET
