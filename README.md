@@ -25,6 +25,17 @@ flex
 
 ![image](https://user-images.githubusercontent.com/98595166/219063111-6cc5a01c-f480-4705-806c-35986b953766.png)
 
+##  Reviews
+*nice toolbox*
+
+-jonathah#1221
+
+------
+
+*Thanks bro, very useful softwhere*
+
+-Senn#3984
+
 ## 📌 Todo
 - [ ] Optimize my shitty code
 - [ ] Add some programs
