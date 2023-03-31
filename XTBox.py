@@ -400,7 +400,7 @@ def p1(preprint=False):
               f"│ [8] Win10Debloater       │ [8] REAL               │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n"
               f"│ [9] SadCoy               │ [9] NVCleanstall       │ [9] Memory Cleaner             │ [9] Glary Utilities            │\n"
               f"│ [10] {sweetyli}          │ [10] Twinker           │ [10] Compact Memory Cleaner    │                                │\n"
-              f"│ [11] {ohdwindowwwwwwwww} │ [11] SpohiApp          │                                │                                │\n"
+              f"│ [11] {ohdwindowwwwwwwww} │ [11] SophiApp          │                                │                                │\n"
               f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n"
               f"│ [13] PrivateZilla        │                        │                                │                                │\n"
               f"│ [14] ZusierAIO           │                        │                                │                                │\n"
