@@ -50,6 +50,7 @@ def linuxdl(distro):
     elif distro == 7: tuxdl("[1] NetInst   ", "              ", "              ", distro) # Debian
     elif distro == 8: tuxdl("[1] DR460NIZED", "[2] GNOME     ", "[3] Xfce      ", distro) # Garuda Linux
     elif distro == 9: tuxdl("[1] Core      ", "[2] Lite      ", "              ", distro) # Zorin OS
+    elif distro == 10:tuxdl("[1] KDE Plasma", "[2] GNOME     ", "[3] Xfce      ", distro) # CachyOS
 
 # This function defines a function called `prep()`
 # that checks the hardware requirements of the system
@@ -348,6 +349,13 @@ def tuxdl(line1ddddddd, line2ddddddd, line3ddddddd, distro):
             if   choose == "1":  dl(2, "https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Core-64-bit.iso", "ZorinOS-Core.iso", "Zorin OS Core")
             elif choose == "2":  dl(2, "https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Lite-64-bit.iso", "ZorinOS-Lite.iso", "Zorin OS Lite")
             runqol(0, choose)
+        
+        elif distro == 10: # CachyOS - 230319
+            if   choose == "1":  dl(2, "https://mirror.cachyos.org/ISO/kde/230319/cachyos-kde-linux-230319.iso", "CachyOS-KDE.iso", "CachyOS KDE")
+            elif choose == "2":  dl(2, "https://mirror.cachyos.org/ISO/gnome/230319/cachyos-gnome-linux-230319.iso", "CachyOS-GNOME.iso", "CachyOS GNOME")
+            # elif choose == "3":  dl(2, "", "CachyOS-Xfce.iso", "CachyOS Xfce")
+            elif choose == "3": print('Under Construction') ; sleep(6)
+            runqol(0, choose)
 
 def multidl(file):
     if   file == "ReviOS": muulter(2, "https://pixeldrain.com/api/file/DAatLgjZ?download", "ReviOS 11", "ReviOS 11", "ReviOS-11.iso", 
@@ -404,7 +412,7 @@ def p1(preprint=False):
               f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n"
               f"│ [13] PrivateZilla        │                        │                                │                                │\n"
               f"│ [14] ZusierAIO           │                        │                                │                                │\n"
-              f"│ [15] Azurite             │ [QT] {quicktwea}       │                                │                                │\n"
+              f"│ [15] CoutX               │ [QT] {quicktwea}       │                                │                                │\n"
               f"│                          │                        │                                │                                │\n"
               f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
               f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           1/3 │\n"
@@ -426,7 +434,7 @@ def p1(preprint=False):
         elif achooser(choose, "d12"): dl(1, "https://github.com/crazy-max/WindowsSpyBlocker/releases/latest/download/WindowsSpyBlocker.exe", "WindowsSpyBlocker.exe", "WindowsSpyBlocker")
         elif achooser(choose, "d13"): dl(1, "https://github.com/builtbybel/privatezilla/releases/latest/download/privatezilla.zip", "PrivateZilla.zip", "PrivateZilla")
         elif achooser(choose, "d14"): dl(1, "https://raw.githubusercontent.com/Zusier/Zusiers-optimization-Batch/master/Zusier%20AIO.bat", "ZusierAIO.bat", "ZusierAIO")
-        elif achooser(choose, "d15"): dl(1, r"https://update.tweakcentral.net/azurite/Azurite%20Setup%201.1.8.exe", "Azurite.exe", "Azurite")
+        elif achooser(choose, "d15"): dl(1, r"https://github.com/UnLovedCookie/CoutX/releases/latest/download/CoutX-Setup.exe", "CoutX-Setup.exe.exe", "CoutX")
 
         # =============< Tweaks
         elif achooser(choose, "t1"):   dl(1, "https://raw.githubusercontent.com/ArtanisInc/Post-Tweaks/main/PostTweaks.bat", "PostTweaks.bat", "PostTweaks")
@@ -488,7 +496,7 @@ def p2():
               f"│ [7] Debian               ├────────────────────────┤ [7] {aero}                     ├────────────────────────────────┤\n"
               f"│ [8] Garuda               │ [O] Other              │ [8] Tiny10                     │ [A] Apps                       │\n"
               f"│ [9] {zorino}             ├────────────────────────┤ [9] KernelOS                   ├────────────────────────────────┤\n"
-              f"│                          │ [1] .NET 4.8 SDK       │ [10] Windows 7 Super Nano      │ [1] KeePassXC                  │\n"
+              f"│ [10] CachyOS             │ [1] .NET 4.8 SDK       │ [10] Windows 7 Super Nano      │ [1] KeePassXC                  │\n"
               f"│                          │ [2] DirectX AIO        │ [11] Windows 11 Debloated      │ [2] PowerToys                  │\n"
               f"│                          │ [3] VisualCppRedist    │                                │ [3] Alacritty                  │\n"
               f"│                          │ [4] XNA Framework      │                                │ [4] PowerShell                 │\n"
@@ -510,6 +518,7 @@ def p2():
         elif achooser(choose, "l7"): linuxdl(7) # Debian                11.5.0
         elif achooser(choose, "l8"): linuxdl(8) # Garuda Linux          Auto-Updates
         elif achooser(choose, "l9"): linuxdl(9) # Zorin OS              16.2
+        elif achooser(choose, "l10"):linuxdl(10)# CachyOS               230319
 
         # =============< Windows isos
         elif achooser(choose, "w1"): webopen("https://www.microsoft.com/software-download/windows11"); p2()
@@ -643,7 +652,7 @@ printer.lprint("Running Pre-Startup tasks...")
 
 # Updater
 pre = ""
-version = "2.3"
+version = "2.5"
 if pre == "": pre = "           "
 # Sets `pre` to this long space to prevent some sort of bugs
 # Can't be a defined function
