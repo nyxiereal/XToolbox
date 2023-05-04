@@ -3,7 +3,7 @@ from os.path import isfile
 from sys import exit
 from time import sleep
 from timeit import default_timer
-from urllib.request import urlretrieve
+from urllib.request import urlretrieve, urlopen
 from webbrowser import open as webopen
 from platform import release
 # This has to be here
@@ -19,10 +19,11 @@ try:
 except:
     print("Fixing libraries, wait...")
     #todo: add a warning message that this command will be run, in case someone prefers using virtal environments
+    #or just throw a warning, sleep for 5 seconds and exit()
     system("pip install -U psutil XeLib colorama lastversion XTLLib ping3")
     print("Libraries installed successfully!")
 
-from xtools import Tool, tools
+from xtools import tools
 
 # This function defines a function called `eula()`
 # that prints a warning message and asks the user
@@ -131,6 +132,7 @@ def interpreter(page, prompt="> "):
             return False, False
         else:
             while not helpe(): pass
+            return
 
     #page 0 (help)
     #returns true/false which indicate if helpe should close
@@ -141,7 +143,7 @@ def interpreter(page, prompt="> "):
         # elevate powershell execution policy
         if choose == "p": 
             # todo: add warning message that this command is about to be run (not every1 wants it)
-            # best way to do that would be inside XTLLib
+            # function wrappers?
             runaspowershell("Set-ExecutionPolicy Unrestricted -Scope CurrentUser", "SetExecutionPolicy")
             return True
         # not valid option
@@ -238,6 +240,7 @@ def multiChoose(tool, prompt):
     # │                                │
     # │ [1] name_name_name_1           │
     # │ [2] name_name_name_name_2      │
+    # │  ...                           │
     # │                                │
     # ├────────────────────────────────┤
     # │    _________Prompt_________    │
@@ -288,26 +291,40 @@ def multiChoose(tool, prompt):
 
 #function that downloads a tool
 def dwnTool(tool):
-    if (len(tool.dwn)==0):
-        raise LookupError(f"Tool {tool.name} has no download links")
+    global isdev
+
     index = 0
     if (len(tool.dwn)!=1):
         if tool.code[0] == "l": prompt = "Choose your Distro Type"
         else: prompt = "Choose Verson"
         index = multiChoose(tool, prompt)
         if index < 0: return
-        
-    if tool.command==1:   dl(tool.getDwn(index), tool.getExec(index), tool.getName(index))
-    elif tool.command==2: runaspowershell(tool.getDwn(index), tool.getName(index))
-    elif tool.command==3: webopen(tool.getDwn(index))
-    elif tool.command==4: urlretrieve(tool.getDwn(index), tool.getExec(index))
-    elif tool.command==5: fwrite(tool.getDwn(index))
+    
+    if isdev and tool.command != 2 and tool.command != 5:
+        try:
+            urlopen(tool.getDwn(index))
+            print("Valid URL!")
+        except:
+            print("cant open URL, check if it works")
+    
+    if not isdev:
+        if tool.command==1:   dl(tool.getDwn(index), tool.getExec(index), tool.getName(index))
+        elif tool.command==2: runaspowershell(tool.getDwn(index), tool.getName(index))
+        elif tool.command==3: webopen(tool.getDwn(index))
+        elif tool.command==4: urlretrieve(tool.getDwn(index), tool.getExec(index))
+        elif tool.command==5: fwrite(tool.getDwn(index))
+    else:
+        if tool.command==1:   print(f"dl(\n{tool.getDwn(index)}, \n{tool.getExec(index)}, \n{tool.getName(index)}\n)")
+        elif tool.command==2: print(f"runaspowershell(\n{tool.getDwn(index)}, \n{tool.getName(index)}\n)")
+        elif tool.command==3: print(f"webopen(\n{tool.getDwn(index)}\n)")
+        elif tool.command==4: print(f"urlretrieve(\n{tool.getDwn(index)}, \n{tool.getExec(index)}\n)")
+        elif tool.command==5: print(f"fwrite(\n{tool.getDwn(index)}\n)")
+        input("\n... press any key to continue ...")
 
 
 #function that downloads file from url
 def dl(url, urlr, name):
     # The code below is redundant for now since download() cant overwrite a file
-    # Best approach here would be to implement the functionality inside the XTLLib
     # # Try and except so the program won't crash when the website isn't accesible
     # try:
     #     if isfile(urlr) == True:
@@ -331,28 +348,28 @@ def dl(url, urlr, name):
 #returns if it should close
 def helpe():
     cls()
-    print("┌─────────────────────────────────────────────────────────────┐\n"
-          "│  Keybind  │ Command                                         │\n"
-          "│     H     │ Help Page (this page)                           │\n"
-          "│     N     │ Next Page                                       │\n"
-          "│  ENTER/B  │ Back                                            │\n"
-          "│     UN    │ Uninstalls The Program                          │\n"
-          "│     99    │ Exit                                            │\n"
-          "├─────────────────────────────────────────────────────────────┤\n"
-          "│ Color     │ Meaning                                         │\n"
-         f"│ {e}       │ Dangerous Option                                │\n"
-         f"│ {ng}      │ Option that can f*ck up your PC                 │\n"
-         f"│ {ree}     │ Recommended Option                              │\n"
-          "├─────────────────────────────────────────────────────────────┤\n"
-          "│ Error code │ Explanation                                    │\n"
-          "│      1     │ File already exists                            │\n"
-          "│      2     │ Can't check for file overwrite                 │\n"
-          "│      3     │ Can't download file from the server            │\n"
-          "├─────────────────────────────────────────────────────────────┤\n"
-          "│ If scrips won't execute, press P                            │\n"
-          "├─────────────────────────────────────────────────────────────┤\n"
-          "│                  Press ENTER/B to go back.                  │\n"
-          "└─────────────────────────────────────────────────────────────┘\n")
+    print(f"┌─────────────────────────────────────────────────────────────┐\n"
+          f"│  Keybind  │ Command                                         │\n"
+          f"│     H     │ Help Page (this page)                           │\n"
+          f"│     N     │ Next Page                                       │\n"
+          f"│     B     │ Previous Page                                   │\n"
+          f"│     UN    │ Uninstalls The Program                          │\n"
+          f"│     99    │ Exit                                            │\n"
+          f"├─────────────────────────────────────────────────────────────┤\n"
+          f"│ Color     │ Meaning                                         │\n"
+          f"│ {e}       │ Dangerous Option                                │\n"
+          f"│ {ng}      │ Option that can f*ck up your PC                 │\n"
+          f"│ {ree}     │ Recommended Option                              │\n"
+          f"├─────────────────────────────────────────────────────────────┤\n"
+          f"│ Error code │ Explanation                                    │\n"
+          f"│      1     │ File already exists                            │\n"
+          f"│      2     │ Can't check for file overwrite                 │\n"
+          f"│      3     │ Can't download file from the server            │\n"
+          f"├─────────────────────────────────────────────────────────────┤\n"
+          f"│ If scripts won't execute, press P                           │\n"
+          f"├─────────────────────────────────────────────────────────────┤\n"
+          f"│                  Press ENTER/B to go back.                  │\n"
+          f"└─────────────────────────────────────────────────────────────┘\n")
     return interpreter(0)
 
 #QuickTweaks is page 10
@@ -461,7 +478,7 @@ def p2():
             f"│                          │                        │                                │ [6] Files                      │\n"
             f"│                          │                        │                                │                                │\n"
             f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
-            f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           2/3 │\n"
+            f"│                            Ex.: 'L3' ─ Ubuntu │ N ─ Next Page │ 99 ─ Exit │ H - Help                            2/3 │\n"
             f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
     interpreter(2)
 
@@ -476,7 +493,7 @@ def p3():
             f"├──────────────────────────┼────────────────────────┼────────────────────────────────┼────────────────────────────────┤\n"
             f"│ [1] {offici}             │ [1] {ste}              │ [1] Tecknix                    │ [1] Achivment Watcher          │\n"
             f"│ [2] {prismlaunch}        │ [2] {upl}              │ [2] Salwyrr                    │ [2] {disco}                    │\n"
-            f"│ [3] ATLaucnher           │ [3] Origin             │ [3] LabyMod                    │ [3] Spotify                    │\n"
+            f"│ [3] ATLauncher           │ [3] Origin             │ [3] LabyMod                    │ [3] Spotify                    │\n"
             f"│ [4] {hm}                 │ [4] Epic Games         │ [4] {feath}                    │                                │\n"
             f"│ [5] XMCL                 │ [5] GOG Galaxy         │ [5] {lunarclien}               │                                │\n"
             f"│ [6] GDLauncher           │ [6] Paradox            │ [6] {cheatbreake}              │                                │\n"
@@ -488,10 +505,10 @@ def p3():
             f"│                          │                        │                                │ [3] VenCord                    │\n"
             f"│                          │                        │                                │ [4] BetterDiscord              │\n"
             f"│                          │                        │                                │                                │\n"
-            f"│                          │                        │                                │                                │\n"
-            f"│                          │                        │                                │ // Sorry for so little tools   │\n"
+            f"│                          │                        │                                │ // Share your tool suggestions │\n"
+            f"│                          │                        │                                │ // on our discord!             │\n"
             f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
-            f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           3/3 │\n"
+            f"│                            Ex.: 'G3' ─ Origin │ N ─ Next Page │ 99 ─ Exit │ H - Help                            3/3 │\n"
             f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
     interpreter(3)
 
@@ -623,6 +640,6 @@ try:
         #global variable declared in page functions
         lastPage() 
 except KeyboardInterrupt:
-    print("bai bai")
+    print("\nbai bai")
     sleep(1)
     cls()

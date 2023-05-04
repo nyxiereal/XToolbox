@@ -45,8 +45,11 @@ class Tool:
         self.dwn = dwn
     
     def getLatest(self):
-        if (self.gotlatest):
+        if not self.gotlatest:
+            print("Checking for latest version...")
             self.latest = self.latestfn()
+            print(f"Found it: {self.latest}")
+            self.gotlatest = True
 
     def getDwn(self, num):
         self.getLatest()
@@ -84,8 +87,8 @@ tools = {
     #         Dwn(
     #             dwn_name<string>, dwn_description<string>, dwn_executable<string>,
     #             dwn_url_part1<raw string>,
-    #             dwn_url_part2<raw string>
-
+    #             dwn_url_part2<raw string>,
+    #             ...
     #         ),
     #         #download link 2
     #         Dwn(
@@ -120,7 +123,7 @@ tools = {
     "d3-1" : Tool(
         "ShutUp10", "d3-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.oo-software.com/shutup10",
         [
             Dwn(
                 "ShutUp10", "", "ShutUp10.exe",
@@ -157,7 +160,7 @@ tools = {
     "d6-1" : Tool(
         "WindowsOnReins", "d6-1", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/gordonbay/Windows-On-Reins/blob/master/wor.ps1",
         [
             Dwn(
                 "WindowsOnReins", "", "WindowsOnReins.ps1",
@@ -181,7 +184,7 @@ tools = {
     "d8-1" : Tool(
         "Win10Debloat", "d8-1", 2, True,
         lambda: "",
-        r"",
+        r"https://github.com/Sycnex/Windows10Debloater/",
         [
             Dwn(
                 "Win10Debloat", "", "",
@@ -205,7 +208,7 @@ tools = {
     "d10-1" : Tool(
         "SweetyLite", "d10-1", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/xemulat/MyFilesForDDL/blob/main/SweetyLite2.bat",
         [
             Dwn(
                 "SweetyLite", "", "SweetyLite.bat",
@@ -217,7 +220,7 @@ tools = {
     "d11-1" : Tool(
         "OHDWindows", "d11-1", 2, True,
         lambda: "",
-        r"",
+        r"https://github.com/simeononsecurity/Windows-Optimize-Harden-Debloat",
         [
             Dwn(
                 "OHDWindows", "", "",
@@ -253,7 +256,7 @@ tools = {
     "d14-1" : Tool(
         "ZusierAIO", "d14-1", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/Zusier/Zusiers-optimization-Batch",
         [
             Dwn(
                 "ZusierAIO", "", "ZusierAIO.bat",
@@ -277,7 +280,7 @@ tools = {
     "t1-1" : Tool(
         "PostTweaks", "t1-1", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/ArtanisInc/Post-Tweaks",
         [
             Dwn(
                 "PostTweaks", "", "PostTweaks.bat",
@@ -339,7 +342,7 @@ tools = {
     "t6-1" : Tool(
         "Winaero Tweaker", "t6-1", 1, True,
         lambda: "",
-        r"",
+        r"https://winaero.com/winaero-tweaker/",
         [
             Dwn(
                 "Winaero Tweaker", "", "WinaeroTweaker.zip",
@@ -351,7 +354,7 @@ tools = {
     "t7-1" : Tool(
         "CTT", "t7-1", 2, True,
         lambda: "",
-        r"",
+        r"https://github.com/ChrisTitusTech/winutil/blob/main/winutil.ps1",
         [
             Dwn(
                 "CTT", "", "",
@@ -367,8 +370,7 @@ tools = {
         [
             Dwn(
                 "REAL", "", "REAL.exe",
-                r"https://github.com/miniant-git/REAL/releases/latest/download/REAL.exe",
-                r""
+                r"https://github.com/miniant-git/REAL/releases/latest/download/REAL.exe"
             )
         ]
     ),
@@ -380,8 +382,7 @@ tools = {
         [
             Dwn(
                 "NVCleanstall", "", "NVCleanstall.exe",
-                r"https://cdn.discordapp.com/attachments/1045063596134117456/1074431416152105090/NVCleanstall_1.15.1.exe",
-                r""
+                r"https://cdn.discordapp.com/attachments/1045063596134117456/1074431416152105090/NVCleanstall_1.15.1.exe"
             )
         ]
     ),
@@ -393,8 +394,7 @@ tools = {
         [
             Dwn(
                 "Twinker", "", "Twinker-Setup.exe",
-                r"https://github.com/xemulat/twinker/releases/latest/download/Twinker-Setup.exe",
-                r""
+                r"https://github.com/xemulat/twinker/releases/latest/download/Twinker-Setup.exe"
             )
         ]
     ),
@@ -406,8 +406,7 @@ tools = {
         [
             Dwn(
                 "SophiApp", "", "SophiApp.zip",
-                r"https://github.com/Sophia-Community/SophiApp/releases/download/1.0.94/SophiApp.zip",
-                r""
+                r"https://github.com/Sophia-Community/SophiApp/releases/download/1.0.94/SophiApp.zip"
             )
         ]
     ),
@@ -415,12 +414,11 @@ tools = {
     "a1-1" : Tool(
         "Choco", "a1-1", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/xemulat/XToolbox/blob/main/files/choco.bat",
         [
             Dwn(
                 "Choco", "", "choco.bat",
-                r"https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/choco.bat",
-                r""
+                r"https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/choco.bat"
             )
         ]
     ),
@@ -428,7 +426,7 @@ tools = {
     "a2-1" : Tool(
         "Brave Browser", "a2-1", 1, True,
         lambda: "",
-        r"",
+        r"https://brave.com/",
         [
             Dwn(
                 "Brave Browser", "", "Brave-Setup.exe",
@@ -441,12 +439,11 @@ tools = {
     "a3-1" : Tool(
         "Firefox Setup", "a3-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.mozilla.org/firefox",
         [
             Dwn(
                 "Firefox Setup", "", "Firefox-Setup.exe",
-                r"https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US",
-                r""
+                r"https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US"
             )
         ]
     ),
@@ -467,12 +464,11 @@ tools = {
     "a5-1" : Tool(
         "LibreWolf", "a5-1", 1, True,
         lambda: "",
-        r"",
+        r"https://librewolf.net/",
         [
             Dwn(
                 "LibreWolf", "", "LibreWolf-Setup.exe",
-                r"https://gitlab.com/librewolf-community/browser/windows/-/package_files/69100828/download",
-                r""
+                r"https://gitlab.com/librewolf-community/browser/windows/-/package_files/69100828/download"
             )
         ]
     ),
@@ -484,8 +480,8 @@ tools = {
         [
             Dwn(
                 "qBittorrent Enhanced Edition", "", "qBittorrent-EE-Setup.exe",
-                r"https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/latest/download/qbittorrent-enhanced-",
-                r"-Qt6-setup.exe"
+                r"https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/latest/download/qbittorrent_enhanced_",
+                r"_qt6_x64_setup.exe"
             )
         ]
     ),
@@ -497,8 +493,7 @@ tools = {
         [
             Dwn(
                 "Rainmeter", "", "Rainmeter-Setup.exe",
-                r"https://github.com/rainmeter/rainmeter/releases/download/v4.5.17.3700/Rainmeter-4.5.17.exe",
-                r""
+                r"https://github.com/rainmeter/rainmeter/releases/download/v4.5.17.3700/Rainmeter-4.5.17.exe"
             )
         ]
     ),
@@ -506,12 +501,11 @@ tools = {
     "a8-1" : Tool(
         "7-Zip", "a8-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.7-zip.org/",
         [
             Dwn(
                 "7-Zip", "", "7Zip.exe",
-                r"https://www.7-zip.org/a/7z2201-x64.exe",
-                r""
+                r"https://www.7-zip.org/a/7z2201-x64.exe"
             )
         ]
     ),
@@ -519,12 +513,11 @@ tools = {
     "a9-1" : Tool(
         "Memory Cleaner", "a9-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.koshyjohn.com/software/memclean/",
         [
             Dwn(
                 "Memory Cleaner", "", "MemoryCleaner.exe",
-                r"https://www.koshyjohn.com/software/MemClean.exe",
-                r""
+                r"https://www.koshyjohn.com/software/MemClean.exe"
             )
         ]
     ),
@@ -536,8 +529,7 @@ tools = {
         [
             Dwn(
                 "Compact Memory Cleaner", "", "CompactMemoryCleaner.exe",
-                r"https://github.com/qualcosa/Compact-RAM-Cleaner/releases/latest/download/Compact.RAM.Cleaner.exe",
-                r""
+                r"https://github.com/qualcosa/Compact-RAM-Cleaner/releases/latest/download/Compact.RAM.Cleaner.exe"
             )
         ]
     ),
@@ -545,12 +537,11 @@ tools = {
     "c1-1" : Tool(
         "ADW Cleaner", "c1-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.malwarebytes.com/adwcleaner",
         [
             Dwn(
                 "ADW Cleaner", "", "ADW-Cleaner.exe",
-                r"https://adwcleaner.malwarebytes.com/adwcleaner?channel=release",
-                r""
+                r"https://adwcleaner.malwarebytes.com/adwcleaner?channel=release"
             )
         ]
     ),
@@ -558,12 +549,11 @@ tools = {
     "c2-1" : Tool(
         "ATF Cleaner", "c2-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.majorgeeks.com/files/details/atf_cleaner.html",
         [
             Dwn(
                 "ATF Cleaner", "", "ATF-Cleaner.exe",
-                r"https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drives/ATF-Cleaner.exe",
-                r""
+                r"https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drives/ATF-Cleaner.exe"
             )
         ]
     ),
@@ -571,12 +561,11 @@ tools = {
     "c3-1" : Tool(
         "Defraggler", "c3-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.ccleaner.com/defraggler",
         [
             Dwn(
                 "Defraggler", "", "Defraggler-Setup.exe",
-                r"https://download.ccleaner.com/dfsetup222.exe",
-                r""
+                r"https://download.ccleaner.com/dfsetup222.exe"
             )
         ]
     ),
@@ -584,12 +573,11 @@ tools = {
     "c4-1" : Tool(
         "Malwarebytes", "c4-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.malwarebytes.com/",
         [
             Dwn(
                 "Malwarebytes", "", "Malwarebytes.exe",
-                r"https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup.exe",
-                r""
+                r"https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup.exe"
             )
         ]
     ),
@@ -597,12 +585,11 @@ tools = {
     "c5-1" : Tool(
         "ESET Online Scanner", "c5-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.eset.com/int/home/online-scanner/",
         [
             Dwn(
                 "ESET Online Scanner", "", "ESETOnlineScanner.exe",
-                r"https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe",
-                r""
+                r"https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe"
             )
         ]
     ),
@@ -614,8 +601,7 @@ tools = {
         [
             Dwn(
                 "CleanmgrPlus", "", "CleanmgrPlus.zip",
-                r"https://github.com/builtbybel/CleanmgrPlus/releases/latest/download/cleanmgrplus.zip",
-                r""
+                r"https://github.com/builtbybel/CleanmgrPlus/releases/latest/download/cleanmgrplus.zip"
             )
         ]
     ),
@@ -623,7 +609,7 @@ tools = {
     "c9-1" : Tool(
         "Glary Utilities", "c9-1", 1, True,
         lambda: "",
-        r"",
+        r"https://www.glarysoft.com/",
         [
             Dwn(
                 "Glary Utilities", "", "GlaryUtilities.exe",
@@ -635,10 +621,10 @@ tools = {
     "1-QT" : Tool(
         "AntiTrackTime", "1-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/xemulat/XToolbox/tree/main/files",
         [
             Dwn(
-                "AntiTrackTime", "", "AntiTrackTime.bat"
+                "AntiTrackTime", "", "AntiTrackTime.bat",
                 r"https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat"
             )
         ]
@@ -647,7 +633,7 @@ tools = {
     "2-QT-1" : Tool(
         "NoNetworkAuto-Tune", "2-QT-1", 4, True,
         lambda: "",
-        r"",
+        r"https://github.com/xemulat/XToolbox/tree/main/files",
         [
             Dwn(
                 "NoNetworkAutotune", "", "NoNetworkAutotuneREVERT.bat",
@@ -658,7 +644,7 @@ tools = {
     "2-QT-2" : Tool(
         "NoNetworkAuto-Tune", "2-QT-1", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/xemulat/XToolbox/tree/main/files",
         [
             Dwn(
                 "NoNetworkAutoTune", "", "NoNetworkAutoTune.bat",
@@ -670,7 +656,7 @@ tools = {
     "3-QT" : Tool(
         "OptimizeSSD", "3-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "OptimizeSSD", "", "OptimizeSSD.reg",
@@ -682,7 +668,7 @@ tools = {
     "4-QT" : Tool(
         "NoActionCenter", "4-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "NoActionCenter", "", "NoActionCenter.reg",
@@ -694,7 +680,7 @@ tools = {
     "5-QT" : Tool(
         "NoNews", "5-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "NoNews", "", "NoNews.reg",
@@ -706,7 +692,7 @@ tools = {
     "6-QT" : Tool(
         "NoOneDrive", "6-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "NoOneDrive", "", "NoOneDrive.bat",
@@ -718,7 +704,7 @@ tools = {
     "7-QT" : Tool(
         "NoXboxBloat", "7-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "NoXboxBloat", "", "NoXboxBloat.bat",
@@ -730,7 +716,7 @@ tools = {
     "8-QT" : Tool(
         "LimitQoS", "8-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "LimitQoS", "", "LimitQos.reg",
@@ -742,7 +728,7 @@ tools = {
     "9-QT" : Tool(
         "Xander Tweak", "9-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "Xander Tweak", "", "XanderTweak.reg",
@@ -754,7 +740,7 @@ tools = {
     "10-QT" : Tool(
         "AddCopyPath", "10-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "AddCopyPath", "", "AddCopyPath.reg",
@@ -766,7 +752,7 @@ tools = {
     "11-QT" : Tool(
         "DarkMode", "11-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/tcja/Windows-10-tweaks",
         [
             Dwn(
                 "DarkMode", "", "DarkModeON.reg",
@@ -778,7 +764,7 @@ tools = {
     "12-QT" : Tool(
         "AddTakeOwnership", "12-QT", 1, True,
         lambda: "",
-        r"",
+        r"https://github.com/couleurm/couleurstoolbox/tree/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu",
         [
             Dwn(
                 "AddTakeOwnership", "", "AddTakeOwnership.reg",
@@ -790,7 +776,7 @@ tools = {
     "1-ESET" : Tool(
         "ESET Smart Security Premium", "1-ESET", 1, True,
         lambda: "",
-        r"",
+        r"https://www.eset.com/us/home/smart-security-premium/",
         [
             Dwn(
                 "ESET Smart Security Premium", "", "ESETSmartSecurity.exe",
@@ -802,7 +788,7 @@ tools = {
     "2-ESET" : Tool(
         "ESET Internet Security", "2-ESET", 1, True,
         lambda: "",
-        r"",
+        r"https://www.eset.com/int/home/internet-security/",
         [
             Dwn(
                 "ESET Internet Security", "", "ESETInternetSecurity.exe",
@@ -814,7 +800,7 @@ tools = {
     "3-ESET" : Tool(
         "ESET NOD32 Antivirus", "3-ESET", 1, True,
         lambda: "",
-        r"",
+        r"https://www.eset.com/int/home/antivirus/",
         [
             Dwn(
                 "ESET NOD32 Antivirus", "", "ESETNOD32.exe",
@@ -826,7 +812,7 @@ tools = {
     "4-ESET" : Tool(
         "ESET NOD32 Antivirus Gamer Edition", "4-ESET", 1, True,
         lambda: "",
-        r"",
+        r"https://www.eset.com/us/home/gamer/",
         [
             Dwn(
                 "ESET NOD32 Antivirus Gamer Edition", "", "ESETNOD32Gamer.exe",
@@ -838,7 +824,7 @@ tools = {
     "5-ESET" : Tool(
         "ESET Security for Small Office", "5-ESET", 1, True,
         lambda: "",
-        r"",
+        r"https://www.eset.com/int/business/security-packs/download-small-business-security-pack/",
         [
             Dwn(
                 "ESET Security for Small Office", "", "ESETForSmallOffice.exe", 
@@ -850,7 +836,7 @@ tools = {
     "1-KAS" : Tool(
         "Kaspersky Internet Security", "1-KAS", 1, True,
         lambda: "",
-        r"",
+        r"https://www.kaspersky.com/downloads/internet-security",
         [
             Dwn(
                 "Kaspersky Internet Security", "", "KasperskyInternetSecurity.exe",
@@ -862,7 +848,7 @@ tools = {
     "2-KAS" : Tool(
         "Kaspersky Anti-Virus", "2-KAS", 1, True,
         lambda: "",
-        r"",
+        r"https://www.kaspersky.com/downloads/antivirus",
         [
             Dwn(
                 "Kaspersky Anti-Virus", "", "KasperskyAnti-Virus.exe",
@@ -874,7 +860,7 @@ tools = {
     "3-KAS" : Tool(
         "Kaspersky Total Security", "3-KAS", 1, True,
         lambda: "",
-        r"",
+        r"https://www.kaspersky.com/downloads/total-security",
         [
             Dwn(
                 "Kaspersky Total Security", "", "KasperskyTotalSecurity.exe",
@@ -886,7 +872,7 @@ tools = {
     "l1-2" : Tool(
         "Linux Mint 21", "l1-2", 1, True,
         lambda: "",
-        r"",
+        r"https://linuxmint.com/",
         [
             Dwn(
                 "Linux Mint Cinnamon", "Cinnamon", "LinuxMint-21.3-Cinnamon.iso",
@@ -906,7 +892,7 @@ tools = {
     "l2-2" : Tool(
         "Pop!_OS - 19", "l2-2", 1, True,
         lambda: "",
-        r"",
+        r"https://pop.system76.com/",
         [
             Dwn(
                 "Pop!_OS Nvidia", "Nvidia", "PopOS-Nvidia.iso",
@@ -926,7 +912,7 @@ tools = {
     "l3-2" : Tool(
         "Ubuntu 22.10", "l3-2", 1, True,
         lambda: "",
-        r"",
+        r"https://ubuntu.com/",
         [
             Dwn(
                 "Ubuntu", "", "Ubuntu.iso",
@@ -946,7 +932,7 @@ tools = {
     "l4-2" : Tool(
         "Arch Linux", "l4-2", 1, True,
         lambda: "",
-        r"",
+        r"https://archlinux.org/",
         [
             Dwn(
                 "Arch-2022.10.iso", "Latest", "Arch 2022.10",
@@ -962,7 +948,7 @@ tools = {
     "l5-2" : Tool(
         "Atrix Linux OpenRC", "l5-2", 1, True,
         lambda: "",
-        r"",
+        r"https://artixlinux.org/",
         [
             Dwn(
                 "Artix Plasma", "Plasma", "Artix-Plasma.iso",
@@ -982,7 +968,7 @@ tools = {
     "l6-2" : Tool(
         "Solus - 4.3", "l6-2", 1, True,
         lambda: "",
-        r"",
+        r"https://getsol.us/",
         [
             Dwn(
                 "Solus Budgie", "Budgie", "Solus-Budgie.iso",
@@ -1002,7 +988,7 @@ tools = {
     "l7-2" : Tool(
         "Debian - 11.5.0", "l7-2", 1, True,
         lambda: "",
-        r"",
+        r"https://www.debian.org/",
         [
             Dwn(
                 "Debian NetInstall", "NetInst", "Debian-NetInst.iso",
@@ -1014,7 +1000,7 @@ tools = {
     "l8-2" : Tool(
         "Garuda Linux", "l8-2", 1, True,
         lambda: "",
-        r"",
+        r"https://garudalinux.org/",
         [
             Dwn(
                 "Garuda DR460NIZED Gaming", "DR460NIZED", "Garuda-DR460NIZED.iso",
@@ -1034,7 +1020,7 @@ tools = {
     "l9-2" : Tool(
         "Zorin OS - 16.2", "l9-2", 1, True,
         lambda: "",
-        r"",
+        r"https://zorin.com/os/",
         [
             Dwn(
                 "Zorin OS Core", "Core", "ZorinOS-Core.iso",
@@ -1050,7 +1036,7 @@ tools = {
     "l10-2" : Tool(
         "CachyOS - 230319", "l10-2", 1, True,
         lambda: "",
-        r"",
+        r"https://cachyos.org/",
         [
             Dwn(
                 "CachyOS KDE", "KDE Plasma", "CachyOS-KDE.iso",
@@ -1061,7 +1047,7 @@ tools = {
                 r"https://mirror.cachyos.org/ISO/gnome/230319/cachyos-gnome-linux-230319.iso"
             ),
             # Dwn(
-            #     "Garuda Xfce", "Xfce", "Garuda-Xfce.iso",
+            #     "CachyOS Xfce", "Xfce", "CachyOS-Xfce.iso",
             #     r"Under Construction"
             # )
         ]
@@ -1070,7 +1056,7 @@ tools = {
     "w1-2" : Tool(
         "Windows 11", "w1-2", 3, True,
         lambda: "",
-        r"",
+        r"Running the command opens the website",
         [
             Dwn(
                 "Windows 11", "", "",
@@ -1082,7 +1068,7 @@ tools = {
     "w2-2" : Tool(
         "Windows 10", "w2-2", 3, True,
         lambda: "",
-        r"",
+        r"Running the command opens the website",
         [
             Dwn(
                 "Windows 10", "", "",
@@ -1130,7 +1116,7 @@ tools = {
     "o1-2" : Tool(
         ".NET 4.8 SDK", "o1-2", 1, True,
         lambda: "",
-        r"",
+        r"https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48",
         [
             Dwn(
                 ".NET 4.8 SDK", "", ".NET-4.8-SDK.exe",
@@ -1142,7 +1128,7 @@ tools = {
     "o2-2" : Tool(
         "DirectX AIO", "o2-2", 1, True,
         lambda: "",
-        r"",
+        r"https://www.microsoft.com/en-us/download/details.aspx?id=35",
         [
             Dwn(
                 "DirectX AIO", "", "DirectX-AIO.exe",
@@ -1166,7 +1152,7 @@ tools = {
     "o4-2" : Tool(
         "XNAF", "o4-2", 1, True,
         lambda: "",
-        r"",
+        r"https://www.microsoft.com/en-us/download/details.aspx?id=20914",
         [
             Dwn(
                 "XNAF", "", "XNAF-Setup.msi",
@@ -1178,7 +1164,7 @@ tools = {
     "o5-2" : Tool(
         "Python", "o5-2", 1, True,
         lambda: "",
-        r"",
+        r"https://www.python.org",
         [
             Dwn(
                 "Python", "", "Python-Setup.exe",
