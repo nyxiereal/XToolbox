@@ -18,11 +18,7 @@ try:
     from XeLib import cls, printer, download, color, getmyping
     from XTLLib import fwrite, runaspowershell, SetVars
 except:
-    print("Fixing libraries, wait...")
-    #todo: add a warning message that this command will be run, in case someone prefers using virtal environments
-    #or just throw a warning, sleep for 5 seconds and exit()
-    system("pip install -U psutil XeLib colorama lastversion XTLLib ping3")
-    print("Libraries installed successfully!")
+    print("Missing libraries, run the command located in requirements.txt")
 
 from xtools import tools
 
@@ -38,10 +34,8 @@ def eula():
     sleep(3)
     
     # Ask the user if they agree to the license agreement
-    agree = yn(f"Do you agree? ({Fore.GREEN}Y{Fore.WHITE}/{Fore.RED}n{Fore.WHITE}): ")
-    
     # If the user agrees, write "True" to the file EULA.XTB and set z to False
-    if agree:
+    if yn(f"Do you agree?"):
         print("You agreed to the EULA.")
         fwrite(0, 'EULA.XTB', 'True')
         z = False
@@ -67,15 +61,12 @@ def prep():
     if cpu_count(logical=True)<3 and cpu_count(logical=False)<2:
         printer.lprint("Your Processor don't meet the minimum hardware requirements (2C / 3T).\n"
                        "Do You want to continue anyways?")
-        
-        choose = yn(f"({Fore.GREEN}Y{Fore.WHITE}/{Fore.RED}n{Fore.WHITE}): ")
-        if not choose: exit()
+        if not yn(): exit()
 
     if virtual_memory().total/1073741824<4:
         printer.lprint("Your RAM don't meet the minimum hardware requirements (4GB RAM).\n"
                        "Do You want to continue anyways?")
-        choose = yn(f"({Fore.GREEN}Y{Fore.WHITE}/{Fore.RED}n{Fore.WHITE}): ")
-        if not choose: exit()
+        if not yn(): exit()
 
     if int(release())<10:
         printer.lprint("Your windows version is older than 10, this program won't run. Upgrade to Windows 10/11 if you want to use this program.") ; exit(sleep(15))
@@ -88,8 +79,7 @@ def prep():
 # allows the user to update it if necessary.
 def update():
     # Ask the user if they want to update the program
-    print('Update?')
-    doupdate = yn(f"({Fore.GREEN}Y{Fore.WHITE}/{Fore.RED}n{Fore.WHITE}): ")
+    doupdate = yn("Update?\n")
     
     # If the user does not want to update, print a message and do nothing
     if not doupdate:
@@ -153,7 +143,7 @@ def interpreter(page, prompt="> "):
         if choose == "p": 
             # todo: add warning message that this command is about to be run (not every1 wants it)
             # function wrappers?
-            runaspowershell("Set-ExecutionPolicy Unrestricted -Scope CurrentUser", "SetExecutionPolicy")
+            pwsh("Set-ExecutionPolicy Unrestricted -Scope CurrentUser", "SetExecutionPolicy")
             return True
         # not valid option
         else:
@@ -257,7 +247,8 @@ def interpreter(page, prompt="> "):
             return False, 0
 
 #function to reduce code when using interpreter() page 97
-def yn(prompt="> "):
+def yn(prompt=""):
+    prompt += f" {Fore.RESET}({Fore.GREEN}Y{Fore.RESET}/{Fore.RED}n{Fore.RESET}): "
     goodInput, YNvalue = False, False
     while not goodInput:
         goodInput, YNvalue = interpreter(97, prompt)
@@ -292,7 +283,6 @@ def multiChoose(tool, prompt):
         backMessage = "< back: B >"
         if size%2==0: size+=1
     
-
     #the top bar
     print(f"┌{'─'*int((size-2-len(backMessage))/2)}{backMessage}{'─'*int((size-2-len(backMessage))/2)}┐")
 
@@ -310,7 +300,6 @@ def multiChoose(tool, prompt):
     print(f"├{'─'*(size-2)}┤")    
     print(f"│{' '*int((size-2-len(prompt))/2)}{prompt}{' '*int((size-2-len(prompt))/2)}│")
     print(f"└{'─'*(size-2)}┘")
-
 
     goodInput = False
     while not goodInput:
@@ -338,44 +327,50 @@ def dwnTool(tool):
         except:
             print("cant open URL, check if it works")
     
-    if not isdev:
-        if tool.command==1:   dl(tool.getDwn(index), tool.getExec(index), tool.getName(index))
-        elif tool.command==2: runaspowershell(tool.getDwn(index), tool.getName(index))
-        elif tool.command==3: webopen(tool.getDwn(index))
-        elif tool.command==4: urlretrieve(tool.getDwn(index), tool.getExec(index))
-        elif tool.command==5: fwrite(tool.getDwn(index))
-    else:
-        if tool.command==1:   print(f"dl(\n{tool.getDwn(index)}, \n{tool.getExec(index)}, \n{tool.getName(index)}\n)")
-        elif tool.command==2: print(f"runaspowershell(\n{tool.getDwn(index)}, \n{tool.getName(index)}\n)")
-        elif tool.command==3: print(f"webopen(\n{tool.getDwn(index)}\n)")
-        elif tool.command==4: print(f"urlretrieve(\n{tool.getDwn(index)}, \n{tool.getExec(index)}\n)")
-        elif tool.command==5: print(f"fwrite(\n{tool.getDwn(index)}\n)")
-        getpass("\n... press ENTER to continue ...", stream=None)
+    if tool.command==1:   dl(tool.getDwn(index), tool.getExec(index), tool.getName(index))
+    elif tool.command==2: pwsh(tool.getDwn(index), tool.getName(index))
+    elif tool.command==3: 
+        print(f"XTBox will open:\n\t{tool.getDwn(index)}") #webopen is used only here so no wrapper is needed for now
+        if yn("Approve?"): webopen(tool.getDwn(index))
+    elif tool.command==4: 
+        print(f"XTBox will retrieve data from:\n\t{tool.getDwn(index)}")
+        if yn("Approve?"): urlretrieve(tool.getDwn(index), tool.getExec(index))
+    elif tool.command==5:
+        fwrite(tool.getDwn(index)) # this doesnt really run anything so no approval is neded
 
 
-#function that downloads file from url
+#download() wrapper
 def dl(url, urlr, name):
     # The code below is redundant for now since download() cant overwrite a file
     # # Try and except so the program won't crash when the website isn't accesible
     # try:
     #     if isfile(urlr) == True:
     #         printer.lprint("ERROR 1 - File " + urlr + " already exists!")
-    #         overwrite = yn(f"{Fore.RED}[S>] Overwrite? {Fore.RESET}({Fore.GREEN}Y{Fore.RESET}/{Fore.RED}n{Fore.RESET}):")
-    #         if not overwrite: return
+    #         if not yn(f"{Fore.RED}[S>] Overwrite?"): return
     # except:
     #     printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?")
     
     # Download module is located here.
+
+    # make sure user understands what they are about do download
+    print(f"XTBox will download an executable from:\n\t{url}")
+    if not yn("Approve?"): return
+
     try:
         download(url, urlr, name)
         if name != "WindowsOnReins" and urlr[-3:] != "iso":
-            run = yn(f"{Fore.RESET}Run {urlr}? ({Fore.GREEN}Y{Fore.RESET}/{Fore.RED}n{Fore.RESET}):")
-            if run: startfile(urlr)
+            if yn(f"Run {urlr}?"): startfile(urlr)
     except:
         printer.lprint("ERROR 3: Can't download file from the server...")
     
     getpass("\n... press ENTER to continue ...", stream=None)
 
+#runaspowershell() wrapper
+def pwsh(cmd, name):
+    print(f"XTBox will run the following command as powershell:\n\t{cmd}")
+    if not yn("Approve?"): return
+    runaspowershell(cmd, name)
+    
 
 #this functions displays info on a specific tool
 def showInfo(tool):
