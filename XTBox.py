@@ -1,6 +1,7 @@
 from os import startfile, system
 from os.path import isfile
 from sys import exit
+from getpass import getpass
 from time import sleep
 from timeit import default_timer
 from urllib.request import urlretrieve, urlopen
@@ -103,7 +104,7 @@ def update():
             # save the latest version to avoid rate limiting
             latestXT = str(latest("xemulat/XToolbox"))
             # Download the latest version of the program
-            download("https://github.com/xemulat/XToolbox/releases/download/v" + latestXT+"/XTBox.exe", "XTBox." + latestXT+".exe", "XTBox " + latestXT)
+            download("https://github.com/xemulat/XToolbox/releases/download/v" + latestXT + "/XTBox.exe", "XTBox." + latestXT + ".exe", "XTBox " + latestXT)
             startfile("XTBox." + latestXT + ".exe")
             exit()
         
@@ -134,6 +135,14 @@ def interpreter(page, prompt="> "):
             while not helpe(): pass
             return
 
+    #if user uses the Info command wrong:
+    if choose == "i" and page > 0 and page < 20:
+        print("'i' is not a valid command, if you want info type:")
+        print("\ti <CODE>")
+        print("For example: i d2")
+        getpass("\n... press ENTER to continue ...", stream=None)
+        return
+
     #page 0 (help)
     #returns true/false which indicate if helpe should close
     if page==0:
@@ -148,13 +157,14 @@ def interpreter(page, prompt="> "):
             return True
         # not valid option
         else:
-            print("No option named " + choose)
+            print(f"No option named {choose}")
             return False
 
     #for pages 1-3 (tool pickers)
     elif page >= 1 and page <= 3:
+        if choose == "": pass # prevent empty prompting
         #next page
-        if choose == "n":
+        elif choose == "n":
             if page==1: lastPage = p2
             elif page==2: lastPage = p3
             elif page==3: lastPage = p1
@@ -164,43 +174,64 @@ def interpreter(page, prompt="> "):
             elif page==2: lastPage = p1
             elif page==3: lastPage = p2
         #program ID entered
-        elif (choose+"-"+str(page) in tools) and (choose != ""): dwnTool(tools[choose+"-"+str(page)])
+        elif f"{choose}-{page}" in tools:
+            dwnTool(tools[f"{choose}-{page}"])
+        #i + program ID entered (user wants info)
+        elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-{page}" in tools):
+            showInfo(tools[f"{choose[2:]}-{page}"])
         #other special options
         elif choose == "qt": quicktweaks()
         elif choose == "c6": chooseeset()
         elif choose == "c7": choosekas()
+        #help for special options
+        elif choose == "i qt" or choose == "i c6" or choose == "i c7":
+            print(f"The specified option is a menu, type {choose[2:]} to open it")
+            sleep(3)
         #bad input
         else:
-            print("No option named " + choose)
+            print(f"No option named {choose}")
             sleep(3)
     
     #for page 10 (quicktweaks)
     elif page == 10:
+        if choose == "": pass
         if choose == "b": lastPage = p1
-        elif (choose+"-QT" in tools) and (choose != ""): dwnTool(tools[choose+"-QT"])
+        elif f"{choose}-QT" in tools: 
+            dwnTool(tools[f"{choose}-QT"])
         elif choose == "2":
-            dwnTool(tools[choose+"-QT-1"])
-            dwnTool(tools[choose+"-QT-2"])
+            dwnTool(tools["2-QT-1"])
+            dwnTool(tools["2-QT-2"])
+        elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-QT" in tools): 
+            showInfo(tools[f"{choose[2:]}-QT"])
+        elif choose == "i 2":
+            showInfo(tools["2-QT-1"])
+            showInfo(tools["2-QT-2"])
         else:
-            print("No option named " + choose)
+            print(f"No option named {choose}")
             sleep(3)
 
     #page 11 (ESET)
     elif page == 11:
+        if choose == "": pass
         if choose == "b": lastPage = p1
-        elif (choose+"-ESET" in tools) and (choose != ""):
-            dwnTool(tools[choose+"-ESET"])
+        elif f"{choose}-ESET" in tools:
+            dwnTool(tools[f"{choose}-ESET"])
+        elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-ESET" in tools): 
+            showInfo(tools[f"{choose[2:]}-ESET"])   
         else:
-            print("No option named " + choose)
+            print(f"No option named {choose}")
             sleep(3)
 
     #page 12 (Kaspersky)
     elif page == 12:
+        if choose == "": pass
         if choose == "b": lastPage = p1
-        elif (choose+"-KAS" in tools) and (choose !=""):
-            dwnTool(tools[choose+"-KAS"])
+        elif f"{choose}-KAS" in tools:
+            dwnTool(tools[f"{choose}-KAS"])
+        elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-KAS" in tools): 
+            showInfo(tools[f"{choose[2:]}-KAS"])
         else:
-            print("No option named "+ choose)
+            print(f"No option named {choose}")
             sleep(3)
 
     #page 97 (y/n)
@@ -209,7 +240,7 @@ def interpreter(page, prompt="> "):
         if choose == "y": return True, True
         elif choose == "n": return True, False
         else:
-            print("No option named "+ choose)
+            print(f"No option named {choose}")
             return False, False
 
     #page 98 (multiple choice download)
@@ -222,12 +253,12 @@ def interpreter(page, prompt="> "):
         elif choose.isnumeric() and int(choose) > 0:
             return True, int(choose)-1
         else:
-            print("No option named " + choose)
+            print(f"No option named {choose}")
             return False, 0
 
 #function to reduce code when using interpreter() page 97
 def yn(prompt="> "):
-    goodInput, YNvalue = False
+    goodInput, YNvalue = False, False
     while not goodInput:
         goodInput, YNvalue = interpreter(97, prompt)
     return YNvalue
@@ -263,22 +294,22 @@ def multiChoose(tool, prompt):
     
 
     #the top bar
-    print("┌" + "─"*int((size-2-len(backMessage))/2) + backMessage + "─"*int((size-2-len(backMessage))/2) + "┐")
+    print(f"┌{'─'*int((size-2-len(backMessage))/2)}{backMessage}{'─'*int((size-2-len(backMessage))/2)}┐")
 
     #empty line cuz it looks nice :D
-    print("│" + " "*(size-2) + "│")
+    print(f"│{' '*(size-2)}│")
 
     #options
     for ind in range(len(tool.dwn)):
-        print(f"│ [{ind+1}] {tool.getDesc(ind)}" + " "*int(size-6-len(tool.getDesc(ind))-len(str(ind+1))) + "│")
+        print(f"│ [{ind+1}] {tool.getDesc(ind)}{' '*int(size-6-len(tool.getDesc(ind))-len(str(ind+1)))}│")
 
     #another empty
-    print("│" + " "*(size-2) + "│")
+    print(f"│{' '*(size-2)}│")
 
     #prompt
-    print("├" + "─"*(size-2) + "┤")    
-    print("│" + " "*int((size-2-len(prompt))/2) + prompt + " "*int((size-2-len(prompt))/2) + "│")
-    print("└" + "─"*(size-2) + "┘")
+    print(f"├{'─'*(size-2)}┤")    
+    print(f"│{' '*int((size-2-len(prompt))/2)}{prompt}{' '*int((size-2-len(prompt))/2)}│")
+    print(f"└{'─'*(size-2)}┘")
 
 
     goodInput = False
@@ -296,7 +327,7 @@ def dwnTool(tool):
     index = 0
     if (len(tool.dwn)!=1):
         if tool.code[0] == "l": prompt = "Choose your Distro Type"
-        else: prompt = "Choose Verson"
+        else: prompt = "Choose Version"
         index = multiChoose(tool, prompt)
         if index < 0: return
     
@@ -319,7 +350,7 @@ def dwnTool(tool):
         elif tool.command==3: print(f"webopen(\n{tool.getDwn(index)}\n)")
         elif tool.command==4: print(f"urlretrieve(\n{tool.getDwn(index)}, \n{tool.getExec(index)}\n)")
         elif tool.command==5: print(f"fwrite(\n{tool.getDwn(index)}\n)")
-        input("\n... press any key to continue ...")
+        getpass("\n... press ENTER to continue ...", stream=None)
 
 
 #function that downloads file from url
@@ -332,16 +363,38 @@ def dl(url, urlr, name):
     #         overwrite = yn(f"{Fore.RED}[S>] Overwrite? {Fore.RESET}({Fore.GREEN}Y{Fore.RESET}/{Fore.RED}n{Fore.RESET}):")
     #         if not overwrite: return
     # except:
-    #     printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?"); sleep(6)
+    #     printer.lprint("ERROR 2: Can't check for file overwrite. Missing file premissions?")
     
     # Download module is located here.
     try:
         download(url, urlr, name)
-        if name != "WindowsOnReins":
+        if name != "WindowsOnReins" and urlr[-3:] != "iso":
             run = yn(f"{Fore.RESET}Run {urlr}? ({Fore.GREEN}Y{Fore.RESET}/{Fore.RED}n{Fore.RESET}):")
             if run: startfile(urlr)
     except:
-        printer.lprint("ERROR 3: Can't download file from the server...") ; sleep(3)
+        printer.lprint("ERROR 3: Can't download file from the server...")
+    
+    getpass("\n... press ENTER to continue ...", stream=None)
+
+
+#this functions displays info on a specific tool
+def showInfo(tool):
+    # print basic info
+    print(f"Name: {tool.name}")
+    if tool.command == 1: print("Download links:")
+    elif tool.command == 2: print("Powershell commands:")
+    elif tool.command == 3: print("Links that will open:")
+    elif tool.command == 4: print("Links that will be retrieved:")
+    elif tool.command == 5: print("Will be written to a new file:")
+    for i in range(len(tool.dwn)): print(f"\t{tool.getDwn(i)}")
+    
+    #check if tool.info leads to a website, if not, print it
+
+    print("Additional info:")
+    if tool.info == "": print("\twhoopsie, we dont have any additional info on this tool :/")
+    else: print(f"\t{tool.info}")
+    
+    getpass("\n... press ENTER to continue ...", stream=None)
 
 
 #help function is page 0
@@ -353,7 +406,8 @@ def helpe():
           f"│     H     │ Help Page (this page)                           │\n"
           f"│     N     │ Next Page                                       │\n"
           f"│     B     │ Previous Page                                   │\n"
-          f"│     UN    │ Uninstalls The Program                          │\n"
+          f"│     I     │ Tool Information                                │\n"
+#         f"│     UN    │ Uninstalls The Program                          │\n"     this functionality does not exist (yet)
           f"│     99    │ Exit                                            │\n"
           f"├─────────────────────────────────────────────────────────────┤\n"
           f"│ Color     │ Meaning                                         │\n"
@@ -376,47 +430,47 @@ def helpe():
 def quicktweaks():
     global lastPage; lastPage = quicktweaks
     cls()
-    print(f"┌──────────────────────────┬──────────────────────────┐\n"
-          f"│ [1] {AntiTrackTi}        │ [7] NoXboxBloat         R│\n"
-          f"│ [2] NoNetworkAuto-Tune   │ [8] {LimitQ}            R│\n"
-          f"│ [3] {optimizess}        R│ [9] XanderTweak         R│\n"
-          f"│ [4] NoActionCenter      R│ [10] AddCopyPath        R│\n"
-          f"│ [5] NoNews              R│ [11] DarkMode           R│\n"
-          f"│ [6] NoOneDrive           │ [12] AddTakeOwnership   R│\n"
-          f"│                          │                          │\n"
-          f"├────┬────────────────────┬┴──────────┬──────────┬────┤\n"
-          f"│    │ Choose your Tweaks │ 99 - Exit │ B - Back │    │\n"
-          f"└────┴────────────────────┴───────────┴──────────┴────┘\n")
+    print(f"┌────────────────────────────┬──────────────────────────┐\n"
+          f"│ [1] {AntiTrackTi}          │ [7] NoXboxBloat         R│\n"
+          f"│ [2] NoNetworkAuto-Tune     │ [8] {LimitQ}            R│\n"
+          f"│ [3] {optimizess}          R│ [9] XanderTweak         R│\n"
+          f"│ [4] NoActionCenter        R│ [10] AddCopyPath        R│\n"
+          f"│ [5] NoNews                R│ [11] DarkMode           R│\n"
+          f"│ [6] NoOneDrive             │ [12] AddTakeOwnership   R│\n"
+          f"│                            │                          │\n"
+          f"├────┬───────────────────────┼──────────┬──────────┬────┤\n"
+          f"│    │ Choose your Tweaks :D │ I ─ Info │ B ─ Back │    │\n"
+          f"└────┴───────────────────────┴──────────┴──────────┴────┘\n")
     interpreter(10)
 
 #ESET is page 11
 def chooseeset():
     global lastPage; lastPage = chooseeset
     cls()
-    print(f"┌─────────────────────────────────────────────────────────────────────┐\n"
-          f"│ [1] ESET Smart Security Premium                                     │\n"
-          f"│ [2] ESET Internet Security                                          │\n"
-          f"│ [3] ESET NOD32 Antivirus                                            │\n"
-          f"│ [4] ESET NOD32 Antivirus Gamer Edition                              │\n"
-          f"│ [5] ESET Security for Small Office                                  │\n"
-          f"│                                                                     │\n"
-          f"├─────────┬──────────────────────────┬───────────┬──────────┬─────────┤\n"
-          f"│         │ Choose your ESET version │ 99 - Exit │ B - Back │         │\n"
-          f"└─────────┴──────────────────────────┴───────────┴──────────┴─────────┘\n")
+    print(f"┌────────────────────────────────────────────────────────────────────┐\n"
+          f"│ [1] ESET Smart Security Premium                                    │\n"
+          f"│ [2] ESET Internet Security                                         │\n"
+          f"│ [3] ESET NOD32 Antivirus                                           │\n"
+          f"│ [4] ESET NOD32 Antivirus Gamer Edition                             │\n"
+          f"│ [5] ESET Security for Small Office                                 │\n"
+          f"│                                                                    │\n"
+          f"├─────────┬──────────────────────────┬──────────┬──────────┬─────────┤\n"
+          f"│         │ Choose your ESET version │ I ─ Info │ B ─ Back │         │\n"
+          f"└─────────┴──────────────────────────┴──────────┴──────────┴─────────┘\n")
     interpreter(11)
 
 #Kaspersky is page 12
 def choosekas():
     global lastPage; lastPage = choosekas
     cls()
-    print(f"┌──────────────────────────────────────────────────────────────────────┐\n"
-          f"│ [1] Kaspersky Internet Security                                      │\n"
-          f"│ [2] Kaspersky Anti-Virus                                             │\n"
-          f"│ [3] Kaspersky Total Security                                         │\n"
-          f"│                                                                      │\n"
-          f"├───────┬───────────────────────────────┬───────────┬──────────┬───────┤\n"
-          f"│       │ Choose your Kaspersky version │ 99 - Exit │ B - Back │       │\n"
-          f"└───────┴───────────────────────────────┴───────────┴──────────┴───────┘\n")
+    print(f"┌─────────────────────────────────────────────────────────────────────┐\n"
+          f"│ [1] Kaspersky Internet Security                                     │\n"
+          f"│ [2] Kaspersky Anti-Virus                                            │\n"
+          f"│ [3] Kaspersky Total Security                                        │\n"
+          f"│                                                                     │\n"
+          f"├───────┬───────────────────────────────┬──────────┬──────────┬───────┤\n"
+          f"│       │ Choose your Kaspersky version │ I ─ Info │ B ─ Back │       │\n"
+          f"└───────┴───────────────────────────────┴──────────┴──────────┴───────┘\n")
     interpreter(12)
 
 # page 1, 2, 3
@@ -448,7 +502,7 @@ def p1(preprint=False):
             f"│ [15] CoutX               │ [QT] {quicktwea}       │                                │                                │\n"
             f"│                          │                        │                                │                                │\n"
             f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
-            f"│                           Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H - Help                           1/3 │\n"
+            f"│                Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ 99 ─ Exit │ H ─ Help | I ─ Info  (Ex.: 'I D2')            1/3 │\n"
             f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
     interpreter(1)
 
@@ -478,7 +532,7 @@ def p2():
             f"│                          │                        │                                │ [6] Files                      │\n"
             f"│                          │                        │                                │                                │\n"
             f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
-            f"│                            Ex.: 'L3' ─ Ubuntu │ N ─ Next Page │ 99 ─ Exit │ H - Help                            2/3 │\n"
+            f"│                 Ex.: 'L3' ─ Ubuntu │ N ─ Next Page │ 99 ─ Exit │ H ─ Help | I ─ Info  (Ex.: 'I L3')             2/3 │\n"
             f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
     interpreter(2)
 
@@ -505,10 +559,10 @@ def p3():
             f"│                          │                        │                                │ [3] VenCord                    │\n"
             f"│                          │                        │                                │ [4] BetterDiscord              │\n"
             f"│                          │                        │                                │                                │\n"
-            f"│                          │                        │                                │ // Share your tool suggestions │\n"
+            f"│                          │                        │                                │ // Share your suggestions      │\n"
             f"│                          │                        │                                │ // on our discord!             │\n"
             f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
-            f"│                            Ex.: 'G3' ─ Origin │ N ─ Next Page │ 99 ─ Exit │ H - Help                            3/3 │\n"
+            f"│                 Ex.: 'G3' ─ Origin │ N ─ Next Page │ 99 ─ Exit │ H ─ Help | I ─ Info  (Ex.: 'I G3')             3/3 │\n"
             f"└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
     interpreter(3)
 

@@ -1080,7 +1080,7 @@ tools = {
     "w3-2" : Tool(
         "Windows 8.1", "w3-2", 1, True,
         lambda: "",
-        r"",
+        r"Just google this one lol",
         [
             Dwn(
                 "Windows 8.1", "", "Windows-8.1.iso",
@@ -1092,7 +1092,7 @@ tools = {
     "w4-2" : Tool(
         "Windows 8", "w4-2", 1, True,
         lambda: "",
-        r"",
+        r"Just google this one lol",
         [
             Dwn(
                 "Windows 8", "", "Windows-8.iso",
@@ -1104,7 +1104,7 @@ tools = {
     "w5-2" : Tool(
         "Windows 7", "w5-2", 1, True,
         lambda: "",
-        r"",
+        r"Just google this one lol",
         [
             Dwn(
                 "Windows 7", "", "Windows-7.iso",
