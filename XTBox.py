@@ -575,7 +575,7 @@ printer.lprint("Running Pre-Startup tasks...")
 
 # Updater
 pre = ""
-version = "2.5"
+version = "2.6"
 if pre == "": pre = "           "
 # Sets `pre` to this long space to prevent some sort of bugs
 # Can't be a defined function
@@ -619,8 +619,8 @@ xtoolbox00000000000000 = color("XToolBox v"+version+pre, 2)
 # ISSUES FIXED, STOP ASKING
 # Un-Fucked, don't touch
 SetVars.rama()
-try:    ramavailz = '00GB / 00GB'
-except: ramavailz = "error"
+try:    ramavailz = SetVars.rama()
+except: ramavailz = '00GB / 00GB'
 
 try:    cpu00000000000 = SetVars.cpup()
 except: cpu00000000000 = '000 / 100%'
@@ -628,7 +628,7 @@ except: cpu00000000000 = '000 / 100%'
 try:    diskusage0000 = SetVars.dusage()
 except: diskusage0000 = '00GB / 00GB    '
 
-try:    ping0 = SetVars.ping0() + "   "
+try:    ping0 = str(f"{round(ping('google.com', unit='ms'))}ms").ljust(7)
 except: ping0 = "000ms  "
 
 try:    c = SetVars.c()
