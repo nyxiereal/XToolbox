@@ -94,8 +94,8 @@ def update():
             # save the latest version to avoid rate limiting
             latestXT = str(latest("xemulat/XToolbox"))
             # Download the latest version of the program
-            download("https://github.com/xemulat/XToolbox/releases/download/v" + latestXT + "/XTBox.exe", "XTBox." + latestXT + ".exe", "XTBox " + latestXT)
-            startfile("XTBox." + latestXT + ".exe")
+            download("https://github.com/xemulat/XToolbox/releases/latest/download/XTBox.exe", f"XTBox.{latestXT}.exe", f"XTBox.{latestXT}")
+            startfile(f"XTBox.{latestXT}.exe")
             exit()
         
         # If the download fails, print an error message and exit
@@ -493,7 +493,7 @@ def p1(preprint=False):
             f"│ [11] {ohdwindowwwwwwwww} │ [11] SophiApp          │                                │                                │\n"
             f"│ [12] WindowsSpyBlocker   │                        │                                │                                │\n"
             f"│ [13] PrivateZilla        │                        │                                │                                │\n"
-            f"│ [14] ZusierAIO           │                        │                                │                                │\n"
+            f"│ [14] ZusierAIO   DNGR(?) │                        │                                │                                │\n"
             f"│ [15] CoutX               │ [QT] {quicktwea}       │                                │                                │\n"
             f"│                          │                        │                                │                                │\n"
             f"├──────────────────────────┴────────────────────────┴────────────────────────────────┴────────────────────────────────┤\n"
