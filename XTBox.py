@@ -19,6 +19,8 @@ try:
     from XTLLib import fwrite, runaspowershell, SetVars
 except:
     print("Missing libraries, run the command located in requirements.txt")
+    getpass("\n... press ENTER to continue ...", stream=None)
+    exit()
 
 from xtools import tools
 
@@ -185,7 +187,7 @@ def interpreter(page, prompt="> "):
     #for page 10 (quicktweaks)
     elif page == 10:
         if choose == "": pass
-        if choose == "b": lastPage = p1
+        elif choose == "b": lastPage = p1
         elif f"{choose}-QT" in tools: 
             dwnTool(tools[f"{choose}-QT"])
         elif choose == "2":
@@ -203,7 +205,7 @@ def interpreter(page, prompt="> "):
     #page 11 (ESET)
     elif page == 11:
         if choose == "": pass
-        if choose == "b": lastPage = p1
+        elif choose == "b": lastPage = p1
         elif f"{choose}-ESET" in tools:
             dwnTool(tools[f"{choose}-ESET"])
         elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-ESET" in tools): 
@@ -215,7 +217,7 @@ def interpreter(page, prompt="> "):
     #page 12 (Kaspersky)
     elif page == 12:
         if choose == "": pass
-        if choose == "b": lastPage = p1
+        elif choose == "b": lastPage = p1
         elif f"{choose}-KAS" in tools:
             dwnTool(tools[f"{choose}-KAS"])
         elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-KAS" in tools): 
@@ -227,7 +229,8 @@ def interpreter(page, prompt="> "):
     #page 97 (y/n)
     #returns 2 bool args: correct/incorrect input, and y/n answer
     elif page == 97:
-        if choose == "y": return True, True
+        if choose == "": return False, False
+        elif choose == "y": return True, True
         elif choose == "n": return True, False
         else:
             print(f"No option named {choose}")
@@ -237,8 +240,9 @@ def interpreter(page, prompt="> "):
     #returns 2 args: correct/incorrect input (bool), and the chosen option (int)
     #if user wants to exit selection, the second return value becomes negative
     elif page==98:
+        if choose == "": return False, 0
         # cancel (index < 0)
-        if choose == "b": return True, -1
+        elif choose == "b": return True, -1
         # user choice
         elif choose.isnumeric() and int(choose) > 0:
             return True, int(choose)-1
@@ -315,7 +319,7 @@ def dwnTool(tool):
 
     index = 0
     if (len(tool.dwn)!=1):
-        if tool.code[0] == "l": prompt = "Choose your Distro Type"
+        if tool.code[0] == "l" and tool.code[-1] == "2" : prompt = "Choose your Distro Type"
         else: prompt = "Choose Version"
         index = multiChoose(tool, prompt)
         if index < 0: return
