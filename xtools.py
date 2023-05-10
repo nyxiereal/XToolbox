@@ -583,13 +583,13 @@ tools = {
     ),
 
     "c5-1" : Tool(
-        "ESET Online Scanner", "c5-1", 1, True,
+        "Emsisoft Emergency Kit", "c5-1", 1, True,
         lambda: "",
-        r"https://www.eset.com/int/home/online-scanner/",
+        r"https://www.emsisoft.com/en/emergency-kit/",
         [
             Dwn(
-                "ESET Online Scanner", "", "ESETOnlineScanner.exe",
-                r"https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe"
+                "Emsisoft Emergency Kit", "", "EmsisoftEmergencyKit.exe",
+                r"https://dl.emsisoft.com/EmsisoftEmergencyKit.exe"
             )
         ]
     ),
@@ -829,6 +829,18 @@ tools = {
             Dwn(
                 "ESET Security for Small Office", "", "ESETForSmallOffice.exe", 
                 r"https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|okszgg8un2iekhydiszxmhrdmvxdo8aupvot9y3d5ifkm9rzslti7t5r2xitfxrefj4id&branch=us&prod=essp"
+            )
+        ]
+    ),
+
+    "6-ESET" : Tool(
+        "ESET Online Scanner", "6-ESET", 1, True,
+        lambda: "",
+        r"https://www.eset.com/int/home/online-scanner/",
+        [
+            Dwn(
+                "ESET Online Scanner", "", "ESETOnlineScanner.exe",
+                r"https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe"
             )
         ]
     ),

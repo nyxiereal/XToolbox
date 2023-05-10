@@ -452,6 +452,7 @@ def chooseeset():
           f"│ [3] ESET NOD32 Antivirus                                           │\n"
           f"│ [4] ESET NOD32 Antivirus Gamer Edition                             │\n"
           f"│ [5] ESET Security for Small Office                                 │\n"
+          f"│ [6] ESET Online Scanner                                            │\n"
           f"│                                                                    │\n"
           f"├─────────┬──────────────────────────┬──────────┬──────────┬─────────┤\n"
           f"│         │ Choose your ESET version │ I ─ Info │ B ─ Back │         │\n"
@@ -488,7 +489,7 @@ def p1(preprint=False):
             f"│ [2] {neCtrl}             │ [2] Insider Enroller   │ [2] {rav}                      │ [2] ATF Cleaner                │\n"
             f"│ [3] ShutUp10             │ [3] Windows11Fixer     │ [3] {firef}                    │ [3] Defraggler                 │\n"
             f"│ [4] Optimizer            │ [4] AntiRoundCorners   │ [4] Lively Wallpaper           │ [4] {malwarebyt}               │\n"
-            f"│ [5] PyDebloatX           │ [5] FixDrag&Drop       │ [5] LibreWolf                  │ [5] ESET Online Scanner        │\n"
+            f"│ [5] PyDebloatX           │ [5] FixDrag&Drop       │ [5] LibreWolf                  │ [5] Emsisoft Emergency Kit     │\n"
             f"│ [6] {windowsonreinddddd} │ [6] Winaero Tweaker    │ [6] qBittorrent                │ [6] ESET                       │")
     print(  f"│ [7] QuickBoost           │ [7] CTT WinUtil        │ [7] Rainmeter                  │ [7] Kaspersky                  │\n"
             f"│ [8] Win10Debloater       │ [8] REAL               │ [8] 7-Zip                      │ [8] CleanMGR+                  │\n"
