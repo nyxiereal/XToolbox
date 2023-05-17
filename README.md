@@ -7,7 +7,7 @@
 </br>
 <strong>YOU DON'T NEED TO RUN XTBOX AS ADMIN!!! THE SCRIPTS WILL PROMPT FOR ADMIN BY THEMSELF</strong>
 </br>
-Made by xemulated#2622
+Made by xemulated#9999
 </br>
 <strong>Message me before sending a friend request, my dms are open.</strong>
 </br>
