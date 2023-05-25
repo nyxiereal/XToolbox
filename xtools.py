@@ -208,11 +208,11 @@ tools = {
     "d10-1" : Tool(
         "SweetyLite", "d10-1", 1, True,
         lambda: "",
-        r"https://github.com/xemulat/MyFilesForDDL/blob/main/SweetyLite2.bat",
+        r"https://github.com/SweetyInc/SweetyLite",
         [
             Dwn(
                 "SweetyLite", "", "SweetyLite.bat",
-                r"https://raw.githubusercontent.com/xemulat/MyFilesForDDL/main/SweetyLite2.bat"
+                r"https://github.com/SweetyInc/SweetyLite/releases/latest/download/SweetyLite.bat"
             )
         ]
     ),
