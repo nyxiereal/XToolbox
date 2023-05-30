@@ -13,6 +13,9 @@ Made by xemulated#9999
 </br>
 
 ## 📑 Important
+
+XTB is in the process of being recoded, give me suggestions on the Discord server.
+
 If this program gets flagged as malware it's a false positive. The program is literally open-source, don't worry.
 
 Nope, this program won't run on windows 7, 8 and 8.1 (or 32-bit systems). Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
