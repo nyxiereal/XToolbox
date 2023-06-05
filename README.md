@@ -5,7 +5,7 @@
 </br>
 <strong>A toolbox full of Windows 11 and 10 debloating utilities!</strong>
 </br>
-<strong>YOU DON'T NEED TO RUN XTBOX AS ADMIN!!! THE SCRIPTS WILL PROMPT FOR ADMIN BY THEMSELF</strong>
+please donate, i need to feed my 7 kids and 3 wifes
 </br>
 Made by xemulated#9999
 </br>
