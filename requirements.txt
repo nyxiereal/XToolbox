@@ -1,1 +1,1 @@
-pip install -U psutil XeLib colorama lastversion XTLLib ping3
+pip install -U requests colorama lastversion ping3
