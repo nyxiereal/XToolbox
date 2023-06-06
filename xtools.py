@@ -1,4 +1,5 @@
 from lastversion import latest
+from getpass import getpass
 
 #class for storing download data on individual download links
 class Dwn:
@@ -23,6 +24,25 @@ class Dwn:
                 self.url += self.url_parts[i]
             else:
                 self.url += self.url_parts[i] + missing
+
+#this functions displays info on a specific tool
+def showInfo(tool):
+    # print basic info
+    print(f"Name: {tool.name}")
+    if tool.command == 1: print("Download links:")
+    elif tool.command == 2: print("Powershell commands:")
+    elif tool.command == 3: print("Links that will open:")
+    elif tool.command == 4: print("Links that will be retrieved:")
+    elif tool.command == 5: print("Will be written to a new file:")
+    for i in range(len(tool.dwn)): print(f"\t{tool.getDwn(i)}")
+    
+    #check if tool.info leads to a website, if not, print it
+
+    print("Additional info:")
+    if tool.info == "": print("\twhoopsie, we dont have any additional info on this tool :/")
+    else: print(f"\t{tool.info}")
+    
+    getpass("\n... press ENTER to continue ...", stream=None)
 
 #class for storing tools
 class Tool:
@@ -474,7 +494,7 @@ tools = {
     ),
 
     "a6-1" : Tool(
-        "qBittorrent Enhanced Edition", "a6-1", 1, False,
+        "qBittorrent EE", "a6-1", 1, False,
         lambda: str(latest("c0re100/qBittorrent-Enhanced-Edition")),
         r"https://github.com/c0re100/qBittorrent-Enhanced-Edition",
         [
@@ -1699,7 +1719,7 @@ tools = {
     ),
 
     "c6-3" : Tool(
-        "Offline CheatBreaker", "c6-3", 1, True,
+        "OFL CheatBreaker", "c6-3", 1, True,
         lambda: "",
         r"https://github.com/Offline-CheatBreaker/Launcher",
         [
@@ -1816,4 +1836,3 @@ tools = {
     ),
 
 }
-
