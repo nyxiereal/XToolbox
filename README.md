@@ -7,7 +7,7 @@
 </br>
 please donate, i need to feed my 7 kids and 3 wifes
 </br>
-Made by xemulated#9999
+Made by [@xemulated](https://discord.com/users/927441405079588914)
 </br>
 <strong>Message me before sending a friend request, my dms are open.</strong>
 </br>
