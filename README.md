@@ -33,13 +33,19 @@ flex
 ##  Reviews
 *nice toolbox*
 
--jonathah#1221
+-`jonathah#1221`
 
 ------
 
 *Thanks bro, very useful softwhere*
 
--Senn#3984
+-`@sennv`
+
+------
+
+*After using XTB my computer started having an erection*
+
+-`@genc1337`
 
 ## 📌 Todo
 - [ ] Optimize my shitty code
