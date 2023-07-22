@@ -1,1 +1,1 @@
-pip install -U requests colorama lastversion ping3
+pip install -U requests colorama lastversion ping3 filelock tqdm 
