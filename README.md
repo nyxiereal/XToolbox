@@ -30,7 +30,7 @@ flex
 
 ![image](https://user-images.githubusercontent.com/98595166/219063111-6cc5a01c-f480-4705-806c-35986b953766.png)
 
-##  Reviews
+## 🖊️ Reviews
 *nice toolbox*
 
 -`jonathah#1221`
@@ -46,6 +46,15 @@ flex
 *After using XTB my computer started having an erection*
 
 -`@genc1337`
+
+## ⚒️ Building
+- Remember to put in your UPX path, not to the exe, just to the directory!
+```
+git clone https://github.com/xemulat/XToolbox
+pip install -r requirements.txt
+pip install pyinstaller
+pyinstaller --onefile --clean --upx-dir="path\to\upx\dir" main.py
+```
 
 ## 📌 Todo
 - [ ] Optimize my shitty code
