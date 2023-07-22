@@ -13,13 +13,13 @@ from os import remove
 from hashlib import sha256
 from os import system, startfile
 from time import sleep
+from getpass import getpass
 
 from requests.adapters import HTTPAdapter
 from requests import Session
 from requests import get
 from lastversion import latest
 from colorama import Fore, init
-from getpass import getpass
 from ping3 import ping
 from tqdm import tqdm
 
