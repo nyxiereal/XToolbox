@@ -1,33 +1,33 @@
 # Made by Xemulated │ GPL-2
-from urllib.request import urlretrieve
-
 from xtools import tools, showInfo
+
+from urllib.request import urlretrieve
 from webbrowser import open as webopen
-from sys import exit, argv
-from lastversion import latest
+from sys import exit, argv, executable
 from psutil import cpu_count, virtual_memory
-from ping3 import ping
 from platform import release
-from requests import get
 from contextlib import closing
 from os.path import isfile
 from urllib.parse import urlparse
 from os import remove
 from hashlib import sha256
-from json import load
 from os import system, startfile
 from time import sleep
-from getpass import getpass
-from colorama import Fore, init
-from tqdm import tqdm
-from requests import Session
+
 from requests.adapters import HTTPAdapter
+from requests import Session
+from requests import get
+from lastversion import latest
+from colorama import Fore, init
+from getpass import getpass
+from ping3 import ping
+from tqdm import tqdm
 
 init(autoreset=True)
 
 peeng = str(f"{round(ping('google.com', unit='ms'))}ms").ljust(7)
 
-version = '2.7'
+version = '2.8'
 
 #### XENONIUM FUNCTIONS
 def fwrite(run, filename, content):
@@ -47,15 +47,6 @@ def cl(color, text):
         return(Fore.RED + text + Fore.RESET)
     else:
         return(Fore.GREEN + text + Fore.RESET)
-
-def readson(file_path):
-    # Open the JSON file for reading
-    with open(file_path, 'r') as file:
-        # Load the JSON data
-        data = load(file)
-    
-    # Return the loaded JSON data
-    return data
 
 def get_checksum(file_path):
     def shasher(data):
@@ -234,7 +225,7 @@ def pwsh(cmd, name):
 ###### XENONIUM FUNCTIONS
 
 xtoolboxve = cl(0, f'XToolBox {version}')
-xemulated999 = cl(1, 'Xemulated#9999')
+xemulated999 = cl(1, '@xemulated    ')
 cls()
 
 ##### ^^^^ THIS HAS TO BE HERE
@@ -393,6 +384,7 @@ def interpreter(page, prompt="> "):
     elif page == 97:
         if choose == "y": return True, True
         elif choose == "n": return True, False
+        elif choose == "": return True, True
         else:
             print(f"No option named {choose}")
             return False, False
@@ -602,7 +594,7 @@ if '-f' not in argv:
         Printer.zpr('Checking File hash...')
         response = get('https://raw.githubusercontent.com/xemulat/XToolbox/main/hash.json')
         data = response.json()
-        if (data[version]).lower() == get_checksum(__file__):
+        if (data[version]).lower() == get_checksum(executable):
             Printer.sys(1, 'File hash match!')
         else:
             Printer.sys(0, "File hash doesn't match!")
