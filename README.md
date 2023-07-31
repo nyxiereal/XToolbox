@@ -49,6 +49,8 @@ flex
 
 ## ⚒️ Building
 - Remember to put in your UPX path, not to the exe, just to the directory!
+
+The building process requires: [Python 3](https://www.python.org/downloads/) and [Git](https://git-scm.com/downloads)
 ```
 git clone https://github.com/xemulat/XToolbox
 pip install -r requirements.txt
@@ -57,8 +59,7 @@ pyinstaller --onefile --clean --upx-dir="path\to\upx\dir" main.py
 ```
 
 ## 📌 Todo
-- [ ] Optimize my shitty code
-- [ ] Add some programs
+- [ ] Waiting for requests 🚎
 
 ## 🔗 Links
 - RepoTracker link: [here](https://repo-tracker.com/r/gh/xemulat/XToolBox)
