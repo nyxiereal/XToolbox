@@ -47,6 +47,11 @@ flex
 
 -`@genc1337`
 
+------
+
+*now I get more fps in minecraft lessgooo*
+
+-`@arxify`
 ## ⚒️ Building
 - Remember to put in your UPX path, not to the exe, just to the directory!
 
