@@ -208,7 +208,7 @@ def dl(url, urlr, name):
 
     try:
         download(url, urlr, name)
-        if name != "WindowsOnReins" and urlr[-3:] != "iso":
+        if urlr[-3:] != "iso":
             if yn(f"Run {urlr}?"): startfile(urlr)
     except:
         Printer.sys(0, "ERROR 3: Can't download file from the server...")
@@ -225,7 +225,7 @@ def pwsh(cmd, name):
 ###### XENONIUM FUNCTIONS
 
 xtoolboxve = cl(0, f'XToolBox {version}')
-xemulated999 = cl(1, '@xemulated    ')
+xemulated999 = cl(1, '@xemu.lated   ')
 cls()
 
 ##### ^^^^ THIS HAS TO BE HERE
@@ -407,7 +407,7 @@ def updater():
         dl('https://github.com/xemulat/XToolbox/releases/latest/download/XTBox.exe', f'XTBox.{version}.exe', f'XTBox v{version}')
     else:
         Printer.sys(1, 'You just got an ultra-rare error, this means that your version of XTB is somehow newer than the latest GitHub release... Interesting.')
-        sleep(3)
+        sleep(6)
         pass
 
 def add_spaces(string):
@@ -417,7 +417,7 @@ def add_spaces(string):
 
 def xget(ide):
     try:
-        if ide in ['d11-1', 'd6-1', 't1-1', 'l9-2', 'm6-2', 'm7-2', 't3-2', 'l4-3', 'g2-3', 'c6-3']:
+        if ide in ['t1-1', 'l9-2', 'm6-2', 'm7-2', 't3-2', 'l4-3', 'g2-3', 'c6-3']:
             return(cl(1, add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name} DNG")))
         else:
             return(add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name}"))
