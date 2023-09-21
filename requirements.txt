@@ -1,1 +1,7 @@
-pip install requests colorama lastversion ping3 filelock tqdm 
+requests
+colorama
+lastversion
+ping3
+filelock
+tqdm 
+psutil
