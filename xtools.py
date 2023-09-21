@@ -129,13 +129,13 @@ tools = {
     ),
 
     "d2-1" : Tool(
-        "HoneCtrl", "d2-1", 1, True,
+        "Hone", "d2-1", 1, True,
         lambda: "",
-        r"https://github.com/auraside/HoneCtrl",
+        r"https://hone.gg/",
         [
             Dwn(
-                "HoneCtrl", "", "HoneCtrl.bat",
-                r"https://github.com/auraside/HoneCtrl/releases/latest/download/HoneCtrl.bat"
+                "Hone", "", "Hone-Setup.exe",
+                r"https://download.overwolf.com/install/Download?Name=Hone&ExtensionId=mgkabooemhaamambocobpeoeelpadcjhjgbcfhlc"
             )
         ]
     ),
@@ -178,19 +178,7 @@ tools = {
     ),
 
     "d6-1" : Tool(
-        "WindowsOnReins", "d6-1", 1, True,
-        lambda: "",
-        r"https://github.com/gordonbay/Windows-On-Reins/blob/master/wor.ps1",
-        [
-            Dwn(
-                "WindowsOnReins", "", "WindowsOnReins.ps1",
-                r"https://raw.githubusercontent.com/gordonbay/Windows-On-Reins/master/wor.ps1"
-            )
-        ]
-    ),
-
-    "d7-1" : Tool(
-        "QuickBoost", "d7-1", 1, True,
+        "QuickBoost", "d6-1", 1, True,
         lambda: "",
         r"https://github.com/SanGraphic/QuickBoost",
         [
@@ -201,8 +189,8 @@ tools = {
         ]
     ),
 
-    "d8-1" : Tool(
-        "Win10Debloat", "d8-1", 2, True,
+    "d7-1" : Tool(
+        "Win10Debloat", "d7-1", 2, True,
         lambda: "",
         r"https://github.com/Sycnex/Windows10Debloater/",
         [
@@ -213,44 +201,8 @@ tools = {
         ]
     ),
 
-    "d9-1" : Tool(
-        "Sadcoy", "d9-1", 1, True,
-        lambda: "",
-        r"https://github.com/Jisll/Sadcoy",
-        [
-            Dwn(
-                "Sadcoy", "", "Sadcoy.exe",
-                r"https://github.com/Jisll/Sadcoy/releases/latest/download/Sadcoy.exe"
-            )
-        ]
-    ),
-
-    "d10-1" : Tool(
-        "SweetyLite", "d10-1", 1, True,
-        lambda: "",
-        r"https://github.com/SweetyInc/SweetyLite",
-        [
-            Dwn(
-                "SweetyLite", "", "SweetyLite.bat",
-                r"https://github.com/SweetyInc/SweetyLite/releases/latest/download/SweetyLite.bat"
-            )
-        ]
-    ),
-
-    "d11-1" : Tool(
-        "OHDWindows", "d11-1", 2, True,
-        lambda: "",
-        r"https://github.com/simeononsecurity/Windows-Optimize-Harden-Debloat",
-        [
-            Dwn(
-                "OHDWindows", "", "",
-                r"iwr -useb 'https://simeononsecurity.ch/scripts/windowsoptimizeandharden.ps1'|iex"
-            )
-        ]
-    ),
-
-    "d12-1" : Tool(
-        "WindowsSpyBlocker", "d12-1", 1, True,
+    "d8-1" : Tool(
+        "WindowsSpyBlocker", "d8-1", 1, True,
         lambda: "",
         r"https://github.com/crazy-max/WindowsSpyBlocker",
         [
@@ -261,8 +213,8 @@ tools = {
         ]
     ),
 
-    "d13-1" : Tool(
-        "PrivateZilla", "d13-1", 1, True,
+    "d9-1" : Tool(
+        "PrivateZilla", "d9-1", 1, True,
         lambda: "",
         r"https://github.com/builtbybel/privatezilla",
         [
@@ -273,8 +225,8 @@ tools = {
         ]
     ),
 
-    "d14-1" : Tool(
-        "ZusierAIO", "d14-1", 1, True,
+    "d10-1" : Tool(
+        "ZusierAIO", "d10-1", 1, True,
         lambda: "",
         r"https://github.com/Zusier/Zusiers-optimization-Batch",
         [
@@ -285,8 +237,8 @@ tools = {
         ]
     ),
 
-    "d15-1" : Tool(
-        "CoutX", "d15-1", 1, True,
+    "d11-1" : Tool(
+        "CoutX", "d11-1", 1, True,
         lambda: "",
         r"https://github.com/UnLovedCookie/CoutX",
         [
@@ -550,6 +502,20 @@ tools = {
             Dwn(
                 "Compact Memory Cleaner", "", "CompactMemoryCleaner.exe",
                 r"https://github.com/qualcosa/Compact-RAM-Cleaner/releases/latest/download/Compact.RAM.Cleaner.exe"
+            )
+        ]
+    ),
+    
+    "a11-1" : Tool(
+        "PowerToys", "a11-1", 1, False,
+        lambda: str(latest("microsoft/PowerToys")),
+        r"https://github.com/microsoft/PowerToys",
+        [
+            Dwn(
+                "Microsoft Power Toys", "", "PowerToys-Setup.exe",
+                r"https://github.com/microsoft/PowerToys/releases/download/v",
+                r"/PowerToysSetup-",
+                r"-x64.exe"
             )
         ]
     ),
@@ -872,7 +838,7 @@ tools = {
         [
             Dwn(
                 "Kaspersky Internet Security", "", "KasperskyInternetSecurity.exe",
-                r"https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/68/b8/68b8f8f6-bdc4-4c66-8443-eadeca7f06b4/kis21.3.10.391en_26096.exe"
+                r"https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/53/53327722-0bb0-4ffd-9cf8-905ff29a8569/kis21.3.10.391en_26095.exe"
             )
         ]
     ),
@@ -884,7 +850,7 @@ tools = {
         [
             Dwn(
                 "Kaspersky Anti-Virus", "", "KasperskyAnti-Virus.exe",
-                r"https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/c6/25/c6250217-9ffe-44e1-8688-03b1a35548eb/kav21.3.10.391en_26075.exe"
+                r"https://pdc5.pa2.pdc.kaspersky.com/DownloadManagers/da/da25e9e1-1d42-4fe8-ba86-ed9bc5f20560/kav21.3.10.391en_26074.exe"
             )
         ]
     ),
@@ -896,7 +862,7 @@ tools = {
         [
             Dwn(
                 "Kaspersky Total Security", "", "KasperskyTotalSecurity.exe",
-                r"https://pdc1.fra5.pdc.kaspersky.com/DownloadManagers/51/45/51454099-c33b-41aa-955d-13965a37f561/kts21.3.10.391en_26099.exe"
+                r"https://pdc5.pa2.pdc.kaspersky.com/DownloadManagers/85/85d5534f-3c7b-483f-8ced-da04793e8045/kts21.3.10.391en_26098.exe"
             )
         ]
     ),
@@ -907,56 +873,56 @@ tools = {
         r"https://linuxmint.com/",
         [
             Dwn(
-                "Linux Mint Cinnamon", "Cinnamon", "LinuxMint-21.3-Cinnamon.iso",
-                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.1/linuxmint-21.1-cinnamon-64bit.iso"
+                "Linux Mint Cinnamon", "Cinnamon", "LinuxMint-21.2-Cinnamon.iso",
+                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.2/linuxmint-21.2-cinnamon-64bit.iso"
             ),
             Dwn(
-                "Linux Mint MATE", "MATE", "LinuxMint-21.3-MATE.iso",
-                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.1/linuxmint-21.1-mate-64bit.iso"
+                "Linux Mint MATE", "MATE", "LinuxMint-21.2-MATE.iso",
+                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.2/linuxmint-21.2-mate-64bit.iso"
             ),
             Dwn(
-                "Linux Mint Xfce", "Xfce", "LinuxMint-21.3-Xfce.iso",
-                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.1/linuxmint-21.1-xfce-64bit.iso"
+                "Linux Mint Xfce", "Xfce", "LinuxMint-21.2-Xfce.iso",
+                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.2/linuxmint-21.2-xfce-64bit.iso"
             )
         ]
     ),
 
     "l2-2" : Tool(
-        "Pop!_OS - 19", "l2-2", 1, True,
+        "Pop!_OS - 34", "l2-2", 1, True,
         lambda: "",
         r"https://pop.system76.com/",
         [
             Dwn(
                 "Pop!_OS Nvidia", "Nvidia", "PopOS-Nvidia.iso",
-                r"https://iso.pop-os.org/22.04/amd64/nvidia/19/pop-os_22.04_amd64_nvidia_19.iso"
+                r"https://iso.pop-os.org/22.04/amd64/nvidia/34/pop-os_22.04_amd64_nvidia_34.iso"
             ),
             Dwn(
                 "Pop!_OS RPI 4 Tech Preview", "RPI4", "PopOS-RPI4.img.xz",
-                r"https://iso.pop-os.org/22.04/arm64/raspi/2/pop-os_22.04_arm64_raspi_2.img.xz"
+                r"https://iso.pop-os.org/22.04/arm64/raspi/4/pop-os_22.04_arm64_raspi_4.img.xz"
             ),
             Dwn(
                 "Pop!_OS LTS", "LTS", "PopOS-LTS.iso",
-                r"https://iso.pop-os.org/22.04/amd64/intel/19/pop-os_22.04_amd64_intel_19.iso"
+                r"https://iso.pop-os.org/22.04/amd64/intel/34/pop-os_22.04_amd64_intel_34.iso"
             )
         ]
     ),
 
     "l3-2" : Tool(
-        "Ubuntu 22.10", "l3-2", 1, True,
+        "Ubuntu 23.04", "l3-2", 1, True,
         lambda: "",
         r"https://ubuntu.com/",
         [
             Dwn(
                 "Ubuntu", "", "Ubuntu.iso",
-                r"https://releases.ubuntu.com/22.10/ubuntu-22.10-desktop-amd64.iso"
+                r"https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso"
             ),
             Dwn(
                 "Kubuntu", "", "Kubuntu.iso",
-                r"https://cdimage.ubuntu.com/kubuntu/releases/22.10/release/kubuntu-22.10-desktop-amd64.iso"
+                r"https://cdimage.ubuntu.com/kubuntu/releases/23.04/release/kubuntu-23.04-desktop-amd64.iso"
             ),
             Dwn(
                 "Lubuntu", "", "Lubuntu.iso",
-                r"https://cdimage.ubuntu.com/lubuntu/releases/22.10/release/lubuntu-22.10-desktop-amd64.iso"
+                r"https://cdimage.ubuntu.com/lubuntu/releases/23.04/release/lubuntu-23.04-desktop-amd64.iso"
             )
         ]
     ),
@@ -967,12 +933,12 @@ tools = {
         r"https://archlinux.org/",
         [
             Dwn(
-                "Arch-2022.10.iso", "Latest", "Arch 2022.10",
-                r"https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-2022.10.01-x86_64.iso"
+                "Arch-23.09.iso", "Latest", "Arch 23.09",
+                r"https://geo.mirror.pkgbuild.com/iso/2023.09.01/archlinux-2023.09.01-x86_64.iso"
             ),
             Dwn(
                 "Arch Old", "Bootstrap", "Arch-Old.iso",
-                r"https://mirror.rackspace.com/archlinux/iso/2022.10.01/archlinux-x86_64.iso"
+                r"https://geo.mirror.pkgbuild.com/iso/2023.09.01/archlinux-x86_64.iso"
             )
         ]
     ),
@@ -984,15 +950,15 @@ tools = {
         [
             Dwn(
                 "Artix Plasma", "Plasma", "Artix-Plasma.iso",
-                r"https://mirrors.dotsrc.org/artix-linux/iso/artix-plasma-openrc-20220713-x86_64.iso"
+                r"https://mirrors.dotsrc.org/artix-linux/iso/artix-plasma-openrc-20230814-x86_64.iso"
             ),
             Dwn(
                 "Atrix Xfce", "Xfce", "Artix-Xfce.iso",
-                r"https://mirrors.dotsrc.org/artix-linux/iso/artix-xfce-openrc-20220713-x86_64.iso"
+                r"https://mirrors.dotsrc.org/artix-linux/iso/artix-xfce-openrc-20230814-x86_64.iso"
             ),
             Dwn(
                 "Artix MATE", "MATE", "Artix-MATE.iso",
-                r"https://mirrors.dotsrc.org/artix-linux/iso/artix-mate-openrc-20220713-x86_64.iso"
+                r"https://mirrors.dotsrc.org/artix-linux/iso/artix-mate-openrc-20230814-x86_64.iso"
             )
         ]
     ),
@@ -1004,15 +970,15 @@ tools = {
         [
             Dwn(
                 "Solus Budgie", "Budgie", "Solus-Budgie.iso",
-                r"https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Budgie.iso"
+                r"https://downloads.getsol.us/isos/4.4/Solus-4.4-Budgie.iso"
             ),
             Dwn(
                 "Solus Plasma", "Plasma", "Solus-Plasma.iso",
-                r"https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Plasma.iso"
+                r"https://downloads.getsol.us/isos/4.4/Solus-4.4-Plasma.iso"
             ),
             Dwn(
                 "Solus GNOME", "GNOME", "Solus-GNOME.iso",
-                r"https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-GNOME.iso"
+                r"https://downloads.getsol.us/isos/4.4/Solus-4.4-GNOME.iso"
             )
         ]
     ),
@@ -1024,7 +990,7 @@ tools = {
         [
             Dwn(
                 "Debian NetInstall", "NetInst", "Debian-NetInst.iso",
-                r"https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso"
+                r"https://saimei.ftp.acc.umu.se/debian-cd/current/amd64/iso-cd/debian-12.1.0-amd64-netinst.iso"
             )
         ]
     ),
@@ -1050,33 +1016,33 @@ tools = {
     ),
 
     "l9-2" : Tool(
-        "Zorin OS - 16.2", "l9-2", 1, True,
+        "Zorin OS - 16.3", "l9-2", 1, True,
         lambda: "",
         r"https://zorin.com/os/",
         [
             Dwn(
                 "Zorin OS Core", "Core", "ZorinOS-Core.iso",
-                r"https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Core-64-bit.iso"
+                r"https://ftp.icm.edu.pl/pub/linux/zorinos/16/Zorin-OS-16.3-Core-64-bit.iso"
             ),
             Dwn(
                 "Zorin OS Lite", "Lite", "ZorinOS-Lite.iso",
-                r"https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.2-Lite-64-bit.iso"
+                r"https://ftp.icm.edu.pl/pub/linux/zorinos/16/Zorin-OS-16.3-Lite-64-bit.iso"
             )
         ]
     ),
 
     "l10-2" : Tool(
-        "CachyOS - 230319", "l10-2", 1, True,
+        "CachyOS - 230917", "l10-2", 1, True,
         lambda: "",
         r"https://cachyos.org/",
         [
             Dwn(
                 "CachyOS KDE", "KDE Plasma", "CachyOS-KDE.iso",
-                r"https://mirror.cachyos.org/ISO/kde/230319/cachyos-kde-linux-230319.iso"
+                r"https://mirror.cachyos.org/ISO/kde/230917/cachyos-kde-linux-230917.iso"
             ),
             Dwn(
                 "CachyOS GNOME", "GNOME", "CachyOS-GNOME.iso",
-                r"https://mirror.cachyos.org/ISO/gnome/230319/cachyos-gnome-linux-230319.iso"
+                r"https://mirror.cachyos.org/ISO/gnome/230917/cachyos-gnome-linux-230917.iso"
             ),
             # Dwn(
             #     "CachyOS Xfce", "Xfce", "CachyOS-Xfce.iso",
