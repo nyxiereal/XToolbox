@@ -23,11 +23,13 @@ from colorama import Fore, init
 from ping3 import ping
 from tqdm import tqdm
 
+from rich.progress import Progress
+
 init(autoreset=True)
 
 peeng = str(f"{round(ping('google.com', unit='ms'))}ms").ljust(7)
 
-version = '2.8'
+version = '2.9'
 
 #### XENONIUM FUNCTIONS
 def fwrite(run, filename, content):
@@ -84,58 +86,39 @@ class Printer():
     def zpr(text):
         print(Fore.BLUE + f'[>] {text}')
 
-def download(link, fnam, name = None):
+def download(url, fnam, name):
     try:
         if name == None:
             name = fnam
 
         # Parse the URL and convert it to https.
-        link = (urlparse(link))._replace(scheme='https').geturl()
+        url = (urlparse(url))._replace(scheme='https').geturl()
 
-        Printer.sys(1, f'Downloading {name}...')
-
-        # Configure an HTTP adapter with retries and connection pooling.
-        adapter = HTTPAdapter(max_retries=3,
-                              pool_connections=20,
-                              pool_maxsize=10)
-
-        # Set some headers for the request.
         headers = {'Accept-Encoding': 'gzip, deflate',
-                   'User-Agent': 'Mozilla/5.0',
-                   'cache_control': 'max-age=600',
-                   'connection': 'keep-alive'}
-
-        # Create a new session for the request.
+                    'User-Agent': 'Mozilla/5.0',
+                    'cache_control': 'max-age=600',
+                    'connection': 'keep-alive'}
+        
         session = Session()
 
-        # Mount the HTTP adapter to the session.
-        session.mount('https://', adapter)
+        response = session.head(url, headers=headers)
+        total_size = int(response.headers.get("content-length", 0))
 
-        # Use a context manager to download the file and display the progress.
-        with closing(session.get(link,
-                                 allow_redirects=True,
-                                 stream=True,
-                                 headers=headers)) as r:
+        with Progress() as progress:
+            task = progress.add_task(f"[cyan]:: Downloading [bold]{name}[/bold][/cyan]", total=total_size)
 
-            # Get the total size of the file.
-            total_size = int(r.headers.get('content-length', 0))
-            block_size = 8192  # 8 Kibibytes
+            with open(fnam, "wb") as file:
 
-            # Create a progress bar to display the download progress.
+                response = session.get(url, stream=True)
+                chunk_size = 1024  # You can adjust this value as needed
 
-            progress_bar = tqdm(total=total_size, unit='iB', unit_scale=True, bar_format='{desc}: {percentage:3.0f}% [{bar}] {n_fmt} / {total_fmt} │ {elapsed} / {remaining} │ {rate_fmt}')
-
-            # Open the file for writing and download the file in chunks.
-            with open(fnam, 'wb') as file:
-                for data in r.iter_content(block_size):
-                    progress_bar.update(len(data))
+                # the shits that writes the data and updates the progress bar every 1kib
+                for data in response.iter_content(chunk_size=chunk_size):
                     file.write(data)
+                    progress.update(task, completed=file.tell())
 
-            # Close the progress bar and print a message when the download is complete.
-            progress_bar.close()
-            Printer.sys(1, f'{name} Downloaded!')
     except KeyboardInterrupt:
-        progress_bar.close()
+        progress.stop()
         Printer.sys(0, 'Aborting!')
         remove(fnam)
 
@@ -417,7 +400,7 @@ def add_spaces(string):
 
 def xget(ide):
     try:
-        if ide in ['t1-1', 'l9-2', 'm6-2', 'm7-2', 't3-2', 'l4-3', 'g2-3', 'c6-3']:
+        if ide in ['t1-1', 'm6-2', 'm7-2', 't3-2', 'l4-3', 'g2-3', 'c6-3']:
             return(cl(1, add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name} DNG")))
         else:
             return(add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name}"))
@@ -454,6 +437,7 @@ def helpe():
 def quicktweaks():
     global lastPage; lastPage = quicktweaks
     cls()
+    # god is dead
     print(f"┌────────────────────────────┬──────────────────────────┐\n"
           f"│ [1] {cl(0, 'AntiTrackTime')}          │ [7] NoXboxBloat         R│\n"
           f"│ [2] NoNetworkAuto-Tune     │ [8] {cl(1, 'Limit QoS')}            R│\n"
@@ -519,8 +503,8 @@ def p1():
           f"│{xget('d12-1')             }│{xget('t12-1')             }│{xget('a12-1')             }│{xget('c12-1')             }│\n"
           f"│{xget('d13-1')             }│{xget('t13-1')             }│{xget('a13-1')             }│{xget('c13-1')             }│\n"
           f"│{xget('d14-1')             }│{xget('t14-1')             }│{xget('a14-1')             }│{xget('c14-1')             }│\n"
-          f"│{xget('d15-1')             }│{xget('t15-1')             }│{xget('a15-1')             }│{xget('c15-1')             }│\n"
-          f"│{xget('d16-1')             }│{xget('t16-1')             }│{xget('a16-1')             }│{xget('c16-1')             }│\n"
+          f"│{xget('d15-1')             }│ [QT] Quick Tweaks          │{xget('a15-1')             }│{xget('c15-1')             }│\n"
+          f"│{xget('d16-1')             }│                            │{xget('a16-1')             }│{xget('c16-1')             }│\n"
           f"├────────────────────────────┴────────────────────────────┴────────────────────────────┴────────────────────────────┤\n"
           f"│                      Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ ^C ─ Exit │ H ─ Help │ I ─ Info                   1/3 │\n"
           f"└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
@@ -626,13 +610,13 @@ if '-f' not in argv:
 
         # KILL KILL KILL KILL KILL KILL KILL KILL
         Printer.zpr('Checking hardware requirements...')
-        if not cpu_count(logical=True)<3:
+        if not cpu_count(logical=True)<2:
             Printer.sys(1, 'CPU core count requirements met!')
         else:
             Printer.sys(0, 'Your CPU core count is too low to run XTB, continue anyways?')
             if not yn(): exit()
 
-        if not virtual_memory().total/1073741824<4:
+        if not virtual_memory().total/1073741824<2:
             Printer.sys(1, 'RAM requirements met!')
         else:
             Printer.sys(0, 'You have too little RAM in your PC to run XTB, continue anyways?')

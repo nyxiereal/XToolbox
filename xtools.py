@@ -354,7 +354,7 @@ tools = {
         [
             Dwn(
                 "NVCleanstall", "", "NVCleanstall.exe",
-                r"https://cdn.discordapp.com/attachments/1045063596134117456/1074431416152105090/NVCleanstall_1.15.1.exe"
+                r"https://de1-dl.techpowerup.com/files/512CeqSa_AEhRNf3RBT6qg/1695441125/NVCleanstall_1.16.0.exe"
             )
         ]
     ),
@@ -378,7 +378,7 @@ tools = {
         [
             Dwn(
                 "SophiApp", "", "SophiApp.zip",
-                r"https://github.com/Sophia-Community/SophiApp/releases/download/1.0.94/SophiApp.zip"
+                r"https://github.com/Sophia-Community/SophiApp/releases/latest/download/SophiApp.zip"
             )
         ]
     ),
@@ -440,7 +440,7 @@ tools = {
         [
             Dwn(
                 "LibreWolf", "", "LibreWolf-Setup.exe",
-                r"https://gitlab.com/librewolf-community/browser/windows/-/package_files/69100828/download"
+                r"https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/117.0.1-1/librewolf-117.0.1-1-windows-x86_64-setup.exe"
             )
         ]
     ),
@@ -465,7 +465,7 @@ tools = {
         [
             Dwn(
                 "Rainmeter", "", "Rainmeter-Setup.exe",
-                r"https://github.com/rainmeter/rainmeter/releases/download/v4.5.17.3700/Rainmeter-4.5.17.exe"
+                r"https://github.com/rainmeter/rainmeter/releases/download/v4.5.18.3727/Rainmeter-4.5.18.exe"
             )
         ]
     ),
@@ -477,7 +477,7 @@ tools = {
         [
             Dwn(
                 "7-Zip", "", "7Zip.exe",
-                r"https://www.7-zip.org/a/7z2201-x64.exe"
+                r"https://www.7-zip.org/a/7z2301-x64.exe"
             )
         ]
     ),
@@ -1082,7 +1082,7 @@ tools = {
         [
             Dwn(
                 "Windows 8.1", "", "Windows-8.1.iso",
-                r"https://dl.malwarewatch.org/windows/Windows%208.1%20%28x64%29.iso"
+                r"https://archive.org/download/Windows_8.1_x64.iso/Windows_8.1_x64.iso"
             )
         ]
     ),
@@ -1094,7 +1094,7 @@ tools = {
         [
             Dwn(
                 "Windows 8", "", "Windows-8.iso",
-                r"https://dl.malwarewatch.org/windows/Windows%208%20%28x64%29.iso"
+                r"https://archive.org/download/windows-8_202210/Windows%208.iso"
             )
         ]
     ),
@@ -1106,7 +1106,7 @@ tools = {
         [
             Dwn(
                 "Windows 7", "", "Windows-7.iso",
-                r"https://dl.malwarewatch.org/windows/Windows%207%20%28x64%29.iso"
+                r"https://archive.org/download/windows_7_professional_iso/en_windows_7_professional_x64_dvd.iso"
             )
         ]
     ),
@@ -1189,17 +1189,9 @@ tools = {
         r"https://github.com/Atlas-OS/",
         [
             Dwn(
-                "AtlasOS 21H2", "21H2 + Faceit", "AtlasOS-21H2.iso",
-                r"https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2_21H2.iso"
-            ),
-            Dwn(
-                "AtlasOS 20H2", "20H2 + Better than Old", "AtlasOS-20H2.iso",
-                r"https://github.com/Atlas-OS/atlas-releases/releases/download/20H2-v0.5.2/Atlas_v0.5.2.iso"
-            ),
-            Dwn(
-                "AtlasOS 1803", "1803 + Old version", "AtlasOS-1803.iso",
-                r"https://github.com/Atlas-OS/atlas-releases/releases/download/1803/Atlas_1803_v0.2.iso"
-            ),
+                "AtlasOS 22H2", "", "AtlasOS-22H2.apbx",
+                r"https://github.com/Atlas-OS/Atlas/releases/download/0.2.0/Atlas_W10-22H2.zip"
+            )
         ]
     ),
 
@@ -1216,18 +1208,17 @@ tools = {
     ),
 
     "m4-2" : Tool(
-        "ReviOS", "m4-2", 1, True,
-        lambda: "",
+        "ReviOS", "m4-2", 1, False,
+        lambda: (str(latest('meetrevision/playbook'))),
         r"https://revi.cc/",
         [
             Dwn(
-                "ReviOS 11", "", "ReviOS-11.iso",
-                r"https://pixeldrain.com/api/file/DAatLgjZ?download"
-            ),
-            Dwn(
-                "ReviOS 10", "", "ReviOS-10.iso",
-                r"https://pixeldrain.com/api/file/hyVCKphd?download"
+                "ReviOS Playbook", "", "ReviOS.apbx",
+                r"https://github.com/meetrevision/playbook/releases/download/",
+                r"/Revi-PB-",
+                r".apbx"
             )
+            
         ]
     ),
 
@@ -1270,7 +1261,7 @@ tools = {
         [
             Dwn(
                 "Aero10", "", "Aero10.iso",
-                r"https://dl.malwarewatch.org/windows/mods/Aero%2010%20%28x64%29.iso"
+                r"https://archive.org/download/Aero10ENX64/Aero10_EN_x64.iso"
             )
         ]
     ),
@@ -1282,7 +1273,7 @@ tools = {
         [
             Dwn(
                 "Tiny10", "", "Tiny10.iso",
-                r"https://dl.malwarewatch.org/windows/mods/Tiny%2010.iso"
+                r"https://archive.org/download/tiny-10-23-h2/tiny10%20x64%2023h2.iso"
             )
         ]
     ),
@@ -1306,7 +1297,7 @@ tools = {
         [
             Dwn(
                 "Windows 7 Super Nano", "", "Windows-7-SuperNano.iso",
-                r"https://dl.malwarewatch.org/windows/Windows%207%20%28SuperNano%29.iso"
+                r"https://archive.org/download/windows-7-super-nano-2/Windows%207%20%28SuperNano%29.iso"
             )
         ]
     ),
@@ -1607,7 +1598,7 @@ tools = {
         [
             Dwn(
                 "Paradox", "", "Paradox-Setup.msi",
-                r"https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2023_2_1.msi"
+                r"https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2023_12.msi"
             )
         ]
     ),
@@ -1667,7 +1658,7 @@ tools = {
         [
             Dwn(
                 "Feather Launcher", "", "FeatherLauncher-Setup.exe",
-                r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.4.8.exe"
+                r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.5.7.exe"
             )
         ]
     ),
@@ -1679,7 +1670,7 @@ tools = {
         [
             Dwn(
                 "Lunar Client", "", "LunarClient-Setup.exe",
-                r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v2.15.1.exe"
+                r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v3.1.0.exe"
             )
         ]
     ),
@@ -1703,7 +1694,7 @@ tools = {
         [
             Dwn(
                 "Badlion Client", "", "BadlionClient-Setup.exe",
-                r"https://client-updates.badlion.net/Badlion%20Client%20Setup%203.12.2.exe"
+                r"https://client-updates-cdn77.badlion.net/Badlion%20Client%20Setup%203.18.2.exe"
             )
         ]
     ),
