@@ -24,11 +24,11 @@ Nope, this program won't run on windows 7, 8 and 8.1 (or 32-bit systems). Adress
 flex
 
 ## 📸 Screenshots
-![image](https://user-images.githubusercontent.com/98595166/219062987-6979a3bb-bef1-4b56-b677-51bc7ab7a8b8.png)
+![image](https://github.com/xemulat/XToolbox/assets/98595166/309dedc6-5bbd-479a-a2b8-c6e69fe610db)
 
-![image](https://user-images.githubusercontent.com/98595166/219063050-5a968709-255f-465c-85fd-9a86b754b00b.png)
+![image](https://github.com/xemulat/XToolbox/assets/98595166/d6ffa6ca-06cf-49d5-aefa-92e0d1ebf69b)
 
-![image](https://user-images.githubusercontent.com/98595166/219063111-6cc5a01c-f480-4705-806c-35986b953766.png)
+![image](https://github.com/xemulat/XToolbox/assets/98595166/d2f726c6-5351-4501-9d14-df6240372036)
 
 ## 🖊️ Reviews
 *nice toolbox*
