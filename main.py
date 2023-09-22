@@ -6,7 +6,6 @@ from webbrowser import open as webopen
 from sys import exit, argv, executable
 from psutil import cpu_count, virtual_memory
 from platform import release
-from contextlib import closing
 from os.path import isfile
 from urllib.parse import urlparse
 from os import remove
@@ -15,13 +14,11 @@ from os import system, startfile
 from time import sleep
 from getpass import getpass
 
-from requests.adapters import HTTPAdapter
 from requests import Session
 from requests import get
 from lastversion import latest
 from colorama import Fore, init
 from ping3 import ping
-from tqdm import tqdm
 
 from rich.progress import Progress
 
@@ -576,16 +573,19 @@ if '-f' not in argv:
     if isfile('bypass.xtb') == False:
 
         Printer.zpr('Checking File hash...')
-        response = get('https://raw.githubusercontent.com/xemulat/XToolbox/main/hash.json')
-        data = response.json()
-        if (data[version]).lower() == get_checksum(executable):
-            Printer.sys(1, 'File hash match!')
-        else:
-            Printer.sys(0, "File hash doesn't match!")
-            print("File hash doesn't match the official hash for XTBox, this means the file could be tampered with. Download the program using the displayed url.")
-            webopen('https://github.com/xemulat/XToolbox/releases/latest')
-            print('Continue anyways?')
-            if not yn(): exit()
+        try:
+            response = get('https://raw.githubusercontent.com/xemulat/XToolbox/main/hash.json')
+            data = response.json()
+            if (data[version]).lower() == get_checksum(executable):
+                Printer.sys(1, 'File hash match!')
+            else:
+                Printer.sys(0, "File hash doesn't match!")
+                print("File hash doesn't match the official hash for XTBox, this means the file could be tampered with. Download the program using the displayed url.")
+                webopen('https://github.com/xemulat/XToolbox/releases/latest')
+                print('Continue anyways?')
+                if not yn(): exit()
+        except:
+            Printer.sys(0, 'Server Error.')
 
         Printer.zpr('Checking Ping...')
         if ping('google.com', unit='ms') > 200:
