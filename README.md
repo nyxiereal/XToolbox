@@ -20,6 +20,7 @@ If this program gets flagged as malware it's a false positive. The program is li
 
 Nope, this program won't run on windows 7, 8 and 8.1 (or 32-bit systems). Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
 
+[![softpedia_100_free](https://github.com/xemulat/XToolbox/assets/98595166/ec999c48-5c57-4d69-95b4-a8c6409a01d6)](https://www.softpedia.com/get/System/System-Miscellaneous/XE-XToolBox.shtml#status)
 [![image](https://user-images.githubusercontent.com/98595166/219121380-9a0d0213-47db-41ea-8525-2b68d3388c44.png)](https://www.majorgeeks.com/files/details/xtoolbox.html)
 flex
 
