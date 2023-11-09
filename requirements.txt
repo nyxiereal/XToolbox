@@ -2,6 +2,5 @@ requests
 colorama
 lastversion
 ping3
-filelock
-tqdm 
+rich
 psutil
