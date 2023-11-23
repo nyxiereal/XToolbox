@@ -14,8 +14,7 @@ from os import system, startfile
 from time import sleep
 from getpass import getpass
 
-from requests import Session
-from requests import get
+from requests import Session, get
 from lastversion import latest
 from colorama import Fore, init
 from ping3 import ping
@@ -24,9 +23,9 @@ from rich.progress import Progress
 
 init(autoreset=True)
 
-peeng = str(f"{round(ping('google.com', unit='ms'))}ms").ljust(7)
+peeng = str(f"{round(ping('1.1.1.1', unit='ms'))}ms").ljust(7)
 
-version = '2.9'
+version = '3.0'
 
 #### XENONIUM FUNCTIONS
 def fwrite(run, filename, content):
@@ -92,10 +91,10 @@ def download(url, fnam, name):
         url = (urlparse(url))._replace(scheme='https').geturl()
 
         headers = {'Accept-Encoding': 'gzip, deflate',
-                    'User-Agent': 'Mozilla/5.0',
-                    'cache_control': 'max-age=600',
-                    'connection': 'keep-alive'}
-        
+                   'User-Agent': 'Mozilla/5.0',
+                   'cache_control': 'max-age=600',
+                   'connection': 'keep-alive'}
+
         session = Session()
 
         response = session.head(url, headers=headers)
@@ -201,15 +200,11 @@ def pwsh(cmd, name):
     if not yn("Approve?"): return
     runaspowershell(cmd, name)
 
-
-###### XENONIUM FUNCTIONS
+###### random stuff
 
 xtoolboxve = cl(0, f'XToolBox {version}')
-xemulated999 = cl(1, '@xemu.lated   ')
+xemulated999 = cl(1, '@xemulated    ')
 cls()
-
-##### ^^^^ THIS HAS TO BE HERE
-
 
 #function to reduce code when using interpreter() page 97
 def yn(prompt=""):
@@ -588,7 +583,7 @@ if '-f' not in argv:
             Printer.sys(0, 'Server Error.')
 
         Printer.zpr('Checking Ping...')
-        if ping('google.com', unit='ms') > 200:
+        if ping('google.com', unit='ms') > 400:
             Printer.sys(0, 'Your ping is too high, continue anyways?')
             if not yn(): exit()
         else:
