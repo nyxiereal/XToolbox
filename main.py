@@ -393,7 +393,7 @@ def add_spaces(string):
 def xget(ide):
     try:
         if ide in ['t1-1', 'm6-2', 'm7-2', 't3-2', 'l4-3', 'g2-3', 'c6-3']:
-            return(cl(1, add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name} DNG")))
+            return(cl(1, add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name} ADV")))
         else:
             return(add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name}"))
     except:
@@ -411,7 +411,7 @@ def helpe():
           f"│     99    │ Exit                                            │\n"
           f"├─────────────────────────────────────────────────────────────┤\n"
           f"│ Color     │ Meaning                                         │\n"
-          f"│ {cl(1, 'RED')}       │ Dangerous Option                                │\n"
+          f"│ {cl(1, 'RED')}       │ Advanced Option                                 │\n"
           f"│ {cl(0, 'GREEN')}     │ Recommended Option                              │\n"
           f"├─────────────────────────────────────────────────────────────┤\n"
           f"│ Error code │ Explanation                                    │\n"
