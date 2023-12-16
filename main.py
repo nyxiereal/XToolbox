@@ -7,6 +7,7 @@ from sys import exit, argv, executable
 from psutil import cpu_count, virtual_memory
 from platform import release
 from os.path import isfile
+import threading
 from urllib.parse import urlparse
 from os import remove
 from hashlib import sha256
@@ -19,7 +20,6 @@ from lastversion import latest
 from ping3 import ping
 
 from rich.progress import Progress
-from rich import print
 from rich.console import Console
 from rich.text import Text
 c = Console()
@@ -47,7 +47,7 @@ def cls():
 
 # Get the checksum of a file specifiedin the file_path variable
 def getChecksum(file_path):
-    def shasher(data):
+    def sHasher(data):
         # NESTED MODULE LETS GOOOO!!!
         # Initialize the SHA-256 hash object
         sha256Hash = sha256()
@@ -70,7 +70,7 @@ def getChecksum(file_path):
             checksum += chunk
 
     # Calculate the SHA-256 checksum of the checksum value
-    checksum = shasher(checksum)
+    checksum = sHasher(checksum)
     return checksum
 
 def cl(color, text):
@@ -241,7 +241,7 @@ def dwnTool(tool):
 #!return type is based on the page number! (if not stated otherwise, returns void)
 def interpreter(page, prompt="> "):
     global lastPage
-    choose = str(input(prompt)).strip().lower() # lower for easier iffing
+    choose = str(c.input(prompt)).strip().lower() # lower for easier iffing
 
     #if user inputs 99, exit the program
     if choose == "99":
@@ -303,9 +303,9 @@ def interpreter(page, prompt="> "):
         elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-{page}" in tools):
             showInfo(tools[f"{choose[2:]}-{page}"])
         #other special options
-        elif choose == "qt": quicktweaks()
-        elif choose == "c6": chooseeset()
-        elif choose == "c7": choosekas()
+        elif choose == "qt": quickTweaks()
+        elif choose == "c6": chooseESET()
+        elif choose == "c7": chooseKAS()
         #help for special options
         elif choose == "i qt" or choose == "i c6" or choose == "i c7":
             c.print(f"The specified option is a menu, type {choose[2:]} to open it")
@@ -315,7 +315,7 @@ def interpreter(page, prompt="> "):
             c.print(f"No option named {choose}")
             sleep(3)
     
-    #for page 10 (quicktweaks)
+    #for page 10 (quickTweaks)
     elif page == 10:
         if choose == "": pass
         if choose == "b": lastPage = p1
@@ -385,7 +385,7 @@ def updater():
         dl('https://github.com/xemulat/XToolbox/releases/latest/download/XTBox.exe', f'XTBox.{version}.exe', f'XTBox v{version}')
     else:
         Printer.sys(1, 'You just got an ultra-rare error, this means that your version of XTB is somehow newer than the latest GitHub release... Interesting.')
-        sleep(6)
+        sleep(2)
         pass
 
 def addSpaces(string):
@@ -433,9 +433,9 @@ def helpe():
             f"└─────────────────────────────────────────────────────────────┘\n")
     return interpreter(0)
 
-#QuickTweaks is page 10
-def quicktweaks():
-    global lastPage; lastPage = quicktweaks
+#quickTweaks is page 10
+def quickTweaks():
+    global lastPage; lastPage = quickTweaks
     cls()
     # god is dead
     c.print(f"┌────────────────────────────┬──────────────────────────┐\n"
@@ -452,8 +452,8 @@ def quicktweaks():
     interpreter(10)
 
 #ESET is page 11
-def chooseeset():
-    global lastPage; lastPage = chooseeset
+def chooseESET():
+    global lastPage; lastPage = chooseESET
     cls()
     c.print(f"┌────────────────────────────────────────────────────────────────────┐\n"
             f"│ [1] ESET Smart Security Premium                                    │\n"
@@ -468,8 +468,8 @@ def chooseeset():
     interpreter(11)
 
 #Kaspersky is page 12
-def choosekas():
-    global lastPage; lastPage = choosekas
+def chooseKAS():
+    global lastPage; lastPage = chooseKAS
     cls()
     c.print(f"┌─────────────────────────────────────────────────────────────────────┐\n"
             f"│ [1] Kaspersky Internet Security                                     │\n"
@@ -487,7 +487,7 @@ def p1():
     c.print(f"┌────────────────────────────┬────────────────────────────┬────────────────────────────┬────────────────────────────┐\n"
             f"│ {xtoolboxve}               │ Made by {xemulated999}     │ Ping: {peeng}              │ {cl(1, 'discord.gg/3tZf2peZfn')}      │\n"
             f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
-            f"│ [D] Debloat                │ [T] Tweaks                 │ [A] Apps                   │ [C] Cleaning / Antiviruses │\n"
+            f"│ [D] Debloat                │ [T] Tweaks                 │ [A] Apps                   │ [C] Cleaning               │\n"
             f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
             f"│{xget('d1-1')              }│{xget('t1-1')              }│{xget('a1-1')              }│{xget('c1-1')              }│\n"
             f"│{xget('d2-1')              }│{xget('t2-1')              }│{xget('a2-1')              }│{xget('c2-1')              }│\n"
@@ -570,63 +570,43 @@ def p3():
 
 # Security and integrity checks.
 
-# File hash check.
-Printer.zpr('Performing security checks...')
-if '-f' not in argv:
-    if isfile('bypass.xtb') == False:
+def perform_security_checks():
+    Printer.zpr('Performing security checks...')
+    if '-f' not in argv:
+        if isfile('bypass.xtb') == False:
+            Printer.zpr('Checking File hash...')
+            try:
+                response = get('https://raw.githubusercontent.com/xemulat/XToolbox/main/hash.json')
+                data = response.json()
+                if (data[version]).lower() == getChecksum(executable):
+                    Printer.sys(1, 'File hash match!')
+                else:
+                    Printer.sys(0, "File hash doesn't match!")
+                    c.print("File hash doesn't match the official hash for XTBox, this means the file could be tampered with. Download the program using the displayed url.")
+                    webopen('https://github.com/xemulat/XToolbox/releases/latest')
+                    c.print('Continue anyways?')
+                    if not yn(): exit()
+            except:
+                Printer.sys(0, 'Server Error.')
 
-        Printer.zpr('Checking File hash...')
-        try:
-            response = get('https://raw.githubusercontent.com/xemulat/XToolbox/main/hash.json')
-            data = response.json()
-            if (data[version]).lower() == getChecksum(executable):
-                Printer.sys(1, 'File hash match!')
+
+            Printer.zpr('Checking for updates...')
+            if str(latest('xemulat/XToolbox')) == version:
+                Printer.sys(1, 'XTB is up to date!')
             else:
-                Printer.sys(0, "File hash doesn't match!")
-                c.print("File hash doesn't match the official hash for XTBox, this means the file could be tampered with. Download the program using the displayed url.")
-                webopen('https://github.com/xemulat/XToolbox/releases/latest')
-                c.print('Continue anyways?')
-                if not yn(): exit()
-        except:
-            Printer.sys(0, 'Server Error.')
+                Printer.sys(0, 'XTB is outdated, launching the updater...')
+                updater()
 
-        Printer.zpr('Checking Ping...')
-        if ping('google.com', unit='ms') > 400:
-            Printer.sys(0, 'Your ping is too high, continue anyways?')
-            if not yn(): exit()
+
+            Printer.zpr('Checking software requirements...')
+            if int(release()) < 10:
+                Printer.sys(0, "Your Windows version is older than 10, this program won't run. Upgrade to Windows 10/11 if you want to use this program.")
+                exit(sleep(15))
+            else:
+                Printer.sys(1, "Your Windows version is compatible with XTB")
+            
         else:
-            Printer.sys(1, 'Ping check passed!')
-
-        Printer.zpr('Checking for updates...')
-        if str(latest('xemulat/XToolbox')) == version:
-            Printer.sys(1, 'XTB is up to date!')
-        else:
-            Printer.sys(0, 'XTB is outdated, launching the updater...')
-            updater()
-
-        Printer.zpr('Checking software requirements...')
-        if int(release())<10:
-            Printer.sys(0, "Your Windows version is older than 10, this program won't run. Upgrade to Windows 10/11 if you want to use this program.")
-            exit(sleep(15))
-        else:
-            Printer.sys(1, "Your Windows version is compatible with XTB")
-
-        # KILL KILL KILL KILL KILL KILL KILL KILL
-        Printer.zpr('Checking hardware requirements...')
-        if not cpu_count(logical=True)<2:
-            Printer.sys(1, 'CPU core count requirements met!')
-        else:
-            Printer.sys(0, 'Your CPU core count is too low to run XTB, continue anyways?')
-            if not yn(): exit()
-
-        if not virtual_memory().total/1073741824<2:
-            Printer.sys(1, 'RAM requirements met!')
-        else:
-            Printer.sys(0, 'You have too little RAM in your PC to run XTB, continue anyways?')
-            if not yn(): exit()
-
-else:
-    Printer.sys(1, 'Checks skipped.')
+            Printer.sys(1, 'Checks skipped.')
 
 try:
     p1()
@@ -634,5 +614,5 @@ try:
         #global variable declared in page functions
         lastPage() 
 except KeyboardInterrupt:
-    c.print('bye!')
+    c.print('bye :3')
     exit()
