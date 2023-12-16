@@ -83,9 +83,9 @@ def cl(color, text):
 class Printer():
     def sys(clr, text):
         if clr == 1:
-            c.print(f'[green][+] {text}[/green]')
+            c.print(f'[green][✓] {text}[/green]')
         else:
-            c.print(f'[red][-] {text}[/red]')
+            c.print(f'[red][✗] {text}[/red]')
     def zpr(text):
         c.print(f'[blue][>] {text}[/blue]')
 
@@ -418,7 +418,7 @@ def helpe():
             f"│     B     │ Previous Page (back)                            │\n"
             f"│     99    │ Exit                                            │\n"
             f"├─────────────────────────────────────────────────────────────┤\n"
-            f"│ Color     │ Meaning                                         │\n"
+            f"│   Color   │ Meaning                                         │\n"
             f"│ {cl(1, 'YELLOW')}    │ Advanced Option                                 │\n"
             f"│ {cl(0, 'GREEN')}     │ Recommended Option                              │\n"
             f"├─────────────────────────────────────────────────────────────┤\n"
@@ -570,43 +570,41 @@ def p3():
 
 # Security and integrity checks.
 
-def perform_security_checks():
-    Printer.zpr('Performing security checks...')
-    if '-f' not in argv:
-        if isfile('bypass.xtb') == False:
-            Printer.zpr('Checking File hash...')
-            try:
-                response = get('https://raw.githubusercontent.com/xemulat/XToolbox/main/hash.json')
-                data = response.json()
-                if (data[version]).lower() == getChecksum(executable):
-                    Printer.sys(1, 'File hash match!')
-                else:
-                    Printer.sys(0, "File hash doesn't match!")
-                    c.print("File hash doesn't match the official hash for XTBox, this means the file could be tampered with. Download the program using the displayed url.")
-                    webopen('https://github.com/xemulat/XToolbox/releases/latest')
-                    c.print('Continue anyways?')
-                    if not yn(): exit()
-            except:
-                Printer.sys(0, 'Server Error.')
-
-
-            Printer.zpr('Checking for updates...')
-            if str(latest('xemulat/XToolbox')) == version:
-                Printer.sys(1, 'XTB is up to date!')
+Printer.zpr('Performing security checks...')
+if '-f' not in argv:
+    if isfile('bypass.xtb') == False:
+        Printer.zpr('Checking File hash...')
+        try:
+            response = get('https://raw.githubusercontent.com/xemulat/XToolbox/main/hash.json')
+            data = response.json()
+            if (data[version]).lower() == getChecksum(executable):
+                Printer.sys(1, 'File hash match!')
             else:
-                Printer.sys(0, 'XTB is outdated, launching the updater...')
-                updater()
+                Printer.sys(0, "File hash doesn't match!")
+                c.print("File hash doesn't match the official hash for XTBox, this means the file could be tampered with. Download the program using the displayed url.")
+                webopen('https://github.com/xemulat/XToolbox/releases/latest')
+                c.print('Continue anyways?')
+                if not yn(): exit()
+        except:
+            Printer.sys(0, 'Server Error.')
 
 
-            Printer.zpr('Checking software requirements...')
-            if int(release()) < 10:
-                Printer.sys(0, "Your Windows version is older than 10, this program won't run. Upgrade to Windows 10/11 if you want to use this program.")
-                exit(sleep(15))
-            else:
-                Printer.sys(1, "Your Windows version is compatible with XTB")
-            
+        Printer.zpr('Checking for updates...')
+        if str(latest('xemulat/XToolbox')) == version:
+            Printer.sys(1, 'XTB is up to date!')
         else:
-            Printer.sys(1, 'Checks skipped.')
+            Printer.sys(0, 'XTB is outdated, launching the updater...')
+            updater()
+
+        Printer.zpr('Checking software requirements...')
+        if int(release()) < 10:
+            Printer.sys(0, "Your Windows version is older than 10, this program won't run. Upgrade to Windows 10/11 if you want to use this program.")
+            exit(sleep(15))
+        else:
+            Printer.sys(1, "Your Windows version is compatible with XTB.")
+        
+    else:
+        Printer.sys(1, 'Checks skipped.')
 
 try:
     p1()
