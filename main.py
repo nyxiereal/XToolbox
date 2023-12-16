@@ -16,47 +16,47 @@ from getpass import getpass
 
 from requests import Session, get
 from lastversion import latest
-from colorama import Fore, init
 from ping3 import ping
 
 from rich.progress import Progress
-
-init(autoreset=True)
+from rich import print
+from rich.console import Console
+from rich.text import Text
+c = Console()
 
 peeng = str(f"{round(ping('1.1.1.1', unit='ms'))}ms").ljust(7)
 
-version = '3.0'
+version = '3.1'
 
-#### XENONIUM FUNCTIONS
-def fwrite(run, filename, content):
+### Helpers
+
+# Write a file or/and run it
+def fWrite(run, filename, content):
     fp = open(filename, 'w')
     fp.write(content)
     fp.close()
     if run == 1: startfile(filename)
 
-def runaspowershell(command, filename):
-    fwrite(1, f"{filename}.bat", r'@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "'+command+'"')
+# Run a command as powershell
+def runAsPowershell(command, filename):
+    fWrite(1, f"{filename}.bat", r'@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "'+command+'"')
 
+# Clear the display
 def cls():
     system('cls')
 
-def cl(color, text):
-    if color == 1:
-        return(Fore.RED + text + Fore.RESET)
-    else:
-        return(Fore.GREEN + text + Fore.RESET)
-
-def get_checksum(file_path):
+# Get the checksum of a file specifiedin the file_path variable
+def getChecksum(file_path):
     def shasher(data):
         # NESTED MODULE LETS GOOOO!!!
         # Initialize the SHA-256 hash object
-        sha256_hash = sha256()
+        sha256Hash = sha256()
 
         # Update the hash object with the data
-        sha256_hash.update(data)
+        sha256Hash.update(data)
 
         # Return the hexadecimal digest of the hash
-        return sha256_hash.hexdigest()
+        return sha256Hash.hexdigest()
 
     # Read the file in binary mode
     with open(file_path, 'rb') as file:
@@ -73,14 +73,21 @@ def get_checksum(file_path):
     checksum = shasher(checksum)
     return checksum
 
+def cl(color, text):
+    if color == 1:
+        return(f'[red]{text}[/red]')
+    else:
+        return(f'[green]{text}[/green]')
+
+# Printing helper
 class Printer():
     def sys(clr, text):
         if clr == 1:
-            print(Fore.GREEN + f'[+] {text}')
+            c.print(f'[green][+] {text}[/green]')
         else:
-            print(Fore.RED + f'[-] {text}')
+            c.print(f'[red][-] {text}[/red]')
     def zpr(text):
-        print(Fore.BLUE + f'[>] {text}')
+        c.print(f'[blue][>] {text}[/blue]')
 
 def download(url, fnam, name):
     try:
@@ -90,21 +97,25 @@ def download(url, fnam, name):
         # Parse the URL and convert it to https.
         url = (urlparse(url))._replace(scheme='https').geturl()
 
+        # Add headers to bypass simple robots.txt blocking
         headers = {'Accept-Encoding': 'gzip, deflate',
                    'User-Agent': 'Mozilla/5.0',
                    'cache_control': 'max-age=600',
                    'connection': 'keep-alive'}
 
+        # Create a session and make a head request using it
         session = Session()
 
         response = session.head(url, headers=headers)
+        
+        # Get the total size of the file
         total_size = int(response.headers.get("content-length", 0))
 
         with Progress() as progress:
             task = progress.add_task(f"[cyan]:: Downloading [bold]{name}[/bold][/cyan]", total=total_size)
 
             with open(fnam, "wb") as file:
-
+                # Open a file and write content to it in chunks
                 response = session.get(url, stream=True)
                 chunk_size = 1024  # You can adjust this value as needed
 
@@ -120,7 +131,7 @@ def download(url, fnam, name):
 
 #function to reduce code when using interpreter() page 97
 def yn(prompt=""):
-    prompt += f" {Fore.RESET}({Fore.GREEN}Y{Fore.RESET}/{Fore.RED}n{Fore.RESET}): "
+    prompt += f"([green]Y[/green]/[red]n[/red]): "
     goodInput, YNvalue = False, False
     while not goodInput:
         goodInput, YNvalue = interpreter(97, prompt)
@@ -156,22 +167,22 @@ def multiChoose(tool, prompt):
         if size%2==0: size+=1
     
     #the top bar
-    print(f"┌{'─'*int((size-2-len(backMessage))/2)}{backMessage}{'─'*int((size-2-len(backMessage))/2)}┐")
+    c.print(f"┌{'─'*int((size-2-len(backMessage))/2)}{backMessage}{'─'*int((size-2-len(backMessage))/2)}┐")
 
     #empty line cuz it looks nice :D
-    print(f"│{' '*(size-2)}│")
+    c.print(f"│{' '*(size-2)}│")
 
     #options
     for ind in range(len(tool.dwn)):
-        print(f"│ [{ind+1}] {tool.getDesc(ind)}{' '*int(size-6-len(tool.getDesc(ind))-len(str(ind+1)))}│")
+        c.print(f"│ [{ind+1}] {tool.getDesc(ind)}{' '*int(size-6-len(tool.getDesc(ind))-len(str(ind+1)))}│")
 
     #another empty
-    print(f"│{' '*(size-2)}│")
+    c.print(f"│{' '*(size-2)}│")
 
     #prompt
-    print(f"├{'─'*(size-2)}┤")    
-    print(f"│{' '*int((size-2-len(prompt))/2)}{prompt}{' '*int((size-2-len(prompt))/2)}│")
-    print(f"└{'─'*(size-2)}┘")
+    c.print(f"├{'─'*(size-2)}┤")    
+    c.print(f"│{' '*int((size-2-len(prompt))/2)}{prompt}{' '*int((size-2-len(prompt))/2)}│")
+    c.print(f"└{'─'*(size-2)}┘")
 
     goodInput = False
     while not goodInput:
@@ -182,7 +193,7 @@ def multiChoose(tool, prompt):
 
 def dl(url, urlr, name):
     # make sure user understands what they are about do download
-    print(f"XTBox will download an executable from:\n\t{url}")
+    c.print(f"XTBox will download an executable from:\n\t{url}")
     if not yn("Approve?"): return
 
     try:
@@ -194,25 +205,17 @@ def dl(url, urlr, name):
     
     getpass("\n... press ENTER to continue ...", stream=None)
 
-#runaspowershell() wrapper
+#runAsPowershell() wrapper
 def pwsh(cmd, name):
-    print(f"XTBox will run the following command as powershell:\n\t{cmd}")
+    c.print(f"XTBox will run the following command as powershell:\n\t{cmd}")
     if not yn("Approve?"): return
-    runaspowershell(cmd, name)
+    runAsPowershell(cmd, name)
 
 ###### random stuff
 
 xtoolboxve = cl(0, f'XToolBox {version}')
 xemulated999 = cl(1, '@xemulated    ')
 cls()
-
-#function to reduce code when using interpreter() page 97
-def yn(prompt=""):
-    prompt += f" {Fore.RESET}({Fore.GREEN}Y{Fore.RESET}/{Fore.RED}n{Fore.RESET}): "
-    goodInput, YNvalue = False, False
-    while not goodInput:
-        goodInput, YNvalue = interpreter(97, prompt)
-    return YNvalue
 
 def dwnTool(tool):
     index = 0
@@ -225,13 +228,13 @@ def dwnTool(tool):
     if tool.command==1:   dl(tool.getDwn(index), tool.getExec(index), tool.getName(index))
     elif tool.command==2: pwsh(tool.getDwn(index), tool.getName(index))
     elif tool.command==3: 
-        print(f"XTBox will open:\n\t{tool.getDwn(index)}") #webopen is used only here so no wrapper is needed for now
+        c.print(f"XTBox will open:\n\t{tool.getDwn(index)}") #webopen is used only here so no wrapper is needed for now
         if yn("Approve?"): webopen(tool.getDwn(index))
     elif tool.command==4: 
-        print(f"XTBox will retrieve data from:\n\t{tool.getDwn(index)}")
+        c.print(f"XTBox will retrieve data from:\n\t{tool.getDwn(index)}")
         if yn("Approve?"): urlretrieve(tool.getDwn(index), tool.getExec(index))
     elif tool.command==5:
-        fwrite(tool.getDwn(index)) # this doesnt really run anything so no approval is neded
+        fWrite(tool.getDwn(index)) # this doesnt really run anything so no approval is neded
 
 #function that interprets user input
 #page is what the interface is showing and *args is additional info that may be required for some pages
@@ -249,7 +252,7 @@ def interpreter(page, prompt="> "):
         # return the correct values to prevent crashes
         if page == 98 or page == 97:
             if lastPage != None: # prevent getting this message in EULA and similar functions
-                print("Exit selection to access help!")
+                c.print("Exit selection to access help!")
             return False, False
         else:
             while not helpe(): pass
@@ -257,9 +260,9 @@ def interpreter(page, prompt="> "):
 
     #if user uses the Info command wrong:
     if choose == "i" and page > 0 and page < 20:
-        print("'i' is not a valid command, if you want info type:")
-        print("\ti <CODE>")
-        print("For example: i d2")
+        c.print("'i' is not a valid command, if you want info type:")
+        c.print("\ti <CODE>")
+        c.print("For example: i d2")
         getpass("\n... press ENTER to continue ...", stream=None)
         return
 
@@ -277,7 +280,7 @@ def interpreter(page, prompt="> "):
             return True
         # not valid option
         else:
-            print(f"No option named {choose}")
+            c.print(f"No option named {choose}")
             return False
 
     #for pages 1-3 (tool pickers)
@@ -305,11 +308,11 @@ def interpreter(page, prompt="> "):
         elif choose == "c7": choosekas()
         #help for special options
         elif choose == "i qt" or choose == "i c6" or choose == "i c7":
-            print(f"The specified option is a menu, type {choose[2:]} to open it")
+            c.print(f"The specified option is a menu, type {choose[2:]} to open it")
             sleep(3)
         #bad input
         else:
-            print(f"No option named {choose}")
+            c.print(f"No option named {choose}")
             sleep(3)
     
     #for page 10 (quicktweaks)
@@ -327,7 +330,7 @@ def interpreter(page, prompt="> "):
             showInfo(tools["2-QT-1"])
             showInfo(tools["2-QT-2"])
         else:
-            print(f"No option named {choose}")
+            c.print(f"No option named {choose}")
             sleep(3)
 
     #page 11 (ESET)
@@ -339,7 +342,7 @@ def interpreter(page, prompt="> "):
         elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-ESET" in tools): 
             showInfo(tools[f"{choose[2:]}-ESET"])   
         else:
-            print(f"No option named {choose}")
+            c.print(f"No option named {choose}")
             sleep(3)
 
     #page 12 (Kaspersky)
@@ -351,7 +354,7 @@ def interpreter(page, prompt="> "):
         elif (len(choose) > 2) and (choose[0:2] == "i ") and (f"{choose[2:]}-KAS" in tools): 
             showInfo(tools[f"{choose[2:]}-KAS"])
         else:
-            print(f"No option named {choose}")
+            c.print(f"No option named {choose}")
             sleep(3)
 
     #page 97 (y/n)
@@ -361,7 +364,7 @@ def interpreter(page, prompt="> "):
         elif choose == "n": return True, False
         elif choose == "": return True, True
         else:
-            print(f"No option named {choose}")
+            c.print(f"No option named {choose}")
             return False, False
 
     #page 98 (multiple choice download)
@@ -374,7 +377,7 @@ def interpreter(page, prompt="> "):
         elif choose.isnumeric() and int(choose) > 0:
             return True, int(choose)-1
         else:
-            print(f"No option named {choose}")
+            c.print(f"No option named {choose}")
             return False, 0
 
 def updater():
@@ -385,17 +388,22 @@ def updater():
         sleep(6)
         pass
 
-def add_spaces(string):
+def addSpaces(string):
     while len(string) < 28:
+        string += " "
+    return string
+
+def advAddSpaces(string):
+    while len(string) < 45:
         string += " "
     return string
 
 def xget(ide):
     try:
         if ide in ['t1-1', 'm6-2', 'm7-2', 't3-2', 'l4-3', 'g2-3', 'c6-3']:
-            return(cl(1, add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name} ADV")))
+            return(advAddSpaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name} [yellow]ADV[/yellow]"))
         else:
-            return(add_spaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name}"))
+            return(addSpaces(f" [{(ide.split('-')[0])[1:]}] {tools[ide].name}"))
     except:
         return('                            ')
 
@@ -403,26 +411,26 @@ def xget(ide):
 #returns if it should close
 def helpe():
     cls()
-    print(f"┌─────────────────────────────────────────────────────────────┐\n"
-          f"│  Keybind  │ Command                                         │\n"
-          f"│     H     │ Help Page (this page)                           │\n"
-          f"│     N     │ Next Page                                       │\n"
-          f"│     B     │ Previous Page (back)                            │\n"
-          f"│     99    │ Exit                                            │\n"
-          f"├─────────────────────────────────────────────────────────────┤\n"
-          f"│ Color     │ Meaning                                         │\n"
-          f"│ {cl(1, 'RED')}       │ Advanced Option                                 │\n"
-          f"│ {cl(0, 'GREEN')}     │ Recommended Option                              │\n"
-          f"├─────────────────────────────────────────────────────────────┤\n"
-          f"│ Error code │ Explanation                                    │\n"
-          f"│      1     │ File already exists                            │\n"
-          f"│      2     │ Can't check for file overwrite                 │\n"
-          f"│      3     │ Can't download file from the server            │\n"
-          f"├─────────────────────────────────────────────────────────────┤\n"
-          f"│ If scripts won't execute, press P                           │\n"
-          f"├─────────────────────────────────────────────────────────────┤\n"
-          f"│                  Press ENTER/B to go back.                  │\n"
-          f"└─────────────────────────────────────────────────────────────┘\n")
+    c.print(f"┌─────────────────────────────────────────────────────────────┐\n"
+            f"│  Keybind  │ Command                                         │\n"
+            f"│     H     │ Help Page (this page)                           │\n"
+            f"│     N     │ Next Page                                       │\n"
+            f"│     B     │ Previous Page (back)                            │\n"
+            f"│     99    │ Exit                                            │\n"
+            f"├─────────────────────────────────────────────────────────────┤\n"
+            f"│ Color     │ Meaning                                         │\n"
+            f"│ {cl(1, 'YELLOW')}    │ Advanced Option                                 │\n"
+            f"│ {cl(0, 'GREEN')}     │ Recommended Option                              │\n"
+            f"├─────────────────────────────────────────────────────────────┤\n"
+            f"│ Error code │ Explanation                                    │\n"
+            f"│      1     │ File already exists                            │\n"
+            f"│      2     │ Can't check for file overwrite                 │\n"
+            f"│      3     │ Can't download file from the server            │\n"
+            f"├─────────────────────────────────────────────────────────────┤\n"
+            f"│ If scripts won't execute, press P                           │\n"
+            f"├─────────────────────────────────────────────────────────────┤\n"
+            f"│                  Press ENTER/B to go back.                  │\n"
+            f"└─────────────────────────────────────────────────────────────┘\n")
     return interpreter(0)
 
 #QuickTweaks is page 10
@@ -430,111 +438,111 @@ def quicktweaks():
     global lastPage; lastPage = quicktweaks
     cls()
     # god is dead
-    print(f"┌────────────────────────────┬──────────────────────────┐\n"
-          f"│ [1] {cl(0, 'AntiTrackTime')}          │ [7] NoXboxBloat         R│\n"
-          f"│ [2] NoNetworkAuto-Tune     │ [8] {cl(1, 'Limit QoS')}            R│\n"
-          f"│ [3] {cl(0, 'Optimize SSD')}          R│ [9] XanderTweak         R│\n"
-          f"│ [4] NoActionCenter        R│ [10] AddCopyPath        R│\n"
-          f"│ [5] NoNews                R│ [11] DarkMode           R│\n"
-          f"│ [6] NoOneDrive             │ [12] AddTakeOwnership   R│\n"
-          f"│                            │                          │\n"
-          f"├────┬───────────────────────┼──────────┬──────────┬────┤\n"
-          f"│    │ Choose your Tweaks :D │ I ─ Info │ B ─ Back │    │\n"
-          f"└────┴───────────────────────┴──────────┴──────────┴────┘\n")
+    c.print(f"┌────────────────────────────┬──────────────────────────┐\n"
+            f"│ [1] {cl(0, 'AntiTrackTime')}          │ [7] NoXboxBloat         R│\n"
+            f"│ [2] NoNetworkAuto-Tune     │ [8] {cl(1, 'Limit QoS')}            R│\n"
+            f"│ [3] {cl(0, 'Optimize SSD')}          R│ [9] XanderTweak         R│\n"
+            f"│ [4] NoActionCenter        R│ [10] AddCopyPath        R│\n"
+            f"│ [5] NoNews                R│ [11] DarkMode           R│\n"
+            f"│ [6] NoOneDrive             │ [12] AddTakeOwnership   R│\n"
+            f"│                            │                          │\n"
+            f"├────┬───────────────────────┼──────────┬──────────┬────┤\n"
+            f"│    │ Choose your Tweaks :D │ I ─ Info │ B ─ Back │    │\n"
+            f"└────┴───────────────────────┴──────────┴──────────┴────┘\n")
     interpreter(10)
 
 #ESET is page 11
 def chooseeset():
     global lastPage; lastPage = chooseeset
     cls()
-    print(f"┌────────────────────────────────────────────────────────────────────┐\n"
-          f"│ [1] ESET Smart Security Premium                                    │\n"
-          f"│ [2] ESET Internet Security                                         │\n"
-          f"│ [3] ESET NOD32 Antivirus                                           │\n"
-          f"│ [4] ESET NOD32 Antivirus Gamer Edition                             │\n"
-          f"│ [5] ESET Security for Small Office                                 │\n"
-          f"│                                                                    │\n"
-          f"├─────────┬──────────────────────────┬──────────┬──────────┬─────────┤\n"
-          f"│         │ Choose your ESET version │ I ─ Info │ B ─ Back │         │\n"
-          f"└─────────┴──────────────────────────┴──────────┴──────────┴─────────┘\n")
+    c.print(f"┌────────────────────────────────────────────────────────────────────┐\n"
+            f"│ [1] ESET Smart Security Premium                                    │\n"
+            f"│ [2] ESET Internet Security                                         │\n"
+            f"│ [3] ESET NOD32 Antivirus                                           │\n"
+            f"│ [4] ESET NOD32 Antivirus Gamer Edition                             │\n"
+            f"│ [5] ESET Security for Small Office                                 │\n"
+            f"│                                                                    │\n"
+            f"├─────────┬──────────────────────────┬──────────┬──────────┬─────────┤\n"
+            f"│         │ Choose your ESET version │ I ─ Info │ B ─ Back │         │\n"
+            f"└─────────┴──────────────────────────┴──────────┴──────────┴─────────┘\n")
     interpreter(11)
 
 #Kaspersky is page 12
 def choosekas():
     global lastPage; lastPage = choosekas
     cls()
-    print(f"┌─────────────────────────────────────────────────────────────────────┐\n"
-          f"│ [1] Kaspersky Internet Security                                     │\n"
-          f"│ [2] Kaspersky Anti-Virus                                            │\n"
-          f"│ [3] Kaspersky Total Security                                        │\n"
-          f"│                                                                     │\n"
-          f"├───────┬───────────────────────────────┬──────────┬──────────┬───────┤\n"
-          f"│       │ Choose your Kaspersky version │ I ─ Info │ B ─ Back │       │\n"
-          f"└───────┴───────────────────────────────┴──────────┴──────────┴───────┘\n")
+    c.print(f"┌─────────────────────────────────────────────────────────────────────┐\n"
+            f"│ [1] Kaspersky Internet Security                                     │\n"
+            f"│ [2] Kaspersky Anti-Virus                                            │\n"
+            f"│ [3] Kaspersky Total Security                                        │\n"
+            f"│                                                                     │\n"
+            f"├───────┬───────────────────────────────┬──────────┬──────────┬───────┤\n"
+            f"│       │ Choose your Kaspersky version │ I ─ Info │ B ─ Back │       │\n"
+            f"└───────┴───────────────────────────────┴──────────┴──────────┴───────┘\n")
     interpreter(12)
 
 def p1():
     global lastPage; lastPage = p1
     cls()
-    print(f"┌────────────────────────────┬────────────────────────────┬────────────────────────────┬────────────────────────────┐\n"
-          f"│ {xtoolboxve}               │ Made by {xemulated999}     │ Ping: {peeng}              │ {cl(1, 'discord.gg/3tZf2peZfn')}      │\n"
-          f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
-          f"│ [D] Debloat                │ [T] Tweaks                 │ [A] Apps                   │ [C] Cleaning / Antiviruses │\n"
-          f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
-          f"│{xget('d1-1')              }│{xget('t1-1')              }│{xget('a1-1')              }│{xget('c1-1')              }│\n"
-          f"│{xget('d2-1')              }│{xget('t2-1')              }│{xget('a2-1')              }│{xget('c2-1')              }│\n"
-          f"│{xget('d3-1')              }│{xget('t3-1')              }│{xget('a3-1')              }│{xget('c3-1')              }│\n"
-          f"│{xget('d4-1')              }│{xget('t4-1')              }│{xget('a4-1')              }│{xget('c4-1')              }│\n"
-          f"│{xget('d5-1')              }│{xget('t5-1')              }│{xget('a5-1')              }│{xget('c5-1')              }│\n"
-          f"│{xget('d6-1')              }│{xget('t6-1')              }│{xget('a6-1')              }│ [6] ESET                   │")
-    print(f"│{xget('d7-1')              }│{xget('t7-1')              }│{xget('a7-1')              }│ [7] Kaspersky              │\n"
-          f"│{xget('d8-1')              }│{xget('t8-1')              }│{xget('a8-1')              }│{xget('c8-1')              }│\n"
-          f"│{xget('d9-1')              }│{xget('t9-1')              }│{xget('a9-1')              }│{xget('c9-1')              }│\n"
-          f"│{xget('d10-1')             }│{xget('t10-1')             }│{xget('a10-1')             }│{xget('c10-1')             }│\n"
-          f"│{xget('d11-1')             }│{xget('t11-1')             }│{xget('a11-1')             }│{xget('c11-1')             }│\n"
-          f"│{xget('d12-1')             }│{xget('t12-1')             }│{xget('a12-1')             }│{xget('c12-1')             }│\n"
-          f"│{xget('d13-1')             }│{xget('t13-1')             }│{xget('a13-1')             }│{xget('c13-1')             }│\n"
-          f"│{xget('d14-1')             }│{xget('t14-1')             }│{xget('a14-1')             }│{xget('c14-1')             }│\n"
-          f"│{xget('d15-1')             }│ [QT] Quick Tweaks          │{xget('a15-1')             }│{xget('c15-1')             }│\n"
-          f"│{xget('d16-1')             }│                            │{xget('a16-1')             }│{xget('c16-1')             }│\n"
-          f"├────────────────────────────┴────────────────────────────┴────────────────────────────┴────────────────────────────┤\n"
-          f"│                      Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ ^C ─ Exit │ H ─ Help │ I ─ Info                   1/3 │\n"
-          f"└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+    c.print(f"┌────────────────────────────┬────────────────────────────┬────────────────────────────┬────────────────────────────┐\n"
+            f"│ {xtoolboxve}               │ Made by {xemulated999}     │ Ping: {peeng}              │ {cl(1, 'discord.gg/3tZf2peZfn')}      │\n"
+            f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
+            f"│ [D] Debloat                │ [T] Tweaks                 │ [A] Apps                   │ [C] Cleaning / Antiviruses │\n"
+            f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
+            f"│{xget('d1-1')              }│{xget('t1-1')              }│{xget('a1-1')              }│{xget('c1-1')              }│\n"
+            f"│{xget('d2-1')              }│{xget('t2-1')              }│{xget('a2-1')              }│{xget('c2-1')              }│\n"
+            f"│{xget('d3-1')              }│{xget('t3-1')              }│{xget('a3-1')              }│{xget('c3-1')              }│\n"
+            f"│{xget('d4-1')              }│{xget('t4-1')              }│{xget('a4-1')              }│{xget('c4-1')              }│\n"
+            f"│{xget('d5-1')              }│{xget('t5-1')              }│{xget('a5-1')              }│{xget('c5-1')              }│\n"
+            f"│{xget('d6-1')              }│{xget('t6-1')              }│{xget('a6-1')              }│ [6] ESET                   │")
+    c.print(f"│{xget('d7-1')              }│{xget('t7-1')              }│{xget('a7-1')              }│ [7] Kaspersky              │\n"
+            f"│{xget('d8-1')              }│{xget('t8-1')              }│{xget('a8-1')              }│{xget('c8-1')              }│\n"
+            f"│{xget('d9-1')              }│{xget('t9-1')              }│{xget('a9-1')              }│{xget('c9-1')              }│\n"
+            f"│{xget('d10-1')             }│{xget('t10-1')             }│{xget('a10-1')             }│{xget('c10-1')             }│\n"
+            f"│{xget('d11-1')             }│{xget('t11-1')             }│{xget('a11-1')             }│{xget('c11-1')             }│\n"
+            f"│{xget('d12-1')             }│{xget('t12-1')             }│{xget('a12-1')             }│{xget('c12-1')             }│\n"
+            f"│{xget('d13-1')             }│{xget('t13-1')             }│{xget('a13-1')             }│{xget('c13-1')             }│\n"
+            f"│{xget('d14-1')             }│{xget('t14-1')             }│{xget('a14-1')             }│{xget('c14-1')             }│\n"
+            f"│{xget('d15-1')             }│ [QT] Quick Tweaks          │{xget('a15-1')             }│{xget('c15-1')             }│\n"
+            f"│{xget('d16-1')             }│                            │{xget('a16-1')             }│{xget('c16-1')             }│\n"
+            f"├────────────────────────────┴────────────────────────────┴────────────────────────────┴────────────────────────────┤\n"
+            f"│                      Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ ^C ─ Exit │ H ─ Help │ I ─ Info                   1/3 │\n"
+            f"└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
     interpreter(1)
 
 def p2():
     global lastPage; lastPage = p2
     cls()
-    print(f"┌────────────────────────────┬────────────────────────────┬────────────────────────────┬────────────────────────────┐\n"
-          f"│ {xtoolboxve}               │ Made by {xemulated999}     │ Ping: {peeng}              │ {cl(1, 'discord.gg/rwZtqj6HqZ')}      │\n"
-          f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
-          f"│ [L] Linux Distros          │ [W] Windows versions       │ [M] Modded Windows Isos    │ [T] Tools                  │\n"
-          f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
-          f"│{xget('l1-2')              }│{xget('w1-2')              }│{xget('m1-2')              }│{xget('t1-2')              }│\n"
-          f"│{xget('l2-2')              }│{xget('w2-2')              }│{xget('m2-2')              }│{xget('t2-2')              }│\n"
-          f"│{xget('l3-2')              }│{xget('w3-2')              }│{xget('m3-2')              }│{xget('t3-2')              }│\n"
-          f"│{xget('l4-2')              }│{xget('w4-2')              }│{xget('m4-2')              }│{xget('t4-2')              }│\n"
-          f"│{xget('l5-2')              }│{xget('w5-2')              }│{xget('m5-2')              }│{xget('t5-2')              }│\n"
-          f"│{xget('l6-2')              }│{xget('w6-2')              }│{xget('m6-2')              }│{xget('t6-2')              }│")
-    print(f"│{xget('l7-2')              }├────────────────────────────┤{xget('m7-2')              }├────────────────────────────┤\n"
-          f"│{xget('l8-2')              }│ [O] Other                  │{xget('m8-2')              }│ [A] Apps                   │\n"
-          f"│{xget('l9-2')              }├────────────────────────────┤{xget('m9-2')              }├────────────────────────────┤\n"
-          f"│{xget('l10-2')             }│{xget('o1-2')              }│{xget('m10-2')             }│{xget('a1-2')              }│\n"
-          f"│{xget('l11-2')             }│{xget('o2-2')              }│{xget('m11-2')             }│{xget('a2-2')              }│\n"
-          f"│{xget('l12-2')             }│{xget('o3-2')              }│{xget('m12-2')             }│{xget('a3-2')              }│\n"
-          f"│{xget('l13-2')             }│{xget('o4-2')              }│{xget('m13-2')             }│{xget('a4-2')              }│\n"
-          f"│{xget('l14-2')             }│{xget('o5-2')              }│{xget('m14-2')             }│{xget('a5-2')              }│\n"
-          f"│{xget('l15-2')             }│{xget('o6-2')              }│{xget('m15-2')             }│{xget('a6-2')              }│\n"
-          f"│{xget('l16-2')             }│{xget('o7-2')              }│{xget('m16-2')             }│{xget('a7-2')              }│\n"
-          f"├────────────────────────────┴────────────────────────────┴────────────────────────────┴────────────────────────────┤\n"
-          f"│                      Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ ^C ─ Exit │ H ─ Help │ I ─ Info                   2/3 │\n"
-          f"└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
+    c.print(f"┌────────────────────────────┬────────────────────────────┬────────────────────────────┬────────────────────────────┐\n"
+            f"│ {xtoolboxve}               │ Made by {xemulated999}     │ Ping: {peeng}              │ {cl(1, 'discord.gg/rwZtqj6HqZ')}      │\n"
+            f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
+            f"│ [L] Linux Distros          │ [W] Windows versions       │ [M] Modded Windows Isos    │ [T] Tools                  │\n"
+            f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
+            f"│{xget('l1-2')              }│{xget('w1-2')              }│{xget('m1-2')              }│{xget('t1-2')              }│\n"
+            f"│{xget('l2-2')              }│{xget('w2-2')              }│{xget('m2-2')              }│{xget('t2-2')              }│\n"
+            f"│{xget('l3-2')              }│{xget('w3-2')              }│{xget('m3-2')              }│{xget('t3-2')              }│\n"
+            f"│{xget('l4-2')              }│{xget('w4-2')              }│{xget('m4-2')              }│{xget('t4-2')              }│\n"
+            f"│{xget('l5-2')              }│{xget('w5-2')              }│{xget('m5-2')              }│{xget('t5-2')              }│\n"
+            f"│{xget('l6-2')              }│{xget('w6-2')              }│{xget('m6-2')              }│{xget('t6-2')              }│")
+    c.print(f"│{xget('l7-2')              }├────────────────────────────┤{xget('m7-2')              }├────────────────────────────┤\n"
+            f"│{xget('l8-2')              }│ [O] Other                  │{xget('m8-2')              }│ [A] Apps                   │\n"
+            f"│{xget('l9-2')              }├────────────────────────────┤{xget('m9-2')              }├────────────────────────────┤\n"
+            f"│{xget('l10-2')             }│{xget('o1-2')              }│{xget('m10-2')             }│{xget('a1-2')              }│\n"
+            f"│{xget('l11-2')             }│{xget('o2-2')              }│{xget('m11-2')             }│{xget('a2-2')              }│\n"
+            f"│{xget('l12-2')             }│{xget('o3-2')              }│{xget('m12-2')             }│{xget('a3-2')              }│\n"
+            f"│{xget('l13-2')             }│{xget('o4-2')              }│{xget('m13-2')             }│{xget('a4-2')              }│\n"
+            f"│{xget('l14-2')             }│{xget('o5-2')              }│{xget('m14-2')             }│{xget('a5-2')              }│\n"
+            f"│{xget('l15-2')             }│{xget('o6-2')              }│{xget('m15-2')             }│{xget('a6-2')              }│\n"
+            f"│{xget('l16-2')             }│{xget('o7-2')              }│{xget('m16-2')             }│{xget('a7-2')              }│\n"
+            f"├────────────────────────────┴────────────────────────────┴────────────────────────────┴────────────────────────────┤\n"
+            f"│                      Ex.: 'D2' ─ HoneCtrl │ N ─ Next Page │ ^C ─ Exit │ H ─ Help │ I ─ Info                   2/3 │\n"
+            f"└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘")
     interpreter(2)
 
 def p3():
     global lastPage; lastPage = p3
     cls()
-    print(f"┌────────────────────────────┬────────────────────────────┬────────────────────────────┬────────────────────────────┐\n"
+    c.print(f"┌────────────────────────────┬────────────────────────────┬────────────────────────────┬────────────────────────────┐\n"
           f"│ {xtoolboxve}               │ Made by {xemulated999}     │ Ping: {peeng}              │ {cl(1, 'discord.gg/rwZtqj6HqZ')}      │\n"
           f"├────────────────────────────┼────────────────────────────┼────────────────────────────┼────────────────────────────┤\n"
           f"│ [L] Minecraft Launchers    │ [G] Game Launchers         │ [C] Minecraft Clients      │ [I] Misc                   │\n"
@@ -545,7 +553,7 @@ def p3():
           f"│{xget('l4-3')              }│{xget('g4-3')              }│{xget('c4-3')              }│{xget('i4-3')              }│\n"
           f"│{xget('l5-3')              }│{xget('g5-3')              }│{xget('c5-3')              }│{xget('i5-3')              }│\n"
           f"│{xget('l6-3')              }│{xget('g6-3')              }│{xget('c6-3')              }│{xget('i6-3')              }│")
-    print(f"│{xget('l7-3')              }│{xget('g7-3')              }│{xget('c7-3')              }├────────────────────────────┤\n"
+    c.print(f"│{xget('l7-3')              }│{xget('g7-3')              }│{xget('c7-3')              }├────────────────────────────┤\n"
           f"│{xget('l8-3')              }│{xget('g8-3')              }│{xget('c8-3')              }│ [T] Tools                  │\n"
           f"│{xget('l9-3')              }│{xget('g9-3')              }│{xget('c9-3')              }├────────────────────────────┤\n"
           f"│{xget('l10-3')             }│{xget('g10-3')             }│{xget('c10-3')             }│{xget('t1-3')              }│\n"
@@ -571,13 +579,13 @@ if '-f' not in argv:
         try:
             response = get('https://raw.githubusercontent.com/xemulat/XToolbox/main/hash.json')
             data = response.json()
-            if (data[version]).lower() == get_checksum(executable):
+            if (data[version]).lower() == getChecksum(executable):
                 Printer.sys(1, 'File hash match!')
             else:
                 Printer.sys(0, "File hash doesn't match!")
-                print("File hash doesn't match the official hash for XTBox, this means the file could be tampered with. Download the program using the displayed url.")
+                c.print("File hash doesn't match the official hash for XTBox, this means the file could be tampered with. Download the program using the displayed url.")
                 webopen('https://github.com/xemulat/XToolbox/releases/latest')
-                print('Continue anyways?')
+                c.print('Continue anyways?')
                 if not yn(): exit()
         except:
             Printer.sys(0, 'Server Error.')
@@ -626,5 +634,5 @@ try:
         #global variable declared in page functions
         lastPage() 
 except KeyboardInterrupt:
-    print('bye!')
+    c.print('bye!')
     exit()
