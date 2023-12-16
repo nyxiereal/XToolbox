@@ -1,5 +1,7 @@
 from lastversion import latest
 from getpass import getpass
+from rich.console import Console
+c = Console()
 
 #class for storing download data on individual download links
 class Dwn:
@@ -28,19 +30,19 @@ class Dwn:
 #this functions displays info on a specific tool
 def showInfo(tool):
     # print basic info
-    print(f"Name: {tool.name}")
-    if tool.command == 1: print("Download links:")
-    elif tool.command == 2: print("Powershell commands:")
-    elif tool.command == 3: print("Links that will open:")
-    elif tool.command == 4: print("Links that will be retrieved:")
-    elif tool.command == 5: print("Will be written to a new file:")
-    for i in range(len(tool.dwn)): print(f"\t{tool.getDwn(i)}")
+    c.print(f"Name: {tool.name}")
+    if tool.command == 1: c.print("Download links:")
+    elif tool.command == 2: c.print("Powershell commands:")
+    elif tool.command == 3: c.print("Links that will open:")
+    elif tool.command == 4: c.print("Links that will be retrieved:")
+    elif tool.command == 5: c.print("Will be written to a new file:")
+    for i in range(len(tool.dwn)): c.print(f"\t{tool.getDwn(i)}")
     
     #check if tool.info leads to a website, if not, print it
 
-    print("Additional info:")
-    if tool.info == "": print("\twhoopsie, we dont have any additional info on this tool :/")
-    else: print(f"\t{tool.info}")
+    c.print("Additional info:")
+    if tool.info == "": c.print("\twhoopsie, we dont have any additional info on this tool :/")
+    else: c.print(f"\t{tool.info}")
     
     getpass("\n... press ENTER to continue ...", stream=None)
 
@@ -66,9 +68,9 @@ class Tool:
     
     def getLatest(self):
         if not self.gotlatest:
-            print("Checking for latest version...")
+            c.print("Checking for latest version...")
             self.latest = self.latestfn()
-            print(f"Found it: {self.latest}")
+            c.print(f"Found it: {self.latest}")
             self.gotlatest = True
 
     def getDwn(self, num):
@@ -897,8 +899,8 @@ tools = {
         r"https://archlinux.org/",
         [
             Dwn(
-                "Arch-2023.11.01.iso", "Latest", "Arch 2023.11.01",
-                r"https://mirror.rackspace.com/archlinux/iso/2023.11.01/archlinux-2023.11.01-x86_64.iso"
+                "Arch-2023.12.01.iso", "Latest", "Arch 2023.12.01",
+                r"https://mirror.rackspace.com/archlinux/iso/2023.12.01/archlinux-2023.12.01-x86_64.iso"
             )
         ]
     ),
@@ -998,11 +1000,11 @@ tools = {
         [
             Dwn(
                 "CachyOS KDE", "KDE Plasma", "CachyOS-KDE.iso",
-                r"https://mirror.cachyos.org/ISO/kde/231118/cachyos-kde-linux-231118.iso"
+                r"https://mirror.cachyos.org/ISO/kde/231210/cachyos-kde-linux-231210.iso"
             ),
             Dwn(
                 "CachyOS GNOME", "GNOME", "CachyOS-GNOME.iso",
-                r"https://mirror.cachyos.org/ISO/gnome/231118/cachyos-gnome-linux-231118.iso"
+                r"https://mirror.cachyos.org/ISO/gnome/231210/cachyos-gnome-linux-231210.iso"
             ),
             # Dwn(
             #     "CachyOS Xfce", "Xfce", "CachyOS-Xfce.iso",
