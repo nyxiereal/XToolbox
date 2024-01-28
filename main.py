@@ -26,7 +26,7 @@ c = Console()
 
 peeng = str(f"{round(ping('1.1.1.1', unit='ms'))}ms").ljust(7)
 
-version = '3.1'
+version = '3.2'
 
 ### Helpers
 
