@@ -1,13 +1,13 @@
 <p align="center">
 <strong>XToolBox</strong>
 </br>
-<a href="https://discord.gg/rwZtqj6HqZ">Discord Server</a>
+<a href="https://discord.gg/sVRWsFYu7S">Discord Server</a>
 </br>
 <strong>A toolbox full of Windows 11 and 10 debloating utilities!</strong>
 </br>
 please donate, i need to feed my 7 kids and 3 wifes
 </br>
-Made by <a href="https://discord.com/users/927441405079588914">@xemulated</a>
+Made by <a href="https://discord.com/users/1145459250324312225">@xemulated</a>
 </br>
 <strong>Message me before sending a friend request, my dms are open.</strong>
 </br>
