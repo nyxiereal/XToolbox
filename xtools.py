@@ -1,7 +1,134 @@
+# Main
 from lastversion import latest
 from getpass import getpass
 from rich.console import Console
+
+# Scraper
+from requests import get
+from bs4 import BeautifulSoup
+from re import findall, search
+
 c = Console()
+
+class iScrape():
+    def ubuntu():
+        # URL of the Ubuntu releases page
+        url = 'https://releases.ubuntu.com/'
+
+        # Send an HTTP GET request to the URL
+        response = get(url)
+
+        # Parse the HTML content of the page
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        # Find the latest version from the page
+        latest_versions = soup.findAll('a', class_='p-link--inverted')
+
+        numbers_only = []
+        for version in latest_versions:
+            version_text = version.text  # Extract text from the Tag object
+            numbers = findall(r'\d+\.\d+\.*\d*', version_text)
+            numbers_only.extend(numbers)
+
+        max_item = max(numbers_only)
+        return(max_item)
+
+    def popOS(ver):
+        if ver == 'raspi': arch = 'arm64'
+        else: arch = 'amd64'
+        r = get(f'https://api.pop-os.org/builds/22.04/{ver}?arch={arch}')
+        return(r.json()['url'])
+
+    def mint():
+        r = get('https://linuxmint.com/download.php')
+        soup = BeautifulSoup(r.text, 'html.parser')
+        return((findall(r'[\d\.]+', (soup.find('h1', class_='font-weight-bold display-5 display-lg-4 mb-2 mb-md-n0 mt-title').text))[0]))
+
+    def artix(ver):
+        r = get('https://artixlinux.org/download.php')
+        soup = BeautifulSoup(r.text, 'html.parser')
+        txt = (soup.findAll('td'))
+
+        x = []
+        for i in txt:
+            if i.text.endswith('.iso'):
+                if 'openrc' in i.text:
+                    if ver in i.text:
+                        return(f'https://iso.artixlinux.org/iso/{i.text}')
+
+    def solus(ver):
+        r = get('https://getsol.us/download')
+        soup = BeautifulSoup(r.text, 'html.parser')
+        txt = (soup.findAll('a', class_='button'))
+
+        for i in txt:
+            if ver in i.get('href'):
+                return(i.get('href'))
+
+    def debian():
+        r = get('https://www.debian.org/download')
+        soup = BeautifulSoup(r.text, 'html.parser')
+        txt = (soup.findAll('a'))
+
+        for i in txt:
+            if 'amd64-netinst.iso' in i.get('href'):
+                return(i.get('href'))
+
+    def endeavour():
+        r = get('https://mirror.moson.org/endeavouros/iso/')
+        soup = BeautifulSoup(r.text, 'html.parser')
+        txt = (soup.findAll('a'))
+
+        pattern = r'(\d{4}\.\d{2}\.\d{2})'
+
+        # Initialize variables to store the latest version and filename
+        latest_version = ''
+        latest_filename = ''
+
+        # Loop through the filenames to find the latest version
+        for i in txt:
+            match = search(pattern, i.get('href'))
+            if match:
+                version = match.group(1)
+                if version > latest_version:
+                    latest_version = version
+                    return(i.get('href'))
+
+    def cachy():
+        r = get('https://sourceforge.net/projects/cachyos-arch/files/gui-installer/kde/')
+        soup = BeautifulSoup(r.text, 'html.parser')
+        txt = (soup.findAll('span', class_='name'))
+
+        return(txt[0].text)
+
+    def ghostSpectre():
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+        }
+
+        s1 = get('https://ghostclouds.xyz/wp/w10-pro-aio-x64/')
+        soup = BeautifulSoup(s1.text, 'html.parser')
+        txt = (soup.findAll('a'))
+
+        x = []
+
+        for i in txt:
+            if (('w10' in str(i.get('href'))) or ('win10' in str(i.get('href')))) and ('aio' in str(i.get('href'))) and ('download' in str(i.get('href'))):
+                x.append(i.get('href'))
+
+        s2 = get(x[0])
+        soup = BeautifulSoup(s2.text, 'html.parser')
+        txt = (soup.findAll('a', class_='wpdm-download-link download-on-click btn btn-primary'))
+        s3 = (txt[0]['data-downloadurl'])
+
+        r = get(s3, headers=headers)
+        soup = BeautifulSoup(r.text, 'html.parser')
+        docsurl = (soup.find('meta', attrs={'property': 'og:url'})['content'])
+
+        # search for https:\/\/pixeldrain.com\/u\/[a-z|A-Z|0-9]+  as regex in the response
+        s4 = get(docsurl, headers=headers)
+        pattern = r'Pixel:[a-z|\\|0-9]+http:\/\/tinyurl.com\/[a-z|A-Z|0-9]+ '
+        return('http://'+(findall(pattern, s4.text)[0].split('http://'))[1])
 
 #class for storing download data on individual download links
 class Dwn:
@@ -19,7 +146,7 @@ class Dwn:
         self.executable = executable
         self.url_parts = list(url_parts)
         self.url=""
-    
+
     def assembleUrl(self, missing):
         for i in range(len(self.url_parts)):
             if i+1 == len(self.url_parts):
@@ -37,11 +164,11 @@ def showInfo(tool):
     elif tool.command == 4: c.print("Links that will be retrieved:")
     elif tool.command == 5: c.print("Will be written to a new file:")
     for i in range(len(tool.dwn)): c.print(f"\t{tool.getDwn(i)}")
-    
+
     #check if tool.info leads to a website, if not, print it
 
     c.print("Additional info:")
-    if tool.info == "": c.print("\twhoopsie, we dont have any additional info on this tool :/")
+    if tool.info == "": c.print("\tWhoopsies, we dont have any additional info on this tool :/")
     else: c.print(f"\t{tool.info}")
     
     getpass("\n... press ENTER to continue ...", stream=None)
@@ -96,28 +223,7 @@ class Tool:
             raise IndexError("Tool.getDwn: out of bounds!")
         return self.dwn[num].description
 
-
 tools = {
-
-    # Example:
-    # code<string> : Tool(
-    #     name<string>, code<string>, command<int>, gotLatest<bool>,
-    #     latestfn<function>,
-    #     info<raw string>,
-    #     [
-    #         #download link 1
-    #         Dwn(
-    #             dwn_name<string>, dwn_description<string>, dwn_executable<string>,
-    #             dwn_url_part1<raw string>,
-    #             dwn_url_part2<raw string>,
-    #             ...
-    #         ),
-    #         #download link 2
-    #         Dwn(
-    #         ...
-    #     ]
-    # )
-
     "d1-1" : Tool(
         "EchoX", "d1-1", 1, True,
         lambda: "",
@@ -138,6 +244,10 @@ tools = {
             Dwn(
                 "Hone", "", "HoneInstaller.exe",
                 r"https://download.overwolf.com/installer/prod/cfbc7eeb79ab95eb3f553c4344a186ee/Hone%20-%20Installer.exe"
+            ),
+            Dwn(
+                "HoneCTRL", "", "HoneCtrl.bat",
+                r"https://raw.githubusercontent.com/luke-beep/HoneCTRL/main/HoneCtrl.bat"
             )
         ]
     ),
@@ -190,7 +300,6 @@ tools = {
             )
         ]
     ),
-
 
     "d7-1" : Tool(
         "WindowsSpyBlocker", "d7-1", 1, True,
@@ -267,7 +376,7 @@ tools = {
     ),
 
     "t3-1" : Tool(
-        "DisableRoundedCorners", "t3-1", 1, True,
+        "NoRoundedCorners", "t3-1", 1, True,
         lambda: "",
         r"https://github.com/valinet/Win11DisableRoundedCorners",
         [
@@ -327,13 +436,13 @@ tools = {
     ),
 
     "t8-1" : Tool(
-        "NVCleanstall", "t8-1", 1, True,
+        "NVCleanstall", "t8-1", 3, True,
         lambda: "",
         r"",
         [
             Dwn(
-                "NVCleanstall", "", "NVCleanstall.exe",
-                r"https://de1-dl.techpowerup.com/files/n47EuzFsopU6cX9aFPrttA/1700810469/NVCleanstall_1.16.0.exe"
+                "NVCleanstall", "", "",
+                r"https://www.techpowerup.com/download/techpowerup-nvcleanstall/"
             )
         ]
     ),
@@ -358,7 +467,7 @@ tools = {
         [
             Dwn(
                 "Choco", "", "choco.bat",
-                r"https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/choco.bat"
+                r"https://raw.githubusercontent.com/xemulat/XToolBox/main/files/choco.bat"
             )
         ]
     ),
@@ -402,13 +511,13 @@ tools = {
     ),
 
     "a5-1" : Tool(
-        "LibreWolf", "a5-1", 1, True,
+        "Floorp", "a5-1", 1, True,
         lambda: "",
-        r"https://librewolf.net/",
+        r"https://floorp.app/",
         [
             Dwn(
-                "LibreWolf", "", "LibreWolf-Setup.exe",
-                r"https://gitlab.com/librewolf-community/browser/windows/-/package_files/69100828/download"
+                "Floorp", "", "Floorp-Setup.exe",
+                r"https://github.com/Floorp-Projects/Floorp/releases/latest/download/floorp-stub.installer.exe"
             )
         ]
     ),
@@ -461,21 +570,9 @@ tools = {
             )
         ]
     ),
-
-    "a10-1" : Tool(
-        "Compact Memory Cleaner", "a10-1", 1, True,
-        lambda: "",
-        r"https://github.com/qualcosa/Compact-RAM-Cleaner",
-        [
-            Dwn(
-                "Compact Memory Cleaner", "", "CompactMemoryCleaner.exe",
-                r"https://github.com/qualcosa/Compact-RAM-Cleaner/releases/latest/download/Compact.RAM.Cleaner.exe"
-            )
-        ]
-    ),
     
-    "a11-1" : Tool(
-        "Nilesoft Shell", "a11-1", 1, False,
+    "a10-1" : Tool(
+        "Nilesoft Shell", "a10-1", 1, False,
         lambda: "",
         r"https://nilesoft.org/",
         [
@@ -535,7 +632,7 @@ tools = {
     ),
 
     "c5-1" : Tool(
-        "Emsisoft Emergency Kit", "c5-1", 1, True,
+        "Emsisoft EK", "c5-1", 1, True,
         lambda: "",
         r"https://www.emsisoft.com/en/emergency-kit/",
         [
@@ -546,8 +643,8 @@ tools = {
         ]
     ),
 
-    "c8-1" : Tool(
-        "CleanmgrPlus", "c8-1", 1, True,
+    "c6-1" : Tool(
+        "CleanmgrPlus", "c6-1", 1, True,
         lambda: "",
         r"https://github.com/builtbybel/CleanmgrPlus",
         [
@@ -558,8 +655,8 @@ tools = {
         ]
     ),
 
-    "c9-1" : Tool(
-        "Glary Utilities", "c9-1", 1, True,
+    "c7-1" : Tool(
+        "Glary Utilities", "c7-1", 1, True,
         lambda: "",
         r"https://www.glarysoft.com/",
         [
@@ -570,226 +667,19 @@ tools = {
         ]
     ),
 
-    "1-QT" : Tool(
-        "AntiTrackTime", "1-QT", 1, True,
+    "c8-1" : Tool(
+        "ESET", "c8-1", 1, True,
         lambda: "",
-        r"https://github.com/xemulat/XToolbox/tree/main/files",
+        r"https://www.eset.com/int/home/free-trial/",
         [
             Dwn(
-                "AntiTrackTime", "", "AntiTrackTime.bat",
-                r"https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/AntiTrackTime.bat"
-            )
-        ]
-    ),
-
-    "2-QT-1" : Tool(
-        "NoNetworkAuto-Tune", "2-QT-1", 4, True,
-        lambda: "",
-        r"https://github.com/xemulat/XToolbox/tree/main/files",
-        [
+                "ESET Home Security Premium", "", "ESETHomeSecurityPremium.exe",
+                r"https://download.eset.com/com/eset/tools/installers/live_essp/latest/eset_smart_security_premium_live_installer.exe"
+            ),
             Dwn(
-                "NoNetworkAutotune", "", "NoNetworkAutotuneREVERT.bat",
-                r"https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Enable%20Window%20Network%20Auto-Tuning.bat"
-            )
-        ]
-    ),
-    "2-QT-2" : Tool(
-        "NoNetworkAuto-Tune", "2-QT-1", 1, True,
-        lambda: "",
-        r"https://github.com/xemulat/XToolbox/tree/main/files",
-        [
-            Dwn(
-                "NoNetworkAutoTune", "", "NoNetworkAutoTune.bat",
-                r"https://raw.githubusercontent.com/xemulat/Windows-Toolkit/main/files/Disable%20Window%20Network%20Auto-Tuning.bat"
-            )
-        ]
-    ),
-
-    "3-QT" : Tool(
-        "OptimizeSSD", "3-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "OptimizeSSD", "", "OptimizeSSD.reg",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/SSD_Optimizations.reg"
-            )
-        ]
-    ),
-
-    "4-QT" : Tool(
-        "NoActionCenter", "4-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "NoActionCenter", "", "NoActionCenter.reg",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_Action_Center.reg"
-            )
-        ]
-    ),
-
-    "5-QT" : Tool(
-        "NoNews", "5-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "NoNews", "", "NoNews.reg",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Disable_News_and_Interests_on_taskbar_feature_for_all_users.reg"
-            )
-        ]
-    ),
-
-    "6-QT" : Tool(
-        "NoOneDrive", "6-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "NoOneDrive", "", "NoOneDrive.bat",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/OneDrive_Uninstaller_v1.2.bat"
-            )
-        ]
-    ),
-
-    "7-QT" : Tool(
-        "NoXboxBloat", "7-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "NoXboxBloat", "", "NoXboxBloat.bat",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/RemoveXboxAppsBloat.bat"
-            )
-        ]
-    ),
-
-    "8-QT" : Tool(
-        "LimitQoS", "8-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "LimitQoS", "", "LimitQos.reg",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/QoS_Limiter.reg"
-            )
-        ]
-    ),
-
-    "9-QT" : Tool(
-        "Xander Tweak", "9-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "Xander Tweak", "", "XanderTweak.reg",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/other_scripts/XanderBaatzTweaks.reg"
-            )
-        ]
-    ),
-    
-    "10-QT" : Tool(
-        "AddCopyPath", "10-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "AddCopyPath", "", "AddCopyPath.reg",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/Add_Copy_path_to_context_menu.reg"
-            )
-        ]
-    ),
-
-    "11-QT" : Tool(
-        "DarkMode", "11-QT", 1, True,
-        lambda: "",
-        r"https://github.com/tcja/Windows-10-tweaks",
-        [
-            Dwn(
-                "DarkMode", "", "DarkModeON.reg",
-                r"https://raw.githubusercontent.com/tcja/Windows-10-tweaks/master/darkmodetoggle/darkmodeON.reg"
-            )
-        ]
-    ),
-
-    "12-QT" : Tool(
-        "AddTakeOwnership", "12-QT", 1, True,
-        lambda: "",
-        r"https://github.com/couleurm/couleurstoolbox/tree/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu",
-        [
-            Dwn(
-                "AddTakeOwnership", "", "AddTakeOwnership.reg",
-                r"https://raw.githubusercontent.com/couleurm/couleurstoolbox/main/3%20Windows%20Tweaks/0%20Quality%20of%20life%20tweaks/Take%20Ownership%20in%20context%20menu/Add%20Take%20Ownership.reg"
-            )
-        ]
-    ),
-
-    "1-ESET" : Tool(
-        "ESET Smart Security Premium", "1-ESET", 1, True,
-        lambda: "",
-        r"https://www.eset.com/us/home/smart-security-premium/",
-        [
-            Dwn(
-                "ESET Smart Security Premium", "", "ESETSmartSecurity.exe",
-                r"https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oks9ghjy5s2i61au5rnrfg0r1ykid0rnhqtbtnqroh93wfb7038207oeqw049nznldnid&branch=us&prod=essp"
-            )
-        ]
-    ),
-
-    "2-ESET" : Tool(
-        "ESET Internet Security", "2-ESET", 1, True,
-        lambda: "",
-        r"https://www.eset.com/int/home/internet-security/",
-        [
-            Dwn(
-                "ESET Internet Security", "", "ESETInternetSecurity.exe",
-                r"https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oksm3adws43jeih7v7q1yzoind790asam1cuq0unxeww9d63ebma9syry3brmbass36id&branch=us&prod=eis"
-            )
-        ]
-    ),
-
-    "3-ESET" : Tool(
-        "ESET NOD32 Antivirus", "3-ESET", 1, True,
-        lambda: "",
-        r"https://www.eset.com/int/home/antivirus/",
-        [
-            Dwn(
-                "ESET NOD32 Antivirus", "", "ESETNOD32.exe",
-                r"https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|oksrvu6kmvzgtlav8e9m5ptig5lrtrx88hbdf3n6wqs2j3i3sniyl9slhlibh6t2vf7id&branch=us&prod=eav",
-            )
-        ]
-    ),
-
-    "4-ESET" : Tool(
-        "ESET NOD32 Antivirus Gamer Edition", "4-ESET", 1, True,
-        lambda: "",
-        r"https://www.eset.com/us/home/gamer/",
-        [
-            Dwn(
-                "ESET NOD32 Antivirus Gamer Edition", "", "ESETNOD32Gamer.exe",
-                r"https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|okseuzentzl4e6u8vrufel57sww7unp7uwgtyg0na2e4o2bxmq4r8fds6qmfjz6fj6zid&branch=us&prod=eav"
-            )
-        ]
-    ),
-
-    "5-ESET" : Tool(
-        "ESET Security for Small Office", "5-ESET", 1, True,
-        lambda: "",
-        r"https://www.eset.com/int/business/security-packs/download-small-business-security-pack/",
-        [
-            Dwn(
-                "ESET Security for Small Office", "", "ESETForSmallOffice.exe", 
-                r"https://proxy.eset.com/li-handler/?transaction_id=odcm_download|esetgwsprod|us|okszgg8un2iekhydiszxmhrdmvxdo8aupvot9y3d5ifkm9rzslti7t5r2xitfxrefj4id&branch=us&prod=essp"
-            )
-        ]
-    ),
-
-    "6-ESET" : Tool(
-        "ESET Online Scanner", "6-ESET", 1, True,
-        lambda: "",
-        r"https://www.eset.com/int/home/online-scanner/",
-        [
+                "ESET Home Security Essential", "", "ESETHomeSecurityEssential.exe",
+                r"https://download.eset.com/com/eset/tools/installers/live_eis/latest/eset_internet_security_live_installer.exe"
+            ),
             Dwn(
                 "ESET Online Scanner", "", "ESETOnlineScanner.exe",
                 r"https://download.eset.com/com/eset/tools/online_scanner/latest/esetonlinescanner.exe"
@@ -797,98 +687,82 @@ tools = {
         ]
     ),
 
-    "1-KAS" : Tool(
-        "Kaspersky Internet Security", "1-KAS", 1, True,
+    "c9-1" : Tool(
+        "Kaspersky", "c9-1", 3, True,
         lambda: "",
-        r"https://www.kaspersky.com/downloads/internet-security",
+        r"https://www.kaspersky.com/downloads/",
         [
             Dwn(
-                "Kaspersky Internet Security", "", "KasperskyInternetSecurity.exe",
-                r"https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/68/b8/68b8f8f6-bdc4-4c66-8443-eadeca7f06b4/kis21.3.10.391en_26096.exe"
-            )
-        ]
-    ),
-
-    "2-KAS" : Tool(
-        "Kaspersky Anti-Virus", "2-KAS", 1, True,
-        lambda: "",
-        r"https://www.kaspersky.com/downloads/antivirus",
-        [
+                "Kaspersky Plus", "", "",
+                r"https://www.kaspersky.com/downloads/plus"
+            ),
             Dwn(
-                "Kaspersky Anti-Virus", "", "KasperskyAnti-Virus.exe",
-                r"https://pdc2.fra5.pdc.kaspersky.com/DownloadManagers/c6/25/c6250217-9ffe-44e1-8688-03b1a35548eb/kav21.3.10.391en_26075.exe"
-            )
-        ]
-    ),
-
-    "3-KAS" : Tool(
-        "Kaspersky Total Security", "3-KAS", 1, True,
-        lambda: "",
-        r"https://www.kaspersky.com/downloads/total-security",
-        [
+                "Kaspersky Standard", "", "",
+                r"https://www.kaspersky.com/downloads/standard"
+            ),
             Dwn(
-                "Kaspersky Total Security", "", "KasperskyTotalSecurity.exe",
-                r"https://pdc1.fra5.pdc.kaspersky.com/DownloadManagers/51/45/51454099-c33b-41aa-955d-13965a37f561/kts21.3.10.391en_26099.exe"
+                "Kaspersky Premium", "", "",
+                r"https://www.kaspersky.com/downloads/premium"
             )
         ]
     ),
 
     "l1-2" : Tool(
-        "Linux Mint 21.2", "l1-2", 1, True,
+        "Linux Mint", "l1-2", 1, True,
         lambda: "",
         r"https://linuxmint.com/",
         [
             Dwn(
-                "Linux Mint Cinnamon", "Cinnamon", "LinuxMint-21.2-Cinnamon.iso",
-                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.2/linuxmint-21.2-cinnamon-64bit.iso"
+                "Linux Mint Cinnamon", "Cinnamon", "LinuxMint-Cinnamon.iso",
+                r"https://mirror.rackspace.com/linuxmint/iso/stable/%MINTVERSION%/linuxmint-%MINTVERSION%-cinnamon-64bit.iso"
             ),
             Dwn(
-                "Linux Mint MATE", "MATE", "LinuxMint-21.2-MATE.iso",
-                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.2/linuxmint-21.2-mate-64bit.iso"
+                "Linux Mint MATE", "MATE", "LinuxMint-MATE.iso",
+                r"https://mirror.rackspace.com/linuxmint/iso/stable/%MINTVERSION%/linuxmint-%MINTVERSION%-mate-64bit.iso"
             ),
             Dwn(
-                "Linux Mint Xfce", "Xfce", "LinuxMint-21.2-Xfce.iso",
-                r"https://mirror.rackspace.com/linuxmint/iso/stable/21.2/linuxmint-21.2-xfce-64bit.iso"
+                "Linux Mint Xfce", "Xfce", "LinuxMint-Xfce.iso",
+                r"https://mirror.rackspace.com/linuxmint/iso/stable/%MINTVERSION%/linuxmint-%MINTVERSION%-xfce-64bit.iso"
             )
         ]
     ),
 
     "l2-2" : Tool(
-        "Pop!_OS - 19", "l2-2", 1, True,
+        "Pop!_OS", "l2-2", 1, True,
         lambda: "",
         r"https://pop.system76.com/",
         [
             Dwn(
                 "Pop!_OS Nvidia", "Nvidia", "PopOS-Nvidia.iso",
-                r"https://iso.pop-os.org/22.04/amd64/nvidia/19/pop-os_22.04_amd64_nvidia_19.iso"
+                r"%POP%,nvidia"
             ),
             Dwn(
-                "Pop!_OS RPI 4 Tech Preview", "RPI4", "PopOS-RPI4.img.xz",
-                r"https://iso.pop-os.org/22.04/arm64/raspi/2/pop-os_22.04_arm64_raspi_2.img.xz"
+                "Pop!_OS RPI", "RPI4", "PopOS-RPI.img.xz",
+                r"%POP%,raspi"
             ),
             Dwn(
                 "Pop!_OS LTS", "LTS", "PopOS-LTS.iso",
-                r"https://iso.pop-os.org/22.04/amd64/intel/19/pop-os_22.04_amd64_intel_19.iso"
+                r"%POP%,intel"
             )
         ]
     ),
 
     "l3-2" : Tool(
-        "Ubuntu 22.10", "l3-2", 1, True,
+        "Ubuntu", "l3-2", 1, True,
         lambda: "",
         r"https://ubuntu.com/",
         [
             Dwn(
                 "Ubuntu", "", "Ubuntu.iso",
-                r"https://releases.ubuntu.com/22.04.3/ubuntu-22.04.3-desktop-amd64.iso"
+                r"https://cdimage.ubuntu.com/ubuntu/releases/%UBUNTUVERSION%/release/ubuntu-%UBUNTUVERSION%-desktop-legacy-amd64.iso"
             ),
             Dwn(
                 "Kubuntu", "", "Kubuntu.iso",
-                r"https://cdimage.ubuntu.com/kubuntu/releases/22.04.3/release/kubuntu-22.04.3-desktop-amd64.iso"
+                r"https://cdimage.ubuntu.com/kubuntu/releases/%UBUNTUVERSION%/release/kubuntu-%UBUNTUVERSION%-desktop-amd64.iso"
             ),
             Dwn(
                 "Lubuntu", "", "Lubuntu.iso",
-                r"https://cdimage.ubuntu.com/xubuntu/releases/22.04.3/release/xubuntu-22.04.3-desktop-amd64.iso"
+                r"https://cdimage.ubuntu.com/xubuntu/releases/%UBUNTUVERSION%/release/xubuntu-%UBUNTUVERSION%-desktop-amd64.iso"
             )
         ]
     ),
@@ -899,60 +773,60 @@ tools = {
         r"https://archlinux.org/",
         [
             Dwn(
-                "Arch-2023.12.01.iso", "Latest", "Arch 2023.12.01",
-                r"https://mirror.rackspace.com/archlinux/iso/2023.12.01/archlinux-2023.12.01-x86_64.iso"
+                "ArchLinux.iso", "Latest", "Arch",
+                r"https://mirror.rackspace.com/archlinux/iso/latest/archlinux-x86_64.iso"
             )
         ]
     ),
 
     "l5-2" : Tool(
-        "Atrix Linux OpenRC", "l5-2", 1, True,
+        "Atrix Linux", "l5-2", 1, True,
         lambda: "",
         r"https://artixlinux.org/",
         [
             Dwn(
                 "Artix Plasma", "Plasma", "Artix-Plasma.iso",
-                r"https://iso.artixlinux.org/iso/artix-plasma-openrc-20230814-x86_64.iso"
+                r"%ARTIX%,plasma"
             ),
             Dwn(
                 "Atrix Xfce", "Xfce", "Artix-Xfce.iso",
-                r"https://iso.artixlinux.org/iso/artix-xfce-openrc-20230814-x86_64.iso"
+                r"%ARTIX%,xfce"
             ),
             Dwn(
                 "Artix Cinnamon", "Cinnamon", "Artix-Cinnamon.iso",
-                r"https://iso.artixlinux.org/iso/artix-cinnamon-openrc-20230814-x86_64.iso"
+                r"%ARTIX%,cinnamon"
             )
         ]
     ),
 
     "l6-2" : Tool(
-        "Solus - 4.4", "l6-2", 1, True,
+        "Solus", "l6-2", 1, True,
         lambda: "",
         r"https://getsol.us/",
         [
             Dwn(
                 "Solus Budgie", "Budgie", "Solus-Budgie.iso",
-                r"https://mirrors.rit.edu/solus/images/4.4/Solus-4.4-Budgie.iso"
+                r"%SOLUS%,Budgie"
             ),
             Dwn(
                 "Solus Plasma", "Plasma", "Solus-Plasma.iso",
-                r"https://mirrors.rit.edu/solus/images/4.4/Solus-4.4-Plasma.iso"
+                r"%SOLUS%,Plasma"
             ),
             Dwn(
                 "Solus GNOME", "GNOME", "Solus-GNOME.iso",
-                r"https://mirrors.rit.edu/solus/images/4.4/Solus-4.4-GNOME.iso"
+                r"%SOLUS%,GNOME"
             )
         ]
     ),
 
     "l7-2" : Tool(
-        "Debian - 12.2.0", "l7-2", 1, True,
+        "Debian", "l7-2", 1, True,
         lambda: "",
         r"https://www.debian.org/",
         [
             Dwn(
                 "Debian NetInstall", "NetInst", "Debian-NetInst.iso",
-                r"https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.2.0-amd64-netinst.iso"
+                r"%DEBIAN%"
             )
         ]
     ),
@@ -964,7 +838,7 @@ tools = {
         [
             Dwn(
                 "Garuda DR460NIZED Gaming", "DR460NIZED", "Garuda-DR460NIZED.iso",
-                r"https://r2.garudalinux.org/iso/garuda/dr460nized-gaming/231029/garuda-dr460nized-gaming-linux-zen-231029.iso?r2request"
+                r"https://iso.builds.garudalinux.org/iso/latest/garuda/dr460nized-gaming/latest.iso?r2=1"
             ),
             Dwn(
                 "Garuda GNOME", "GNOME", "Garuda-GNOME.iso",
@@ -978,199 +852,147 @@ tools = {
     ),
 
     "l9-2" : Tool(
-        "Zorin OS - 16.3", "l9-2", 1, True,
+        "EndeavourOS", "l9-2", 1, True,
         lambda: "",
         r"https://zorin.com/os/",
         [
             Dwn(
-                "Zorin OS Core", "Core", "ZorinOS-Core.iso",
-                r"https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.3-Core-64-bit.iso"
-            ),
-            Dwn(
-                "Zorin OS Lite", "Lite", "ZorinOS-Lite.iso",
-                r"https://mirrors.edge.kernel.org/zorinos-isos/16/Zorin-OS-16.3-Lite-64-bit.iso"
+                "EndeavourOS", "", "EndeavourOS.iso",
+                r"https://mirror.moson.org/endeavouros/iso/%ENDEAVOUR%"
             )
         ]
     ),
 
     "l10-2" : Tool(
-        "CachyOS - 230319", "l10-2", 1, True,
+        "CachyOS", "l10-2", 1, True,
         lambda: "",
         r"https://cachyos.org/",
         [
             Dwn(
                 "CachyOS KDE", "KDE Plasma", "CachyOS-KDE.iso",
-                r"https://mirror.cachyos.org/ISO/kde/231210/cachyos-kde-linux-231210.iso"
+                r"https://mirror.cachyos.org/ISO/kde/%CACHYVERSION%/cachyos-kde-linux-%CACHYVERSION%.iso"
             ),
             Dwn(
                 "CachyOS GNOME", "GNOME", "CachyOS-GNOME.iso",
-                r"https://mirror.cachyos.org/ISO/gnome/231210/cachyos-gnome-linux-231210.iso"
-            ),
-            # Dwn(
-            #     "CachyOS Xfce", "Xfce", "CachyOS-Xfce.iso",
-            #     r"Under Construction"
-            # )
+                r"https://mirror.cachyos.org/ISO/gnome/%CACHYVERSION%/cachyos-gnome-linux-%CACHYVERSION%.iso"
+            )
         ]
     ),
 
     "w1-2" : Tool(
-        "Windows 11", "w1-2", 3, True,
+        "Windows 11", "w1-2", 1, True,
         lambda: "",
-        r"Running the command opens the website",
+        r"Windows 11",
         [
             Dwn(
-                "Windows 11", "", "",
-                r"https://www.microsoft.com/software-download/windows11"
+                "Windows 11 x64", "", "Windows11-x64.iso",
+                r"https://dl.bobpony.com/windows/11/en-us_windows_11_23h2_x64.iso"
+            ),
+            Dwn(
+                "Windows 11 ARM64", "", "Windows11-ARM64.iso",
+                r"https://dl.bobpony.com/windows/11/en-us_windows_11_23h2_arm64.iso"
             )
         ]
     ),
 
     "w2-2" : Tool(
-        "Windows 10", "w2-2", 3, True,
+        "Windows 10", "w2-2", 1, True,
         lambda: "",
-        r"Running the command opens the website",
+        r"Windows 10",
         [
             Dwn(
-                "Windows 10", "", "",
-                r"https://www.microsoft.com/software-download/windows10"
+                "Windows 10 x64", "", "Windows10-x64.iso",
+                r"https://dl.bobpony.com/windows/10/en-us_windows_10_22h2_x64.iso"
+            ),
+            Dwn(
+                "Windows 10 x86", "", "Windows10-x86.iso",
+                r"https://dl.bobpony.com/windows/10/en-us_windows_10_22h2_x86.iso"
+            ),
+            Dwn(
+                "Windows 10 ARM64", "", "Windows10-ARM64.iso",
+                r"https://dl.bobpony.com/windows/10/en-us_windows_10_22h2_arm64.iso"
             )
         ]
     ),
-
+    
     "w3-2" : Tool(
-        "Windows 8.1", "w3-2", 1, True,
+        "Windows 10 LTSC", "w3-2", 1, True,
         lambda: "",
-        r"Just google this one lol",
+        r"Windows 10 LTSC",
         [
             Dwn(
-                "Windows 8.1", "", "Windows-8.1.iso",
-                r"https://archive.org/download/Windows-8-1-ISO-Archive/Win8.1_English_x64.iso"
+                "Windows 10 IoT Enterprise LTSC 2021", "", "Windows10-IoT-LTSC.iso",
+                r"https://drive.massgravel.workers.dev/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f.iso"
+            ),
+            Dwn(
+                "Windows 10 Enterprise LTSC 2021", "", "Windows10-LTSC.iso",
+                r"https://drive.massgravel.workers.dev/en-us_windows_10_enterprise_ltsc_2021_x64_dvd_d289cf96.iso"
             )
         ]
     ),
 
     "w4-2" : Tool(
-        "Windows 8", "w4-2", 1, True,
+        "Windows 8.1", "w4-2", 1, True,
         lambda: "",
-        r"Just google this one lol",
+        r"Windows 8.1",
         [
             Dwn(
-                "Windows 8", "", "Windows-8.iso",
-                r"https://archive.org/download/windows-8-x-64/Windows%208%20x64.iso"
+                "Windows 8.1", "", "Windows8.1-x64.iso",
+                r"https://dl.bobpony.com/windows/8.x/8.1/en_windows_8.1_enterprise_with_update_x64_dvd_6054382.iso"
+            ),
+            Dwn(
+                "Windows 8.1", "", "Windows8.1-x86.7z",
+                r"https://dl.bobpony.com/windows/8.x/8.1/en_windows_8.1_enterprise_with_update_x86_dvd_6050710.7z"
             )
         ]
     ),
 
     "w5-2" : Tool(
-        "Windows 7", "w5-2", 1, True,
+        "Windows 8", "w5-2", 1, True,
         lambda: "",
-        r"Just google this one lol",
+        r"Windows 8",
         [
             Dwn(
-                "Windows 7", "", "Windows-7.iso",
-                r"https://archive.org/download/win-7-pro-32-64-iso/64-bit/GSP1RMCPRXFRER_EN_DVD.ISO"
+                "Windows 8 x64", "", "Windows8-x64.iso",
+                r"https://dl.bobpony.com/windows/8.x/8.0/en_windows_8_x64_dvd_915440.iso"
+            ),
+            Dwn(
+                "Windows 8 x86", "", "Windows8-x86.iso",
+                r"https://dl.bobpony.com/windows/8.x/8.0/en_windows_8_x86_dvd_915417.iso"
             )
         ]
     ),
 
-    "o1-2" : Tool(
-        ".NET 4.8 SDK", "o1-2", 1, True,
+    "w6-2" : Tool(
+        "Windows 7", "w6-2", 1, True,
         lambda: "",
-        r"https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48",
+        r"Windows 7",
         [
             Dwn(
-                ".NET 4.8 SDK", "", ".NET-4.8-SDK.exe",
-                r"https://download.visualstudio.microsoft.com/download/pr/6f083c7e-bd40-44d4-9e3f-ffba71ec8b09/d05099507287c103a91bb68994498bde/ndp481-web.exe"
-            )
-        ]
-    ),
-
-    "o2-2" : Tool(
-        "DirectX AIO", "o2-2", 1, True,
-        lambda: "",
-        r"https://www.microsoft.com/en-us/download/details.aspx?id=35",
-        [
+                "Windows 7 x64", "", "Windows7-x64.7z",
+                r"https://dl.bobpony.com/windows/7/updated/7601.24214.180801-1700.win7sp1_ldr_escrow_CLIENT_PROFESSIONAL_x64FRE_en-us.7z"
+            ),
             Dwn(
-                "DirectX AIO", "", "DirectX-AIO.exe",
-                r"https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe"
-            )
-        ]
-    ),
-
-    "o3-2" : Tool(
-        "VisualCppRedist", "o3-2", 1, True,
-        lambda: "",
-        r"https://github.com/abbodi1406/vcredist",
-        [
-            Dwn(
-                "VisualCppRedist", "", "VisualCppRedist.zip",
-                r"https://github.com/abbodi1406/vcredist/releases/download/v0.77.0/VisualCppRedist_AIO_x86_x64_77.zip"
-            )
-        ]
-    ),
-
-    "o4-2" : Tool(
-        "XNAF", "o4-2", 1, True,
-        lambda: "",
-        r"https://www.microsoft.com/en-us/download/details.aspx?id=20914",
-        [
-            Dwn(
-                "XNAF", "", "XNAF-Setup.msi",
-                r"https://download.microsoft.com/download/A/C/2/AC2C903B-E6E8-42C2-9FD7-BEBAC362A930/xnafx40_redist.msi"
-            )
-        ]
-    ),
-
-    "o5-2" : Tool(
-        "Python", "o5-2", 1, True,
-        lambda: "",
-        r"https://www.python.org",
-        [
-            Dwn(
-                "Python", "", "Python-Setup.exe",
-                r"https://www.python.org/ftp/python/3.12.0/python-3.12.0-amd64.exe"
+                "Windows 7 x86", "", "Windows7-x86.7z",
+                r"https://dl.bobpony.com/windows/7/updated/7601.24214.180801-1700.win7sp1_ldr_escrow_CLIENT_PROFESSIONAL_x86FRE_en-us.7z"
             )
         ]
     ),
 
     "m1-2" : Tool(
-        "Rectify11 v2", "m1-2", 1, True,
+        "AME Wizard", "m1-2", 1, True,
         lambda: "",
-        r"https://archive.org/details/rectify-11-v-2/",
+        r"https://ameliorated.io/",
         [
             Dwn(
-                "Rectify11 v2", "", "Rectify11.iso",
-                r"https://archive.org/download/rectify-11-v-2/Rectify11%20%28v2%29.iso"
+                "AME Wizard", "", "AMEWizard.zip",
+                r"https://download.ameliorated.io/AME%20Wizard%20Beta.zip"
             )
         ]
     ),
 
     "m2-2" : Tool(
-        "AtlasOS", "m2-2", 1, True,
-        lambda: "",
-        r"https://github.com/Atlas-OS/",
-        [
-            Dwn(
-                "AtlasOS Playbook", "", "AtlasPlaybook.zip",
-                r"https://cdn.jsdelivr.net/atlas/0.3.2/AtlasPlaybook_v0.3.2.zip"
-            )
-        ]
-    ),
-
-    "m3-2" : Tool(
-        "Ghost Spectre", "m3-2", 3, True,
-        lambda: "",
-        r"We dont have a dedicated info site on this, do a google search",
-        [
-            Dwn(
-                "Ghost Spectre", "", "",
-                r"https://www.mediafire.com/file/2z30tuoy3ojsp3h/WIN10.PRO.20H2.SUPERLITE%2BCOMPACT.U3.X64.GHOSTSPECTRE.%28W%29.iso"
-            )
-        ]
-    ),
-
-    "m4-2" : Tool(
-        "ReviOS", "m4-2", 1, True,
+        "ReviOS", "m2-2", 1, False,
         lambda: str(latest('meetrevision/playbook')),
         r"https://revi.cc/",
         [
@@ -1182,101 +1004,62 @@ tools = {
             )
         ]
     ),
-
-    "m5-2" : Tool(
-        "GGOS 0.8.20", "m5-2", 1, True,
-        lambda: "",
-        r"We dont have a dedicated info site on this, do a google search",
+    
+    "m3-2" : Tool(
+        "AtlasOS", "m3-2", 1, False,
+        lambda: str(latest('Atlas-OS/Atlas')),
+        r"https://github.com/Atlas-OS/Atlas",
         [
             Dwn(
-                "GGOS 0.8.20", "", "GGOS.iso",
-                r"https://archive.org/download/ggos-0.8.20/ggos-0.8.20.iso"
+                "AtlasOS Playbook", "", "AtlasPlaybook.zip",
+                r"https://github.com/Atlas-OS/Atlas/releases/latest/download/AtlasPlaybook_v",
+                r".apbx"
+            )
+        ]
+    ),
+
+    "m4-2" : Tool(
+        "AME Playbook", "m4-2", 1, True,
+        lambda: "",
+        r"https://ameliorated.io/",
+        [
+            Dwn(
+                "AME 10", "", "AME10.apbx", 
+                r"https://download.ameliorated.io/AME%2010%20Beta.apbx"
+            ),
+            Dwn(
+                "AME 11", "", "AME11.apbx",
+                r"https://download.ameliorated.io/AME%2011%20Beta.apbx"
+            )
+        ]
+    ),
+
+    "m5-2" : Tool(
+        "Rectify11", "m5-2", 1, True,
+        lambda: "",
+        r"https://github.com/Rectify11/Installer",
+        [
+            Dwn(
+                "Rectify11 Installer", "", "Rectify11Installer.exe",
+                r"https://github.com/Rectify11/Installer/releases/latest/download/Rectify11Installer.exe"
             )
         ]
     ),
 
     "m6-2" : Tool(
-        "Simplify Windows", "m6-2", 1, True,
+        "Ghost Spectre", "m6-2", 3, True,
         lambda: "",
-        r"https://github.com/WhatTheBlock/WindowsSimplify",
+        r"https://ghostclouds.xyz/wp/w10-pro-aio-x64/",
         [
             Dwn(
-                "WindowsSimplify-1.66GB", "1.66GB - Extreme Lite with Store", "WindowsStimplfy-1.iso", 
-                r"https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22621.525_221014.iso"
-            ),
-            Dwn(
-                "WindowsSimplify-1.73GB", "1.73GB - No Windows Update", "WindowsSimplify-2.iso",
-                r"https://github.com/WhatTheBlock/WindowsSimplify/releases/download/iso/22623.746_221018.iso"
-            ),
-            Dwn(
-                "WindowsSimplify-1.83GB", "1.83GB - Max Debloat", "WindowsStimplfy-3.iso",
-                r"https://archive.org/download/simplify-windows-v2/22621.317_220811-2.iso"
+                "Ghost Spectre", "", "GhostSpectre.WPE64",
+                r"%GHOSTSPECTRE%"
             )
         ]
     ),
 
-    "m7-2" : Tool(
-        "Aero10", "m7-2", 1, True,
-        lambda: "",
-        r"https://archive.org/details/Aero10ENX64",
-        [
-            Dwn(
-                "Aero10", "", "Aero10.iso",
-                r"https://archive.org/download/Aero10ENX64/Aero10_EN_x64.iso"
-            )
-        ]
-    ),
-
-    "m8-2" : Tool(
-        "Tiny10", "m8-2", 1, True,
-        lambda: "",
-        r"https://archive.org/details/tiny-10-NTDEV",
-        [
-            Dwn(
-                "Tiny10", "", "Tiny10.iso",
-                r"https://archive.org/download/tiny-10-NTDEV/tiny10%2023h1%20x64.iso"
-            )
-        ]
-    ),
-
-    "m9-2" : Tool(
-        "KernelOS", "m9-2", 1, True,
-        lambda: "",
-        r"We dont have a dedicated info site on this, do a google search",
-        [
-            Dwn(
-                "KernelOS", "", "KernelOS.iso",
-                r"https://archive.org/download/kernel-os-22-h-2-beta/KernelOS%2022H2%20BETA.iso"
-            )
-        ]
-    ),
-
-    "m10-2" : Tool(
-        "Windows 7 Super Nano", "m10-2", 1, True,
-        lambda: "",
-        r"https://archive.org/details/windows-7x-86-supernano-final",
-        [
-            Dwn(
-                "Windows 7 Super Nano", "", "Windows-7-SuperNano.iso",
-                r"https://archive.org/download/windows-7x-86-supernano-final/Windows7SuperNanoLite64.iso"
-            )
-        ]
-    ),
-
-    "m11-2" : Tool(
-        "Windows 11 Debloated", "m11-2", 1, True,
-        lambda: "",
-        r"https://archive.org/details/windows-11-debloated",
-        [
-            Dwn(
-                "Windows 11 Debloated", "", "Windows-11-Debloated.iso",
-                r"https://archive.org/download/windows-11-debloated/Windows%2011%20Debloated.iso"
-            )
-        ]
-    ),
-
-    "t1-2" : Tool(
-        "Rufus", "t1-2", 1, False,
+    "a1-2" : Tool(
+        "Rufus", "a1-2", 1, False,
         lambda: str(latest("pbatard/rufus")),
         r"https://github.com/pbatard/rufus",
         [
@@ -1288,34 +1071,20 @@ tools = {
         ]
     ),
 
-    "t2-2" : Tool(
-        "Balena Etcher", "t2-2", 1, False,
-        lambda: str(latest("balena-io/etcher")),
+    "a2-2" : Tool(
+        "Balena Etcher", "a2-2", 1, True,
+        lambda: "",
         r"https://github.com/balena-io/etcher",
         [
             Dwn(
                 "Balena Etcher", "", "Etcher-Portable.exe",
-                r"https://github.com/balena-io/etcher/releases/latest/download/balenaEtcher-Portable-",
-                r".exe"
+                r"https://github.com/balena-io/etcher/releases/download/v1.18.11/balenaEtcher-Portable-1.18.11.exe"
             )
         ]
     ),
 
-    "t3-2" : Tool(
-        "UNetBootin", "t3-2", 1, False,
-        lambda: str(latest("unetbootin/unetbootin")),
-        r"https://github.com/unetbootin/unetbootin",
-        [
-            Dwn(
-                "UNetBootin", "", "UNetBootin.exe",
-                r"https://github.com/unetbootin/unetbootin/releases/latest/download/unetbootin-windows-",
-                r".exe"
-            )
-        ]
-    ),
-
-    "t4-2" : Tool(
-        "HeiDoc Iso Downloader", "t4-2", 1, True,
+    "a3-2" : Tool(
+        "HeiDoc Iso Dwnlder", "a3-2", 1, True,
         lambda: "",
         r"https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool",
         [
@@ -1326,8 +1095,8 @@ tools = {
         ]
     ),
 
-    "a1-2" : Tool(
-        "KeePassXC", "a1-2", 1, False,
+    "a4-2" : Tool(
+        "KeePassXC", "a4-2", 1, False,
         lambda: str(latest('keepassxreboot/keepassxc')),
         r"https://github.com/keepassxreboot/keepassxc",
         [
@@ -1339,8 +1108,8 @@ tools = {
         ]
     ),
 
-    "a2-2" : Tool(
-        "PowerToys", "a2-2", 1, False,
+    "a5-2" : Tool(
+        "PowerToys", "a5-2", 1, False,
         lambda: (str(latest('microsoft/PowerToys'))).replace("v", ""),
         r"https://github.com/microsoft/PowerToys",
         [
@@ -1352,8 +1121,8 @@ tools = {
         ]
     ),
 
-    "a3-2" : Tool(
-        "Alacritty", "a3-2", 1, False,
+    "a6-2" : Tool(
+        "Alacritty", "a6-2", 1, False,
         lambda: str(latest('alacritty/alacritty')),
         r"https://github.com/alacritty/alacritty",
         [
@@ -1365,8 +1134,8 @@ tools = {
         ]
     ),
 
-    "a4-2" : Tool(
-        "PowerShell", "a4-2", 1, False,
+    "a7-2" : Tool(
+        "PowerShell 7", "a7-2", 1, False,
         lambda: (str(latest('PowerShell/PowerShell'))).replace("v", ""),
         r"https://github.com/PowerShell/PowerShell",
         [
@@ -1378,8 +1147,8 @@ tools = {
         ]
     ),
 
-    "a5-2" : Tool(
-        "Motrix", "a5-2", 1, False,
+    "a8-2" : Tool(
+        "Motrix", "a8-2", 1, False,
         lambda: (str(latest('agalwood/Motrix'))).replace("v", ""),
         r"https://github.com/agalwood/Motrix",
         [
@@ -1391,8 +1160,8 @@ tools = {
         ]
     ),
 
-    "a6-2" : Tool(
-        "Files", "a6-2", 1, False,
+    "a9-2" : Tool(
+        "Files", "a9-2", 1, False,
         lambda: "",
         r"https://files.community/",
         [
@@ -1402,21 +1171,9 @@ tools = {
             )
         ]
     ),
-
+    
     "l1-3" : Tool(
-        "Minecraft Launcher", "l1-3", 1, True,
-        lambda: "",
-        r"https://www.minecraft.net",
-        [
-            Dwn(
-                "Minecraft Launcher", "", "MinecraftInstaller.exe",
-                r"https://launcher.mojang.com/download/MinecraftInstaller.exe",
-            )
-        ]
-    ),
-
-    "l2-3" : Tool(
-        "Prism", "l2-3", 1, False,
+        "Prism Launcher", "l1-3", 1, False,
         lambda: str(latest("PrismLauncher/PrismLauncher")),
         r"https://github.com/PrismLauncher/PrismLauncher",
         [
@@ -1435,6 +1192,18 @@ tools = {
         ]
     ),
 
+    "l2-3" : Tool(
+        "Minecraft Launcher", "l2-3", 1, True,
+        lambda: "",
+        r"https://www.minecraft.net",
+        [
+            Dwn(
+                "Minecraft Launcher", "", "MinecraftInstaller.exe",
+                r"https://launcher.mojang.com/download/MinecraftInstaller.exe",
+            )
+        ]
+    ),
+
     "l3-3" : Tool(
         "ATLauncher", "l3-3", 1, False,
         lambda: str(latest("ATLauncher/ATLauncher")),
@@ -1449,7 +1218,7 @@ tools = {
     ),
 
     "l4-3" : Tool(
-        "GDLauncher", "l6-3", 1, False,
+        "GDLauncher", "l4-3", 1, False,
         lambda: str(latest("gorilla-devs/GDLauncher")),
         r"https://github.com/gorilla-devs/GDLauncher",
         [
@@ -1463,6 +1232,78 @@ tools = {
                 r"https://github.com/gorilla-devs/GDLauncher/releases/download/v"
                 r"/GDLauncher-win-setup.exe",
             ),
+        ]
+    ),
+    
+    "l5-3" : Tool(
+        "Lunar Client", "l5-3", 1, True,
+        lambda: "",
+        r"https://www.lunarclient.com/",
+        [
+            Dwn(
+                "Lunar Client", "", "LunarClient-Setup.exe",
+                r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v3.2.3.exe"
+            )
+        ]
+    ),
+    
+    "l6-3" : Tool(
+        "LabyMod", "l6-3", 1, True,
+        lambda: "",
+        r"https://www.labymod.net/",
+        [
+            Dwn(
+                "LabyMod", "", "LabyMod-Setup.exe",
+                r"https://releases.r2.labymod.net/launcher/win32/x64/LabyModLauncherSetup-latest.exe"
+            )
+        ]
+    ),
+    
+    "l7-3" : Tool(
+        "Tecknix Client", "l7-3", 1, True,
+        lambda: "",
+        r"https://tecknix.com/",
+        [
+            Dwn(
+                "Tecknix Client", "", "Tecknix-Setup.exe",
+                r"https://tecknix.com/client/TecknixClient.exe"
+            )
+        ]
+    ),
+
+    "l8-3" : Tool(
+        "Salwyrr CLient", "l8-3", 1, True,
+        lambda: "",
+        r"https://www.salwyrr.com/",
+        [
+            Dwn(
+                "Salwyrr CLients", "", "Salwyrr-Setup.exe",
+                r"https://download.overwolf.com/setup/electron/ehdhabenpndnlfhfchfacfmnkhmnmigdjjlkeimc"
+            )
+        ]
+    ),
+
+    "l9-3" : Tool(
+        "Feather Launcher", "l9-3", 1, True,
+        lambda: "",
+        r"https://feathermc.com/",
+        [
+            Dwn(
+                "Feather Launcher", "", "FeatherLauncher-Setup.exe",
+                r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.5.9.exe"
+            )
+        ]
+    ),
+
+    "l10-3" : Tool(
+        "Badlion Client", "l10-3", 1, True,
+        lambda: "",
+        r"https://client.badlion.net/",
+        [
+            Dwn(
+                "Badlion Client", "", "BadlionClient-Setup.exe",
+                r"https://client-updates-cdn77.badlion.net/Badlion%20Client%20Setup%203.18.2.exe"
+            )
         ]
     ),
 
@@ -1479,13 +1320,15 @@ tools = {
     ),
 
     "g2-3" : Tool(
-        "Uplay", "g2-3", 1, True,
-        lambda: "",
-        r"https://ubisoftconnect.com",
+        "Rare", "g2-3", 1, False,
+        lambda: str(latest('RareDevs/Rare')),
+        r"https://github.com/RareDevs/Rare",
         [
             Dwn(
-                "Uplay", "", "Uplay-Setup.exe",
-                r"https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe"
+                "Rare", "", "Rare-Setup.exe",
+                r"https://github.com/RareDevs/Rare/releases/download/",
+                r"/Rare-",
+                r".msi"
             )
         ]
     ),
@@ -1539,103 +1382,109 @@ tools = {
     ),
 
     "g7-3" : Tool(
-        "Roblox", "g7-3", 1, True,
-        lambda: "",
-        r"https://www.roblox.com",
+        "Bloxstrap", "g7-3", 1, False,
+        lambda: str(latest('pizzaboxer/bloxstrap')),
+        r"https://github.com/pizzaboxer/bloxstrap",
         [
             Dwn(
-                "Roblox", "", "Roblox.exe",
-                r"https://setup.roblox.com/Roblox.exe"
+                "Bloxstrap", "", "Bloxstrap-Setup.exe",
+                r"https://github.com/pizzaboxer/bloxstrap/releases/download/v",
+                r"/Bloxstrap-v",
+                r".exe"
+            )
+        ]
+    ),
+    
+    "r1-3" : Tool(
+        "DirectX", "r1-3", 1, True,
+        lambda: "",
+        r"https://www.microsoft.com/en-us/download/details.aspx?id=35",
+        [
+            Dwn(
+                "DirectX", "", "DirectX.exe",
+                r"https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe"
+            )
+        ]
+    ),
+    
+    "r2-3" : Tool(
+        "VCRedists", "r2-3", 1, True,
+        lambda: "",
+        r"https://github.com/abbodi1406/vcredist",
+        [
+            Dwn(
+                "VisualCppRedistAIO", "", "VCRedists.exe",
+                r"https://github.com/abbodi1406/vcredist/releases/latest/download/VisualCppRedist_AIO_x86_x64.exe"
+            )
+        ]
+    ),
+    
+    "r3-3" : Tool(
+        "XNA Framework", "r3-3", 1, True,
+        lambda: "",
+        r"https://www.microsoft.com/en-us/download/details.aspx?id=20914",
+        [
+            Dwn(
+                "XNA Framework", "", "xnafx.msi",
+                r"https://download.microsoft.com/download/A/C/2/AC2C903B-E6E8-42C2-9FD7-BEBAC362A930/xnafx40_redist.msi"
+            )
+        ]
+    ),
+    
+    "r4-3" : Tool(
+        ".NET Framework", "r4-3", 1, True,
+        lambda: "",
+        r"https://dotnet.microsoft.com/en-us/download/dotnet/8.0",
+        [
+            Dwn(
+                "ASP.NET Core 8.0 Runtime", "", "ASPDotNet-Installer.exe",
+                r"https://download.visualstudio.microsoft.com/download/pr/4b805b84-302c-42e3-b57e-665d0bb7b1f0/3a0965017f98303c7fe1ab1291728e07/aspnetcore-runtime-8.0.1-win-x64.exe"
+            ),
+            Dwn(
+                ".NET Desktop 8.0 Runtime", "", "DotNetDesktop-Installer.exe",
+                r"https://download.visualstudio.microsoft.com/download/pr/f18288f6-1732-415b-b577-7fb46510479a/a98239f751a7aed31bc4aa12f348a9bf/windowsdesktop-runtime-8.0.1-win-x64.exe"
+            ),
+            Dwn(
+                ".NET Runtime 8.0 Runtime", "", "DotNetRuntime-Installer.exe",
+                r"https://download.visualstudio.microsoft.com/download/pr/cede7e69-dbd4-4908-9bfb-12fa4660e2b9/d9ed17179d0275abee5afd29d5460b48/dotnet-runtime-8.0.1-win-x64.exe"
+            )
+        ]
+    ),
+    
+    "r5-3" : Tool(
+        "Node.js", "r5-3", 1, True,
+        lambda: "",
+        r"https://nodejs.org/",
+        [
+            Dwn(
+                "Node.js", "", "Node-Installer.msi",
+                r"https://nodejs.org/dist/v20.11.0/node-v20.11.0-x64.msi"
+            )
+        ]
+    ),
+    
+    "r6-3" : Tool(
+        "Python", "r6-3", 1, True,
+        lambda: "",
+        r"https://python.org/",
+        [
+            Dwn(
+                "Python 3.12", "", "Python312-Installer.msi",
+                r"https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe"
+            ),
+            Dwn(
+                "Python 3.11", "", "Python311-Installer.msi",
+                r"https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe"
+            ),
+            Dwn(
+                "Python 3.10", "", "Python310-Installer.msi",
+                r"https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe"
             )
         ]
     ),
 
-    "c1-3" : Tool(
-        "Tecknix Client", "c1-3", 1, True,
-        lambda: "",
-        r"https://tecknix.com/",
-        [
-            Dwn(
-                "Tecknix Client", "", "Tecknix-Setup.exe",
-                r"https://tecknix.com/client/TecknixClient.exe"
-            )
-        ]
-    ),
-
-    "c2-3" : Tool(
-        "Salwyrr CLients", "c2-3", 1, True,
-        lambda: "",
-        r"https://www.salwyrr.com/",
-        [
-            Dwn(
-                "Salwyrr CLients", "", "Salwyrr-Setup.exe",
-                r"https://appsdl-overwolf-com.akamaized.net/prod/apps/ehdhabenpndnlfhfchfacfmnkhmnmigdjjlkeimc/1.0.4/setup.exe"
-            )
-        ]
-    ),
-
-    "c3-3" : Tool(
-        "LabyMod", "c3-3", 1, True,
-        lambda: "",
-        r"https://www.labymod.net/",
-        [
-            Dwn(
-                "LabyMod", "", "LabyMod-Setup.exe",
-                r"https://releases.r2.labymod.net/launcher/win32/x64/LabyModLauncherSetup-latest.exe"
-            )
-        ]
-    ),
-
-    "c4-3" : Tool(
-        "Feather Launcher", "c4-3", 1, True,
-        lambda: "",
-        r"https://feathermc.com/",
-        [
-            Dwn(
-                "Feather Launcher", "", "FeatherLauncher-Setup.exe",
-                r"https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.5.9.exe"
-            )
-        ]
-    ),
-
-    "c5-3" : Tool(
-        "Lunar Client", "c5-3", 1, True,
-        lambda: "",
-        r"https://www.lunarclient.com/",
-        [
-            Dwn(
-                "Lunar Client", "", "LunarClient-Setup.exe",
-                r"https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v3.1.3.exe"
-            )
-        ]
-    ),
-
-    "c6-3" : Tool(
-        "OFFL CheatBreaker", "c6-3", 1, True,
-        lambda: "",
-        r"https://github.com/Offline-CheatBreaker/Launcher",
-        [
-            Dwn(
-                "Offline CheatBreaker", "", "Offline-CheatBreaker-Setup.exe",
-                r"https://github.com/Offline-CheatBreaker/Launcher/releases/latest/download/Offline_CheatBreaker_Setup.exe"
-            )
-        ]
-    ),
-
-    "c7-3" : Tool(
-        "Badlion Client", "c7-3", 1, True,
-        lambda: "",
-        r"https://client.badlion.net/",
-        [
-            Dwn(
-                "Badlion Client", "", "BadlionClient-Setup.exe",
-                r"https://client-updates-cdn77.badlion.net/Badlion%20Client%20Setup%203.18.2.exe"
-            )
-        ]
-    ),
-
-    "i1-3" : Tool(
-        "Achievement Watcher", "i1-3", 1, True,
+    "a1-3" : Tool(
+        "Achievement Watcher", "a1-3", 1, True,
         lambda: "",
         r"https://github.com/xan105/Achievement-Watcher",
         [
@@ -1646,20 +1495,8 @@ tools = {
         ]
     ),
 
-    "i2-3" : Tool(
-        "Discord", "i2-3", 1, True,
-        lambda: "",
-        r"https://discord.com/",
-        [
-            Dwn(
-                "Discord", "", "Discord-Setup.exe",
-                r"https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86"
-            )
-        ]
-    ),
-
-    "i3-3" : Tool(
-        "Spotify", "i3-3", 1, True,
+    "a2-3" : Tool(
+        "Spotify", "a2-3", 1, True,
         lambda: "",
         r"https://open.spotify.com/",
         [
@@ -1670,29 +1507,8 @@ tools = {
         ]
     ),
 
-    "t1-3" : Tool(
-        "Open Asar", "t1-3", 5, True,
-        lambda: "\n",
-        r"https://openasar.dev/",
-        [
-            Dwn(
-                "Open Asar", "", "OpenAsar.bat",
-                r'@echo off'
-                r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe'
-                r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe'
-                r'C:\Windows\System32\TASKKILL.exe /f /im Discord.exe'
-                r'C:\Windows\System32\TIMEOUT.exe /t 5 /nobreak'
-                r'copy /y "%localappdata%\Discord\app-1.0.9011\resources\app.asar" "%localappdata%\Discord\app-1.0.9011\resources\app.asar.backup"'
-                r'powershell -Command "Invoke-WebRequest https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar -OutFile \"$Env:LOCALAPPDATA\Discord\app-1.0.9007\resources\app.asar\""'
-                r'start "" "%localappdata%\Discord\Update.exe" --processStart Discord.exe'
-                r'goto 2>nul & del "%~f0"'
-
-            )
-        ]
-    ),
-
-    "t2-3" : Tool(
-        "Spicefy", "t2-3", 2, True,
+    "a3-3" : Tool(
+        "Spicefy", "a3-3", 2, True,
         lambda: "",
         r"https://spicetify.app/",
         [
@@ -1703,22 +1519,62 @@ tools = {
         ]
     ),
 
-    "t3-3" : Tool(
-        "VenCord", "t3-3", 1, True,
+    "a4-3" : Tool(
+        "Discord", "a4-3", 1, True,
         lambda: "",
-        r"https://github.com/Vendicated/VencordInstaller",
+        r"https://discord.com/",
         [
             Dwn(
-                "VenCord", "", "VenCord.exe",
-                r"https://github.com/Vendicated/VencordInstaller/releases/latest/download/VencordInstaller.exe"
+                "Discord", "", "Discord-Setup.exe",
+                r"https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86"
+            )
+        ]
+    ),
+    
+    "a5-3" : Tool(
+        "Vesktop", "a5-3", 1, False,
+        lambda: "",
+        r"https://github.com/Vencord/Vesktop/",
+        [
+            Dwn(
+                "Vesktop", "", "Vesktop-Setup.exe",
+                r"https://github.com/Vencord/Vesktop/releases/download/v",
+                r"/Vesktop-Setup-",
+                r".exe"
+            )
+        ]
+    ),
+    
+    "a6-3" : Tool(
+        "ArmCord", "a6-3", 1, False,
+        lambda: str(latest('ArmCord/ArmCord')),
+        r"https://github.com/ArmCord/ArmCord/",
+        [
+            Dwn(
+                "ArmCord", "", "ArmCord-Setup.exe",
+                r"https://github.com/ArmCord/ArmCord/releases/download/v",
+                r"/ArmCord.Setup.",
+                r".exe"
             )
         ]
     ),
 
-    "t4-3" : Tool(
-        "BetterDiscord", "t4-3", 1, True,
+    "a7-3" : Tool(
+        "Vencord", "a7-3", 1, True,
         lambda: "",
-        r"https://github.com/BetterDiscord/Installer",
+        r"https://github.com/Vencord/Installer",
+        [
+            Dwn(
+                "Vencord", "", "Vencord.exe",
+                r"https://github.com/Vencord/Installer/releases/latest/download/VencordInstaller.exe"
+            )
+        ]
+    ),
+
+    "a8-3" : Tool(
+        "BetterDiscord", "a8-3", 1, True,
+        lambda: "",
+        r"https://github.com/BetterDiscord",
         [
             Dwn(
                 "BetterDiscord", "", "BetterDiscord-Setup.exe",
@@ -1726,5 +1582,15 @@ tools = {
             )
         ]
     ),
-
+    "a9-3" : Tool(
+        "Replugged", "a9-3", 1, True,
+        lambda: "",
+        r"https://github.com/replugged-org",
+        [
+            Dwn(
+                "Replugged", "", "Replugged-Installer.exe",
+                r"https://github.com/replugged-org/tauri-installer/releases/latest/download/replugged-installer-windows.exe"
+            )
+        ]
+    )
 }
