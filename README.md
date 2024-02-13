@@ -1,7 +1,7 @@
 <p align="center">
 <strong>XToolBox</strong>
 </br>
-<a href="https://discord.gg/sVRWsFYu7S">Discord Server</a>
+prolly moving to telegram
 </br>
 <strong>A toolbox full of Windows 11 and 10 debloating utilities!</strong>
 </br>
