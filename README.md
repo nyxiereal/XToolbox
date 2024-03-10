@@ -1,9 +1,7 @@
 <p align="center">
 <strong>XToolBox</strong>
 </br>
-<a href="https://xem.lol/xtoolbox">New Site</a>
-</br>
-prolly moving to telegram
+<a href="https://xem.lol/xtoolbox">New Site</a> | <a href="https://discord.com/invite/sVRWsFYu7S">Discord</a>
 </br>
 <strong>A toolbox full of Windows 11 and 10 debloating utilities!</strong>
 </br>
