@@ -1196,8 +1196,8 @@ tools = {
         ]
     ),
 
-    "a9-2" : Tool(
-        "VSCodium", "a9-2", 1, False,
+    "a10-2" : Tool(
+        "VSCodium", "a10-2", 1, False,
         lambda: "",
         r"https://vscodium.com/",
         [
@@ -1626,6 +1626,18 @@ tools = {
             Dwn(
                 "Replugged", "", "Replugged-Installer.exe",
                 r"https://github.com/replugged-org/tauri-installer/releases/latest/download/replugged-installer-windows.exe"
+            )
+        ]
+    )
+
+    "a10-3" : Tool(
+        "SimpleDnsCrypt", "a10-3", 1, True,
+        lambda: "",
+        r"https://github.com/instantsc/SimpleDnsCrypt",
+        [
+            Dwn(
+                "SimpleDnsCrypt", "", "SimpleDNSCrypt_0.8.2.msi",
+                r"https://github.com/instantsc/SimpleDnsCrypt/releases/download/0.8.2/SimpleDNSCrypt_0.8.2.msi"
             )
         ]
     )
