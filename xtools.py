@@ -719,6 +719,18 @@ tools = {
         ]
     ),
 
+    "c10-1" : Tool(
+        "BulkCrapUninstaller", "c10-1", 1, True,
+        lambda: "",
+        r"https://www.bcuninstaller.com/",
+        [
+            Dwn(
+                "BCU", "", "BCU-setup.exe",
+                r"https://github.com/Klocman/Bulk-Crap-Uninstaller/releases/download/v5.7/BCUninstaller_5.7_setup.exe"
+            )
+        ]
+    ),
+
     "l1-2" : Tool(
         "Linux Mint", "l1-2", 1, True,
         lambda: "",
