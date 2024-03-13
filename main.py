@@ -407,7 +407,7 @@ def pageDisplay(page):
     table.add_column(f"[[blue]{(columns[page][1][0]).capitalize()}[/blue]] {columns[page][1][1]}", footers[1], justify='left',min_width=24)
     table.add_column(f"[[blue]{(columns[page][2][0]).capitalize()}[/blue]] {columns[page][2][1]}", footers[2], justify='left',min_width=24)
     table.add_column(f"[[blue]{(columns[page][3][0]).capitalize()}[/blue]] {columns[page][3][1]}", f'[blue]{page}/{len(columns)-1}[/blue]', min_width=24)
-z
+
     for i in range(15):
         if i != 0:
             table.add_row(xget(f'{columns[page][0][0]}{i}-{page}'), xget(f'{columns[page][1][0]}{i}-{page}'), xget(f'{columns[page][2][0]}{i}-{page}'), xget(f'{columns[page][3][0]}{i}-{page}'))
