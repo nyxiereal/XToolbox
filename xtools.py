@@ -1195,6 +1195,18 @@ tools = {
             )
         ]
     ),
+
+    "a9-2" : Tool(
+        "VSCodium", "a9-2", 1, False,
+        lambda: "",
+        r"https://vscodium.com/",
+        [
+            Dwn(
+                "VSCodium", "", "VSCodiumUserSetup-x64-1.87.2.24072.exe",
+                r"https://github.com/VSCodium/vscodium/releases/download/1.87.2.24072/VSCodiumUserSetup-x64-1.87.2.24072.exe"
+            )
+        ]
+    ),
     
     "l1-3" : Tool(
         "Prism Launcher", "l1-3", 1, False,
