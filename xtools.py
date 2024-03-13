@@ -460,6 +460,18 @@ tools = {
         ]
     ),
 
+    "t10-1" : Tool(
+        "PrivacySexy", "t10-1", 1, True,
+        lambda: "",
+        r"https://privacy.sexy/",
+        [
+            Dwn(
+                "PrivacySexy", "", "privacy.sexy-setup.exe",
+                r"https://github.com/undergroundwires/privacy.sexy/releases/download/0.13.0/privacy.sexy-Setup-0.13.0.exe"
+            )
+        ]
+    ),
+
     "a1-1" : Tool(
         "Choco", "a1-1", 1, True,
         lambda: "",
