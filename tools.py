@@ -55,7 +55,9 @@ def chooseQuotes():
     'No bobucks?',
     'UwU. *Steals your toast*',
     'A new update is available!',
-    '509gb'
+    '509gb',
+    'FREE BOBUX GENERATOR!?!?!',
+    'sorry can\'t help it just a scorpio'
     ]
     return(choice(q))
 

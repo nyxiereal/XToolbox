@@ -51,6 +51,8 @@ def cls():
 def cl(color, text):
     if color == 1:
         return(f'[red]{text}[/red]')
+    elif color == 2:
+        return(f'[yellow]{text}[/yellow]')
     else:
         return(f'[green]{text}[/green]')
 
@@ -59,6 +61,8 @@ class Printer():
     def sys(clr, text):
         if clr == 1:
             c.print(f'[green][✓] {text}[/green]')
+        elif clr == 2:
+            c.print(f'[yellow][✓] {text}[/yellow]')
         else:
             c.print(f'[red][✗] {text}[/red]')
     def zpr(text):
@@ -122,7 +126,7 @@ def updater():
 
 # function to reduce code when using interpreter() page 97
 def yn(prompt=""):
-    prompt += f"([green]Y[/green]/[red]n[/red]): "
+    prompt += f"([green]Y[/green]/[red]N[/red]): "
     goodInput, YNvalue = False, False
     while not goodInput:
         goodInput, YNvalue = interpreter(97, prompt)
@@ -269,7 +273,7 @@ def helpe():
             f"│     99    │ Exit                                            │\n"
             f"├─────────────────────────────────────────────────────────────┤\n"
             f"│   Color   │ Meaning                                         │\n"
-            f"│ {cl(1, 'YELLOW')}    │ Advanced Option                                 │\n"
+            f"│ {cl(2, 'YELLOW')}    │ Advanced Option                                 │\n"
             f"├─────────────────────────────────────────────────────────────┤\n"
             f"│ Error code │ Explanation                                    │\n"
             f"│      1     │ File already exists                            │\n"

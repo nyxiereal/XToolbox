@@ -460,6 +460,18 @@ tools = {
         ]
     ),
 
+    "t10-1" : Tool(
+        "PrivacySexy", "t10-1", 1, True,
+        lambda: "",
+        r"https://privacy.sexy/",
+        [
+            Dwn(
+                "PrivacySexy", "", "privacy.sexy-setup.exe",
+                r"https://github.com/undergroundwires/privacy.sexy/releases/download/0.13.0/privacy.sexy-Setup-0.13.0.exe"
+            )
+        ]
+    ),
+
     "a1-1" : Tool(
         "Choco", "a1-1", 1, True,
         lambda: "",
@@ -703,6 +715,18 @@ tools = {
             Dwn(
                 "Kaspersky Premium", "", "",
                 r"https://www.kaspersky.com/downloads/premium"
+            )
+        ]
+    ),
+
+    "c10-1" : Tool(
+        "BulkCrapUninstaller", "c10-1", 1, True,
+        lambda: "",
+        r"https://www.bcuninstaller.com/",
+        [
+            Dwn(
+                "BCU", "", "BCU-setup.exe",
+                r"https://github.com/Klocman/Bulk-Crap-Uninstaller/releases/download/v5.7/BCUninstaller_5.7_setup.exe"
             )
         ]
     ),
@@ -1171,6 +1195,18 @@ tools = {
             )
         ]
     ),
+
+    "a10-2" : Tool(
+        "VSCodium", "a10-2", 1, False,
+        lambda: "",
+        r"https://vscodium.com/",
+        [
+            Dwn(
+                "VSCodium", "", "VSCodiumUserSetup-x64-1.87.2.24072.exe",
+                r"https://github.com/VSCodium/vscodium/releases/download/1.87.2.24072/VSCodiumUserSetup-x64-1.87.2.24072.exe"
+            )
+        ]
+    ),
     
     "l1-3" : Tool(
         "Prism Launcher", "l1-3", 1, False,
@@ -1590,6 +1626,18 @@ tools = {
             Dwn(
                 "Replugged", "", "Replugged-Installer.exe",
                 r"https://github.com/replugged-org/tauri-installer/releases/latest/download/replugged-installer-windows.exe"
+            )
+        ]
+    )
+
+    "a10-3" : Tool(
+        "SimpleDnsCrypt", "a10-3", 1, True,
+        lambda: "",
+        r"https://github.com/instantsc/SimpleDnsCrypt",
+        [
+            Dwn(
+                "SimpleDnsCrypt", "", "SimpleDNSCrypt_0.8.2.msi",
+                r"https://github.com/instantsc/SimpleDnsCrypt/releases/download/0.8.2/SimpleDNSCrypt_0.8.2.msi"
             )
         ]
     )
