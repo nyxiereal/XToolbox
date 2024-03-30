@@ -57,7 +57,17 @@ def chooseQuotes():
     'A new update is available!',
     '509gb',
     'FREE BOBUX GENERATOR!?!?!',
-    'sorry can\'t help it just a scorpio'
+    'sorry can\'t help it just a scorpio',
+    '"bitch" -@danilwhale',
+    '"amogus" -@martinishere',
+    '"xtooblox made me pregnant" -@editdev',
+    '"basketmball" -@cute.eeper',
+    'UEE 😭🥺💧Eu💧 💧 E E 😭😭 E EUE 🥺🥺😭 UUUU 😭🥺💧🥺😭ue💧 ee😭🥺💧 ue🥺 e e e😭. e💧🥺😭Uueuuue.',
+    'polugon dunute >:3',
+    'spotify album 2gANfR09MoBGPXKqYPTGw7'
+    'Hi I have a Pixel 4a grapheneos and I need to make Discord most privacy friendly and secure as...',
+    'Hey Ya!',
+    '"do not consider doing web dev it is not worth it" - @jenku'
     ]
     return(choice(q))
 
