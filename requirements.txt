@@ -1,6 +1,6 @@
 requests
 colorama
 lastversion
-ping3
 rich
 psutil
+tqdm
