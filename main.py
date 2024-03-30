@@ -62,7 +62,7 @@ class Printer():
         if clr == 1:
             c.print(f'[green][✓] {text}[/green]')
         elif clr == 2:
-            c.print(f'[yellow][✓] {text}[/yellow]')
+            c.print(f'[yellow][?] {text}[/yellow]')
         else:
             c.print(f'[red][✗] {text}[/red]')
     def zpr(text):
@@ -126,7 +126,7 @@ def updater():
 
 # function to reduce code when using interpreter() page 97
 def yn(prompt=""):
-    prompt += f"([green]Y[/green]/[red]N[/red]): "
+    prompt += f"([green]Y[/green]/[red]n[/red]): "
     goodInput, YNvalue = False, False
     while not goodInput:
         goodInput, YNvalue = interpreter(97, prompt)
@@ -265,25 +265,25 @@ def dwnTool(tool):
 
 def helpe():
     cls()
-    c.print(f"┌─────────────────────────────────────────────────────────────┐\n"
-            f"│  Keybind  │ Command                                         │\n"
-            f"│     H     │ Help Page (this page)                           │\n"
-            f"│     N     │ Next Page                                       │\n"
-            f"│     B     │ Previous Page (back)                            │\n"
-            f"│     99    │ Exit                                            │\n"
-            f"├─────────────────────────────────────────────────────────────┤\n"
-            f"│   Color   │ Meaning                                         │\n"
-            f"│ {cl(2, 'YELLOW')}    │ Advanced Option                                 │\n"
-            f"├─────────────────────────────────────────────────────────────┤\n"
-            f"│ Error code │ Explanation                                    │\n"
-            f"│      1     │ File already exists                            │\n"
-            f"│      2     │ Can't check for file overwrite                 │\n"
-            f"│      3     │ Can't download file from the server            │\n"
-            f"├─────────────────────────────────────────────────────────────┤\n"
-            f"│ If scripts won't execute, press P                           │\n"
-            f"├─────────────────────────────────────────────────────────────┤\n"
-            f"│                  Press ENTER/B to go back.                  │\n"
-            f"└─────────────────────────────────────────────────────────────┘\n")
+    c.print(f"┌───────────────────────────────────────────────────────┐\n"
+            f"│ Key │ Command                                         │\n"
+            f"│  H  │ Help Page (this page)                           │\n"
+            f"│  N  │ Next Page                                       │\n"
+            f"│  B  │ Previous Page (back)                            │\n"
+            f"│  99 │ Exit                                            │\n"
+            f"├───────────────────────────────────────────────────────┤\n"
+            f"│ Color  │ Meaning                                      │\n"
+            f"│ {cl(2, 'YELLOW')} │ Advanced Option                              │\n"
+            f"├───────────────────────────────────────────────────────┤\n"
+            f"│ Error │ Explanation                                   │\n"
+            f"│   1   │ File already exists                           │\n"
+            f"│   2   │ Can't check for file overwrite                │\n"
+            f"│   3   │ Can't download file from the server           │\n"
+            f"├───────────────────────────────────────────────────────┤\n"
+            f"│           If scripts won't execute, press P           │\n"
+            f"├───────────────────────────────────────────────────────┤\n"
+            f"│               Press ENTER/B to go back.               │\n"
+            f"└───────────────────────────────────────────────────────┘\n")
     return interpreter(0)
 
 # function that interprets user input
@@ -296,6 +296,25 @@ def interpreter(page, prompt="> "):
     # if user inputs 99, exit the program
     if choose == "99":
         exit()
+        
+    if choose == "peggle":
+        download('http://xemu.top/files/peggle.7z', 'peggle.7z', 'Peggle Deluxe')
+    
+    if choose == "fast":
+        cls()
+        c.print("  .-;':':'-.")
+        c.print(" {'.'.'.'.'.}")
+        c.print("  )        '`.")
+        c.print(" '-. ._ ,_.-='")
+        c.print("   `). ( `);(")
+        c.print("   ('. .)(,'.)")
+        c.print("    ) ( ,').(")
+        c.print("   ( .').'(').")
+        c.print("   .) (' ).('")
+        c.print("    '  ) (  ).")
+        c.print("     .'( .)'")
+        c.print("       .).'")
+        input('jelelfisg')
 
     # if user inputs h, open help
     if choose == "h" and page != 0 :
