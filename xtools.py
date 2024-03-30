@@ -242,7 +242,7 @@ tools = {
         r"https://hone.gg",
         [
             Dwn(
-                "Hone", "", "HoneInstaller.exe",
+                "Hone ⚠️ CONTAINS ADS ⚠️", "", "HoneInstaller.exe",
                 r"https://download.overwolf.com/installer/prod/cfbc7eeb79ab95eb3f553c4344a186ee/Hone%20-%20Installer.exe"
             ),
             Dwn(
@@ -349,6 +349,18 @@ tools = {
         ]
     ),
 
+    "d11-1" : Tool(
+        "WPD", "d11-1", 1, True,
+        lambda: "",
+        r"https://wpd.app/",
+        [
+            Dwn(
+                "WPD", "", "WPD.zip",
+                r"https://wpd.app/get/latest.zip"
+            )
+        ]
+    ),
+
     "t1-1" : Tool(
         "InsiderEnroller", "t1-1", 1, False,
         lambda: str(latest("Jathurshan-2019/Insider-Enroller")),
@@ -448,7 +460,7 @@ tools = {
     ),
 
     "t9-1" : Tool(
-        "SophiApp", "t9-1", 1, True,
+        "SophiApp", "t9-1", 1, False,
         lambda: str(latest("Sophia-Community/SophiApp")),
         r"https://github.com/Sophia-Community/SophiApp",
         [
@@ -459,15 +471,15 @@ tools = {
             )
         ]
     ),
-
-    "t10-1" : Tool(
-        "PrivacySexy", "t10-1", 1, True,
-        lambda: "",
+        "t10-1" : Tool(
+        "PrivacySexy", "t10-1", 1, False,
+        lambda: str(latest("undergroundwires/privacy.sexy")),
         r"https://privacy.sexy/",
         [
             Dwn(
-                "PrivacySexy", "", "privacy.sexy-setup.exe",
-                r"https://github.com/undergroundwires/privacy.sexy/releases/download/0.13.0/privacy.sexy-Setup-0.13.0.exe"
+                "PrivacySexy", "", "PrivacySexy-setup.exe",
+                r"https://github.com/undergroundwires/privacy.sexy/releases/latest/download/privacy.sexy-Setup-",
+                r".exe"
             )
         ]
     ),
@@ -594,6 +606,19 @@ tools = {
             )
         ]
     ),
+    
+    "a11-1" : Tool(
+        "SimpleDnsCrypt", "a11-1", 1, False,
+        lambda: str(latest("instantsc/SimpleDnsCrypt")),
+        r"https://github.com/instantsc/SimpleDnsCrypt",
+        [
+            Dwn(
+                "SimpleDnsCrypt", "", "SimpleDNSCrypt-Setup.msi",
+                r"https://github.com/instantsc/SimpleDnsCrypt/releases/latest/download/SimpleDNSCrypt_",
+                r".msi"
+            )
+        ]
+    ),
 
     "c1-1" : Tool(
         "ADW Cleaner", "c1-1", 1, True,
@@ -715,18 +740,6 @@ tools = {
             Dwn(
                 "Kaspersky Premium", "", "",
                 r"https://www.kaspersky.com/downloads/premium"
-            )
-        ]
-    ),
-
-    "c10-1" : Tool(
-        "BulkCrapUninstaller", "c10-1", 1, True,
-        lambda: "",
-        r"https://www.bcuninstaller.com/",
-        [
-            Dwn(
-                "BCU", "", "BCU-setup.exe",
-                r"https://github.com/Klocman/Bulk-Crap-Uninstaller/releases/download/v5.7/BCUninstaller_5.7_setup.exe"
             )
         ]
     ),
@@ -1185,7 +1198,7 @@ tools = {
     ),
 
     "a9-2" : Tool(
-        "Files", "a9-2", 1, False,
+        "Files", "a9-2", 1, True,
         lambda: "",
         r"https://files.community/",
         [
@@ -1195,35 +1208,35 @@ tools = {
             )
         ]
     ),
-
+    
     "a10-2" : Tool(
-        "VSCodium", "a10-2", 1, False,
-        lambda: "",
+        "VSCode", "a10-2", 1, False,
+        lambda: str(latest('VSCodium/vscodium')),
         r"https://vscodium.com/",
         [
             Dwn(
-                "VSCodium", "", "VSCodiumUserSetup-x64-1.87.2.24072.exe",
-                r"https://github.com/VSCodium/vscodium/releases/download/1.87.2.24072/VSCodiumUserSetup-x64-1.87.2.24072.exe"
+                "VSCodium", "", "VSCodium-Setup.msi",
+                r"https://github.com/VSCodium/vscodium/releases/download/",
+                r"/VSCodium-x64-",
+                r".msi"
+            ),
+            Dwn(
+                "VSCode", "", "VSCode-Setup.exe",
+                r"https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
             )
         ]
     ),
     
     "l1-3" : Tool(
-        "Prism Launcher", "l1-3", 1, False,
-        lambda: str(latest("PrismLauncher/PrismLauncher")),
+        "PrismLauncher", "l1-3", 1, False,
+        lambda: str(latest('PrismLauncher/PrismLauncher')),
         r"https://github.com/PrismLauncher/PrismLauncher",
         [
             Dwn(
-                "Portable", "PrismLauncher Portable", "PrismLauncher-Portable.zip",
-                r"https://github.com/PrismLauncher/PrismLauncher/releases/download/"
-                r"/PrismLauncher-Windows-MSVC-Portable-"
-                r".zip",
-            ),
-            Dwn(
-                "Setup","PrismLauncher Setup", "PrismLauncher-Setup.exe",
-                r"https://github.com/PrismLauncher/PrismLauncher/releases/download/"
-                r"/PrismLauncher-Windows-MSVC-Setup-"
-                r".exe",
+                "Prism Launcher Setup", "", "PrismLauncher-Setup.exe",
+                r"https://github.com/PrismLauncher/PrismLauncher/releases/download/",
+                r"/PrismLauncher-Windows-MSVC-Setup-",
+                r".exe"
             )
         ]
     ),
@@ -1338,7 +1351,7 @@ tools = {
         [
             Dwn(
                 "Badlion Client", "", "BadlionClient-Setup.exe",
-                r"https://client-updates-cdn77.badlion.net/Badlion%20Client%20Setup%203.18.2.exe"
+                r"https://www.badlion.net/download/client/latest/windows"
             )
         ]
     ),
@@ -1493,8 +1506,8 @@ tools = {
         r"https://nodejs.org/",
         [
             Dwn(
-                "Node.js", "", "Node-Installer.msi",
-                r"https://nodejs.org/dist/v20.11.0/node-v20.11.0-x64.msi"
+                "Node.js 20.12.0 LTS", "", "Node-Installer.msi",
+                r"https://nodejs.org/dist/v20.12.0/node-v20.12.0-x64.msi"
             )
         ]
     ),
@@ -1626,18 +1639,6 @@ tools = {
             Dwn(
                 "Replugged", "", "Replugged-Installer.exe",
                 r"https://github.com/replugged-org/tauri-installer/releases/latest/download/replugged-installer-windows.exe"
-            )
-        ]
-    )
-
-    "a10-3" : Tool(
-        "SimpleDnsCrypt", "a10-3", 1, True,
-        lambda: "",
-        r"https://github.com/instantsc/SimpleDnsCrypt",
-        [
-            Dwn(
-                "SimpleDnsCrypt", "", "SimpleDNSCrypt_0.8.2.msi",
-                r"https://github.com/instantsc/SimpleDnsCrypt/releases/download/0.8.2/SimpleDNSCrypt_0.8.2.msi"
             )
         ]
     )
