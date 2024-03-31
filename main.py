@@ -30,7 +30,7 @@ from sys import exit
 
 c = Console()
 
-VERSION = "4.0"
+VERSION = "4.1"
 
 # Write and start (or not) a file
 def fWrite(run, filename, content):
