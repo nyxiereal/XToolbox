@@ -13,7 +13,10 @@ Made by <a href="https://discord.com/users/1207030093755453513">@xemu.lated</a>
 </br>
 
 ## 📑 Important
-If this program gets flagged as malware it's a false positive. The program is literally open-source, don't worry.
+If this program gets flagged as malware it's a false positive, look thru the source code (it's not that complicated) and see it for yourself. On why it's flagged:
+- It downloads and executes files.
+- it's packed with UPX.
+- It uses PyInstaller as a compiler.
 
 Nope, this program won't run on windows 7, 8 and 8.1 (or 32-bit systems). Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
 
