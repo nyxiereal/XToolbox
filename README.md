@@ -13,12 +13,11 @@ Made by <a href="https://discord.com/users/1207030093755453513">@xemu.lated</a>
 </br>
 
 ## 📑 Important
-If this program gets flagged as malware it's a false positive, look thru the source code (it's not that complicated) and see it for yourself. On why it's flagged:
-- It downloads and executes files.
-- it's packed with UPX.
-- It uses PyInstaller as a compiler.
-
-Nope, this program won't run on windows 7, 8 and 8.1 (or 32-bit systems). Adressing [Issue #9](https://github.com/xemulat/XToolbox/issues/9)
+1. This program will run __ONLY__ on Windows 10 and Windows 11, tested on 21h2, but should work fine on older versions.
+2. If this program gets flagged as malware it's a false positive, here's why:
+    1. It downloads and executes files.
+    2. it's packed with UPX.
+    3. It uses PyInstaller as a compiler.
 
 ## 📸 Screenshots
 ![WindowsTerminal_67xCqykePR](https://github.com/xemulat/XToolbox/assets/98595166/ab0103be-2f5c-4191-b62c-5bfd127b419c)
