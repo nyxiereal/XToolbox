@@ -27,25 +27,32 @@ Made by <a href="https://discord.com/users/1207030093755453513">@xemu.lated</a>
 ## 🖊️ Reviews
 *nice toolbox*
 
--`jonathah#1221`
+- `jonathah#1221`
 
 ------
 
 *Thanks bro, very useful softwhere*
 
--`@sennv`
+- `@sennv`
 
 ------
 
 *After using XTB my computer started having an erection*
 
--`@genc1337`
+- `@genc1337`
 
 ------
 
 *now I get more fps in minecraft lessgooo*
 
--`@arxify`
+- `@arxify`
+
+------
+
+*xtooblox made me gay, can recommend*
+
+- `@editdev`
+
 ## ⚒️ Building
 - Remember to put in your UPX path, not to the exe, just to the directory!
 
