@@ -83,7 +83,6 @@ class iScrape():
 
         # Initialize variables to store the latest version and filename
         latest_version = ''
-        latest_filename = ''
 
         # Loop through the filenames to find the latest version
         for i in txt:
@@ -810,7 +809,7 @@ tools = {
         r"https://archlinux.org/",
         [
             Dwn(
-                "ArchLinux.iso", "Latest", "Arch",
+                "ArchLinux.iso", "Latest", "ArchLinux.iso",
                 r"https://mirror.rackspace.com/archlinux/iso/latest/archlinux-x86_64.iso"
             )
         ]

@@ -48,7 +48,6 @@ def chooseQuotes():
     'tetris moment',
     'I identify as kilometers per second because I want to km/s',
     'WhatDoYouMeanShellShattered?!',
-    '10,000 viruses!!?!?!',
     'Cancelled.',
     ':trolley:',
     'luftvärnskanonvagn',
@@ -67,7 +66,9 @@ def chooseQuotes():
     'spotify album 2gANfR09MoBGPXKqYPTGw7'
     'Hi I have a Pixel 4a grapheneos and I need to make Discord most privacy friendly and secure as...',
     'Hey Ya!',
-    '"do not consider doing web dev it is not worth it" - @jenku'
+    '"do not consider doing web dev it is not worth it" - @jenku',
+    "PREPARE THYSELF",
+    "THY END IS NOW"
     ]
     return(choice(q))
 

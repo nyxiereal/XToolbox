@@ -4,12 +4,12 @@ from rich.table import Table
 from rich.text import Text
 
 # Downloader
+from rich.progress import Progress
 from requests.adapters import HTTPAdapter
 from os import remove, system, startfile
 from urllib.request import urlretrieve
 from urllib.parse import urlparse
 from requests import Session
-from tqdm import tqdm
 
 # Opening web pages
 from webbrowser import open as webopen
@@ -28,104 +28,124 @@ from lastversion import latest
 # Exiting from the program
 from sys import exit
 
+# Set Console object and version for the updater and UI
 c = Console()
+VERSION = "4.2"
 
-VERSION = "4.1"
+###### HELPER FUNCTIONS
 
-# Write and start (or not) a file
 def fWrite(run, filename, content):
+    """Write a file
+
+    Args:
+        run (int): Controls if the file will be ran
+        filename (str): File name
+        content (str): Content of the file
+    """
     fp = open(filename, 'w')
     fp.write(content)
     fp.close()
     if run == 1: startfile(filename)
 
-# Run a command as powershell
-def runAsPowershell(command, filename):
-    fWrite(1, f"{filename}.bat", r'@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "'+command+'"')
-
 # Clear the display
 def cls():
     system('cls')
 
-# Print text in a color
-def cl(color, text):
-    if color == 1:
-        return(f'[red]{text}[/red]')
-    elif color == 2:
+# Color helpers and shi
+class cl():
+    def yellow(text):
         return(f'[yellow]{text}[/yellow]')
-    else:
-        return(f'[green]{text}[/green]')
 
-# Printing helper
 class Printer():
-    def sys(clr, text):
-        if clr == 1:
-            c.print(f'[green][✓] {text}[/green]')
-        elif clr == 2:
-            c.print(f'[yellow][?] {text}[/yellow]')
-        else:
-            c.print(f'[red][✗] {text}[/red]')
+    def green(text):
+        c.print(f'[green][✓] {text}[/green]')
+    def yellow(text):
+        c.print(f'[yellow][?] {text}[/yellow]')
+    def red(text):
+        c.print(f'[red][✗] {text}[/red]')
     def zpr(text):
         c.print(f'[blue][>] {text}[/blue]')
 
-# Very cool and good looking downloader
-def download(url, fnam, name):
-    try: # noice
-        if name == None:
+def download(url: str, fnam: str, name: str):
+    """Downloads a file with progress tracking
+
+    Args:
+        url (string): URL of the file to download
+        fnam (string): Filename for the outputted file
+        name (string): Name to show during download
+    """
+    try:
+        # None handler (null safety in Python)
+        if name is None:
             name = fnam
 
-        # Parse the URL and convert it to https.
+        # Force the URL to use HTTPS
         url = (urlparse(url))._replace(scheme='https').geturl()
-        # nice
+
+        # Add HTTPAdapter settings to increase download speed
         adapter = HTTPAdapter(max_retries=3,
-                              pool_connections=20,
-                              pool_maxsize=10)
+                            pool_connections=20,
+                            pool_maxsize=10)
 
         # Add headers to bypass simple robots.txt blocking
         headers = {'Accept-Encoding': 'gzip, deflate',
-                   'User-Agent': 'Mozilla/5.0',
-                   'cache_control': 'max-age=600',
-                   'connection': 'keep-alive'}
+                'User-Agent': 'Mozilla/5.0',
+                'Cache-Control': 'max-age=600',
+                'Connection': 'keep-alive'}
 
-        # Create a session and make a head request using it
+        # Create a new Session object
         session = Session()
 
-        # Mount the HTTP adapter to the session.
+        # Force the URL to use HTTPS and HTTPAdapter options
         session.mount('https://', adapter)
 
+        # Make a head request and get the filesize
         response = session.head(url, headers=headers)
-
-        # Get the total size of the file
         total_size = int(response.headers.get("content-length", 0))
 
+        # Actually get the file contents
         r = session.get(url, stream=True, headers=headers)
 
-        progress_bar = tqdm(total=total_size, unit='iB', unit_scale=True, bar_format='{desc}: {percentage:3.0f}% │ {bar} │ {n_fmt} / {total_fmt} ║ {elapsed} ─ {remaining} │ {rate_fmt}')
+        # Init the progress tracking task and give it an ID
+        progress = Progress()
 
-        with open(fnam, 'wb') as file:
-            for data in r.iter_content(4096):
-                progress_bar.update(len(data))
-                file.write(data)
-
-            # Close the progress bar and print a message when the download is complete.
-            progress_bar.close()
+        # Open the file and write content to it + update the progress bar
+        with progress:
+            task_id = progress.add_task(f"[light blue]Downloading {name}...", total=total_size)
+            with open(fnam, 'wb') as file:
+                for data in r.iter_content(1024):
+                    file.write(data)
+                    progress.update(task_id, advance=len(data))
 
     except KeyboardInterrupt:
-        progress_bar.close()
-        Printer.sys(0,'Aborting!')
+        # Just remove the file if the download gets cancelled
+        Printer.red('Aborting!')
         remove(fnam)
 
 def updater():
-    up = latest("xemulat/XToolBox")
-    if VERSION < str(up):
-        Printer.zpr(f'New version available: {up}, do you want to update?')
-        if yn():
-            download('https://github.com/xemulat/XToolBox/releases/latest/download/XTBox.exe', f'XTBox.{up}.exe', 'XToolBox Update')
-            Printer.sys(1, 'Done!')
-            exit(startfile(f'XTBox.{up}.exe'))
+    """Check for updates
+    """
+    try:
+        up = latest("nyxiereal/XToolBox")
+        if VERSION < str(up):
+            Printer.zpr(f'New version available: {up}, do you want to update?')
+            if yn():
+                download('https://github.com/nyxiereal/XToolBox/releases/latest/download/XTBox.exe', f'XTBox.{up}.exe', 'XToolBox Update')
+                Printer.green('Done!')
+                exit(startfile(f'XTBox.{up}.exe'))
+    except:
+        Printer.green('Done!')
 
 # function to reduce code when using interpreter() page 97
 def yn(prompt=""):
+    """Simple yes/no prompt
+
+    Args:
+        prompt (str, optional): Anything you want to display. Defaults to "".
+
+    Returns:
+        bool: Return True or False.
+    """
     prompt += f"([green]Y[/green]/[red]n[/red]): "
     goodInput, YNvalue = False, False
     while not goodInput:
@@ -187,6 +207,13 @@ def multiChoose(tool, prompt):
     return index
 
 def dl(url, urlr, name):
+    """Helper to download files
+
+    Args:
+        url (str): URL to the file
+        urlr (str): File name
+        name (str): Name
+    """
     # Before downloading files, check if the url contains a version-code
     if '%UBUNTUVERSION%' in url:
         url = url.replace('%UBUNTUVERSION%', iScrape.ubuntu())
@@ -223,20 +250,18 @@ def dl(url, urlr, name):
             if yn(f"Run {urlr}?"): 
                 startfile(urlr)
     except:
-        Printer.sys(0, "ERROR 3: Can't download file from the server...")
+        Printer.red( "ERROR 3: Can't download file from the server...")
     
     getpass("\n... press ENTER to continue ...", stream=None)
     pageDisplay(last)
 
-# runAsPowershell() wrapper
+# Nyaboom dirty fix
 def pwsh(cmd, name):
     c.print(f"XTBox will run the following command as powershell:\n\t{cmd}")
     if not yn("Approve?"): return
-    runAsPowershell(cmd, name)
+    system(cmd)
 
-###### random stuff
-cls()
-
+# If it ain't broke, don't fix it!
 def checkforlinks(inp):
     if r'%GHOSTSPECTRE%' in inp:
         return(iScrape.ghostSpectre())
@@ -273,7 +298,7 @@ def helpe():
             f"│  99 │ Exit                                            │\n"
             f"├───────────────────────────────────────────────────────┤\n"
             f"│ Color  │ Meaning                                      │\n"
-            f"│ {cl(2, 'YELLOW')} │ Advanced Option                              │\n"
+            f"│ {cl.yellow('YELLOW')} │ Advanced Option                              │\n"
             f"├───────────────────────────────────────────────────────┤\n"
             f"│ Error │ Explanation                                   │\n"
             f"│   1   │ File already exists                           │\n"
@@ -296,25 +321,6 @@ def interpreter(page, prompt="> "):
     # if user inputs 99, exit the program
     if choose == "99":
         exit()
-        
-    if choose == "peggle":
-        download('http://xemu.top/files/peggle.7z', 'peggle.7z', 'Peggle Deluxe')
-    
-    if choose == "fast":
-        cls()
-        c.print("  .-;':':'-.")
-        c.print(" {'.'.'.'.'.}")
-        c.print("  )        '`.")
-        c.print(" '-. ._ ,_.-='")
-        c.print("   `). ( `);(")
-        c.print("   ('. .)(,'.)")
-        c.print("    ) ( ,').(")
-        c.print("   ( .').'(').")
-        c.print("   .) (' ).('")
-        c.print("    '  ) (  ).")
-        c.print("     .'( .)'")
-        c.print("       .).'")
-        input('jelelfisg')
 
     # if user inputs h, open help
     if choose == "h" and page != 0 :
@@ -416,8 +422,9 @@ def pageDisplay(page):
     global last, welcome
     last = page
     cls()
+    # Show the predefined "quote" only the first time the program is ran.
     if welcome == 0:
-        table = Table(title=f"XToolBox | v{VERSION}, Made by Xemulated.", show_footer=True)
+        table = Table(title=f"XToolBox | v{VERSION}, Made by Nyxie.", show_footer=True)
         welcome = 1
     else:
         table = Table(title=f"XToolBox | {chooseQuotes()}", show_footer=True)
@@ -435,11 +442,12 @@ def pageDisplay(page):
     interpreter(page)
 
 # init
+cls()
 updater()
 welcome = 0
 while True:
     try:
         pageDisplay(1)
-    except KeyboardInterrupt: # NICE
+    except KeyboardInterrupt:
         print('bye!')
         exit()
