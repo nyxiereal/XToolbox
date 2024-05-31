@@ -7,7 +7,7 @@
 </br>
 please donate, i need to feed my 7 kids and 3 wifes
 </br>
-Made by <a href="https://discord.com/users/1207030093755453513">@xemu.lated</a>
+Made by <a href="https://discord.com/users/1242567443742986373">@nyxiereal</a>
 </br>
 <strong>Message me before sending a friend request, my dms are open.</strong>
 </br>
