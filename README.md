@@ -1,7 +1,7 @@
 <p align="center">
 <strong>XToolBox</strong>
 </br>
-<a href="https://xem.lol/xtoolbox">New Site</a> | <a href="https://discord.com/invite/sVRWsFYu7S">Discord</a>
+<a href="[https://discord.com/invite/sVRWsFYu7S](https://discord.gg/sSUzWhvB6d)">Discord</a>
 </br>
 <strong>A toolbox full of Windows 11 and 10 debloating utilities!</strong>
 </br>
