@@ -61,7 +61,6 @@ def chooseQuotes() -> str:
         "FREE BOBUX GENERATOR!?!?!",
         "sorry can't help it just a scorpio",
         '"bitch" -@danilwhale',
-        '"amogus" -@martinishere',
         '"xtooblox made me pregnant" -@editdev',
         '"basketmball" -@cute.eeper',
         "UEE 😭🥺💧Eu💧 💧 E E 😭😭 E EUE 🥺🥺😭 UUUU 😭🥺💧🥺😭ue💧 ee😭🥺💧 ue🥺 e e e😭. e💧🥺😭Uueuuue.",
