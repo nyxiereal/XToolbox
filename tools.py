@@ -71,6 +71,8 @@ def chooseQuotes() -> str:
         '"do not consider doing web dev it is not worth it" - @jenku',
         "PREPARE THYSELF",
         "THY END IS NOW",
+        "plap guy...",
+        "gayass? i find it quite straight",
     ]
     return choice(quotes)
 
