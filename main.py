@@ -33,6 +33,8 @@ logging.basicConfig(
     format="[%(asctime)s] [%(levelname)s] %(message)s",
 )
 
+logging.info(f"Starting XToolBox v{VERSION}")
+
 
 # I use Linux, so I can't use startfile
 def startfile(file):
@@ -140,6 +142,7 @@ def download(url: str, fnam: str, name: str):
 
 def updater():
     """Check for updates"""
+    logging.info(f"Checking for udpates...")
     try:
         up = latest("nyxiereal/XToolBox")
         if VERSION < str(up):
@@ -150,10 +153,17 @@ def updater():
                     f"XTBox.{up}.exe",
                     "XToolBox Update",
                 )
-                Printer.green("Done!")
+                logging.info(f"Update downloaded, nwe version is {up}")
                 exit(startfile(f"XTBox.{up}.exe"))
     except:
-        Printer.green("Done!")
+        logging.warning("Couldn't check for updates")
+        Printer.red(
+            "Couldn't check for updates, this means you might be offline, do you still want to continue"
+        )
+        if yn():
+            pass
+        else:
+            exit()
 
 
 # function to reduce code when using interpreter() page 97
@@ -547,7 +557,6 @@ def pageDisplay(page):
 
 
 # init
-cls()
 updater()
 welcome = 0
 while True:
