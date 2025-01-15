@@ -1,11 +1,13 @@
 # Standard library imports
 from os import remove, system  # startfile # Linux moment
+from os.path import isfile
 from sys import exit
 from time import sleep
 from getpass import getpass
 from urllib.request import urlretrieve
 from urllib.parse import urlparse
 from webbrowser import open as webopen
+import logging
 
 # Third-party imports
 from rich.console import Console
@@ -24,9 +26,17 @@ from xtools import tools, showInfo, iScrape
 c = Console()
 VERSION = "4.2"
 
+# Configure logging
+logging.basicConfig(
+    filename="xtoolbox.log",
+    level=logging.INFO,
+    format="[%(asctime)s] [%(levelname)s] %(message)s",
+)
 
+
+# I use Linux, so I can't use startfile
 def startfile(file):
-    print(file, " started")
+    logging.info(f"Started file: {file}")
 
 
 ###### HELPER FUNCTIONS
@@ -34,8 +44,10 @@ def startfile(file):
 
 def fWrite(run: str, filename: str, content: str) -> None:
     """Write content to a file."""
+    logging.info(f"Writing to file: {filename}")
     with open(filename, "w") as file:
         file.write(content)
+    logging.info(f"Finished writing to file: {filename}")
 
 
 # Clear the display
@@ -79,6 +91,8 @@ def download(url: str, fnam: str, name: str):
         # Force the URL to use HTTPS
         url = (urlparse(url))._replace(scheme="https").geturl()
 
+        logging.info(f"Starting download for {fnam} from {url}...")
+
         # Add HTTPAdapter settings to increase download speed
         adapter = HTTPAdapter(max_retries=3, pool_connections=20, pool_maxsize=10)
 
@@ -119,7 +133,9 @@ def download(url: str, fnam: str, name: str):
     except KeyboardInterrupt:
         # Just remove the file if the download gets cancelled
         Printer.red("Aborting!")
-        remove(fnam)
+        logging.info(f"Aborted file download for {fnam}!")
+        if isfile(fnam):
+            remove(fnam)
 
 
 def updater():
@@ -150,7 +166,7 @@ def yn(prompt=""):
     Returns:
         bool: Return True or False.
     """
-    prompt += f"([green]Y[/green]/[red]n[/red]): "
+    prompt += f"\n([green]Y[/green]/[red]n[/red]): "
     goodInput, YNvalue = False, False
     while not goodInput:
         goodInput, YNvalue = interpreter(97, prompt)
@@ -262,7 +278,7 @@ def dl(url, urlr, name):
         url = url.replace("%CACHYVERSION%", iScrape.cachy())
 
     # make sure user understands what they are about do download
-    c.print(f"XTBox will download an executable from:\n\t{url}")
+    c.print(f"XToolBox will download an executable from:\n\t{url}")
     if not yn("Approve?"):
         return
 
@@ -538,5 +554,4 @@ while True:
     try:
         pageDisplay(1)
     except KeyboardInterrupt:
-        print("bye!")
-        exit()
+        exit(print("\nbye!"))
