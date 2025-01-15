@@ -1,1 +1,6 @@
-.vscode/PythonImportHelper-v2-Completion.json
+bin
+.vscode
+lib
+lib64
+include
+pyvenv.cfg
