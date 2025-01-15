@@ -4,3 +4,6 @@ lib
 lib64
 include
 pyvenv.cfg
+xtoolbox.log
+.pyc
+__pycache__

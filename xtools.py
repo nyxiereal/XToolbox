@@ -108,12 +108,15 @@ class iScrape:
 
     def cachy():
         r = get(
-            "https://sourceforge.net/projects/cachyos-arch/files/gui-installer/kde/"
+            "https://cachyos.org/download/",
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+            },
         )
-        soup = BeautifulSoup(r.text, "html.parser")
-        txt = soup.findAll("span", class_="name")
+        # find every case matching https:\/\/cdn77.cachyos.org\/ISO\/handheld\/[0-9]+\/
+        txt = findall(r"https:\/\/cdn77.cachyos.org\/ISO\/handheld\/[0-9]+\/", r.text)
 
-        return txt[0].text
+        return txt[0].split("handheld/")[1].split("/")[0]
 
     def ghostSpectre():
         headers = {
@@ -1109,16 +1112,16 @@ tools = {
         r"https://cachyos.org/",
         [
             Dwn(
-                "CachyOS KDE",
-                "KDE Plasma",
-                "CachyOS-KDE.iso",
-                r"https://mirror.cachyos.org/ISO/kde/%CACHYVERSION%/cachyos-kde-linux-%CACHYVERSION%.iso",
+                "CachyOS Desktop",
+                "Desktop",
+                "CachyOS-Desktop.iso",
+                r"https://cdn77.cachyos.org/ISO/desktop/%CACHYVERSION%/cachyos-desktop-linux-%CACHYVERSION%.iso",
             ),
             Dwn(
-                "CachyOS GNOME",
-                "GNOME",
-                "CachyOS-GNOME.iso",
-                r"https://mirror.cachyos.org/ISO/gnome/%CACHYVERSION%/cachyos-gnome-linux-%CACHYVERSION%.iso",
+                "CachyOS Handheld",
+                "Handheld",
+                "CachyOS-Handheld.iso",
+                r"https://cdn77.cachyos.org/ISO/desktop/%CACHYVERSION%/cachyos-desktop-linux-%CACHYVERSION%.iso",
             ),
         ],
     ),
@@ -1134,13 +1137,14 @@ tools = {
                 "Windows 11 x64",
                 "",
                 "Windows11-x64.iso",
+                # TODO: port from https://msdl.gravesoft.dev/#3113
                 r"https://dl.bobpony.com/windows/11/en-us_windows_11_23h2_x64.iso",
             ),
             Dwn(
-                "Windows 11 ARM64",
+                "Windows 11 LTSC",
                 "",
-                "Windows11-ARM64.iso",
-                r"https://dl.bobpony.com/windows/11/en-us_windows_11_23h2_arm64.iso",
+                "Windows11-LTSC.iso",
+                r"https://drive.massgrave.dev/en-us_windows_11_iot_enterprise_ltsc_2024_x64_dvd_f6b14814.iso",
             ),
         ],
     ),
@@ -1156,45 +1160,17 @@ tools = {
                 "Windows 10 x64",
                 "",
                 "Windows10-x64.iso",
-                r"https://dl.bobpony.com/windows/10/en-us_windows_10_22h2_x64.iso",
+                r"https://drive.massgrave.dev/en-gb_windows_10_consumer_editions_version_22h2_updated_nov_2024_x64_dvd_3eeacab9.iso",
             ),
             Dwn(
-                "Windows 10 x86",
+                "Windows 10 LTSC (recommended)",
                 "",
-                "Windows10-x86.iso",
-                r"https://dl.bobpony.com/windows/10/en-us_windows_10_22h2_x86.iso",
-            ),
-            Dwn(
-                "Windows 10 ARM64",
-                "",
-                "Windows10-ARM64.iso",
-                r"https://dl.bobpony.com/windows/10/en-us_windows_10_22h2_arm64.iso",
+                "Windows10-LTSC.iso",
+                r"https://drive.massgrave.dev/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f.iso",
             ),
         ],
     ),
     "w3-2": Tool(
-        "Windows 10 LTSC",
-        "w3-2",
-        1,
-        True,
-        lambda: "",
-        r"Windows 10 LTSC",
-        [
-            Dwn(
-                "Windows 10 IoT Enterprise LTSC 2021",
-                "",
-                "Windows10-IoT-LTSC.iso",
-                r"https://drive.massgravel.workers.dev/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f.iso",
-            ),
-            Dwn(
-                "Windows 10 Enterprise LTSC 2021",
-                "",
-                "Windows10-LTSC.iso",
-                r"https://drive.massgravel.workers.dev/en-us_windows_10_enterprise_ltsc_2021_x64_dvd_d289cf96.iso",
-            ),
-        ],
-    ),
-    "w4-2": Tool(
         "Windows 8.1",
         "w4-2",
         1,
@@ -1216,7 +1192,7 @@ tools = {
             ),
         ],
     ),
-    "w5-2": Tool(
+    "w4-2": Tool(
         "Windows 8",
         "w5-2",
         1,
@@ -1238,7 +1214,7 @@ tools = {
             ),
         ],
     ),
-    "w6-2": Tool(
+    "w5-2": Tool(
         "Windows 7",
         "w6-2",
         1,
