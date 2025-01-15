@@ -5,7 +5,7 @@
 </br>
 <strong>A toolbox full of Windows 11 and 10 debloating utilities!</strong>
 </br>
-please donate, i need to feed my 7 kids and 3 wifes
+This project is on it's last legs, I've switched to Arch Linux, so I can't actively maintain this project as "good" as i would on Windows.
 </br>
 Made by <a href="https://discord.com/users/1242567443742986373">@nyxiereal</a>
 </br>
