@@ -1,5 +1,4 @@
 requests
-colorama
 lastversion
 rich
 psutil
