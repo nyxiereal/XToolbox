@@ -1,5 +1,4 @@
 requests
-lastversion
 rich
 psutil
 tqdm

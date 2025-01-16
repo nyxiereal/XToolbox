@@ -7,7 +7,7 @@ from getpass import getpass
 from urllib.request import urlretrieve
 from urllib.parse import urlparse
 from webbrowser import open as webopen
-import logging
+from logging import warning, info, basicConfig, INFO
 
 # Third-party imports
 from rich.console import Console
@@ -16,7 +16,6 @@ from rich.text import Text
 from rich.progress import Progress
 from requests.adapters import HTTPAdapter
 from requests import Session
-from lastversion import latest
 
 # Local imports
 from tools import chooseQuotes, footers, columns
@@ -24,21 +23,38 @@ from xtools import tools, showInfo, iScrape
 
 # Set Console object and version for the updater and UI
 c = Console()
-VERSION = "4.2"
+VERSION = "4.3"
 
 # Configure logging
-logging.basicConfig(
+basicConfig(
     filename="xtoolbox.log",
-    level=logging.INFO,
+    level=INFO,
     format="[%(asctime)s] [%(levelname)s] %(message)s",
 )
 
-logging.info(f"Starting XToolBox v{VERSION}")
+info(f"Starting XToolBox v{VERSION}")
+
+# Add HTTPAdapter settings to increase download speed
+adapter = HTTPAdapter(max_retries=3, pool_connections=20, pool_maxsize=10)
+
+# Add headers to bypass simple robots.txt blocking
+headers = {
+    "Accept-Encoding": "gzip, deflate",
+    "User-Agent": "Mozilla/5.0",
+    "Cache-Control": "max-age=600",
+    "Connection": "keep-alive",
+}
+
+# Create a new Session object
+session = Session()
+
+# Force the URL to use HTTPS and HTTPAdapter options
+session.mount("https://", adapter)
 
 
 # I use Linux, so I can't use startfile
 def startfile(file):
-    logging.info(f"Started file: {file}")
+    info(f"Started file: {file}")
 
 
 ###### HELPER FUNCTIONS
@@ -46,10 +62,10 @@ def startfile(file):
 
 def fWrite(run: str, filename: str, content: str) -> None:
     """Write content to a file."""
-    logging.info(f"Writing to file: {filename}")
+    info(f"Writing to file: {filename}")
     with open(filename, "w") as file:
         file.write(content)
-    logging.info(f"Finished writing to file: {filename}")
+    info(f"Finished writing to file: {filename}")
 
 
 # Clear the display
@@ -93,24 +109,7 @@ def download(url: str, fnam: str, name: str):
         # Force the URL to use HTTPS
         url = (urlparse(url))._replace(scheme="https").geturl()
 
-        logging.info(f"Starting download for {fnam} from {url}...")
-
-        # Add HTTPAdapter settings to increase download speed
-        adapter = HTTPAdapter(max_retries=3, pool_connections=20, pool_maxsize=10)
-
-        # Add headers to bypass simple robots.txt blocking
-        headers = {
-            "Accept-Encoding": "gzip, deflate",
-            "User-Agent": "Mozilla/5.0",
-            "Cache-Control": "max-age=600",
-            "Connection": "keep-alive",
-        }
-
-        # Create a new Session object
-        session = Session()
-
-        # Force the URL to use HTTPS and HTTPAdapter options
-        session.mount("https://", adapter)
+        info(f"Starting download for {fnam} from {url}...")
 
         # Make a head request and get the filesize
         response = session.head(url, headers=headers)
@@ -135,16 +134,20 @@ def download(url: str, fnam: str, name: str):
     except KeyboardInterrupt:
         # Just remove the file if the download gets cancelled
         Printer.red("Aborting!")
-        logging.info(f"Aborted file download for {fnam}!")
+        info(f"Aborted file download for {fnam}!")
         if isfile(fnam):
             remove(fnam)
 
 
 def updater():
     """Check for updates"""
-    logging.info(f"Checking for udpates...")
+    info(f"Checking for udpates...")
     try:
-        up = latest("nyxiereal/XToolBox")
+        r = session.get(
+            "https://api.github.com/repos/nyxiereal/XToolBox/releases", headers=headers
+        ).json()
+        up = r[0]["tag_name"].replace("v", "")
+
         if VERSION < str(up):
             Printer.zpr(f"New version available: {up}, do you want to update?")
             if yn():
@@ -153,10 +156,10 @@ def updater():
                     f"XTBox.{up}.exe",
                     "XToolBox Update",
                 )
-                logging.info(f"Update downloaded, nwe version is {up}")
+                info(f"Update downloaded, nwe version is {up}")
                 exit(startfile(f"XTBox.{up}.exe"))
     except:
-        logging.warning("Couldn't check for updates")
+        warning("Couldn't check for updates")
         Printer.red(
             "Couldn't check for updates, this means you might be offline, do you still want to continue"
         )

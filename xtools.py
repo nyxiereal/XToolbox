@@ -2,13 +2,17 @@
 from re import findall, search
 
 # Third-party imports
-from lastversion import latest
 from getpass import getpass
 from rich.console import Console
 from requests import get
 from bs4 import BeautifulSoup
 
 c = Console()
+
+
+def latest(meow):
+    r = get(f"https://api.github.com/repos/{meow}/releases").json()
+    return r[0]["tag_name"]
 
 
 class iScrape:
