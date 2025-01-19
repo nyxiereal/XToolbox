@@ -1,4 +1,4 @@
 requests
 rich
 psutil
-tqdm
+BeautifulSoup4

@@ -2,7 +2,6 @@
 from re import findall, search
 
 # Third-party imports
-from getpass import getpass
 from rich.console import Console
 from requests import get
 from bs4 import BeautifulSoup
@@ -209,7 +208,7 @@ def showInfo(tool: str) -> None:
     else:
         c.print(f"\t{tool.info}")
 
-    getpass("\n... press ENTER to continue ...", stream=None)
+    input("\nPress ENTER to continue...")
 
 
 class Tool:

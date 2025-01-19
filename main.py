@@ -3,7 +3,6 @@ from os import remove, system  # startfile # Linux moment
 from os.path import isfile
 from sys import exit
 from time import sleep
-from getpass import getpass
 from urllib.request import urlretrieve
 from urllib.parse import urlparse
 from webbrowser import open as webopen
@@ -303,7 +302,7 @@ def dl(url, urlr, name):
     except:
         Printer.red("ERROR 3: Can't download file from the server...")
 
-    getpass("\n... press ENTER to continue ...", stream=None)
+    input("\nPress ENTER to continue...")
     pageDisplay(last)
 
 
@@ -411,7 +410,7 @@ def interpreter(page, prompt="> "):
         c.print("'i' is not a valid command, if you want info type:")
         c.print("\ti <CODE>")
         c.print("For example: i d2")
-        getpass("\n... press ENTER to continue ...", stream=None)
+        input("\nPress ENTER to continue...")
         pageDisplay(page)
 
     # page 0 (help)
