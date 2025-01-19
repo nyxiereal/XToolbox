@@ -114,6 +114,10 @@ def download(url: str, fnam: str, name: str):
         response = session.head(url, headers=headers)
         total_size = int(response.headers.get("content-length", 0))
 
+        print(
+            f"↓ Downloading {name}, file size {round((total_size / 1024 / 1024), 1)}MB"
+        )
+
         # Actually get the file contents
         r = session.get(url, stream=True, headers=headers)
 
@@ -122,9 +126,7 @@ def download(url: str, fnam: str, name: str):
 
         # Open the file and write content to it + update the progress bar
         with progress:
-            task_id = progress.add_task(
-                f"[light blue]Downloading {name}...", total=total_size
-            )
+            task_id = progress.add_task(f"→", total=total_size)
             with open(fnam, "wb") as file:
                 for data in r.iter_content(1024):
                     file.write(data)
@@ -290,7 +292,7 @@ def dl(url, urlr, name):
         url = url.replace("%CACHYVERSION%", iScrape.cachy())
 
     # make sure user understands what they are about do download
-    c.print(f"XToolBox will download an executable from:\n\t{url}")
+    c.print(f"XToolBox will download an executable from:\n → {url}")
     if not yn("Approve?"):
         return
 
@@ -299,6 +301,8 @@ def dl(url, urlr, name):
         if urlr[-3:] != "iso":
             if yn(f"Run {urlr}?"):
                 startfile(urlr)
+    except KeyboardInterrupt:
+        pass
     except:
         Printer.red("ERROR 3: Can't download file from the server...")
 
