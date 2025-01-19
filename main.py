@@ -1,5 +1,5 @@
 # Standard library imports
-from os import remove, system  # startfile # Linux moment
+from os import remove, system, startfile
 from os.path import isfile
 from sys import exit
 from time import sleep
@@ -49,11 +49,6 @@ session = Session()
 
 # Force the URL to use HTTPS and HTTPAdapter options
 session.mount("https://", adapter)
-
-
-# I use Linux, so I can't use startfile
-def startfile(file):
-    info(f"Started file: {file}")
 
 
 ###### HELPER FUNCTIONS
