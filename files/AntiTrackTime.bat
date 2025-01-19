@@ -1,5 +1,10 @@
 @echo off
-:: https://privacy.sexy — v0.11.4 — Wed, 05 Oct 2022 06:23:18 GMT
+:: https://privacy.sexy — v0.13.7 — Sun, 19 Jan 2025 00:34:07 GMT
+:: Ensure PowerShell is available
+where PowerShell >nul 2>&1 || (
+    echo PowerShell is not available. Please install or enable PowerShell.
+    pause & exit 1
+)
 :: Ensure admin privileges
 fltmc >nul 2>&1 || (
     echo Administrator privileges are required.
@@ -9,12 +14,14 @@ fltmc >nul 2>&1 || (
     )
     exit 0
 )
+:: Initialize environment
+setlocal EnableExtensions DisableDelayedExpansion
 
 
 :: ----------------------------------------------------------
-:: ---------Change NTP (time) server to pool.ntp.org---------
+:: ---------Set NTP (time) server to `pool.ntp.org`----------
 :: ----------------------------------------------------------
-echo --- Change NTP (time) server to pool.ntp.org
+echo --- Set NTP (time) server to `pool.ntp.org`
 :: Configure time source
 w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org"
 :: Stop time service if running
@@ -28,5 +35,9 @@ w32tm /resync
 :: ----------------------------------------------------------
 
 
+:: Pause the script to view the final state
 pause
+:: Restore previous environment settings
+endlocal
+:: Exit the script successfully
 exit /b 0
