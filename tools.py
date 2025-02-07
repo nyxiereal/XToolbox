@@ -73,6 +73,7 @@ def chooseQuotes() -> str:
         "THY END IS NOW",
         "plap guy...",
         "gayass? i find it quite straight",
+        '"amogus" -@martinishere',
     ]
     return choice(quotes)
 
