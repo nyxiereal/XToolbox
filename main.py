@@ -69,7 +69,7 @@ def fWrite(run: str, filename: str, content: str) -> None:
 
 # Clear the display
 def cls():
-    system("cls")
+    system("clear")
 
 
 # Color helpers and shi
@@ -292,7 +292,10 @@ def dl(url, urlr, name):
         url = url.replace("%CACHYVERSION%", iScrape.cachy())
 
     # make sure user understands what they are about do download
-    c.print(f"XToolBox will download an executable from:\n → {url}")
+    if ".exe" in url or ".zip" in url:
+        c.print(f"XToolBox will download an executable from:\n → {url}")
+    else:
+        c.print(f"XToolBox will download a file from:\n → {url}")
     if not yn("Approve?"):
         return
 
