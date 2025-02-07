@@ -1,6 +1,7 @@
 # XToolBox
 A toolbox full of Windows 10/11 debloating utilities.\
-Made by [Nyxie](https://nyx.fuckingbitch.eu), the project's site can be found [here](https://xtoolbox.fuckingbitch.eu).
+Made by [Nyxie](https://nyx.fuckingbitch.eu), the project's site can be found [here](https://xtoolbox.fuckingbitch.eu).\
+We also [have a Discord server](https://discord.gg/sSUzWhvB6d).
 
 ## 🚀 Quickstart
 1. Press Windows + R
@@ -9,15 +10,15 @@ Made by [Nyxie](https://nyx.fuckingbitch.eu), the project's site can be found [h
 4. You now have XToolBox running on your computer, pretty cool!
 
 ## 📑 Important
-1. This program will run __ONLY__ on Windows 10 and Windows 11, tested on 21h2, but should work fine on older versions.
-2. If this program gets flagged as malware it's a false positive, here's why:
+1. This program will run __ONLY__ on Windows 10 (tested on 22H2) and Windows 11 (tested on 24H2), it's not advised to use older version of Windows, like Windows 7 or Windows 8.1. If you are using these unsupported versions, please upgrade to a supported one or use Linux. I can't and won't prevent you from using XTB on an older version of Windows tho.
+2. If this program gets flagged as malware, it's a false positive, here's why:
     1. It downloads and executes files.
-    2. it's packed with UPX.
+    2. It's packed with UPX.
     3. It uses PyInstaller as a compiler.
 
 ## 📸 Screenshots
-![img1](image-1.png)
-![img2](image-2.png)
+![img1](.github/image-1.png)
+![img2](.github/image-2.png)
 
 
 ## 🖊️ Reviews
