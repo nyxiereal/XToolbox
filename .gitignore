@@ -7,3 +7,5 @@ pyvenv.cfg
 xtoolbox.log
 .pyc
 __pycache__
+node_modules
+bun.lockb

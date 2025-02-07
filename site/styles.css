@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+.font-code {
+    font-family: "Fira Code", monospace;
+}
+
+.font-noto-sans {
+    font-family: "Noto Sans", sans-serif;
+}
+
+@plugin "@catppuccin/tailwindcss";
+
+@theme inline {
+    --color-ctp-rosewater: rgba(var(--ctp-rosewater));
+    --color-ctp-flamingo: rgba(var(--ctp-flamingo));
+    --color-ctp-pink: rgba(var(--ctp-pink));
+    --color-ctp-mauve: rgba(var(--ctp-mauve));
+    --color-ctp-red: rgba(var(--ctp-red));
+    --color-ctp-maroon: rgba(var(--ctp-maroon));
+    --color-ctp-peach: rgba(var(--ctp-peach));
+    --color-ctp-yellow: rgba(var(--ctp-yellow));
+    --color-ctp-green: rgba(var(--ctp-green));
+    --color-ctp-teal: rgba(var(--ctp-teal));
+    --color-ctp-sky: rgba(var(--ctp-sky));
+    --color-ctp-sapphire: rgba(var(--ctp-sapphire));
+    --color-ctp-blue: rgba(var(--ctp-blue));
+    --color-ctp-lavender: rgba(var(--ctp-lavender));
+    --color-ctp-text: rgba(var(--ctp-text));
+    --color-ctp-subtext1: rgba(var(--ctp-subtext1));
+    --color-ctp-subtext0: rgba(var(--ctp-subtext0));
+    --color-ctp-overlay2: rgba(var(--ctp-overlay2));
+    --color-ctp-overlay1: rgba(var(--ctp-overlay1));
+    --color-ctp-overlay0: rgba(var(--ctp-overlay0));
+    --color-ctp-surface2: rgba(var(--ctp-surface2));
+    --color-ctp-surface1: rgba(var(--ctp-surface1));
+    --color-ctp-surface0: rgba(var(--ctp-surface0));
+    --color-ctp-base: rgba(var(--ctp-base));
+    --color-ctp-mantle: rgba(var(--ctp-mantle));
+    --color-ctp-crust: rgba(var(--ctp-crust));
+}
