@@ -265,19 +265,25 @@ class Tool:
 
 tools = {
     "d1-1": Tool(
-        "EchoX",
+        "WinScript",
         "d1-1",
         1,
         True,
         lambda: "",
-        r"https://github.com/UnLovedCookie/EchoX",
+        r"https://github.com/flick9000/winscript",
         [
             Dwn(
-                "EchoX",
+                "WinScript Portable",
                 "",
-                "EchoX.bat",
-                r"https://github.com/UnLovedCookie/EchoX/releases/latest/download/EchoX.bat",
-            )
+                "WinScript-Portable.exe",
+                r"https://github.com/flick9000/winscript/releases/latest/download/winscript-portable.exe",
+            ),
+            Dwn(
+                "WinScript Installer",
+                "",
+                "WinScript-Installer.exe",
+                r"https://github.com/flick9000/winscript/releases/latest/download/winscript-installer.exe",
+            ),
         ],
     ),
     "d2-1": Tool(

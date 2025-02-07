@@ -1,5 +1,5 @@
 # Standard library imports
-from os import remove, system, startfile
+from os import system, remove
 from os.path import isfile
 from sys import exit
 from time import sleep
@@ -20,9 +20,14 @@ from requests import Session
 from tools import chooseQuotes, footers, columns
 from xtools import tools, showInfo, iScrape
 
+
+def startfile(a):
+    print(a)
+
+
 # Set Console object and version for the updater and UI
 c = Console()
-VERSION = "4.3"
+VERSION = "4.4"
 
 # Configure logging
 basicConfig(
@@ -501,7 +506,7 @@ def interpreter(page, prompt="> "):
 def xget(ide):
     try:
         first = f"[bold][[/bold][blue][bold]{(ide.split('-')[0])[1:]}[/blue][/bold][bold]][/bold] {Text(tools[ide].name)}"
-        if ide in ["t1-1", "m6-2", "m7-2", "t3-2", "l4-3", "g2-3", "c6-3"]:
+        if ide in ["t1-1", "m6-2", "m7-2", "t3-2", "l4-3", "g2-3", "c6-3", "t7-1"]:
             return f"{first} [yellow]ADV[/yellow]"
         else:
             return first
