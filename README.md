@@ -1,20 +1,13 @@
-# 🗃️ Archived
-This tool has been archived for several reasons:
-
-1.  I no longer use Windows. I switched to Arch Linux about a year ago, and since then, it's been very annoying to develop, test, and build Windows software. Yes, virtual machines exist, but they just don't cut it for me.
-2.  I've lost interest in this software. I've been maintaining it for almost three years now, and I've simply grown bored.
-3.  I no longer have the time to develop XToolBox, mostly due to school work, personal life, and other projects.
-
-The site will stay up for the foreseeable future; I have no plans to stop hosting it.
-It's been a good run. Thank you for everything. ✌️
-
-\- Nyx
+# 🗃️ Unarchived
+Ever since I stopped working on XToolBox, I noticed the increasing need for debloaters, software that removes just plainly *shit* from the windows operating system.  Most of it is caused by windows 11 becoming an "*agentic OS*", basically micro$oft adding a bunch of useless ai "features" to an otherwise okay-ish operating system. I learned Dart/Flutter, and I feel comfortable taking on the task of completely rewriting the entire application from basically scratch, with new features, better looks, and a friendlier interface.
 
 # XToolBox
 A toolbox full of Windows 10/11 debloating utilities.\
-Made by [Nyxie](https://nyx.fuckingbitch.eu), the project's site can be found [here](https://xtoolbox.fuckingbitch.eu).
+Made by [Nyx](https://nyx.meowery.eu).
 
 ## 🚀 Quickstart
+> [!NOTE]
+> This doesn't work, as the site is offline, lmao
 1. Press Windows + R
 2. Type in `powershell` and press Enter
 3. Type in `irm https://xtoolbox.fuckingbitch.eu/get | iex` and press Enter
