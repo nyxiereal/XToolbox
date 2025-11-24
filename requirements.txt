@@ -1,4 +1,0 @@
-requests
-rich
-psutil
-BeautifulSoup4

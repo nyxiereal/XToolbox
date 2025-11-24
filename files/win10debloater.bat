@@ -1,1 +1,0 @@
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iwr -useb https://git.io/debloat|iex"

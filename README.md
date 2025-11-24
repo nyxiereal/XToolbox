@@ -1,14 +1,6 @@
-# 🗃️ Archived
-This tool has been archived for several reasons:
-
-1.  I no longer use Windows. I switched to Arch Linux about a year ago, and since then, it's been very annoying to develop, test, and build Windows software. Yes, virtual machines exist, but they just don't cut it for me.
-2.  I've lost interest in this software. I've been maintaining it for almost three years now, and I've simply grown bored.
-3.  I no longer have the time to develop XToolBox, mostly due to school work, personal life, and other projects.
-
-The site will stay up for the foreseeable future; I have no plans to stop hosting it.
-It's been a good run. Thank you for everything. ✌️
-
-\- Nyx
+> [!WARNING]
+> This branch is currently under development, if you want to help (I'm fine on my own, if you have suggestions, open an issue).  
+> The information below is incomplete and inaccurate.
 
 # XToolBox
 A toolbox full of Windows 10/11 debloating utilities.\

@@ -1,11 +1,3 @@
-bin
-.vscode
-lib
-lib64
-include
-pyvenv.cfg
-xtoolbox.log
-.pyc
-__pycache__
-node_modules
-bun.lockb
+.flutter-plugins-dependencies
+flutter_build
+build
