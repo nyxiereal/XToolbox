@@ -12,7 +12,6 @@ class UtilitiesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: const [
           _UtilitiesSectionTitle('System Utilities'),
-          SizedBox(height: 12),
           ToolCard(
             title: 'Utility',
             description: 'Description',

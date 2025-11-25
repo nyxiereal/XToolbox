@@ -13,7 +13,6 @@ class ToolsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: const [
           ToolSectionTitle('Developer Tools', icon: Icons.developer_mode),
-          SizedBox(height: 12),
           ToolCard(title: 'Tool', description: 'Description', icon: Icons.code),
           ToolCard(title: 'Tool', description: 'Description', icon: Icons.code),
           ToolCard(title: 'Tool', description: 'Description', icon: Icons.code),
