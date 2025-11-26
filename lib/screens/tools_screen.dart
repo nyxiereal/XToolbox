@@ -12,11 +12,11 @@ class ToolsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: const [
-          ToolSectionTitle('Developer Tools', icon: Icons.developer_mode),
+          ToolSectionTitle('Developer Tools'),
           ToolCard(title: 'Tool', description: 'Description', icon: Icons.code),
           ToolCard(title: 'Tool', description: 'Description', icon: Icons.code),
           ToolCard(title: 'Tool', description: 'Description', icon: Icons.code),
-          ToolSectionTitle('whatever', icon: Icons.extension),
+          ToolSectionTitle('whatever'),
           ToolCard(title: 'Tool', description: 'Description', icon: Icons.code),
           ToolCard(title: 'Tool', description: 'Description', icon: Icons.code),
         ],
