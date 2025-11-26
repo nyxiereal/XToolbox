@@ -1,0 +1,45 @@
+on:
+    # vvv This will be enabled when we're ready to release usable alpha versions vvv
+    #push:
+    #    branches:
+    #        - master
+    #        - next
+    #          - main
+    #pull_request:
+    #    branches:
+    #        - master
+    #        - next
+    #          - main
+    workflow_dispatch:
+
+name: CI Build
+
+jobs:
+    build:
+        runs-on: windows-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Set Up Java
+              uses: actions/setup-java@v5
+              with:
+                  distribution: "temurin"
+                  java-version: "17"
+
+            - name: Set up Flutter
+              uses: subosito/flutter-action@v2
+              with:
+                  channel: stable
+
+            - name: Install Dependencies
+              run: flutter pub get
+
+            - name: Run Build
+              run: flutter build windows --release
+
+            - name: Upload Build Artifacts
+              uses: actions/upload-artifact@v3
+              with:
+                  name: windows-build
+                  path: build/windows/runner/Release
