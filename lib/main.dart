@@ -6,6 +6,7 @@ import 'package:dynamic_color/dynamic_color.dart';
 
 import 'navigation.dart';
 import 'utils/theme_provider.dart';
+import 'provider/asset_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,8 +15,11 @@ Future<void> main() async {
     await SystemTheme.accentColor.load();
   }
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => AssetProvider()),
+      ],
       child: const MyApp(),
     ),
   );

@@ -37,12 +37,11 @@ class _ToolCardState extends State<ToolCard> {
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
           onTap: widget.onTap,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            padding: const EdgeInsets.all(12),
+          child: Container(
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: _isHovered
-                  ? primaryColor.withValues(alpha: 0.12)
+                  ? primaryColor.withValues(alpha: 0.08)
                   : theme.cardColor.withValues(alpha: 0.95),
               borderRadius: _cardBorderRadius,
             ),

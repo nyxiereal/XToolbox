@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
-import 'screens/tools_screen.dart';
-import 'screens/utilities_screen.dart';
+import 'screens/browse_apps_screen.dart';
 import 'screens/about_screen.dart';
 import 'screens/settings_screen.dart';
 
@@ -17,8 +16,7 @@ class _NavigationPageState extends State<NavigationPage> {
 
   static const _pages = <Widget>[
     HomeScreen(),
-    ToolsScreen(),
-    UtilitiesScreen(),
+    BrowseAppsScreen(),
     AboutScreen(),
     SettingsScreen(),
   ];
@@ -46,14 +44,9 @@ class _NavigationPageState extends State<NavigationPage> {
                         label: Text('Dashboard'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.build_outlined),
-                        selectedIcon: Icon(Icons.build),
-                        label: Text('Tools'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.handyman_outlined),
-                        selectedIcon: Icon(Icons.handyman),
-                        label: Text('Utilities'),
+                        icon: Icon(Icons.apps_outlined),
+                        selectedIcon: Icon(Icons.apps),
+                        label: Text('Browse Apps'),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.info_outline),
@@ -88,14 +81,9 @@ class _NavigationPageState extends State<NavigationPage> {
                 label: 'Dashboard',
               ),
               NavigationDestination(
-                icon: Icon(Icons.build_outlined),
-                selectedIcon: Icon(Icons.build),
-                label: 'Tools',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.handyman_outlined),
-                selectedIcon: Icon(Icons.handyman),
-                label: 'Utilities',
+                icon: Icon(Icons.apps_outlined),
+                selectedIcon: Icon(Icons.apps),
+                label: 'Browse Apps',
               ),
               NavigationDestination(
                 icon: Icon(Icons.info_outline),
