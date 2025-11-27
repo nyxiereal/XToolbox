@@ -28,7 +28,7 @@
         "id": "lively_wallpaper",
         "name": "Lively Wallpaper",
         "description": "Free and open-source software that allows users to set animated desktop wallpapers and screensavers.",
-        "category": "tools",
+        "category": "customization",
         "icon": "wallpaper",
         "author": "rocksdanister",
         "homepage": "https://github.com/rocksdanister/lively",
@@ -204,55 +204,19 @@
         ]
     },
     {
-        "id": "sophiapp",
-        "name": "SophiApp",
-        "description": "https://github.com/Sophia-Community/SophiApp",
-        "category": "tools",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/Sophia-Community/SophiApp",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "SophiApp",
-                "filename": "SophiApp.zip",
-                "url": "https://github.com/Sophia-Community/SophiApp/releases/download/1.0.97/SophiApp.zip",
-                "needs_extraction": true,
-                "executable_path": "SophiApp"
-            }
-        ]
-    },
-    {
         "id": "privacysexy",
         "name": "PrivacySexy",
         "description": "https://privacy.sexy/",
-        "category": "tools",
-        "icon": "download",
-        "author": "",
+        "category": "privacy",
+        "icon": "shield",
+        "author": "undergroundwires",
         "homepage": "https://privacy.sexy/",
         "install_methods": [
             {
                 "type": "direct_download",
                 "label": "PrivacySexy",
                 "filename": "PrivacySexy-setup.exe",
-                "url": "https://github.com/undergroundwires/privacy.sexy/releases/latest/download/privacy.sexy-Setup-0.13.8.exe"
-            }
-        ]
-    },
-    {
-        "id": "choco",
-        "name": "Choco",
-        "description": "https://github.com/xemulat/XToolbox/blob/main/files/choco.bat",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/xemulat/XToolbox/blob/main/files/choco.bat",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "Choco",
-                "filename": "choco.bat",
-                "url": "https://raw.githubusercontent.com/xemulat/XToolBox/main/files/choco.bat"
+                "url": "https://github.com/undergroundwires/privacy.sexy/releases/download/0.13.8/privacy.sexy-Setup-0.13.8.exe"
             }
         ]
     },
@@ -260,9 +224,9 @@
         "id": "brave_browser",
         "name": "Brave Browser",
         "description": "https://brave.com/",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
+        "category": "browsers",
+        "icon": "browser",
+        "author": "Brave Software",
         "homepage": "https://brave.com/",
         "install_methods": [
             {
@@ -277,9 +241,9 @@
         "id": "firefox_setup",
         "name": "Firefox Setup",
         "description": "https://www.mozilla.org/firefox",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
+        "category": "browsers",
+        "icon": "browser",
+        "author": "Mozilla",
         "homepage": "https://www.mozilla.org/firefox",
         "install_methods": [
             {
@@ -294,9 +258,9 @@
         "id": "floorp",
         "name": "Floorp",
         "description": "https://floorp.app/",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
+        "category": "browsers",
+        "icon": "browser",
+        "author": "Ablaze",
         "homepage": "https://floorp.app/",
         "install_methods": [
             {
@@ -312,8 +276,8 @@
         "name": "qBittorrent EE",
         "description": "https://github.com/c0re100/qBittorrent-Enhanced-Edition",
         "category": "apps",
-        "icon": "download",
-        "author": "",
+        "icon": "p2p",
+        "author": "c0re100",
         "homepage": "https://github.com/c0re100/qBittorrent-Enhanced-Edition",
         "install_methods": [
             {
@@ -328,9 +292,9 @@
         "id": "rainmeter",
         "name": "Rainmeter",
         "description": "https://github.com/rainmeter/rainmeter",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
+        "category": "customization",
+        "icon": "paint",
+        "author": "Rainmeter",
         "homepage": "https://github.com/rainmeter/rainmeter",
         "install_methods": [
             {
@@ -346,8 +310,8 @@
         "name": "7-Zip ZSTD",
         "description": "https://github.com/mcmilk/7-Zip-zstd",
         "category": "apps",
-        "icon": "download",
-        "author": "",
+        "icon": "build",
+        "author": "files",
         "homepage": "https://github.com/mcmilk/7-Zip-zstd",
         "install_methods": [
             {
@@ -363,7 +327,7 @@
         "name": "Memory Cleaner",
         "description": "https://www.koshyjohn.com/software/memclean/",
         "category": "apps",
-        "icon": "download",
+        "icon": "cleaning_services",
         "author": "",
         "homepage": "https://www.koshyjohn.com/software/memclean/",
         "install_methods": [
@@ -380,32 +344,15 @@
         "name": "Nilesoft Shell",
         "description": "https://nilesoft.org/",
         "category": "apps",
-        "icon": "download",
-        "author": "",
+        "icon": "paint",
+        "author": "Nilesoft",
         "homepage": "https://nilesoft.org/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Nilesoft Shell",
-                "filename": "Shell-Setup.exe",
-                "url": "https://nilesoft.org/download/shell/1.9/setup.exe"
-            }
-        ]
-    },
-    {
-        "id": "simplednscrypt",
-        "name": "SimpleDnsCrypt",
-        "description": "https://github.com/instantsc/SimpleDnsCrypt",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/instantsc/SimpleDnsCrypt",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "SimpleDnsCrypt",
-                "filename": "SimpleDNSCrypt-Setup.msi",
-                "url": "https://github.com/instantsc/SimpleDnsCrypt/releases/latest/download/SimpleDNSCrypt_0.8.2.msi"
+                "label": "Nilesoft Shell Setup",
+                "filename": "Shell-Setup.msi",
+                "url": "https://nilesoft.org/download/shell/1.9.18/setup-x64.msi"
             }
         ]
     },
@@ -414,8 +361,8 @@
         "name": "ADW Cleaner",
         "description": "https://www.malwarebytes.com/adwcleaner",
         "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "icon": "malware",
+        "author": "Malwarebytes",
         "homepage": "https://www.malwarebytes.com/adwcleaner",
         "install_methods": [
             {
@@ -431,15 +378,14 @@
         "name": "ATF Cleaner",
         "description": "https://www.majorgeeks.com/files/details/atf_cleaner.html",
         "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "icon": "cleaning_services",
+        "author": "Atribune.org",
         "homepage": "https://www.majorgeeks.com/files/details/atf_cleaner.html",
         "install_methods": [
             {
-                "type": "direct_download",
+                "type": "web_link",
                 "label": "ATF Cleaner",
-                "filename": "ATF-Cleaner.exe",
-                "url": "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/drives/ATF-Cleaner.exe"
+                "url": "https://www.majorgeeks.com/mg/getmirror/atf_cleaner,1.html"
             }
         ]
     },
@@ -448,8 +394,8 @@
         "name": "Defraggler",
         "description": "https://www.ccleaner.com/defraggler",
         "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "icon": "fragment",
+        "author": "CCleaner",
         "homepage": "https://www.ccleaner.com/defraggler",
         "install_methods": [
             {
@@ -473,7 +419,7 @@
                 "type": "direct_download",
                 "label": "Malwarebytes",
                 "filename": "Malwarebytes.exe",
-                "url": "https://www.malwarebytes.com/api/downloads/mb-windows?filename=MBSetup.exe"
+                "url": "https://data-cdn.mbamupdates.com/web/mb5-setup-consumer/MBSetup.exe"
             }
         ]
     },
@@ -481,9 +427,9 @@
         "id": "emsisoft_ek",
         "name": "Emsisoft EK",
         "description": "https://www.emsisoft.com/en/emergency-kit/",
-        "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "category": "antivirus",
+        "icon": "kit",
+        "author": "Emsisoft",
         "homepage": "https://www.emsisoft.com/en/emergency-kit/",
         "install_methods": [
             {
@@ -499,8 +445,8 @@
         "name": "CleanmgrPlus",
         "description": "https://github.com/builtbybel/CleanmgrPlus",
         "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "icon": "cleaning_services",
+        "author": "builtbybel",
         "homepage": "https://github.com/builtbybel/CleanmgrPlus",
         "install_methods": [
             {
@@ -509,7 +455,7 @@
                 "filename": "CleanmgrPlus.zip",
                 "url": "https://github.com/builtbybel/CleanmgrPlus/releases/latest/download/cleanmgrplus.zip",
                 "needs_extraction": true,
-                "executable_path": "CleanmgrPlus"
+                "executable_path": "Cleanmgr+.exe"
             }
         ]
     },
@@ -518,15 +464,15 @@
         "name": "Glary Utilities",
         "description": "https://www.glarysoft.com/",
         "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "icon": "kit",
+        "author": "Glarysoft",
         "homepage": "https://www.glarysoft.com/",
         "install_methods": [
             {
                 "type": "direct_download",
                 "label": "Glary Utilities",
                 "filename": "GlaryUtilities.exe",
-                "url": "https://download.glarysoft.com/gu5setup.exe"
+                "url": "https://download.glarysoft.com/gu6setup.exe"
             }
         ]
     },
@@ -534,9 +480,9 @@
         "id": "eset",
         "name": "ESET",
         "description": "https://www.eset.com/int/home/free-trial/",
-        "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "category": "antivirus",
+        "icon": "malware",
+        "author": "ESET",
         "homepage": "https://www.eset.com/int/home/free-trial/",
         "install_methods": [
             {
@@ -563,9 +509,9 @@
         "id": "kaspersky",
         "name": "Kaspersky",
         "description": "https://www.kaspersky.com/downloads/",
-        "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "category": "antivirus",
+        "icon": "malware",
+        "author": "Kaspersky",
         "homepage": "https://www.kaspersky.com/downloads/",
         "install_methods": [
             {
@@ -590,7 +536,7 @@
         "name": "Linux Mint",
         "description": "https://linuxmint.com/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://linuxmint.com/",
         "install_methods": [
@@ -619,7 +565,7 @@
         "name": "Pop!_OS",
         "description": "https://pop.system76.com/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://pop.system76.com/",
         "install_methods": [
@@ -648,7 +594,7 @@
         "name": "Ubuntu",
         "description": "https://ubuntu.com/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://ubuntu.com/",
         "install_methods": [
@@ -677,7 +623,7 @@
         "name": "Arch Linux",
         "description": "https://archlinux.org/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://archlinux.org/",
         "install_methods": [
@@ -694,7 +640,7 @@
         "name": "Atrix Linux",
         "description": "https://artixlinux.org/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://artixlinux.org/",
         "install_methods": [
@@ -723,7 +669,7 @@
         "name": "Solus",
         "description": "https://getsol.us/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://getsol.us/",
         "install_methods": [
@@ -752,7 +698,7 @@
         "name": "Debian",
         "description": "https://www.debian.org/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://www.debian.org/",
         "install_methods": [
@@ -769,7 +715,7 @@
         "name": "Garuda Linux",
         "description": "https://garudalinux.org/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://garudalinux.org/",
         "install_methods": [
@@ -798,7 +744,7 @@
         "name": "EndeavourOS",
         "description": "https://zorin.com/os/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://zorin.com/os/",
         "install_methods": [
@@ -815,7 +761,7 @@
         "name": "CachyOS",
         "description": "https://cachyos.org/",
         "category": "linux",
-        "icon": "download",
+        "icon": "linux",
         "author": "",
         "homepage": "https://cachyos.org/",
         "install_methods": [
@@ -838,7 +784,7 @@
         "name": "Windows 11",
         "description": "Windows 11",
         "category": "windows",
-        "icon": "download",
+        "icon": "windows",
         "author": "",
         "homepage": "",
         "install_methods": [
@@ -861,7 +807,7 @@
         "name": "Windows 10",
         "description": "Windows 10",
         "category": "windows",
-        "icon": "download",
+        "icon": "windows",
         "author": "",
         "homepage": "",
         "install_methods": [
@@ -884,7 +830,7 @@
         "name": "Windows 8.1",
         "description": "Windows 8.1",
         "category": "windows",
-        "icon": "download",
+        "icon": "windows",
         "author": "",
         "homepage": "",
         "install_methods": [
@@ -909,7 +855,7 @@
         "name": "Windows 8",
         "description": "Windows 8",
         "category": "windows",
-        "icon": "download",
+        "icon": "windows",
         "author": "",
         "homepage": "",
         "install_methods": [
@@ -932,7 +878,7 @@
         "name": "Windows 7",
         "description": "Windows 7",
         "category": "windows",
-        "icon": "download",
+        "icon": "windows",
         "author": "",
         "homepage": "",
         "install_methods": [
@@ -955,89 +901,11 @@
         ]
     },
     {
-        "id": "ame_wizard",
-        "name": "AME Wizard",
-        "description": "https://ameliorated.io/",
-        "category": "modified_windows",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://ameliorated.io/",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "AME Wizard",
-                "filename": "AMEWizard.zip",
-                "url": "https://download.ameliorated.io/AME%20Wizard%20Beta.zip",
-                "needs_extraction": true,
-                "executable_path": "AME Wizard"
-            }
-        ]
-    },
-    {
-        "id": "revios",
-        "name": "ReviOS",
-        "description": "https://revi.cc/",
-        "category": "modified_windows",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://revi.cc/",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "ReviOS Playbook",
-                "filename": "ReviOS.apbx",
-                "url": "https://github.com/meetrevision/playbook/releases/download/25.10/Revi-PB-25.10.apbx"
-            }
-        ]
-    },
-    {
-        "id": "atlasos",
-        "name": "AtlasOS",
-        "description": "https://github.com/Atlas-OS/Atlas",
-        "category": "modified_windows",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/Atlas-OS/Atlas",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "AtlasOS Playbook",
-                "filename": "AtlasPlaybook.zip",
-                "url": "https://github.com/Atlas-OS/Atlas/releases/latest/download/AtlasPlaybook_v0.5.0-hotfix.apbx",
-                "needs_extraction": true,
-                "executable_path": "AtlasOS Playbook"
-            }
-        ]
-    },
-    {
-        "id": "ame_playbook",
-        "name": "AME Playbook",
-        "description": "https://ameliorated.io/",
-        "category": "modified_windows",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://ameliorated.io/",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "AME 10",
-                "filename": "AME10.apbx",
-                "url": "https://download.ameliorated.io/AME%2010%20Beta.apbx"
-            },
-            {
-                "type": "direct_download",
-                "label": "AME 11",
-                "filename": "AME11.apbx",
-                "url": "https://download.ameliorated.io/AME%2011%20Beta.apbx"
-            }
-        ]
-    },
-    {
         "id": "rectify11",
         "name": "Rectify11",
         "description": "https://github.com/Rectify11/Installer",
-        "category": "modified_windows",
-        "icon": "download",
+        "category": "customization",
+        "icon": "paint",
         "author": "",
         "homepage": "https://github.com/Rectify11/Installer",
         "install_methods": [
@@ -1046,22 +914,6 @@
                 "label": "Rectify11 Installer",
                 "filename": "Rectify11Installer.exe",
                 "url": "https://github.com/Rectify11/Installer/releases/latest/download/Rectify11Installer.exe"
-            }
-        ]
-    },
-    {
-        "id": "ghost_spectre",
-        "name": "Ghost Spectre",
-        "description": "https://ghostclouds.xyz/wp/w10-pro-aio-x64/",
-        "category": "modified_windows",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://ghostclouds.xyz/wp/w10-pro-aio-x64/",
-        "install_methods": [
-            {
-                "type": "web_link",
-                "label": "Ghost Spectre",
-                "url": "%GHOSTSPECTRE%"
             }
         ]
     },
@@ -1103,7 +955,7 @@
         "id": "heidoc_iso_dwnlder",
         "name": "HeiDoc Iso Dwnlder",
         "description": "https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool",
-        "category": "apps",
+        "category": "windows",
         "icon": "download",
         "author": "",
         "homepage": "https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool",
@@ -1223,7 +1075,7 @@
         "name": "VSCode",
         "description": "https://vscodium.com/",
         "category": "apps",
-        "icon": "download",
+        "icon": "code",
         "author": "",
         "homepage": "https://vscodium.com/",
         "install_methods": [
@@ -1245,8 +1097,8 @@
         "id": "prismlauncher",
         "name": "PrismLauncher",
         "description": "https://github.com/PrismLauncher/PrismLauncher",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://github.com/PrismLauncher/PrismLauncher",
         "install_methods": [
@@ -1259,28 +1111,11 @@
         ]
     },
     {
-        "id": "minecraft_launcher",
-        "name": "Minecraft Launcher",
-        "description": "https://www.minecraft.net",
-        "category": "linux",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://www.minecraft.net",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "Minecraft Launcher",
-                "filename": "MinecraftInstaller.exe",
-                "url": "https://launcher.mojang.com/download/MinecraftInstaller.exe"
-            }
-        ]
-    },
-    {
         "id": "atlauncher",
         "name": "ATLauncher",
         "description": "https://github.com/ATLauncher/ATLauncher",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://github.com/ATLauncher/ATLauncher",
         "install_methods": [
@@ -1296,8 +1131,8 @@
         "id": "gdlauncher",
         "name": "GDLauncher",
         "description": "https://github.com/gorilla-devs/GDLauncher",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://github.com/gorilla-devs/GDLauncher",
         "install_methods": [
@@ -1321,8 +1156,8 @@
         "id": "lunar_client",
         "name": "Lunar Client",
         "description": "https://www.lunarclient.com/",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://www.lunarclient.com/",
         "install_methods": [
@@ -1338,8 +1173,8 @@
         "id": "labymod",
         "name": "LabyMod",
         "description": "https://www.labymod.net/",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://www.labymod.net/",
         "install_methods": [
@@ -1355,8 +1190,8 @@
         "id": "tecknix_client",
         "name": "Tecknix Client",
         "description": "https://tecknix.com/",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://tecknix.com/",
         "install_methods": [
@@ -1372,8 +1207,8 @@
         "id": "salwyrr_client",
         "name": "Salwyrr CLient",
         "description": "https://www.salwyrr.com/",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://www.salwyrr.com/",
         "install_methods": [
@@ -1389,8 +1224,8 @@
         "id": "feather_launcher",
         "name": "Feather Launcher",
         "description": "https://feathermc.com/",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://feathermc.com/",
         "install_methods": [
@@ -1406,8 +1241,8 @@
         "id": "badlion_client",
         "name": "Badlion Client",
         "description": "https://client.badlion.net/",
-        "category": "linux",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "box",
         "author": "",
         "homepage": "https://client.badlion.net/",
         "install_methods": [
@@ -1424,7 +1259,7 @@
         "name": "Steam",
         "description": "https://store.steampowered.com/",
         "category": "gaming",
-        "icon": "download",
+        "icon": "game",
         "author": "",
         "homepage": "https://store.steampowered.com/",
         "install_methods": [
@@ -1441,7 +1276,7 @@
         "name": "Rare",
         "description": "https://github.com/RareDevs/Rare",
         "category": "gaming",
-        "icon": "download",
+        "icon": "game",
         "author": "",
         "homepage": "https://github.com/RareDevs/Rare",
         "install_methods": [
@@ -1454,28 +1289,11 @@
         ]
     },
     {
-        "id": "origin",
-        "name": "Origin",
-        "description": "https://www.ea.com/ea-app",
-        "category": "gaming",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://www.ea.com/ea-app",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "Origin",
-                "filename": "Origin-Setup.exe",
-                "url": "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe"
-            }
-        ]
-    },
-    {
         "id": "epic_games",
         "name": "Epic Games",
         "description": "https://store.epicgames.com",
         "category": "gaming",
-        "icon": "download",
+        "icon": "game",
         "author": "",
         "homepage": "https://store.epicgames.com",
         "install_methods": [
@@ -1492,7 +1310,7 @@
         "name": "GOG Galaxy",
         "description": "https://www.gog.com/galaxy",
         "category": "gaming",
-        "icon": "download",
+        "icon": "game",
         "author": "",
         "homepage": "https://www.gog.com/galaxy",
         "install_methods": [
@@ -1509,7 +1327,7 @@
         "name": "Paradox",
         "description": "https://www.paradoxinteractive.com/our-games/launcher",
         "category": "gaming",
-        "icon": "download",
+        "icon": "game",
         "author": "",
         "homepage": "https://www.paradoxinteractive.com/our-games/launcher",
         "install_methods": [
@@ -1526,7 +1344,7 @@
         "name": "Bloxstrap",
         "description": "https://github.com/pizzaboxer/bloxstrap",
         "category": "gaming",
-        "icon": "download",
+        "icon": "game",
         "author": "",
         "homepage": "https://github.com/pizzaboxer/bloxstrap",
         "install_methods": [
@@ -1534,7 +1352,7 @@
                 "type": "direct_download",
                 "label": "Bloxstrap",
                 "filename": "Bloxstrap-Setup.exe",
-                "url": "https://github.com/pizzaboxer/bloxstrap/releases/download/vv2.10.0/Bloxstrap-vv2.10.0.exe"
+                "url": "hhttps://github.com/bloxstraplabs/bloxstrap/releases/download/v2.10.0/Bloxstrap-v2.10.0.exe"
             }
         ]
     },
@@ -1543,7 +1361,7 @@
         "name": "DirectX",
         "description": "https://www.microsoft.com/en-us/download/details.aspx?id=35",
         "category": "runtimes",
-        "icon": "download",
+        "icon": "code",
         "author": "",
         "homepage": "https://www.microsoft.com/en-us/download/details.aspx?id=35",
         "install_methods": [
@@ -1560,7 +1378,7 @@
         "name": "VCRedists",
         "description": "https://github.com/abbodi1406/vcredist",
         "category": "runtimes",
-        "icon": "download",
+        "icon": "code",
         "author": "",
         "homepage": "https://github.com/abbodi1406/vcredist",
         "install_methods": [
@@ -1577,7 +1395,7 @@
         "name": "XNA Framework",
         "description": "https://www.microsoft.com/en-us/download/details.aspx?id=20914",
         "category": "runtimes",
-        "icon": "download",
+        "icon": "code",
         "author": "",
         "homepage": "https://www.microsoft.com/en-us/download/details.aspx?id=20914",
         "install_methods": [
@@ -1594,7 +1412,7 @@
         "name": ".NET Framework",
         "description": "https://dotnet.microsoft.com/en-us/download/dotnet/8.0",
         "category": "runtimes",
-        "icon": "download",
+        "icon": "code",
         "author": "",
         "homepage": "https://dotnet.microsoft.com/en-us/download/dotnet/8.0",
         "install_methods": [
@@ -1619,19 +1437,29 @@
         ]
     },
     {
-        "id": "nodejs",
-        "name": "Node.js",
-        "description": "https://nodejs.org/",
+        "id": "jsruntimes",
+        "name": "JavaScript Runtimes",
+        "description": "Choose between Node.js, Deno, and Bun ",
         "category": "runtimes",
-        "icon": "download",
-        "author": "",
+        "icon": "code",
+        "author": "Node, Deno, Bun",
         "homepage": "https://nodejs.org/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Node.js 20.12.0 LTS",
+                "label": "Node.js 25.2.1",
                 "filename": "Node-Installer.msi",
-                "url": "https://nodejs.org/dist/v20.12.0/node-v20.12.0-x64.msi"
+                "url": "https://nodejs.org/dist/v25.2.1/node-v25.2.1-x64.msi"
+            },
+            {
+                "type": "powershell",
+                "label": "Deno",
+                "command": "irm https://deno.land/install.ps1 | iex"
+            },
+            {
+                "type": "powershell",
+                "label": "Bun",
+                "command": "irm bun.sh/install.ps1 | iex"
             }
         ]
     },
@@ -1640,27 +1468,26 @@
         "name": "Python",
         "description": "https://python.org/",
         "category": "runtimes",
-        "icon": "download",
-        "author": "",
+        "icon": "code",
+        "author": "The Python Software Foundation",
         "homepage": "https://python.org/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Python 3.12",
-                "filename": "Python312-Installer.msi",
-                "url": "https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe"
+                "label": "Python 3.14",
+                "filename": "Python314-Installer.exe",
+                "url": "https://www.python.org/ftp/python/3.14.0/python-3.14.0-amd64.exe"
             },
             {
                 "type": "direct_download",
-                "label": "Python 3.11",
-                "filename": "Python311-Installer.msi",
-                "url": "https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe"
+                "label": "Python Manager",
+                "filename": "python-manager.msi",
+                "url": "https://www.python.org/ftp/python/pymanager/python-manager-25.0.msi"
             },
             {
-                "type": "direct_download",
-                "label": "Python 3.10",
-                "filename": "Python310-Installer.msi",
-                "url": "https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe"
+                "type": "powershell",
+                "label": "uv",
+                "command": "irm https://astral.sh/uv/install.ps1 | iex"
             }
         ]
     },
@@ -1668,9 +1495,9 @@
         "id": "achievement_watcher",
         "name": "Achievement Watcher",
         "description": "https://github.com/xan105/Achievement-Watcher",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
+        "category": "gaming",
+        "icon": "game",
+        "author": "xan105",
         "homepage": "https://github.com/xan105/Achievement-Watcher",
         "install_methods": [
             {
@@ -1686,7 +1513,7 @@
         "name": "Spotify",
         "description": "https://open.spotify.com/",
         "category": "apps",
-        "icon": "download",
+        "icon": "music",
         "author": "",
         "homepage": "https://open.spotify.com/",
         "install_methods": [
@@ -1699,11 +1526,11 @@
         ]
     },
     {
-        "id": "spicefy",
-        "name": "Spicefy",
+        "id": "spicetify",
+        "name": "Spicetify",
         "description": "https://spicetify.app/",
-        "category": "apps",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "music",
         "author": "",
         "homepage": "https://spicetify.app/",
         "install_methods": [
@@ -1718,8 +1545,8 @@
         "id": "discord",
         "name": "Discord",
         "description": "https://discord.com/",
-        "category": "apps",
-        "icon": "download",
+        "category": "gaming",
+        "icon": "power",
         "author": "",
         "homepage": "https://discord.com/",
         "install_methods": [
@@ -1735,84 +1562,85 @@
         "id": "vesktop",
         "name": "Vesktop",
         "description": "https://github.com/Vencord/Vesktop/",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
+        "category": "gaming",
+        "icon": "power",
+        "author": "Vencord",
         "homepage": "https://github.com/Vencord/Vesktop/",
         "install_methods": [
             {
                 "type": "direct_download",
                 "label": "Vesktop",
                 "filename": "Vesktop-Setup.exe",
-                "url": "https://github.com/Vencord/Vesktop/releases/download/v/Vesktop-Setup-.exe"
+                "url": "https://github.com/Vencord/Vesktop/releases/download/v1.6.1/Vesktop-Setup-1.6.1.exe"
             }
         ]
     },
     {
-        "id": "armcord",
-        "name": "ArmCord",
-        "description": "https://github.com/ArmCord/ArmCord/",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/ArmCord/ArmCord/",
+        "id": "equibop",
+        "name": "Equibop",
+        "description": "https://github.com/Equicord/Equibop/",
+        "category": "gaming",
+        "icon": "power",
+        "author": "Equicord",
+        "homepage": "https://github.com/Equicord/Equibop/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "ArmCord",
-                "filename": "ArmCord-Setup.exe",
-                "url": "https://github.com/ArmCord/ArmCord/releases/download/vv1.1.6/ArmCord.Setup.v1.1.6.exe"
+                "label": "Equibop",
+                "filename": "Equibop-Setup.exe",
+                "url": "https://github.com/Equicord/Equibop/releases/download/v3.1.3/Equibop-Setup-3.1.3.exe"
             }
         ]
     },
     {
-        "id": "vencord",
-        "name": "Vencord",
-        "description": "https://github.com/Vencord/Installer",
-        "category": "apps",
-        "icon": "download",
+        "id": "legcord",
+        "name": "LegCord",
+        "description": "https://github.com/Legcord/Legcord/",
+        "category": "gaming",
+        "icon": "power",
         "author": "",
-        "homepage": "https://github.com/Vencord/Installer",
+        "homepage": "https://github.com/Legcord/Legcord/",
         "install_methods": [
+            {
+                "type": "direct_download",
+                "label": "Setup",
+                "filename": "Legcord-Setup.exe",
+                "url": "https://github.com/Legcord/Legcord/releases/download/v1.1.6/Legcord-1.1.6-win-x64.exe"
+            }
+        ]
+    },
+    {
+        "id": "injecttodiscordclient",
+        "name": "Discord client mods",
+        "description": "Vencord, Equicord, Shelter, Replugged",
+        "category": "gaming",
+        "icon": "power",
+        "author": "Vencord, Equicord, Shelter, Replugged",
+        "homepage": "",
+        "install_methods": [
+            {
+                "type": "direct_download",
+                "label": "Equicord",
+                "filename": "Equilotl.exe",
+                "url": "https://github.com/Equicord/Equilotl/releases/latest/download/Equilotl.exe"
+            },
             {
                 "type": "direct_download",
                 "label": "Vencord",
                 "filename": "Vencord.exe",
                 "url": "https://github.com/Vencord/Installer/releases/latest/download/VencordInstaller.exe"
-            }
-        ]
-    },
-    {
-        "id": "betterdiscord",
-        "name": "BetterDiscord",
-        "description": "https://github.com/BetterDiscord",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/BetterDiscord",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "BetterDiscord",
-                "filename": "BetterDiscord-Setup.exe",
-                "url": "https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Windows.exe"
-            }
-        ]
-    },
-    {
-        "id": "replugged",
-        "name": "Replugged",
-        "description": "https://github.com/replugged-org",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/replugged-org",
-        "install_methods": [
+            },
             {
                 "type": "direct_download",
                 "label": "Replugged",
                 "filename": "Replugged-Installer.exe",
                 "url": "https://github.com/replugged-org/tauri-installer/releases/latest/download/replugged-installer-windows.exe"
+            },
+            {
+                "type": "direct_download",
+                "label": "Shelter",
+                "filename": "Shelter-Installer.exe",
+                "url": "https://github.com/uwu/shelter-installer/releases/latest/download/install-shelter.exe"
             }
         ]
     }

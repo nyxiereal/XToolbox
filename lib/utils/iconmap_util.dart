@@ -15,6 +15,18 @@ IconData getIconFromString(String iconName) {
     'stop': Icons.stop_circle_outlined,
     'rocket': Icons.rocket_launch,
     'shield': Icons.shield,
+    'browser': Icons.language,
+    'p2p': Icons.share,
+    'paint': Icons.format_paint,
+    'malware': Icons.coronavirus_outlined,
+    'fragment': Icons.view_module,
+    'kit': Icons.medical_services,
+    'linux': Icons.label_important,
+    'windows': Icons.window,
+    'power': Icons.power_outlined,
+    'music': Icons.music_note,
+    'game': Icons.gamepad,
+    'box': Icons.check_box_outline_blank
   };
   return iconData[iconName] ?? Icons.apps;
 }

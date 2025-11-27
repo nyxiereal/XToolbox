@@ -105,6 +105,23 @@ class ViewItemWidget extends StatelessWidget {
             );
           }
           break;
+        case InstallType.powershell:
+          if (method.command != null) {
+            scaffoldMessenger.showSnackBar(
+              SnackBar(
+                content: Text('Run: ${method.command}'),
+                behavior: SnackBarBehavior.floating,
+                duration: const Duration(seconds: 5),
+                action: SnackBarAction(
+                  label: 'Copy',
+                  onPressed: () {
+                    // TODO: Run the command directly in another window
+                  },
+                ),
+              ),
+            );
+          }
+          break;
       }
     } catch (e) {
       scaffoldMessenger.showSnackBar(
@@ -277,6 +294,8 @@ class _InstallMethodCardState extends State<_InstallMethodCard> {
         return Icons.terminal;
       case InstallType.microsoftStore:
         return Icons.store;
+      case InstallType.powershell:
+        return Icons.terminal;
     }
   }
 

@@ -53,7 +53,8 @@ enum InstallType {
   winget,
   chocolatey,
   scoop,
-  microsoftStore;
+  microsoftStore,
+  powershell;
 
   static InstallType fromString(String type) {
     switch (type) {
@@ -67,6 +68,8 @@ enum InstallType {
         return InstallType.scoop;
       case 'microsoft_store':
         return InstallType.microsoftStore;
+      case 'powershell':
+        return InstallType.powershell;
       default:
         return InstallType.directDownload;
     }
@@ -84,6 +87,8 @@ enum InstallType {
         return 'Scoop';
       case InstallType.microsoftStore:
         return 'Microsoft Store';
+      case InstallType.powershell:
+        return 'PowerShell';
     }
   }
 }
@@ -97,6 +102,7 @@ class InstallMethod {
   final String? executablePath;
   final String? packageId;
   final String? storeId;
+  final String? command;
 
   InstallMethod({
     required this.type,
@@ -107,6 +113,7 @@ class InstallMethod {
     this.executablePath,
     this.packageId,
     this.storeId,
+    this.command,
   });
 
   factory InstallMethod.fromJson(Map<String, dynamic> json) {
@@ -119,6 +126,7 @@ class InstallMethod {
       executablePath: json['executable_path'] as String?,
       packageId: json['package_id'] as String?,
       storeId: json['store_id'] as String?,
+      command: json['command'] as String?,
     );
   }
 
@@ -132,6 +140,7 @@ class InstallMethod {
       if (executablePath != null) 'executable_path': executablePath,
       if (packageId != null) 'package_id': packageId,
       if (storeId != null) 'store_id': storeId,
+      if (command != null) 'command': command,
     };
   }
 }
