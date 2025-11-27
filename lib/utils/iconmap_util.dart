@@ -26,7 +26,8 @@ IconData getIconFromString(String iconName) {
     'power': Icons.power_outlined,
     'music': Icons.music_note,
     'game': Icons.gamepad,
-    'box': Icons.check_box_outline_blank
+    'box': Icons.check_box_outline_blank,
+    'keys': Icons.vpn_key,
   };
   return iconData[iconName] ?? Icons.apps;
 }

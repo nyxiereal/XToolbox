@@ -2,7 +2,7 @@
     {
         "id": "pydebloatx",
         "name": "PyDebloatX",
-        "description": "Python GUI for uninstalling the default Windows 10 apps.",
+        "description": "Python GUI for uninstalling some of the default Windows 10/11 apps.",
         "category": "tools",
         "icon": "delete_sweep",
         "author": "Teraskull",
@@ -27,7 +27,7 @@
     {
         "id": "lively_wallpaper",
         "name": "Lively Wallpaper",
-        "description": "Free and open-source software that allows users to set animated desktop wallpapers and screensavers.",
+        "description": "Allows users to set animated desktop wallpapers and screensavers.",
         "category": "customization",
         "icon": "wallpaper",
         "author": "rocksdanister",
@@ -54,7 +54,7 @@
     {
         "id": "winscript",
         "name": "WinScript",
-        "description": "https://github.com/flick9000/winscript",
+        "description": "A tool for customization script building. Includes debloat, privacy, performance & app installing scripts.",
         "category": "debloat",
         "icon": "cleaning_services",
         "author": "flick9000",
@@ -82,7 +82,7 @@
     {
         "id": "hone",
         "name": "Hone",
-        "description": "https://hone.gg",
+        "description": "An advanced computer optimization software that automatically adjusts Windows, GPU, and in-game settings to match the requirements of your games.",
         "category": "debloat",
         "icon": "terminal",
         "author": "Hone",
@@ -90,13 +90,13 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Hone ⚠️ CONTAINS ADS ⚠️",
+                "label": "Overwolf Installer (CONTAINS ADS)",
                 "filename": "HoneInstaller.exe",
                 "url": "https://download.overwolf.com/installer/prod/cfbc7eeb79ab95eb3f553c4344a186ee/Hone%20-%20Installer.exe"
             },
             {
                 "type": "direct_download",
-                "label": "HoneCTRL",
+                "label": "HoneCTRL (EoL)",
                 "filename": "HoneCtrl.bat",
                 "url": "https://raw.githubusercontent.com/FoxXtreme/HoneCtrl/refs/heads/main/HoneCtrl.bat"
             }
@@ -105,7 +105,7 @@
     {
         "id": "shutup10",
         "name": "ShutUp10++",
-        "description": "https://www.oo-software.com/shutup10",
+        "description": "Free antispy tool for Windows 10 and 11",
         "category": "debloat",
         "icon": "stop",
         "author": "O&O Software",
@@ -122,7 +122,7 @@
     {
         "id": "majorprivacy",
         "name": "MajorPrivacy",
-        "description": "https://github.com/xanasoft/MajorPrivacy",
+        "description": "Advanced Privacy Tool for Windows. A driver-level HISP that monitors and blocks suspicious processes",
         "category": "privacy",
         "icon": "shield",
         "author": "xanasoft",
@@ -139,9 +139,9 @@
     {
         "id": "mas",
         "name": "Microsoft Activation Scripts",
-        "description": "https://github.com/massgravel/Microsoft-Activation-Scripts",
+        "description": "Windows and Office activator featuring HWID, Ohook, TSforge, and Online KMS activation methods, along with advanced troubleshooting.",
         "category": "tools",
-        "icon": "terminal",
+        "icon": "keys",
         "author": "Massgravel",
         "homepage": "https://github.com/massgravel/Microsoft-Activation-Scripts",
         "install_methods": [
@@ -155,7 +155,7 @@
     {
         "id": "winaero_tweaker",
         "name": "Winaero Tweaker",
-        "description": "https://winaero.com/winaero-tweaker/",
+        "description": "An app that lets you adjust hidden secret settings that Microsoft does not let you adjust from the user interface.",
         "category": "tools",
         "icon": "build",
         "author": "Winaero",
@@ -174,7 +174,7 @@
     {
         "id": "ctt",
         "name": "WinUtil",
-        "description": "https://github.com/ChrisTitusTech/winutil",
+        "description": "An utility meant to streamline installs, debloat with tweaks, troubleshoot with config, and fix Windows updates",
         "category": "tools",
         "icon": "terminal",
         "author": "Chris Titus",
@@ -183,7 +183,7 @@
             {
                 "type": "powershell",
                 "label": "CTT",
-                "command": "irm \"https://christitus.com/win\" | iex"
+                "command": "irm https://christitus.com/win | iex"
             }
         ]
     },
@@ -206,7 +206,7 @@
     {
         "id": "privacysexy",
         "name": "PrivacySexy",
-        "description": "https://privacy.sexy/",
+        "description": "A tool to enforce privacy & security best-practices on Windows, macOS and Linux, because privacy is sexy.",
         "category": "privacy",
         "icon": "shield",
         "author": "undergroundwires",
@@ -223,7 +223,7 @@
     {
         "id": "brave_browser",
         "name": "Brave Browser",
-        "description": "https://brave.com/",
+        "description": "\"The browser that puts you first\"",
         "category": "browsers",
         "icon": "browser",
         "author": "Brave Software",
@@ -240,7 +240,7 @@
     {
         "id": "firefox_setup",
         "name": "Firefox Setup",
-        "description": "https://www.mozilla.org/firefox",
+        "description": "Take control of your internet",
         "category": "browsers",
         "icon": "browser",
         "author": "Mozilla",
@@ -257,7 +257,7 @@
     {
         "id": "floorp",
         "name": "Floorp",
-        "description": "https://floorp.app/",
+        "description": "Unlimited Customization For Everyone",
         "category": "browsers",
         "icon": "browser",
         "author": "Ablaze",
@@ -272,9 +272,31 @@
         ]
     },
     {
+        "id": "librewolf",
+        "name": "LibreWolf",
+        "description": "A custom and independent version of Firefox, with the primary goals of privacy, security and user freedom.",
+        "category": "browsers",
+        "icon": "browser",
+        "author": "LibreWolf Community",
+        "homepage": "https://librewolf.net/",
+        "install_methods": [
+            {
+                "type": "direct_download",
+                "label": "Direct Download",
+                "filename": "LibreWolf-Setup.exe",
+                "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/145.0.1-2/librewolf-145.0.1-2-windows-x86_64-setup.exe"
+            },
+            {
+                "type": "winget",
+                "label": "Install via Winget",
+                "package_id": "LibreWolf.LibreWolf"
+            }
+        ]
+    },
+    {
         "id": "qbittorrent_ee",
         "name": "qBittorrent EE",
-        "description": "https://github.com/c0re100/qBittorrent-Enhanced-Edition",
+        "description": "qBittorrent Enhanced, based on qBittorrent",
         "category": "apps",
         "icon": "p2p",
         "author": "c0re100",
@@ -291,7 +313,7 @@
     {
         "id": "rainmeter",
         "name": "Rainmeter",
-        "description": "https://github.com/rainmeter/rainmeter",
+        "description": "Desktop customization tool for Windows",
         "category": "customization",
         "icon": "paint",
         "author": "Rainmeter",
@@ -308,7 +330,7 @@
     {
         "id": "7_zip_zstd",
         "name": "7-Zip ZSTD",
-        "description": "https://github.com/mcmilk/7-Zip-zstd",
+        "description": "7-Zip with support for Brotli, Fast-LZMA2, Lizard, LZ4, LZ5 and Zstandard",
         "category": "apps",
         "icon": "build",
         "author": "files",
@@ -325,7 +347,7 @@
     {
         "id": "memory_cleaner",
         "name": "Memory Cleaner",
-        "description": "https://www.koshyjohn.com/software/memclean/",
+        "description": "A memory cleaning application.",
         "category": "apps",
         "icon": "cleaning_services",
         "author": "",
@@ -342,7 +364,7 @@
     {
         "id": "nilesoft_shell",
         "name": "Nilesoft Shell",
-        "description": "https://nilesoft.org/",
+        "description": "Powerful, free, open source context menu manager. [WARNING: WEBSITE CONTAINS DISTURBING CONTENT]",
         "category": "apps",
         "icon": "paint",
         "author": "Nilesoft",
@@ -359,7 +381,7 @@
     {
         "id": "adw_cleaner",
         "name": "ADW Cleaner",
-        "description": "https://www.malwarebytes.com/adwcleaner",
+        "description": "The world’s most popular adware cleaner finds and removes unwanted programs and junkware.",
         "category": "cleaners",
         "icon": "malware",
         "author": "Malwarebytes",
@@ -376,7 +398,7 @@
     {
         "id": "atf_cleaner",
         "name": "ATF Cleaner",
-        "description": "https://www.majorgeeks.com/files/details/atf_cleaner.html",
+        "description": "Temporary file cleaner for Windows, IE, Firefox and Opera with a simple, easy-to-use interface.",
         "category": "cleaners",
         "icon": "cleaning_services",
         "author": "Atribune.org",
@@ -392,7 +414,7 @@
     {
         "id": "defraggler",
         "name": "Defraggler",
-        "description": "https://www.ccleaner.com/defraggler",
+        "description": "Defraggler is a free defragmentation tool that helps you optimize your hard drive performance.",
         "category": "cleaners",
         "icon": "fragment",
         "author": "CCleaner",
@@ -409,7 +431,7 @@
     {
         "id": "malwarebytes",
         "name": "Malwarebytes",
-        "description": "https://www.malwarebytes.com/",
+        "description": "All-in-one cybersecurity protection always by your side.",
         "category": "cleaners",
         "icon": "download",
         "author": "",
@@ -426,7 +448,7 @@
     {
         "id": "emsisoft_ek",
         "name": "Emsisoft EK",
-        "description": "https://www.emsisoft.com/en/emergency-kit/",
+        "description": "Setting new standards in malware threat remediation",
         "category": "antivirus",
         "icon": "kit",
         "author": "Emsisoft",
@@ -443,7 +465,7 @@
     {
         "id": "cleanmgrplus",
         "name": "CleanmgrPlus",
-        "description": "https://github.com/builtbybel/CleanmgrPlus",
+        "description": "A Improved Replacement for Microsoft Disk Cleanup",
         "category": "cleaners",
         "icon": "cleaning_services",
         "author": "builtbybel",
@@ -462,7 +484,7 @@
     {
         "id": "glary_utilities",
         "name": "Glary Utilities",
-        "description": "https://www.glarysoft.com/",
+        "description": "All-in-one utility to fix, speed up, maintain and protect your PC.",
         "category": "cleaners",
         "icon": "kit",
         "author": "Glarysoft",
@@ -479,7 +501,7 @@
     {
         "id": "eset",
         "name": "ESET",
-        "description": "https://www.eset.com/int/home/free-trial/",
+        "description": "Aa powerful antivirus solution that provides advanced protection against malware, ransomware, and other online threats.",
         "category": "antivirus",
         "icon": "malware",
         "author": "ESET",
@@ -508,7 +530,7 @@
     {
         "id": "kaspersky",
         "name": "Kaspersky",
-        "description": "https://www.kaspersky.com/downloads/",
+        "description": "Reliable antivirus solutions to protect your devices from various cyber threats.",
         "category": "antivirus",
         "icon": "malware",
         "author": "Kaspersky",
@@ -534,10 +556,10 @@
     {
         "id": "linux_mint",
         "name": "Linux Mint",
-        "description": "https://linuxmint.com/",
+        "description": "A popular and user-friendly Linux distribution based on Ubuntu.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
+        "author": "Linux Mint Team",
         "homepage": "https://linuxmint.com/",
         "install_methods": [
             {
@@ -563,10 +585,10 @@
     {
         "id": "pop_os",
         "name": "Pop!_OS",
-        "description": "https://pop.system76.com/",
+        "description": "A Linux distribution for STEM professionals, featuring a sleek interface and powerful tools.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
+        "author": "System76",
         "homepage": "https://pop.system76.com/",
         "install_methods": [
             {
@@ -592,10 +614,10 @@
     {
         "id": "ubuntu",
         "name": "Ubuntu",
-        "description": "https://ubuntu.com/",
+        "description": "A popular and user-friendly Linux distribution based on Debian.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
+        "author": "Canonical Ltd.",
         "homepage": "https://ubuntu.com/",
         "install_methods": [
             {
@@ -621,10 +643,10 @@
     {
         "id": "arch_linux",
         "name": "Arch Linux",
-        "description": "https://archlinux.org/",
+        "description": "A lightweight and flexible Linux distribution that tries to Keep It Simple.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
+        "author": "Arch Linux Team",
         "homepage": "https://archlinux.org/",
         "install_methods": [
             {
@@ -638,10 +660,10 @@
     {
         "id": "atrix_linux",
         "name": "Atrix Linux",
-        "description": "https://artixlinux.org/",
+        "description": "A Linux distribution based on Arch Linux. Simple. Fast. Systemd-free.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
+        "author": "Artix Linux Team",
         "homepage": "https://artixlinux.org/",
         "install_methods": [
             {
@@ -667,10 +689,10 @@
     {
         "id": "solus",
         "name": "Solus",
-        "description": "https://getsol.us/",
+        "description": "The Personal OS for Personal Computers.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
+        "author": "Solus Team",
         "homepage": "https://getsol.us/",
         "install_methods": [
             {
@@ -696,10 +718,10 @@
     {
         "id": "debian",
         "name": "Debian",
-        "description": "https://www.debian.org/",
+        "description": "The Universal Operating System.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
+        "author": "Software in the Public Interest",
         "homepage": "https://www.debian.org/",
         "install_methods": [
             {
@@ -711,42 +733,13 @@
         ]
     },
     {
-        "id": "garuda_linux",
-        "name": "Garuda Linux",
-        "description": "https://garudalinux.org/",
-        "category": "linux",
-        "icon": "linux",
-        "author": "",
-        "homepage": "https://garudalinux.org/",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "DR460NIZED",
-                "filename": "Garuda-DR460NIZED.iso",
-                "url": "https://iso.builds.garudalinux.org/iso/latest/garuda/dr460nized-gaming/latest.iso?r2=1"
-            },
-            {
-                "type": "direct_download",
-                "label": "GNOME",
-                "filename": "Garuda-GNOME.iso",
-                "url": "https://iso.builds.garudalinux.org/iso/latest/garuda/gnome/latest.iso?r2=1"
-            },
-            {
-                "type": "direct_download",
-                "label": "Xfce",
-                "filename": "Garuda-Xfce.iso",
-                "url": "https://iso.builds.garudalinux.org/iso/latest/garuda/xfce/latest.iso?r2=1"
-            }
-        ]
-    },
-    {
         "id": "endeavouros",
         "name": "EndeavourOS",
-        "description": "https://zorin.com/os/",
+        "description": "A terminal-centric Arch-based distro with a user-friendly GUI installer.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
-        "homepage": "https://zorin.com/os/",
+        "author": "EndeavourOS Team",
+        "homepage": "https://endeavouros.com/",
         "install_methods": [
             {
                 "type": "direct_download",
@@ -759,10 +752,10 @@
     {
         "id": "cachyos",
         "name": "CachyOS",
-        "description": "https://cachyos.org/",
+        "description": "A user-friendly Arch-based Linux distribution. Made for gamers, by gamers.",
         "category": "linux",
         "icon": "linux",
-        "author": "",
+        "author": "CachyOS Team",
         "homepage": "https://cachyos.org/",
         "install_methods": [
             {
@@ -782,21 +775,20 @@
     {
         "id": "windows_11",
         "name": "Windows 11",
-        "description": "Windows 11",
+        "description": "The agentic operating system (LMAOOO)",
         "category": "windows",
         "icon": "windows",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "",
         "install_methods": [
             {
-                "type": "direct_download",
-                "label": "Windows 11 x64",
-                "filename": "Windows11-x64.iso",
-                "url": "https://dl.bobpony.com/windows/11/en-us_windows_11_23h2_x64.iso"
+                "type": "web_link",
+                "label": "Windows 11 x64 (en-GB)",
+                "url": "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENT_CONSUMER_x64FRE_en-gb.iso"
             },
             {
                 "type": "direct_download",
-                "label": "Windows 11 LTSC",
+                "label": "Windows 11 LTSC (en-US)",
                 "filename": "Windows11-LTSC.iso",
                 "url": "https://drive.massgrave.dev/en-us_windows_11_iot_enterprise_ltsc_2024_x64_dvd_f6b14814.iso"
             }
@@ -805,10 +797,10 @@
     {
         "id": "windows_10",
         "name": "Windows 10",
-        "description": "Windows 10",
+        "description": "The last good version of Windows, according to some. EOL in October 2025.",
         "category": "windows",
         "icon": "windows",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "",
         "install_methods": [
             {
@@ -828,10 +820,10 @@
     {
         "id": "windows_81",
         "name": "Windows 8.1",
-        "description": "Windows 8.1",
+        "description": "Windows 8 if it actually worked.",
         "category": "windows",
         "icon": "windows",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "",
         "install_methods": [
             {
@@ -856,7 +848,7 @@
         "description": "Windows 8",
         "category": "windows",
         "icon": "windows",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "",
         "install_methods": [
             {
@@ -876,10 +868,10 @@
     {
         "id": "windows_7",
         "name": "Windows 7",
-        "description": "Windows 7",
+        "description": "The classic Windows experience. EOL in January 2020.",
         "category": "windows",
         "icon": "windows",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "",
         "install_methods": [
             {
@@ -903,10 +895,10 @@
     {
         "id": "rectify11",
         "name": "Rectify11",
-        "description": "https://github.com/Rectify11/Installer",
+        "description": "A Windows 11 modification which makes it more consistent.",
         "category": "customization",
         "icon": "paint",
-        "author": "",
+        "author": "Rectify11 Team",
         "homepage": "https://github.com/Rectify11/Installer",
         "install_methods": [
             {
@@ -920,10 +912,10 @@
     {
         "id": "rufus",
         "name": "Rufus",
-        "description": "https://github.com/pbatard/rufus",
+        "description": "The Reliable USB Formatting Utility.",
         "category": "apps",
         "icon": "download",
-        "author": "",
+        "author": "Pete Batard",
         "homepage": "https://github.com/pbatard/rufus",
         "install_methods": [
             {
@@ -935,46 +927,28 @@
         ]
     },
     {
-        "id": "balena_etcher",
-        "name": "Balena Etcher",
-        "description": "https://github.com/balena-io/etcher",
-        "category": "apps",
-        "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/balena-io/etcher",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "Balena Etcher",
-                "filename": "Etcher-Portable.exe",
-                "url": "https://github.com/balena-io/etcher/releases/download/v1.18.11/balenaEtcher-Portable-1.18.11.exe"
-            }
-        ]
-    },
-    {
-        "id": "heidoc_iso_dwnlder",
-        "name": "HeiDoc Iso Dwnlder",
-        "description": "https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool",
+        "id": "fido",
+        "name": "Fido",
+        "description": "A PowerShell script to download Windows or UEFI Shell ISOs ",
         "category": "windows",
         "icon": "download",
-        "author": "",
-        "homepage": "https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool",
+        "author": "Pete Batard",
+        "homepage": "https://github.com/pbatard/Fido",
         "install_methods": [
             {
-                "type": "direct_download",
-                "label": "HeiDoc Iso Downloader",
-                "filename": "HeiDoc-ISO-Downloader.exe",
-                "url": "https://www.heidoc.net/php/Windows-ISO-Downloader.exe"
+                "type": "powershell",
+                "label": "Fido",
+                "command": "irm https://raw.githubusercontent.com/pbatard/Fido/refs/heads/master/Fido.ps1 | iex"
             }
         ]
     },
     {
         "id": "keepassxc",
         "name": "KeePassXC",
-        "description": "https://github.com/keepassxreboot/keepassxc",
+        "description": "KeePassXC is a cross-platform community-driven port of the Windows application “KeePass Password Safe”.",
         "category": "apps",
         "icon": "download",
-        "author": "",
+        "author": "KeePassXC Team",
         "homepage": "https://github.com/keepassxreboot/keepassxc",
         "install_methods": [
             {
@@ -988,10 +962,10 @@
     {
         "id": "powertoys",
         "name": "PowerToys",
-        "description": "https://github.com/microsoft/PowerToys",
+        "description": "Microsoft PowerToys is a collection of utilities that help you customize Windows and streamline everyday tasks.",
         "category": "apps",
         "icon": "download",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "https://github.com/microsoft/PowerToys",
         "install_methods": [
             {
@@ -1005,10 +979,10 @@
     {
         "id": "alacritty",
         "name": "Alacritty",
-        "description": "https://github.com/alacritty/alacritty",
+        "description": "A fast, cross-platform, OpenGL terminal emulator.",
         "category": "apps",
         "icon": "download",
-        "author": "",
+        "author": "Alacritty Team",
         "homepage": "https://github.com/alacritty/alacritty",
         "install_methods": [
             {
@@ -1022,10 +996,10 @@
     {
         "id": "powershell_7",
         "name": "PowerShell 7",
-        "description": "https://github.com/PowerShell/PowerShell",
+        "description": "PowerShell for every system! Better than the stock Windows PowerShell5.",
         "category": "apps",
         "icon": "download",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "https://github.com/PowerShell/PowerShell",
         "install_methods": [
             {
@@ -1037,26 +1011,32 @@
         ]
     },
     {
-        "id": "motrix",
-        "name": "Motrix",
-        "description": "https://github.com/agalwood/Motrix",
+        "id": "imfile",
+        "name": "imFile",
+        "description": "A full-featured download manager.",
         "category": "apps",
         "icon": "download",
-        "author": "",
-        "homepage": "https://github.com/agalwood/Motrix",
+        "author": "imFile Team",
+        "homepage": "https://github.com/imfile-io/imfile-desktop",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Motrix",
-                "filename": "Motrix-Setup.exe",
-                "url": "https://github.com/agalwood/Motrix/releases/latest/download/Motrix-Setup-1.8.19.exe"
+                "label": "Setup Installer",
+                "filename": "imFile-Setup.exe",
+                "url": "https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imFile-Setup-1.1.2.exe"
+            },
+            {
+                "type": "direct_download",
+                "label": "Portable executable",
+                "filename": "imFile.exe",
+                "url": "https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imFile-1.1.2-x64.exe"
             }
         ]
     },
     {
         "id": "files",
         "name": "Files",
-        "description": "https://files.community/",
+        "description": "Power meets beauty. A modern file manager for Windows.",
         "category": "apps",
         "icon": "download",
         "author": "",
@@ -1064,20 +1044,25 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Files",
+                "label": "Setup Installer",
                 "filename": "Files.appinstaller",
                 "url": "https://files.community/appinstallers/Files.preview.appinstaller"
+            },
+            {
+                "type": "microsoft_store",
+                "label": "Microsoft Store",
+                "store_id": "9nghp3dx8hdx"
             }
         ]
     },
     {
         "id": "vscode",
         "name": "VSCode",
-        "description": "https://vscodium.com/",
+        "description": "VSCodium or Visual Studio Code - Open Source code editor developed by Microsoft.",
         "category": "apps",
         "icon": "code",
-        "author": "",
-        "homepage": "https://vscodium.com/",
+        "author": "Microsoft, VSCodium Team",
+        "homepage": "",
         "install_methods": [
             {
                 "type": "direct_download",
@@ -1096,10 +1081,10 @@
     {
         "id": "prismlauncher",
         "name": "PrismLauncher",
-        "description": "https://github.com/PrismLauncher/PrismLauncher",
+        "description": "A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once (Fork of MultiMC).",
         "category": "gaming",
         "icon": "box",
-        "author": "",
+        "author": "PrismLauncher Team",
         "homepage": "https://github.com/PrismLauncher/PrismLauncher",
         "install_methods": [
             {
@@ -1113,10 +1098,10 @@
     {
         "id": "atlauncher",
         "name": "ATLauncher",
-        "description": "https://github.com/ATLauncher/ATLauncher",
+        "description": "A launcher for Minecraft which integrates multiple different modpacks to allow you to download and install modpacks easily and quickly.",
         "category": "gaming",
         "icon": "box",
-        "author": "",
+        "author": "ATLauncher Team",
         "homepage": "https://github.com/ATLauncher/ATLauncher",
         "install_methods": [
             {
@@ -1130,10 +1115,10 @@
     {
         "id": "gdlauncher",
         "name": "GDLauncher",
-        "description": "https://github.com/gorilla-devs/GDLauncher",
+        "description": "A simple, yet powerful Minecraft custom launcher with a strong focus on the user experience.",
         "category": "gaming",
         "icon": "box",
-        "author": "",
+        "author": "GorillaDevs Inc.",
         "homepage": "https://github.com/gorilla-devs/GDLauncher",
         "install_methods": [
             {
@@ -1154,28 +1139,28 @@
     },
     {
         "id": "lunar_client",
-        "name": "Lunar Client",
-        "description": "https://www.lunarclient.com/",
+        "name": "Lunar/Badlion Client",
+        "description": "The most popular Minecraft client for PvP with performance boosts and mods. Badlion Client is now merged with Lunar Client.",
         "category": "gaming",
         "icon": "box",
-        "author": "",
+        "author": "Moonsworth, LLC.",
         "homepage": "https://www.lunarclient.com/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Lunar Client",
-                "filename": "LunarClient-Setup.exe",
-                "url": "https://launcherupdates.lunarclientcdn.com/Lunar%20Client%20v3.2.3.exe"
+                "label": "Overwolf Installer (CONTAINS ADS)",
+                "filename": "LunarClient-Installer.exe",
+                "url": "https://download.overwolf.com/installer/prod/e4fa9853c82e8f97b6a699a40543d70f/Lunar%20Client%20-%20Installer.exe"
             }
         ]
     },
     {
         "id": "labymod",
         "name": "LabyMod",
-        "description": "https://www.labymod.net/",
+        "description": "A Minecraft modification that enhances the game with various features and optimizations.",
         "category": "gaming",
         "icon": "box",
-        "author": "",
+        "author": "LabyMedia GmbH",
         "homepage": "https://www.labymod.net/",
         "install_methods": [
             {
@@ -1189,10 +1174,10 @@
     {
         "id": "tecknix_client",
         "name": "Tecknix Client",
-        "description": "https://tecknix.com/",
+        "description": "The endgame of Minecraft PvP clients.",
         "category": "gaming",
         "icon": "box",
-        "author": "",
+        "author": "Tecknix Client",
         "homepage": "https://tecknix.com/",
         "install_methods": [
             {
@@ -1209,12 +1194,12 @@
         "description": "https://www.salwyrr.com/",
         "category": "gaming",
         "icon": "box",
-        "author": "",
+        "author": "Alexandre",
         "homepage": "https://www.salwyrr.com/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Salwyrr CLients",
+                "label": "Overwolf Installer (CONTAINS ADS)",
                 "filename": "Salwyrr-Setup.exe",
                 "url": "https://download.overwolf.com/setup/electron/ehdhabenpndnlfhfchfacfmnkhmnmigdjjlkeimc"
             }
@@ -1226,41 +1211,24 @@
         "description": "https://feathermc.com/",
         "category": "gaming",
         "icon": "box",
-        "author": "",
+        "author": "Digital Ingot, Inc.",
         "homepage": "https://feathermc.com/",
         "install_methods": [
             {
                 "type": "direct_download",
                 "label": "Feather Launcher",
                 "filename": "FeatherLauncher-Setup.exe",
-                "url": "https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%201.5.9.exe"
-            }
-        ]
-    },
-    {
-        "id": "badlion_client",
-        "name": "Badlion Client",
-        "description": "https://client.badlion.net/",
-        "category": "gaming",
-        "icon": "box",
-        "author": "",
-        "homepage": "https://client.badlion.net/",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "Badlion Client",
-                "filename": "BadlionClient-Setup.exe",
-                "url": "https://www.badlion.net/download/client/latest/windows"
+                "url": "https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%202.5.5.exe"
             }
         ]
     },
     {
         "id": "steam",
         "name": "Steam",
-        "description": "https://store.steampowered.com/",
+        "description": "Digital distribution platform for purchasing and playing video games.",
         "category": "gaming",
         "icon": "game",
-        "author": "",
+        "author": "Valve Corporation",
         "homepage": "https://store.steampowered.com/",
         "install_methods": [
             {
@@ -1274,49 +1242,32 @@
     {
         "id": "rare",
         "name": "Rare",
-        "description": "https://github.com/RareDevs/Rare",
+        "description": "Lightweight game launcher for Epic Games, uses Legendary.",
         "category": "gaming",
         "icon": "game",
-        "author": "",
+        "author": "RareDevs",
         "homepage": "https://github.com/RareDevs/Rare",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Rare",
-                "filename": "Rare-Setup.exe",
+                "label": "Setup Installer",
+                "filename": "Rare-Setup.msi",
                 "url": "https://github.com/RareDevs/Rare/releases/download/1.11.3.286/Rare-1.11.3.286.msi"
-            }
-        ]
-    },
-    {
-        "id": "epic_games",
-        "name": "Epic Games",
-        "description": "https://store.epicgames.com",
-        "category": "gaming",
-        "icon": "game",
-        "author": "",
-        "homepage": "https://store.epicgames.com",
-        "install_methods": [
-            {
-                "type": "direct_download",
-                "label": "Epic Games",
-                "filename": "Epic-Games-Setup.msi",
-                "url": "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi"
             }
         ]
     },
     {
         "id": "gog_galaxy",
         "name": "GOG Galaxy",
-        "description": "https://www.gog.com/galaxy",
+        "description": "Unified gaming client for GOG.com games and other platforms.",
         "category": "gaming",
         "icon": "game",
-        "author": "",
+        "author": "gog.com",
         "homepage": "https://www.gog.com/galaxy",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "GOG Galaxy",
+                "label": "Setup Installer",
                 "filename": "GOG-Galaxy-Setup.exe",
                 "url": "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe"
             }
