@@ -1,7 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/asset.dart';
+import '../services/install_handler_service.dart';
 
 class ViewItemWidget extends StatelessWidget {
   final Asset asset;
@@ -43,95 +45,16 @@ class ViewItemWidget extends StatelessWidget {
     BuildContext context,
     InstallMethod method,
   ) async {
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
-    final colorScheme = Theme.of(context).colorScheme;
+    // Close the dialog first
+    Navigator.of(context).pop();
 
-    try {
-      switch (method.type) {
-        case InstallType.directDownload:
-          if (method.url != null) {
-            await _launchUrl(method.url!);
-            scaffoldMessenger.showSnackBar(
-              SnackBar(
-                content: Text('Opening download link for ${asset.name}...'),
-                behavior: SnackBarBehavior.floating,
-              ),
-            );
-          }
-          break;
-        case InstallType.winget:
-          if (method.packageId != null) {
-            scaffoldMessenger.showSnackBar(
-              SnackBar(
-                content: Text('Run: winget install ${method.packageId}'),
-                behavior: SnackBarBehavior.floating,
-                duration: const Duration(seconds: 5),
-                action: SnackBarAction(
-                  label: 'Copy',
-                  onPressed: () {
-                    // TODO: Run the command directly in another window
-                  },
-                ),
-              ),
-            );
-          }
-          break;
-        case InstallType.microsoftStore:
-          if (method.storeId != null) {
-            await _launchUrl(
-              'ms-windows-store://pdp/?ProductId=${method.storeId}',
-            );
-          }
-          break;
-        case InstallType.chocolatey:
-          if (method.packageId != null) {
-            scaffoldMessenger.showSnackBar(
-              SnackBar(
-                content: Text('Run: choco install ${method.packageId}'),
-                behavior: SnackBarBehavior.floating,
-                duration: const Duration(seconds: 5),
-              ),
-            );
-          }
-          break;
-        case InstallType.scoop:
-          if (method.packageId != null) {
-            scaffoldMessenger.showSnackBar(
-              SnackBar(
-                content: Text('Run: scoop install ${method.packageId}'),
-                behavior: SnackBarBehavior.floating,
-                duration: const Duration(seconds: 5),
-              ),
-            );
-          }
-          break;
-        case InstallType.powershell:
-          if (method.command != null) {
-            scaffoldMessenger.showSnackBar(
-              SnackBar(
-                content: Text('Run: ${method.command}'),
-                behavior: SnackBarBehavior.floating,
-                duration: const Duration(seconds: 5),
-                action: SnackBarAction(
-                  label: 'Copy',
-                  onPressed: () {
-                    // TODO: Run the command directly in another window
-                  },
-                ),
-              ),
-            );
-          }
-          break;
-      }
-    } catch (e) {
-      scaffoldMessenger.showSnackBar(
-        SnackBar(
-          content: Text('Error: $e'),
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: colorScheme.error,
-        ),
-      );
-    }
+    final installHandler = Provider.of<InstallHandlerService>(
+      context,
+      listen: false,
+    );
+
+    // Use the install handler service which has auto-retry logic
+    await installHandler.handleInstall(method: method, appName: asset.name);
   }
 
   @override

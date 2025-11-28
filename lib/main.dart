@@ -7,6 +7,10 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'navigation.dart';
 import 'utils/theme_provider.dart';
 import 'provider/asset_provider.dart';
+import 'services/toast_notification_service.dart';
+import 'services/download_service.dart';
+import 'services/install_handler_service.dart';
+import 'widgets/toast_overlay_widget.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +23,18 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => AssetProvider()),
+        ChangeNotifierProvider(create: (_) => ToastNotificationService()),
+        ProxyProvider<ToastNotificationService, DownloadService>(
+          update: (_, toastService, __) => DownloadService(toastService),
+        ),
+        ProxyProvider2<
+          ToastNotificationService,
+          DownloadService,
+          InstallHandlerService
+        >(
+          update: (_, toastService, downloadService, __) =>
+              InstallHandlerService(toastService, downloadService),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -41,7 +57,7 @@ class MyApp extends StatelessWidget {
               themeMode: themeProvider.themeMode,
               theme: lightTheme,
               darkTheme: darkTheme,
-              home: const NavigationPage(),
+              home: const ToastOverlay(child: NavigationPage()),
             );
           },
         );
