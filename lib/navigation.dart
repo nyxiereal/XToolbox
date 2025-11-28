@@ -46,7 +46,7 @@ class _NavigationPageState extends State<NavigationPage> {
                       NavigationRailDestination(
                         icon: Icon(Icons.apps_outlined),
                         selectedIcon: Icon(Icons.apps),
-                        label: Text('Browse Apps'),
+                        label: Text('Browse Packages'),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.info_outline),
@@ -83,7 +83,7 @@ class _NavigationPageState extends State<NavigationPage> {
               NavigationDestination(
                 icon: Icon(Icons.apps_outlined),
                 selectedIcon: Icon(Icons.apps),
-                label: 'Browse Apps',
+                label: 'Browse Packages',
               ),
               NavigationDestination(
                 icon: Icon(Icons.info_outline),

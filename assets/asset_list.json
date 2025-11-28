@@ -10,13 +10,13 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Setup Installer",
+                "label": "Installer",
                 "url": "https://github.com/Teraskull/PyDebloatX/releases/latest/download/PyDebloatX_setup.exe",
                 "filename": "PyDebloatX_setup.exe"
             },
             {
                 "type": "direct_download",
-                "label": "Portable (ZIP)",
+                "label": "Portable",
                 "url": "https://github.com/Teraskull/PyDebloatX/releases/latest/download/PyDebloatX_portable.zip",
                 "filename": "PyDebloatX_portable.zip",
                 "needs_extraction": true,
@@ -35,7 +35,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Setup Installer (x86)",
+                "label": "Installer",
                 "url": "https://github.com/rocksdanister/lively/releases/download/v2.2.1.0/lively_setup_x86_full_v2210.exe",
                 "filename": "lively_setup_x86_full_v2210.exe"
             },
@@ -46,7 +46,7 @@
             },
             {
                 "type": "microsoft_store",
-                "label": "Microsoft Store",
+                "label": "Install via Microsoft Store",
                 "store_id": "9NTM2QC6QWS7"
             }
         ]
@@ -62,13 +62,13 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "WinScript Portable",
+                "label": "Portable",
                 "filename": "WinScript-Portable.exe",
                 "url": "https://github.com/flick9000/winscript/releases/latest/download/winscript-portable.exe"
             },
             {
                 "type": "direct_download",
-                "label": "WinScript Installer",
+                "label": "Installer",
                 "filename": "WinScript-Installer.exe",
                 "url": "https://github.com/flick9000/winscript/releases/latest/download/winscript-installer.exe"
             },
@@ -113,7 +113,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "ShutUp10++",
+                "label": "Launch Application",
                 "filename": "ShutUp10.exe",
                 "url": "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
             }
@@ -123,14 +123,14 @@
         "id": "majorprivacy",
         "name": "MajorPrivacy",
         "description": "Advanced Privacy Tool for Windows. A driver-level HISP that monitors and blocks suspicious processes",
-        "category": "privacy",
+        "category": "debloat",
         "icon": "shield",
         "author": "xanasoft",
         "homepage": "https://github.com/xanasoft/MajorPrivacy",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "MajorPrivacy",
+                "label": "Launch Application",
                 "filename": "MajorPrivacy.exe",
                 "url": "https://github.com/xanasoft/MajorPrivacy/releases/download/v0.99.5/MajorPrivacy-v0.99.5.exe"
             }
@@ -147,7 +147,7 @@
         "install_methods": [
             {
                 "type": "powershell",
-                "label": "MAS",
+                "label": "Launch Application",
                 "command": "irm https://get.activated.win | iex"
             }
         ]
@@ -163,7 +163,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Winaero Tweaker",
+                "label": "Silent Installer",
                 "filename": "WinaeroTweaker.zip",
                 "url": "https://winaerotweaker.com/download/winaerotweaker.zip",
                 "needs_extraction": true,
@@ -182,7 +182,7 @@
         "install_methods": [
             {
                 "type": "powershell",
-                "label": "CTT",
+                "label": "Launch Application",
                 "command": "irm https://christitus.com/win | iex"
             }
         ]
@@ -198,7 +198,7 @@
         "install_methods": [
             {
                 "type": "web_link",
-                "label": "NVCleanstall",
+                "label": "Open in Browser",
                 "url": "https://www.techpowerup.com/download/techpowerup-nvcleanstall/"
             }
         ]
@@ -207,14 +207,14 @@
         "id": "privacysexy",
         "name": "PrivacySexy",
         "description": "A tool to enforce privacy & security best-practices on Windows, macOS and Linux, because privacy is sexy.",
-        "category": "privacy",
+        "category": "debloat",
         "icon": "shield",
         "author": "undergroundwires",
         "homepage": "https://privacy.sexy/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "PrivacySexy",
+                "label": "Installer",
                 "filename": "PrivacySexy-setup.exe",
                 "url": "https://github.com/undergroundwires/privacy.sexy/releases/download/0.13.8/privacy.sexy-Setup-0.13.8.exe"
             }
@@ -231,7 +231,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Brave Browser",
+                "label": "Installer",
                 "filename": "Brave-Setup.exe",
                 "url": "https://referrals.brave.com/latest/BraveBrowserSetup.exe"
             }
@@ -248,7 +248,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Firefox Setup",
+                "label": "Installer",
                 "filename": "Firefox-Setup.exe",
                 "url": "https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US"
             }
@@ -265,7 +265,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Floorp",
+                "label": "Installer",
                 "filename": "Floorp-Setup.exe",
                 "url": "https://github.com/Floorp-Projects/Floorp/releases/latest/download/floorp-stub.installer.exe"
             }
@@ -282,7 +282,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Direct Download",
+                "label": "Installer",
                 "filename": "LibreWolf-Setup.exe",
                 "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/145.0.1-2/librewolf-145.0.1-2-windows-x86_64-setup.exe"
             },
@@ -304,7 +304,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "qBittorrent Enhanced Edition",
+                "label": "Installer",
                 "filename": "qBittorrent-EE-Setup.exe",
                 "url": "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/latest/download/qbittorrent_enhanced_release-5.1.3.10_qt6_x64_setup.exe"
             }
@@ -321,7 +321,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Rainmeter",
+                "label": "Installer",
                 "filename": "Rainmeter-Setup.exe",
                 "url": "https://github.com/rainmeter/rainmeter/releases/download/v4.5.17.3700/Rainmeter-4.5.17.exe"
             }
@@ -338,7 +338,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "7-Zip",
+                "label": "Installer",
                 "filename": "7Zip-zstd.exe",
                 "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v22.01-v1.5.5-R3/7z22.01-zstd-x64.exe"
             }
@@ -350,12 +350,12 @@
         "description": "A memory cleaning application.",
         "category": "apps",
         "icon": "cleaning_services",
-        "author": "",
+        "author": "Koshy John",
         "homepage": "https://www.koshyjohn.com/software/memclean/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Memory Cleaner",
+                "label": "Installer",
                 "filename": "MemoryCleaner.exe",
                 "url": "https://www.koshyjohn.com/software/MemClean.exe"
             }
@@ -372,7 +372,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Nilesoft Shell Setup",
+                "label": "Installer",
                 "filename": "Shell-Setup.msi",
                 "url": "https://nilesoft.org/download/shell/1.9.18/setup-x64.msi"
             }
@@ -389,7 +389,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "ADW Cleaner",
+                "label": "Launch Application",
                 "filename": "ADW-Cleaner.exe",
                 "url": "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release"
             }
@@ -406,7 +406,7 @@
         "install_methods": [
             {
                 "type": "web_link",
-                "label": "ATF Cleaner",
+                "label": "Open in Browser",
                 "url": "https://www.majorgeeks.com/mg/getmirror/atf_cleaner,1.html"
             }
         ]
@@ -422,7 +422,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Defraggler",
+                "label": "Installer",
                 "filename": "Defraggler-Setup.exe",
                 "url": "https://download.ccleaner.com/dfsetup222.exe"
             }
@@ -432,14 +432,14 @@
         "id": "malwarebytes",
         "name": "Malwarebytes",
         "description": "All-in-one cybersecurity protection always by your side.",
-        "category": "cleaners",
-        "icon": "download",
-        "author": "",
+        "category": "antivirus",
+        "icon": "malware",
+        "author": "Malwarebytes",
         "homepage": "https://www.malwarebytes.com/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Malwarebytes",
+                "label": "Installer",
                 "filename": "Malwarebytes.exe",
                 "url": "https://data-cdn.mbamupdates.com/web/mb5-setup-consumer/MBSetup.exe"
             }
@@ -456,7 +456,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Emsisoft Emergency Kit",
+                "label": "Launch Application",
                 "filename": "EmsisoftEmergencyKit.exe",
                 "url": "https://dl.emsisoft.com/EmsisoftEmergencyKit.exe"
             }
@@ -473,7 +473,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "CleanmgrPlus",
+                "label": "Portable",
                 "filename": "CleanmgrPlus.zip",
                 "url": "https://github.com/builtbybel/CleanmgrPlus/releases/latest/download/cleanmgrplus.zip",
                 "needs_extraction": true,
@@ -492,7 +492,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Glary Utilities",
+                "label": "Launch Application",
                 "filename": "GlaryUtilities.exe",
                 "url": "https://download.glarysoft.com/gu6setup.exe"
             }
@@ -903,7 +903,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Rectify11 Installer",
+                "label": "Installer",
                 "filename": "Rectify11Installer.exe",
                 "url": "https://github.com/Rectify11/Installer/releases/latest/download/Rectify11Installer.exe"
             }
@@ -914,13 +914,13 @@
         "name": "Rufus",
         "description": "The Reliable USB Formatting Utility.",
         "category": "apps",
-        "icon": "download",
+        "icon": "usb",
         "author": "Pete Batard",
         "homepage": "https://github.com/pbatard/rufus",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Rufus",
+                "label": "Launch Application",
                 "filename": "Rufus.exe",
                 "url": "https://github.com/pbatard/rufus/releases/latest/download/rufus-v4.11.exe"
             }
@@ -937,7 +937,7 @@
         "install_methods": [
             {
                 "type": "powershell",
-                "label": "Fido",
+                "label": "Launch Application",
                 "command": "irm https://raw.githubusercontent.com/pbatard/Fido/refs/heads/master/Fido.ps1 | iex"
             }
         ]
@@ -947,13 +947,13 @@
         "name": "KeePassXC",
         "description": "KeePassXC is a cross-platform community-driven port of the Windows application “KeePass Password Safe”.",
         "category": "apps",
-        "icon": "download",
+        "icon": "keys",
         "author": "KeePassXC Team",
         "homepage": "https://github.com/keepassxreboot/keepassxc",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "KeePassXC",
+                "label": "Installer",
                 "filename": "KeePassXC-Setup.msi",
                 "url": "https://github.com/keepassxreboot/keepassxc/releases/latest/download/KeePassXC-2.7.11-Win64.msi"
             }
@@ -964,13 +964,13 @@
         "name": "PowerToys",
         "description": "Microsoft PowerToys is a collection of utilities that help you customize Windows and streamline everyday tasks.",
         "category": "apps",
-        "icon": "download",
+        "icon": "toys",
         "author": "Microsoft",
         "homepage": "https://github.com/microsoft/PowerToys",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "PowerToys",
+                "label": "Installer",
                 "filename": "PowerToys-Setup.exe",
                 "url": "https://github.com/microsoft/PowerToys/releases/latest/download/PowerToysSetup-0.96.1-x64.exe"
             }
@@ -981,13 +981,13 @@
         "name": "Alacritty",
         "description": "A fast, cross-platform, OpenGL terminal emulator.",
         "category": "apps",
-        "icon": "download",
+        "icon": "terminal",
         "author": "Alacritty Team",
         "homepage": "https://github.com/alacritty/alacritty",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Alacritty",
+                "label": "Installer",
                 "filename": "Alacritty-Setup.exe",
                 "url": "https://github.com/alacritty/alacritty/releases/latest/download/Alacritty-v0.16.1-installer.msi"
             }
@@ -998,7 +998,7 @@
         "name": "PowerShell 7",
         "description": "PowerShell for every system! Better than the stock Windows PowerShell5.",
         "category": "apps",
-        "icon": "download",
+        "icon": "terminal",
         "author": "Microsoft",
         "homepage": "https://github.com/PowerShell/PowerShell",
         "install_methods": [
@@ -1021,13 +1021,13 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Setup Installer",
+                "label": "Installer",
                 "filename": "imFile-Setup.exe",
                 "url": "https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imFile-Setup-1.1.2.exe"
             },
             {
                 "type": "direct_download",
-                "label": "Portable executable",
+                "label": "Portable",
                 "filename": "imFile.exe",
                 "url": "https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imFile-1.1.2-x64.exe"
             }
@@ -1038,19 +1038,19 @@
         "name": "Files",
         "description": "Power meets beauty. A modern file manager for Windows.",
         "category": "apps",
-        "icon": "download",
-        "author": "",
+        "icon": "files",
+        "author": "Files Community",
         "homepage": "https://files.community/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Setup Installer",
+                "label": "Installer",
                 "filename": "Files.appinstaller",
                 "url": "https://files.community/appinstallers/Files.preview.appinstaller"
             },
             {
                 "type": "microsoft_store",
-                "label": "Microsoft Store",
+                "label": "Install via Microsoft Store",
                 "store_id": "9nghp3dx8hdx"
             }
         ]
@@ -1061,7 +1061,7 @@
         "description": "VSCodium or Visual Studio Code - Open Source code editor developed by Microsoft.",
         "category": "apps",
         "icon": "code",
-        "author": "Microsoft, VSCodium Team",
+        "author": "multiple",
         "homepage": "",
         "install_methods": [
             {
@@ -1089,7 +1089,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Prism Launcher Setup",
+                "label": "Installer",
                 "filename": "PrismLauncher-Setup.exe",
                 "url": "https://github.com/PrismLauncher/PrismLauncher/releases/download/9.4/PrismLauncher-Windows-MSVC-Setup-9.4.exe"
             }
@@ -1106,7 +1106,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "ATLauncher",
+                "label": "Installer",
                 "filename": "ATLauncher-Setup.exe",
                 "url": "https://github.com/ATLauncher/ATLauncher/releases/latest/download/ATLauncher-v3.4.40.2.exe"
             }
@@ -1123,7 +1123,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "GDLauncher Portable",
+                "label": "Portable",
                 "filename": "GDLauncher-Portable.zip",
                 "url": "https://github.com/gorilla-devs/GDLauncher/releases/download/v/GDLauncher-win-portable.zip",
                 "needs_extraction": true,
@@ -1131,7 +1131,7 @@
             },
             {
                 "type": "direct_download",
-                "label": "GDLauncher Setup",
+                "label": "Installer",
                 "filename": "GDLauncher-Setup.exe",
                 "url": "https://github.com/gorilla-devs/GDLauncher/releases/download/v/GDLauncher-win-setup.exe"
             }
@@ -1165,7 +1165,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "LabyMod",
+                "label": "Installer",
                 "filename": "LabyMod-Setup.exe",
                 "url": "https://releases.r2.labymod.net/launcher/win32/x64/LabyModLauncherSetup-latest.exe"
             }
@@ -1182,7 +1182,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Tecknix Client",
+                "label": "Installer",
                 "filename": "Tecknix-Setup.exe",
                 "url": "https://tecknix.com/client/TecknixClient.exe"
             }
@@ -1216,7 +1216,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Feather Launcher",
+                "label": "Installer",
                 "filename": "FeatherLauncher-Setup.exe",
                 "url": "https://launcher.feathercdn.net/dl/Feather%20Launcher%20Setup%202.5.5.exe"
             }
@@ -1233,7 +1233,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Steam",
+                "label": "Installer",
                 "filename": "Steam-Setup.exe",
                 "url": "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe"
             }
@@ -1250,7 +1250,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Setup Installer",
+                "label": "Installer",
                 "filename": "Rare-Setup.msi",
                 "url": "https://github.com/RareDevs/Rare/releases/download/1.11.3.286/Rare-1.11.3.286.msi"
             }
@@ -1267,7 +1267,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Setup Installer",
+                "label": "Installer",
                 "filename": "GOG-Galaxy-Setup.exe",
                 "url": "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe"
             }
@@ -1276,15 +1276,15 @@
     {
         "id": "paradox",
         "name": "Paradox",
-        "description": "https://www.paradoxinteractive.com/our-games/launcher",
+        "description": "Paradox Launcher for managing Paradox Interactive games.",
         "category": "gaming",
         "icon": "game",
-        "author": "",
+        "author": "Padarox Interactive",
         "homepage": "https://www.paradoxinteractive.com/our-games/launcher",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Paradox",
+                "label": "Installer",
                 "filename": "Paradox-Setup.msi",
                 "url": "https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-windows"
             }
@@ -1293,32 +1293,32 @@
     {
         "id": "bloxstrap",
         "name": "Bloxstrap",
-        "description": "https://github.com/pizzaboxer/bloxstrap",
+        "description": "A custom roblox launcher wrapper with many features and enhancements.",
         "category": "gaming",
         "icon": "game",
-        "author": "",
+        "author": "pizzaboxer",
         "homepage": "https://github.com/pizzaboxer/bloxstrap",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Bloxstrap",
+                "label": "Installer",
                 "filename": "Bloxstrap-Setup.exe",
-                "url": "hhttps://github.com/bloxstraplabs/bloxstrap/releases/download/v2.10.0/Bloxstrap-v2.10.0.exe"
+                "url": "https://github.com/bloxstraplabs/bloxstrap/releases/download/v2.10.0/Bloxstrap-v2.10.0.exe"
             }
         ]
     },
     {
         "id": "directx",
         "name": "DirectX",
-        "description": "https://www.microsoft.com/en-us/download/details.aspx?id=35",
+        "description": "A collection of APIs for handling tasks related to multimedia, especially game programming and video, on Microsoft platforms.",
         "category": "runtimes",
         "icon": "code",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "https://www.microsoft.com/en-us/download/details.aspx?id=35",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "DirectX",
+                "label": "Installer",
                 "filename": "DirectX.exe",
                 "url": "https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe"
             }
@@ -1327,15 +1327,15 @@
     {
         "id": "vcredists",
         "name": "VCRedists",
-        "description": "https://github.com/abbodi1406/vcredist",
+        "description": "A repack of all Visual C++ Redistributable packages.",
         "category": "runtimes",
         "icon": "code",
-        "author": "",
+        "author": "abbodi1406",
         "homepage": "https://github.com/abbodi1406/vcredist",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "VisualCppRedistAIO",
+                "label": "Repack Installer",
                 "filename": "VCRedists.exe",
                 "url": "https://github.com/abbodi1406/vcredist/releases/latest/download/VisualCppRedist_AIO_x86_x64.exe"
             }
@@ -1344,15 +1344,15 @@
     {
         "id": "xna_framework",
         "name": "XNA Framework",
-        "description": "https://www.microsoft.com/en-us/download/details.aspx?id=20914",
+        "description": "A set of tools used to run games developed with XNA",
         "category": "runtimes",
         "icon": "code",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "https://www.microsoft.com/en-us/download/details.aspx?id=20914",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "XNA Framework",
+                "label": "Installer",
                 "filename": "xnafx.msi",
                 "url": "https://download.microsoft.com/download/A/C/2/AC2C903B-E6E8-42C2-9FD7-BEBAC362A930/xnafx40_redist.msi"
             }
@@ -1361,10 +1361,10 @@
     {
         "id": "net_framework",
         "name": ".NET Framework",
-        "description": "https://dotnet.microsoft.com/en-us/download/dotnet/8.0",
+        "description": "A software framework developed by Microsoft that runs primarily on Microsoft Windows.",
         "category": "runtimes",
         "icon": "code",
-        "author": "",
+        "author": "Microsoft",
         "homepage": "https://dotnet.microsoft.com/en-us/download/dotnet/8.0",
         "install_methods": [
             {
@@ -1425,7 +1425,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Python 3.14",
+                "label": "Installer",
                 "filename": "Python314-Installer.exe",
                 "url": "https://www.python.org/ftp/python/3.14.0/python-3.14.0-amd64.exe"
             },
@@ -1445,7 +1445,7 @@
     {
         "id": "achievement_watcher",
         "name": "Achievement Watcher",
-        "description": "https://github.com/xan105/Achievement-Watcher",
+        "description": "A sexy achievement file parser with real-time notification, automatic screenshot and playtime tracking. View every achievements earned on your PC whether it's coming from Steam, a Steam emulator, and more.",
         "category": "gaming",
         "icon": "game",
         "author": "xan105",
@@ -1453,7 +1453,7 @@
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Achievement Watcher",
+                "label": "Installer",
                 "filename": "Achievement-Watcher.exe",
                 "url": "https://github.com/xan105/Achievement-Watcher/releases/latest/download/Achievement.Watcher.Setup.exe"
             }
@@ -1462,15 +1462,15 @@
     {
         "id": "spotify",
         "name": "Spotify",
-        "description": "https://open.spotify.com/",
+        "description": "A proprietary music streaming services.",
         "category": "apps",
         "icon": "music",
-        "author": "",
+        "author": "Spotify AB",
         "homepage": "https://open.spotify.com/",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Spotify",
+                "label": "Installer",
                 "filename": "Spotify.exe",
                 "url": "https://download.scdn.co/SpotifySetup.exe"
             }
@@ -1479,84 +1479,57 @@
     {
         "id": "spicetify",
         "name": "Spicetify",
-        "description": "https://spicetify.app/",
+        "description": "A command-line tool to customize Spotify client with themes and extensions.",
         "category": "gaming",
         "icon": "music",
-        "author": "",
+        "author": "Spicetify",
         "homepage": "https://spicetify.app/",
         "install_methods": [
             {
                 "type": "powershell",
-                "label": "Spicefy",
+                "label": "Launch Application",
                 "command": "iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex && iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex"
             }
         ]
     },
     {
-        "id": "discord",
-        "name": "Discord",
-        "description": "https://discord.com/",
+        "id": "discordclients",
+        "name": "Discord Clients",
+        "description": "Legcord, Equibop, Vesktop, Dorion, and the official client",
         "category": "gaming",
         "icon": "power",
-        "author": "",
-        "homepage": "https://discord.com/",
+        "author": "multiple",
+        "homepage": "",
         "install_methods": [
             {
                 "type": "direct_download",
-                "label": "Discord",
-                "filename": "Discord-Setup.exe",
-                "url": "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86"
-            }
-        ]
-    },
-    {
-        "id": "vesktop",
-        "name": "Vesktop",
-        "description": "https://github.com/Vencord/Vesktop/",
-        "category": "gaming",
-        "icon": "power",
-        "author": "Vencord",
-        "homepage": "https://github.com/Vencord/Vesktop/",
-        "install_methods": [
+                "label": "Legcord",
+                "filename": "Legcord-Setup.exe",
+                "url": "https://github.com/Legcord/Legcord/releases/download/v1.1.6/Legcord-1.1.6-win-x64.exe"
+            },
             {
                 "type": "direct_download",
-                "label": "Vesktop",
-                "filename": "Vesktop-Setup.exe",
-                "url": "https://github.com/Vencord/Vesktop/releases/download/v1.6.1/Vesktop-Setup-1.6.1.exe"
-            }
-        ]
-    },
-    {
-        "id": "equibop",
-        "name": "Equibop",
-        "description": "https://github.com/Equicord/Equibop/",
-        "category": "gaming",
-        "icon": "power",
-        "author": "Equicord",
-        "homepage": "https://github.com/Equicord/Equibop/",
-        "install_methods": [
+                "label": "Dorion",
+                "filename": "Dorion-Setup.exe",
+                "url": "https://github.com/SpikeHD/Dorion/releases/download/v6.11.0/Dorion_6.11.0_x64-setup.exe"
+            },
             {
                 "type": "direct_download",
                 "label": "Equibop",
                 "filename": "Equibop-Setup.exe",
                 "url": "https://github.com/Equicord/Equibop/releases/download/v3.1.3/Equibop-Setup-3.1.3.exe"
-            }
-        ]
-    },
-    {
-        "id": "legcord",
-        "name": "LegCord",
-        "description": "https://github.com/Legcord/Legcord/",
-        "category": "gaming",
-        "icon": "power",
-        "author": "",
-        "homepage": "https://github.com/Legcord/Legcord/",
-        "install_methods": [
+            },
             {
                 "type": "direct_download",
-                "label": "Setup",
-                "filename": "Legcord-Setup.exe",
-                "url": "https://github.com/Legcord/Legcord/releases/download/v1.1.6/Legcord-1.1.6-win-x64.exe"
+                "label": "Vesktop",
+                "filename": "Vesktop-Setup.exe",
+                "url": "https://github.com/Vencord/Vesktop/releases/download/v1.6.1/Vesktop-Setup-1.6.1.exe"
+            },
+            {
+                "type": "direct_download",
+                "label": "Discord",
+                "filename": "Discord-Setup.exe",
+                "url": "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64"
             }
         ]
     },
@@ -1566,7 +1539,7 @@
         "description": "Vencord, Equicord, Shelter, Replugged",
         "category": "gaming",
         "icon": "power",
-        "author": "Vencord, Equicord, Shelter, Replugged",
+        "author": "multiple",
         "homepage": "",
         "install_methods": [
             {

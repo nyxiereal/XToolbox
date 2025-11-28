@@ -111,7 +111,7 @@ class _BrowseAppsScreenState extends State<BrowseAppsScreen> {
             children: [
               // Category sidebar
               Container(
-                width: 200,
+                width: 240,
                 decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
