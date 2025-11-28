@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/browse_apps_screen.dart';
+import 'screens/playbook_setup_screen.dart';
 import 'screens/about_screen.dart';
 import 'screens/settings_screen.dart';
 
@@ -17,6 +18,7 @@ class _NavigationPageState extends State<NavigationPage> {
   static const _pages = <Widget>[
     HomeScreen(),
     BrowseAppsScreen(),
+    PlaybookSetupScreen(),
     AboutScreen(),
     SettingsScreen(),
   ];
@@ -47,6 +49,11 @@ class _NavigationPageState extends State<NavigationPage> {
                         icon: Icon(Icons.apps_outlined),
                         selectedIcon: Icon(Icons.apps),
                         label: Text('Browse Packages'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.security_outlined),
+                        selectedIcon: Icon(Icons.security),
+                        label: Text('Playbooks'),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.info_outline),
@@ -84,6 +91,11 @@ class _NavigationPageState extends State<NavigationPage> {
                 icon: Icon(Icons.apps_outlined),
                 selectedIcon: Icon(Icons.apps),
                 label: 'Browse Packages',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.security_outlined),
+                selectedIcon: Icon(Icons.security),
+                label: 'Playbooks',
               ),
               NavigationDestination(
                 icon: Icon(Icons.info_outline),

@@ -20,6 +20,7 @@ dependencies:
   archive: ^3.6.1
   process_run: ^1.2.0
   flutter_overlay: ^1.0.0
+  xml: ^6.5.0
 
 dev_dependencies:
   flutter_test:

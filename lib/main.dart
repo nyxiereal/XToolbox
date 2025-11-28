@@ -10,6 +10,7 @@ import 'provider/asset_provider.dart';
 import 'services/toast_notification_service.dart';
 import 'services/download_service.dart';
 import 'services/install_handler_service.dart';
+import 'services/playbook_service.dart';
 import 'widgets/toast_overlay_widget.dart';
 
 Future<void> main() async {
@@ -34,6 +35,13 @@ Future<void> main() async {
         >(
           update: (_, toastService, downloadService, __) =>
               InstallHandlerService(toastService, downloadService),
+        ),
+        ChangeNotifierProxyProvider<ToastNotificationService, PlaybookService>(
+          create: (context) => PlaybookService(
+            Provider.of<ToastNotificationService>(context, listen: false),
+          ),
+          update: (_, toastService, previous) =>
+              previous ?? PlaybookService(toastService),
         ),
       ],
       child: const MyApp(),
