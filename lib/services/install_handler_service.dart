@@ -108,21 +108,41 @@ class InstallHandlerService {
           executablePath = result;
         }
 
+        bool launched = false;
+
         if (Platform.isWindows) {
-          // On Windows, launch the installer
-          await _runCommand('start "" "$executablePath"', toastId);
+          // On Windows, launch the installer. Files may be briefly locked by
+          // antivirus or the download process — retry a few times.
+          const maxAttempts = 5;
+          for (var attempt = 1; attempt <= maxAttempts; attempt++) {
+            launched = await _runCommand('start "" "$executablePath"', toastId);
+            if (launched) break;
+            // back off a bit before retrying
+            await Future.delayed(Duration(milliseconds: 200 * attempt));
+          }
         } else {
           // On Linux, make executable and run
-          await _runCommand('chmod +x "$executablePath"', toastId);
-          await _runCommand('"$executablePath"', toastId);
+          final chmodOk = await _runCommand('chmod +x "$executablePath"', toastId);
+          if (chmodOk) {
+            launched = await _runCommand('"$executablePath"', toastId);
+          }
         }
 
-        _toastService.updateNotification(
-          id: toastId,
-          status: ToastStatus.success,
-          message: 'Installer launched',
-        );
-        return InstallResult.success;
+        if (launched) {
+          _toastService.updateNotification(
+            id: toastId,
+            status: ToastStatus.success,
+            message: 'Installer launched',
+          );
+          return InstallResult.success;
+        } else {
+          _toastService.updateNotification(
+            id: toastId,
+            status: ToastStatus.error,
+            message: 'Failed to launch installer after multiple attempts',
+          );
+          return InstallResult.failed;
+        }
       } catch (e) {
         _toastService.updateNotification(
           id: toastId,
@@ -430,14 +450,63 @@ class InstallHandlerService {
 
   Future<bool> _installWinget(String toastId) async {
     try {
-      // Winget comes with Windows 11 and Windows 10 with App Installer
-      // Attempt to install via PowerShell
-      final command = '''
-      \$progressPreference = 'silentlyContinue'
-      Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
-      ''';
+      // Winget comes with Windows 11 and Windows 10 with App Installer.
+      // First, check whether App Installer is already present (Get-AppxPackage).
+      try {
+        final shell = Shell();
+        // Check user-level App Installer first (no -AllUsers to avoid permission issues)
+        final results = await shell.run(
+            'powershell -NoProfile -Command "Get-AppxPackage -Name Microsoft.DesktopAppInstaller | Select-Object -ExpandProperty Name"');
 
-      return await _runCommand(command, toastId);
+        final out = results.isNotEmpty ? results.last.stdout.toString().trim() : '';
+        if (out.isNotEmpty) {
+          // App Installer is installed at the user level; return success so caller can retry winget.
+          return true;
+        }
+      } catch (e) {
+        final err = e.toString();
+        // If we get an UnauthorizedAccessException, inform the user and open the Store
+        if (err.contains('Unauthorized') || err.contains('Access Denied') || err.contains('Odmowa')) {
+          _toastService.updateNotification(
+            id: toastId,
+            status: ToastStatus.error,
+            message:
+                'Permission denied when checking App Installer. Please run the app as Administrator or install "App Installer" from the Microsoft Store. Opening Store...',
+          );
+
+          await _runCommand('start "" "ms-windows-store://search/?query=App%20Installer"',
+              toastId,
+              silent: true);
+
+          return false;
+        }
+        // otherwise ignore and attempt registration below
+      }
+
+      // Attempt to register App Installer via Add-AppxPackage. This will fail
+      // when the package isn't staged on disk; in that case we fallback to
+      // opening the Microsoft Store search page for the user to install it.
+      final registerCmd =
+          r"$progressPreference = 'silentlyContinue'; Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe";
+
+      final registered = await _runCommand(registerCmd, toastId);
+
+      if (registered) return true;
+
+      // If registration failed, open Microsoft Store search for App Installer
+      _toastService.updateNotification(
+        id: toastId,
+        status: ToastStatus.error,
+        message:
+            'Failed to register App Installer automatically. Opening Microsoft Store to help you install App Installer (search: "App Installer").',
+      );
+
+      // Open store search for 'App Installer' to let the user install it interactively
+      await _runCommand('start "" "ms-windows-store://search/?query=App%20Installer"',
+          toastId,
+          silent: true);
+
+      return false;
     } catch (e) {
       if (kDebugMode) {
         print('Error installing winget: $e');
@@ -474,11 +543,13 @@ class InstallHandlerService {
 
       // Run command based on platform
       if (Platform.isWindows) {
-        // For Windows, use cmd for start command, otherwise use PowerShell
+        // For Windows, use cmd for start command, otherwise run via PowerShell
         if (command.startsWith('start ')) {
           await shell.run('cmd /c $command');
         } else {
-          await shell.run('powershell -Command "$command"');
+          // Use -NoProfile and -ExecutionPolicy Bypass and wrap the command
+          // in an explicit script block to avoid issues with newlines/quotes.
+          await shell.run('powershell -NoProfile -ExecutionPolicy Bypass -Command "& { $command }"');
         }
       } else {
         await shell.run(command);

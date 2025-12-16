@@ -91,32 +91,24 @@ class DownloadService {
 
       final sink = file.openWrite();
 
-      await response.stream
-          .listen(
-            (chunk) {
-              bytesDownloaded += chunk.length;
-              sink.add(chunk);
+      try {
+        await for (final chunk in response.stream) {
+          bytesDownloaded += chunk.length;
+          sink.add(chunk);
 
-              if (contentLength > 0) {
-                final progress = bytesDownloaded / contentLength;
-                _toastService.updateNotification(
-                  id: toastId,
-                  progress: progress,
-                  message:
-                      'Downloaded ${_formatBytes(bytesDownloaded)} / ${_formatBytes(contentLength)}',
-                );
-              }
-            },
-            onDone: () async {
-              await sink.close();
-            },
-            onError: (error) async {
-              await sink.close();
-              throw error;
-            },
-            cancelOnError: true,
-          )
-          .asFuture();
+          if (contentLength > 0) {
+            final progress = bytesDownloaded / contentLength;
+            _toastService.updateNotification(
+              id: toastId,
+              progress: progress,
+              message:
+                  'Downloaded ${_formatBytes(bytesDownloaded)} / ${_formatBytes(contentLength)}',
+            );
+          }
+        }
+      } finally {
+        await sink.close();
+      }
 
       // Extract if needed
       if (needsExtraction) {
