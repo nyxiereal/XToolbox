@@ -259,32 +259,221 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                                     option.isChecked;
                               }
 
-                              return CheckboxListTile(
-                                title: Text(
-                                  option.displayName,
-                                  style: textTheme.bodyMedium,
-                                ),
-                                subtitle: option.description != null
-                                    ? Text(
-                                        option.description!,
-                                        style: textTheme.bodySmall?.copyWith(
-                                          color: colorScheme.onSurfaceVariant,
+                              // Group radio options by description
+                              if (option.type == 'radio') {
+                                // Find all radio options with the same description
+                                final radioGroup = playbookService
+                                    .currentConfig!.options
+                                    .where((o) =>
+                                        o.type == 'radio' &&
+                                        o.description == option.description)
+                                    .toList();
+
+                                // Only render once per group (use first option)
+                                if (radioGroup.first != option) {
+                                  return const SizedBox.shrink();
+                                }
+
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    if (option.description != null) ...[
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 12,
+                                          bottom: 8,
                                         ),
-                                      )
-                                    : null,
-                                value: _selectedOptions[option.name] ?? false,
-                                onChanged:
-                                    playbookService.status ==
-                                        PlaybookStatus.idle
-                                    ? (value) {
-                                        setState(() {
-                                          _selectedOptions[option.name] =
-                                              value ?? false;
-                                        });
-                                      }
-                                    : null,
-                                contentPadding: EdgeInsets.zero,
-                              );
+                                        child: Text(
+                                          option.description!,
+                                          style: textTheme.titleSmall?.copyWith(
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                    ...radioGroup.map((radioOption) {
+                                      return RadioListTile<String>(
+                                        title: Text(
+                                          radioOption.displayName,
+                                          style: textTheme.bodyMedium,
+                                        ),
+                                        value: radioOption.name,
+                                        groupValue: _selectedOptions.entries
+                                            .firstWhere(
+                                              (entry) =>
+                                                  entry.value &&
+                                                  radioGroup.any((o) =>
+                                                      o.name == entry.key),
+                                              orElse: () => MapEntry(
+                                                radioGroup
+                                                    .firstWhere(
+                                                      (o) => o.isChecked,
+                                                      orElse: () =>
+                                                          radioGroup.first,
+                                                    )
+                                                    .name,
+                                                true,
+                                              ),
+                                            )
+                                            .key,
+                                        onChanged: playbookService.status ==
+                                                PlaybookStatus.idle
+                                            ? (value) {
+                                                setState(() {
+                                                  // Unselect all options in this group
+                                                  for (final opt
+                                                      in radioGroup) {
+                                                    _selectedOptions[opt.name] =
+                                                        false;
+                                                  }
+                                                  // Select the chosen one
+                                                  _selectedOptions[value!] =
+                                                      true;
+                                                });
+                                              }
+                                            : null,
+                                        contentPadding: EdgeInsets.zero,
+                                      );
+                                    }),
+                                    const Divider(height: 24),
+                                  ],
+                                );
+                              }
+
+                              // Checkbox options
+                              if (option.type == 'checkbox') {
+                                return CheckboxListTile(
+                                  title: Text(
+                                    option.displayName,
+                                    style: textTheme.bodyMedium,
+                                  ),
+                                  subtitle: option.description != null
+                                      ? Text(
+                                          option.description!,
+                                          style: textTheme.bodySmall?.copyWith(
+                                            color: colorScheme.onSurfaceVariant,
+                                          ),
+                                        )
+                                      : null,
+                                  value: _selectedOptions[option.name] ?? false,
+                                  onChanged: playbookService.status ==
+                                          PlaybookStatus.idle
+                                      ? (value) {
+                                          setState(() {
+                                            _selectedOptions[option.name] =
+                                                value ?? false;
+                                          });
+                                        }
+                                      : null,
+                                  contentPadding: EdgeInsets.zero,
+                                );
+                              }
+
+                              // Software/browser options (radio group)
+                              if (option.type == 'software') {
+                                final softwareGroup = playbookService
+                                    .currentConfig!.options
+                                    .where((o) => o.type == 'software')
+                                    .toList();
+
+                                // Only render once (use first option)
+                                if (softwareGroup.first != option) {
+                                  return const SizedBox.shrink();
+                                }
+
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 12,
+                                        bottom: 8,
+                                      ),
+                                      child: Text(
+                                        'Default Browser',
+                                        style: textTheme.titleSmall?.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    RadioListTile<String>(
+                                      title: const Text('None'),
+                                      value: 'none',
+                                      groupValue: _selectedOptions.entries
+                                          .firstWhere(
+                                            (entry) =>
+                                                entry.value &&
+                                                softwareGroup.any(
+                                                    (o) => o.name == entry.key),
+                                            orElse: () =>
+                                                const MapEntry('none', true),
+                                          )
+                                          .key,
+                                      onChanged: playbookService.status ==
+                                              PlaybookStatus.idle
+                                          ? (value) {
+                                              setState(() {
+                                                for (final opt
+                                                    in softwareGroup) {
+                                                  _selectedOptions[opt.name] =
+                                                      false;
+                                                }
+                                              });
+                                            }
+                                          : null,
+                                      contentPadding: EdgeInsets.zero,
+                                    ),
+                                    ...softwareGroup.map((softwareOption) {
+                                      return RadioListTile<String>(
+                                        title: Text(
+                                          softwareOption.displayName,
+                                          style: textTheme.bodyMedium,
+                                        ),
+                                        subtitle: softwareOption.description !=
+                                                null
+                                            ? Text(
+                                                softwareOption.description!,
+                                                style: textTheme.bodySmall
+                                                    ?.copyWith(
+                                                  color: colorScheme
+                                                      .onSurfaceVariant,
+                                                ),
+                                              )
+                                            : null,
+                                        value: softwareOption.name,
+                                        groupValue: _selectedOptions.entries
+                                            .firstWhere(
+                                              (entry) =>
+                                                  entry.value &&
+                                                  softwareGroup.any((o) =>
+                                                      o.name == entry.key),
+                                              orElse: () =>
+                                                  const MapEntry('none', true),
+                                            )
+                                            .key,
+                                        onChanged: playbookService.status ==
+                                                PlaybookStatus.idle
+                                            ? (value) {
+                                                setState(() {
+                                                  for (final opt
+                                                      in softwareGroup) {
+                                                    _selectedOptions[opt.name] =
+                                                        false;
+                                                  }
+                                                  _selectedOptions[value!] =
+                                                      true;
+                                                });
+                                              }
+                                            : null,
+                                        contentPadding: EdgeInsets.zero,
+                                      );
+                                    }),
+                                    const Divider(height: 24),
+                                  ],
+                                );
+                              }
+
+                              return const SizedBox.shrink();
                             }),
                           ],
                         ],

@@ -39,6 +39,8 @@ class PlaybookService extends ChangeNotifier {
 
   static const String cliDownloadUrl =
       'https://github.com/Ameliorated-LLC/trusted-uninstaller-cli/releases/latest/download/CLI-Standalone.zip';
+  static const String sevenZipDownloadUrl =
+      'https://www.7-zip.org/a/7zr.exe'; // Standalone 7-Zip executable
 
   PlaybookService(this._toastService);
 
@@ -74,12 +76,23 @@ class PlaybookService extends ChangeNotifier {
           toastStatus = ToastStatus.inProgress;
       }
 
+      // Consider an "idle" status at 100% as completed so the toast clears
+      if (status == PlaybookStatus.idle && progress != null && progress >= 1.0) {
+        toastStatus = ToastStatus.success;
+      }
+
       _toastService.updateNotification(
         id: _currentToastId!,
         title: message,
         status: toastStatus,
         progress: progress,
       );
+
+      // If the toast is now completed (success/error) forget the id so future
+      // updates create a new notification instead of trying to reuse a removed one.
+      if (toastStatus == ToastStatus.success || toastStatus == ToastStatus.error) {
+        _currentToastId = null;
+      }
     }
 
     notifyListeners();
@@ -470,32 +483,37 @@ class PlaybookService extends ChangeNotifier {
     String outputDir,
     String password,
   ) async {
-    // Use 7z command from the CLI-Standalone package
+    // .apbx files are 7-Zip archives, not standard ZIP
+    // Download 7zr.exe if not present
     final workDir = await _workingDirectory;
-    String sevenZipPath;
+    final sevenZipExe = '$workDir\\7zr.exe';
 
-    if (Platform.isWindows) {
-      sevenZipPath = '$workDir/CLI-Standalone/7z.dll';
-    } else {
-      // On Linux, try to use system 7z
-      final result = await Process.run('which', ['7z']);
-      if (result.exitCode == 0) {
-        sevenZipPath = '7z';
-      } else {
-        throw Exception('7z not found. Please install p7zip-full package.');
+    if (!await File(sevenZipExe).exists()) {
+      // Download 7-Zip standalone executable
+      final response = await http.get(Uri.parse(sevenZipDownloadUrl));
+      if (response.statusCode != 200) {
+        throw Exception('Failed to download 7-Zip: ${response.statusCode}');
       }
+      await File(sevenZipExe).writeAsBytes(response.bodyBytes);
     }
 
-    final result = await Process.run(sevenZipPath, [
-      'x',
-      '-p$password',
-      '-o$outputDir',
-      archivePath,
-      '-y',
-    ]);
+    // Use 7zr.exe to extract the password-protected archive
+    final result = await Process.run(
+      sevenZipExe,
+      [
+        'x', // Extract with full paths
+        '-p$password', // Password
+        '-o$outputDir', // Output directory
+        archivePath, // Input archive
+        '-y', // Yes to all prompts
+      ],
+      runInShell: true,
+    );
 
     if (result.exitCode != 0) {
-      throw Exception('Failed to extract playbook: ${result.stderr}');
+      throw Exception(
+        'Failed to extract archive: ${result.stderr}\n${result.stdout}',
+      );
     }
   }
 
