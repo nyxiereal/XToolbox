@@ -16,6 +16,7 @@ dependencies:
   dynamic_color: ^1.8.1
   url_launcher: ^6.3.2
   http: ^1.2.2
+  package_info_plus: ^4.0.0
   path_provider: ^2.1.5
   archive: ^3.6.1
   process_run: ^1.2.0

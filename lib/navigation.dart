@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/browse_apps_screen.dart';
 import 'screens/playbook_setup_screen.dart';
-import 'screens/about_screen.dart';
 import 'screens/settings_screen.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -19,7 +18,6 @@ class _NavigationPageState extends State<NavigationPage> {
     HomeScreen(),
     BrowseAppsScreen(),
     PlaybookSetupScreen(),
-    AboutScreen(),
     SettingsScreen(),
   ];
 
@@ -54,11 +52,6 @@ class _NavigationPageState extends State<NavigationPage> {
                         icon: Icon(Icons.security_outlined),
                         selectedIcon: Icon(Icons.security),
                         label: Text('Playbooks'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.info_outline),
-                        selectedIcon: Icon(Icons.info),
-                        label: Text('About'),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.settings_outlined),

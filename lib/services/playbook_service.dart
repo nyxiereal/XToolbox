@@ -77,7 +77,9 @@ class PlaybookService extends ChangeNotifier {
       }
 
       // Consider an "idle" status at 100% as completed so the toast clears
-      if (status == PlaybookStatus.idle && progress != null && progress >= 1.0) {
+      if (status == PlaybookStatus.idle &&
+          progress != null &&
+          progress >= 1.0) {
         toastStatus = ToastStatus.success;
       }
 
@@ -90,7 +92,8 @@ class PlaybookService extends ChangeNotifier {
 
       // If the toast is now completed (success/error) forget the id so future
       // updates create a new notification instead of trying to reuse a removed one.
-      if (toastStatus == ToastStatus.success || toastStatus == ToastStatus.error) {
+      if (toastStatus == ToastStatus.success ||
+          toastStatus == ToastStatus.error) {
         _currentToastId = null;
       }
     }
@@ -498,17 +501,13 @@ class PlaybookService extends ChangeNotifier {
     }
 
     // Use 7zr.exe to extract the password-protected archive
-    final result = await Process.run(
-      sevenZipExe,
-      [
-        'x', // Extract with full paths
-        '-p$password', // Password
-        '-o$outputDir', // Output directory
-        archivePath, // Input archive
-        '-y', // Yes to all prompts
-      ],
-      runInShell: true,
-    );
+    final result = await Process.run(sevenZipExe, [
+      'x', // Extract with full paths
+      '-p$password', // Password
+      '-o$outputDir', // Output directory
+      archivePath, // Input archive
+      '-y', // Yes to all prompts
+    ], runInShell: true);
 
     if (result.exitCode != 0) {
       throw Exception(

@@ -11,6 +11,9 @@ import 'services/toast_notification_service.dart';
 import 'services/download_service.dart';
 import 'services/install_handler_service.dart';
 import 'services/playbook_service.dart';
+import 'services/update_service.dart';
+import 'services/network_checker_service.dart';
+import 'services/settings_service.dart';
 import 'widgets/toast_overlay_widget.dart';
 
 Future<void> main() async {
@@ -23,6 +26,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => SettingsService()),
         ChangeNotifierProvider(create: (_) => AssetProvider()),
         ChangeNotifierProvider(create: (_) => ToastNotificationService()),
         ProxyProvider<ToastNotificationService, DownloadService>(
@@ -43,6 +47,8 @@ Future<void> main() async {
           update: (_, toastService, previous) =>
               previous ?? PlaybookService(toastService),
         ),
+        ChangeNotifierProvider(create: (_) => UpdateService()),
+        ChangeNotifierProvider(create: (_) => NetworkCheckerService()),
       ],
       child: const MyApp(),
     ),

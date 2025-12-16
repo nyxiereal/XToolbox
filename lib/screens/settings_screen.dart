@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../utils/theme_provider.dart';
+import '../services/settings_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -10,11 +11,10 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool _autoUpdate = true;
-
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final settings = Provider.of<SettingsService>(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
       body: ListView(
@@ -43,8 +43,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SwitchListTile(
                   title: const Text('Auto Update'),
                   subtitle: const Text('Automatically check for updates'),
-                  value: _autoUpdate,
-                  onChanged: (value) => setState(() => _autoUpdate = value),
+                  value: settings.autoUpdate,
+                  onChanged: (value) => settings.setAutoUpdate(value),
                 ),
               ],
             ),
