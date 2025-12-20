@@ -122,7 +122,10 @@ class InstallHandlerService {
           }
         } else {
           // On Linux, make executable and run
-          final chmodOk = await _runCommand('chmod +x "$executablePath"', toastId);
+          final chmodOk = await _runCommand(
+            'chmod +x "$executablePath"',
+            toastId,
+          );
           if (chmodOk) {
             launched = await _runCommand('"$executablePath"', toastId);
           }
@@ -401,7 +404,7 @@ class InstallHandlerService {
       final url = 'ms-windows-store://pdp/?ProductId=${method.storeId}';
       if (Platform.isWindows) {
         final result = await _runCommand(
-          'start \"\" \"$url\"',
+          'start "" "$url"',
           toastId,
           silent: true,
         );
@@ -456,9 +459,12 @@ class InstallHandlerService {
         final shell = Shell();
         // Check user-level App Installer first (no -AllUsers to avoid permission issues)
         final results = await shell.run(
-            'powershell -NoProfile -Command "Get-AppxPackage -Name Microsoft.DesktopAppInstaller | Select-Object -ExpandProperty Name"');
+          'powershell -NoProfile -Command "Get-AppxPackage -Name Microsoft.DesktopAppInstaller | Select-Object -ExpandProperty Name"',
+        );
 
-        final out = results.isNotEmpty ? results.last.stdout.toString().trim() : '';
+        final out = results.isNotEmpty
+            ? results.last.stdout.toString().trim()
+            : '';
         if (out.isNotEmpty) {
           // App Installer is installed at the user level; return success so caller can retry winget.
           return true;
@@ -466,7 +472,9 @@ class InstallHandlerService {
       } catch (e) {
         final err = e.toString();
         // If we get an UnauthorizedAccessException, inform the user and open the Store
-        if (err.contains('Unauthorized') || err.contains('Access Denied') || err.contains('Odmowa')) {
+        if (err.contains('Unauthorized') ||
+            err.contains('Access Denied') ||
+            err.contains('Odmowa')) {
           _toastService.updateNotification(
             id: toastId,
             status: ToastStatus.error,
@@ -474,9 +482,11 @@ class InstallHandlerService {
                 'Permission denied when checking App Installer. Please run the app as Administrator or install "App Installer" from the Microsoft Store. Opening Store...',
           );
 
-          await _runCommand('start "" "ms-windows-store://search/?query=App%20Installer"',
-              toastId,
-              silent: true);
+          await _runCommand(
+            'start "" "ms-windows-store://search/?query=App%20Installer"',
+            toastId,
+            silent: true,
+          );
 
           return false;
         }
@@ -502,9 +512,11 @@ class InstallHandlerService {
       );
 
       // Open store search for 'App Installer' to let the user install it interactively
-      await _runCommand('start "" "ms-windows-store://search/?query=App%20Installer"',
-          toastId,
-          silent: true);
+      await _runCommand(
+        'start "" "ms-windows-store://search/?query=App%20Installer"',
+        toastId,
+        silent: true,
+      );
 
       return false;
     } catch (e) {
@@ -549,7 +561,9 @@ class InstallHandlerService {
         } else {
           // Use -NoProfile and -ExecutionPolicy Bypass and wrap the command
           // in an explicit script block to avoid issues with newlines/quotes.
-          await shell.run('powershell -NoProfile -ExecutionPolicy Bypass -Command "& { $command }"');
+          await shell.run(
+            'powershell -NoProfile -ExecutionPolicy Bypass -Command "& { $command }"',
+          );
         }
       } else {
         await shell.run(command);

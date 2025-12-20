@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:system_theme/system_theme.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 
-import 'navigation.dart';
+import 'screens/startup_loading_screen.dart';
 import 'utils/theme_provider.dart';
 import 'provider/asset_provider.dart';
 import 'services/toast_notification_service.dart';
@@ -30,14 +30,14 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => AssetProvider()),
         ChangeNotifierProvider(create: (_) => ToastNotificationService()),
         ProxyProvider<ToastNotificationService, DownloadService>(
-          update: (_, toastService, __) => DownloadService(toastService),
+          update: (_, toastService, _) => DownloadService(toastService),
         ),
         ProxyProvider2<
           ToastNotificationService,
           DownloadService,
           InstallHandlerService
         >(
-          update: (_, toastService, downloadService, __) =>
+          update: (_, toastService, downloadService, _) =>
               InstallHandlerService(toastService, downloadService),
         ),
         ChangeNotifierProxyProvider<ToastNotificationService, PlaybookService>(
@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
               themeMode: themeProvider.themeMode,
               theme: lightTheme,
               darkTheme: darkTheme,
-              home: const ToastOverlay(child: NavigationPage()),
+              home: const ToastOverlay(child: StartupLoadingScreen()),
             );
           },
         );

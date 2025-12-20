@@ -8,7 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../services/update_service.dart';
 import '../services/network_checker_service.dart';
 import '../services/settings_service.dart';
-import '../constants.dart';
+import '../widgets/system_info_modal.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -38,13 +38,17 @@ class _HomeScreenState extends State<HomeScreen> {
     // Only auto-check if the setting is enabled
     if (settings.autoUpdate) {
       update.checkForUpdate(
-        owner: kRepoOwner,
-        repo: kRepoName,
+        owner: 'nyxiereal',
+        repo: 'xtoolbox',
         currentVersion: _appVersion ?? '0.0.0',
       );
     }
     final net = Provider.of<NetworkCheckerService>(context, listen: false);
-    net.checkHosts(kDefaultPingHosts);
+    net.checkHosts([
+      'https://google.com',
+      'https://github.com',
+      'https://one.one.one.one',
+    ]);
   }
 
   @override
@@ -98,17 +102,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildUpdateCard(BuildContext context) {
     return Consumer<UpdateService>(
-        builder: (context, update, _) {
+      builder: (context, update, _) {
         final settings = Provider.of<SettingsService>(context);
         final subtitle = update.checking
-          ? 'Checking for updates...'
-          : (!settings.autoUpdate
-            ? 'Auto updates disabled'
-            : (update.info != null
-              ? (update.info!.updateAvailable
-                ? 'Update available: v${update.info!.latestVersion}'
-                : 'Up to date')
-              : (update.error != null ? 'Error: ${update.error}' : 'Idle')));
+            ? 'Checking for updates...'
+            : (!settings.autoUpdate
+                  ? 'Auto updates disabled'
+                  : (update.info != null
+                        ? (update.info!.updateAvailable
+                              ? 'Update available: v${update.info!.latestVersion}'
+                              : 'Up to date')
+                        : (update.error != null
+                              ? 'Error: ${update.error}'
+                              : 'Idle')));
 
         return SizedBox(
           width: 360,
@@ -146,8 +152,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: update.checking
                             ? null
                             : () => update.checkForUpdate(
-                                owner: kRepoOwner,
-                                repo: kRepoName,
+                                owner: 'nyxiereal',
+                                repo: 'xtoolbox',
                                 currentVersion: _appVersion ?? '0.0.0',
                                 force: true,
                               ),
@@ -158,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         TextButton(
                           onPressed: () async {
                             final uri = Uri.parse(
-                              'https://github.com/$kRepoOwner/$kRepoName/releases/latest',
+                              'https://github.com/nyxiereal/xtoolbox/releases/latest',
                             );
                             if (await canLaunchUrl(uri)) {
                               await launchUrl(uri);
@@ -233,7 +239,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ElevatedButton(
                         onPressed: net.checking
                             ? null
-                            : () => net.checkHosts(kDefaultPingHosts),
+                            : () => net.checkHosts([
+                                'https://google.com',
+                                'https://github.com',
+                                'https://one.one.one.one',
+                              ]),
                         child: const Text('Check now'),
                       ),
                     ],
@@ -282,11 +292,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 leading: const Icon(Icons.memory),
                 title: Text('Processors: ${Platform.numberOfProcessors}'),
               ),
-              ListTile(
-                dense: true,
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.info),
-                title: Text('Dart: ${Platform.version.split('\n').first}'),
+              const SizedBox(height: 12),
+              FilledButton.icon(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => const SystemInfoModal(),
+                  );
+                },
+                icon: const Icon(Icons.monitor_heart),
+                label: const Text('View Details'),
+                style: FilledButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 40),
+                ),
               ),
             ],
           ),

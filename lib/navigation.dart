@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/browse_apps_screen.dart';
 import 'screens/playbook_setup_screen.dart';
+import 'screens/cleanup_screen.dart';
 import 'screens/settings_screen.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -18,6 +19,7 @@ class _NavigationPageState extends State<NavigationPage> {
     HomeScreen(),
     BrowseAppsScreen(),
     PlaybookSetupScreen(),
+    CleanupScreen(),
     SettingsScreen(),
   ];
 
@@ -52,6 +54,11 @@ class _NavigationPageState extends State<NavigationPage> {
                         icon: Icon(Icons.security_outlined),
                         selectedIcon: Icon(Icons.security),
                         label: Text('Playbooks'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.cleaning_services_outlined),
+                        selectedIcon: Icon(Icons.cleaning_services),
+                        label: Text('Cleanup'),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.settings_outlined),
@@ -91,9 +98,9 @@ class _NavigationPageState extends State<NavigationPage> {
                 label: 'Playbooks',
               ),
               NavigationDestination(
-                icon: Icon(Icons.info_outline),
-                selectedIcon: Icon(Icons.info),
-                label: 'About',
+                icon: Icon(Icons.cleaning_services_outlined),
+                selectedIcon: Icon(Icons.cleaning_services),
+                label: 'Cleanup',
               ),
               NavigationDestination(
                 icon: Icon(Icons.settings_outlined),

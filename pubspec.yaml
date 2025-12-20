@@ -22,6 +22,11 @@ dependencies:
   process_run: ^1.2.0
   flutter_overlay: ^1.0.0
   xml: ^6.5.0
+  shimmer: ^3.0.0
+  connectivity_plus: ^6.1.0
+  system_info2: ^4.0.0
+  win32: ^5.9.0
+  file_picker: ^8.1.6
 
 dev_dependencies:
   flutter_test:

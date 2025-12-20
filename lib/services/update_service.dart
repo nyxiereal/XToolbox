@@ -60,7 +60,10 @@ class UpdateService extends ChangeNotifier {
         _error = 'HTTP ${resp.statusCode}';
         _checking = false;
         // save last check time even on HTTP error to avoid hammering
-        await _prefs?.setInt(_lastCheckKey, DateTime.now().millisecondsSinceEpoch);
+        await _prefs?.setInt(
+          _lastCheckKey,
+          DateTime.now().millisecondsSinceEpoch,
+        );
         notifyListeners();
         return null;
       }
@@ -70,7 +73,10 @@ class UpdateService extends ChangeNotifier {
       final latest = tag.startsWith('v') ? tag.substring(1) : tag;
       final available = _isNewer(latest, currentVersion);
       _info = UpdateInfo(latestVersion: latest, updateAvailable: available);
-      await _prefs?.setInt(_lastCheckKey, DateTime.now().millisecondsSinceEpoch);
+      await _prefs?.setInt(
+        _lastCheckKey,
+        DateTime.now().millisecondsSinceEpoch,
+      );
       _checking = false;
       notifyListeners();
       return _info;
@@ -78,7 +84,10 @@ class UpdateService extends ChangeNotifier {
       _error = e.toString();
       _checking = false;
       // record attempt time on exception too
-      await _prefs?.setInt(_lastCheckKey, DateTime.now().millisecondsSinceEpoch);
+      await _prefs?.setInt(
+        _lastCheckKey,
+        DateTime.now().millisecondsSinceEpoch,
+      );
       notifyListeners();
       return null;
     }

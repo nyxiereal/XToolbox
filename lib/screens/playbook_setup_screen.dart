@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/playbook.dart';
 import '../services/playbook_service.dart';
+import '../services/security_checker_service.dart';
 
 class PlaybookSetupScreen extends StatefulWidget {
   const PlaybookSetupScreen({super.key});
@@ -21,7 +22,7 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Playbooks'), elevation: 0),
+      appBar: AppBar(title: const Text('Playbooks')),
       body: Consumer<PlaybookService>(
         builder: (context, playbookService, _) {
           return SingleChildScrollView(
@@ -68,10 +69,12 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: colorScheme.errorContainer.withOpacity(0.3),
+                            color: colorScheme.errorContainer.withValues(
+                              alpha: 0.3,
+                            ),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
-                              color: colorScheme.error.withOpacity(0.5),
+                              color: colorScheme.error.withValues(alpha: 0.5),
                             ),
                           ),
                           child: Row(
@@ -168,7 +171,7 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                                       style: textTheme.bodySmall?.copyWith(
                                         color: isSelected
                                             ? colorScheme.onPrimaryContainer
-                                                  .withOpacity(0.8)
+                                                  .withValues(alpha: 0.8)
                                             : colorScheme.onSurfaceVariant,
                                       ),
                                     ),
@@ -203,7 +206,7 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                       label: Text(
                         _isPreparingPlaybook
                             ? 'Loading...'
-                            : 'Load Playbook Options',
+                            : 'Initialize Playbook',
                       ),
                       style: FilledButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
@@ -263,10 +266,13 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                               if (option.type == 'radio') {
                                 // Find all radio options with the same description
                                 final radioGroup = playbookService
-                                    .currentConfig!.options
-                                    .where((o) =>
-                                        o.type == 'radio' &&
-                                        o.description == option.description)
+                                    .currentConfig!
+                                    .options
+                                    .where(
+                                      (o) =>
+                                          o.type == 'radio' &&
+                                          o.description == option.description,
+                                    )
                                     .toList();
 
                                 // Only render once per group (use first option)
@@ -302,8 +308,9 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                                             .firstWhere(
                                               (entry) =>
                                                   entry.value &&
-                                                  radioGroup.any((o) =>
-                                                      o.name == entry.key),
+                                                  radioGroup.any(
+                                                    (o) => o.name == entry.key,
+                                                  ),
                                               orElse: () => MapEntry(
                                                 radioGroup
                                                     .firstWhere(
@@ -316,7 +323,8 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                                               ),
                                             )
                                             .key,
-                                        onChanged: playbookService.status ==
+                                        onChanged:
+                                            playbookService.status ==
                                                 PlaybookStatus.idle
                                             ? (value) {
                                                 setState(() {
@@ -356,7 +364,8 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                                         )
                                       : null,
                                   value: _selectedOptions[option.name] ?? false,
-                                  onChanged: playbookService.status ==
+                                  onChanged:
+                                      playbookService.status ==
                                           PlaybookStatus.idle
                                       ? (value) {
                                           setState(() {
@@ -372,7 +381,8 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                               // Software/browser options (radio group)
                               if (option.type == 'software') {
                                 final softwareGroup = playbookService
-                                    .currentConfig!.options
+                                    .currentConfig!
+                                    .options
                                     .where((o) => o.type == 'software')
                                     .toList();
 
@@ -404,12 +414,14 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                                             (entry) =>
                                                 entry.value &&
                                                 softwareGroup.any(
-                                                    (o) => o.name == entry.key),
+                                                  (o) => o.name == entry.key,
+                                                ),
                                             orElse: () =>
                                                 const MapEntry('none', true),
                                           )
                                           .key,
-                                      onChanged: playbookService.status ==
+                                      onChanged:
+                                          playbookService.status ==
                                               PlaybookStatus.idle
                                           ? (value) {
                                               setState(() {
@@ -429,15 +441,15 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                                           softwareOption.displayName,
                                           style: textTheme.bodyMedium,
                                         ),
-                                        subtitle: softwareOption.description !=
-                                                null
+                                        subtitle:
+                                            softwareOption.description != null
                                             ? Text(
                                                 softwareOption.description!,
                                                 style: textTheme.bodySmall
                                                     ?.copyWith(
-                                                  color: colorScheme
-                                                      .onSurfaceVariant,
-                                                ),
+                                                      color: colorScheme
+                                                          .onSurfaceVariant,
+                                                    ),
                                               )
                                             : null,
                                         value: softwareOption.name,
@@ -445,13 +457,15 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                                             .firstWhere(
                                               (entry) =>
                                                   entry.value &&
-                                                  softwareGroup.any((o) =>
-                                                      o.name == entry.key),
+                                                  softwareGroup.any(
+                                                    (o) => o.name == entry.key,
+                                                  ),
                                               orElse: () =>
                                                   const MapEntry('none', true),
                                             )
                                             .key,
-                                        onChanged: playbookService.status ==
+                                        onChanged:
+                                            playbookService.status ==
                                                 PlaybookStatus.idle
                                             ? (value) {
                                                 setState(() {
@@ -489,7 +503,7 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                   Padding(
                     padding: const EdgeInsets.only(top: 16),
                     child: Text(
-                      'Click "Load Playbook Options" to download and extract the playbook configuration.',
+                      'Click "Initialize Playbook" to download and extract the playbook.',
                       style: textTheme.bodySmall?.copyWith(
                         color: colorScheme.onSurfaceVariant,
                         fontStyle: FontStyle.italic,
@@ -554,8 +568,8 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
                             Container(
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: colorScheme.errorContainer.withOpacity(
-                                  0.3,
+                                color: colorScheme.errorContainer.withValues(
+                                  alpha: 0.3,
                                 ),
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -660,7 +674,66 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
   Future<void> _runPlaybook(BuildContext context) async {
     if (_selectedPlaybook == null) return;
 
-    // Show confirmation dialog
+    // Step 1: Check admin rights
+    final isAdmin = await SecurityCheckerService.isRunningAsAdmin();
+    if (!isAdmin) {
+      if (!mounted) return;
+      final requestElevation = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Administrator Rights Required'),
+          content: const Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(Icons.admin_panel_settings, size: 48, color: Colors.orange),
+              SizedBox(height: 16),
+              Text(
+                'Playbooks require administrator privileges to modify system files.',
+              ),
+              SizedBox(height: 12),
+              Text(
+                'Would you like to restart the application with elevated privileges?',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Cancel'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Restart as Admin'),
+            ),
+          ],
+        ),
+      );
+
+      if (requestElevation == true) {
+        await SecurityCheckerService.requestAdminElevation();
+      }
+      return;
+    }
+
+    // Step 2: Check Windows Defender status
+    final defenderEnabled =
+        await SecurityCheckerService.isWindowsDefenderEnabled();
+    if (defenderEnabled) {
+      if (!mounted) return;
+
+      // Show dialog instructing user to disable Windows Defender
+      await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => _WindowsDefenderDialog(),
+      );
+      return;
+    }
+
+    // Step 3: Show confirmation dialog
+    if (!mounted) return;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -671,12 +744,37 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
           children: [
             Text('You are about to run: ${_selectedPlaybook!.name}'),
             const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.errorContainer,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.warning_amber_rounded,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'This will modify system files. Create a full backup first!',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.error,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
             const Text(
               'This will:\n'
               '• Download TrustedUninstaller CLI\n'
               '• Download and extract the playbook\n'
-              '• Execute system modifications\n\n'
-              'Make sure you have a backup of your system!',
+              '• Execute system modifications',
               style: TextStyle(fontSize: 14),
             ),
           ],
@@ -688,7 +786,10 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Run Playbook'),
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.error,
+            ),
+            child: const Text('I have a backup, proceed'),
           ),
         ],
       ),
@@ -703,6 +804,7 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
         .toList();
 
     // Run playbook
+    if (!mounted) return;
     final playbookService = context.read<PlaybookService>();
     await playbookService.runPlaybook(
       _selectedPlaybook!,
@@ -725,5 +827,161 @@ class _PlaybookSetupScreenState extends State<PlaybookSetupScreen> {
         _isPreparingPlaybook = false;
       });
     }
+  }
+}
+
+/// Dialog for Windows Defender status check
+class _WindowsDefenderDialog extends StatefulWidget {
+  @override
+  State<_WindowsDefenderDialog> createState() => _WindowsDefenderDialogState();
+}
+
+class _WindowsDefenderDialogState extends State<_WindowsDefenderDialog> {
+  bool _checking = true;
+  bool _defenderEnabled = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkDefenderStatus();
+  }
+
+  Future<void> _checkDefenderStatus() async {
+    setState(() {
+      _checking = true;
+    });
+
+    final enabled = await SecurityCheckerService.isWindowsDefenderEnabled();
+
+    if (mounted) {
+      setState(() {
+        _defenderEnabled = enabled;
+        _checking = false;
+      });
+
+      // Auto-close if defender is now disabled
+      if (!enabled) {
+        await Future.delayed(const Duration(milliseconds: 500));
+        if (mounted) {
+          Navigator.of(context).pop();
+        }
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    return AlertDialog(
+      title: Row(
+        children: [
+          Icon(Icons.security, color: colorScheme.error),
+          const SizedBox(width: 12),
+          const Expanded(child: Text('Windows Defender Enabled')),
+        ],
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: colorScheme.errorContainer,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.warning_amber_rounded, color: colorScheme.error),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Playbooks cannot run with Windows Defender enabled',
+                    style: TextStyle(
+                      color: colorScheme.error,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          const Text(
+            'Windows Defender Real-Time Protection must be disabled before running playbooks.\n\n'
+            'Steps:\n'
+            '1. Click "Open Windows Defender"\n'
+            '2. Turn off Real-Time Protection\n'
+            '3. Return here and wait for auto-verification',
+          ),
+          const SizedBox(height: 16),
+          if (_checking)
+            Row(
+              children: [
+                SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+                const SizedBox(width: 12),
+                const Text('Checking status...'),
+              ],
+            )
+          else if (_defenderEnabled)
+            Row(
+              children: [
+                Icon(Icons.error, color: colorScheme.error, size: 20),
+                const SizedBox(width: 12),
+                const Expanded(
+                  child: Text(
+                    'Still enabled - please disable and wait',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            )
+          else
+            Row(
+              children: [
+                Icon(Icons.check_circle, color: Colors.green, size: 20),
+                const SizedBox(width: 12),
+                const Text(
+                  'Disabled! Closing...',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancel'),
+        ),
+        FilledButton.icon(
+          onPressed: () async {
+            await SecurityCheckerService.openWindowsDefenderSettings();
+            // Start periodic checking
+            _startPeriodicCheck();
+          },
+          icon: const Icon(Icons.open_in_new),
+          label: const Text('Open Windows Defender'),
+        ),
+      ],
+    );
+  }
+
+  void _startPeriodicCheck() {
+    // Check every second
+    Future.delayed(const Duration(seconds: 1), () {
+      if (mounted) {
+        _checkDefenderStatus();
+        if (_defenderEnabled) {
+          _startPeriodicCheck(); // Continue checking
+        }
+      }
+    });
   }
 }
