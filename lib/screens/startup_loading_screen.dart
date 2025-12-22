@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
 import '../navigation.dart';
@@ -87,12 +86,6 @@ class _StartupLoadingScreenState extends State<StartupLoadingScreen> {
 
   Future<bool> _verifyInternetConnection() async {
     try {
-      // First check connectivity status
-      final connectivityResult = await Connectivity().checkConnectivity();
-      if (connectivityResult.contains(ConnectivityResult.none)) {
-        return false;
-      }
-
       // Actually verify we can reach the internet
       final response = await http
           .head(Uri.parse('https://one.one.one.one'))
