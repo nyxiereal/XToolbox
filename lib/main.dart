@@ -71,7 +71,10 @@ class MyApp extends StatelessWidget {
               themeMode: themeProvider.themeMode,
               theme: lightTheme,
               darkTheme: darkTheme,
-              home: const ToastOverlay(child: StartupLoadingScreen()),
+              home: const StartupLoadingScreen(),
+              builder: (context, child) {
+                return ToastOverlay(child: child ?? const SizedBox());
+              },
             );
           },
         );
