@@ -1,28 +1,29 @@
-> [!WARNING]
-> This branch is currently under development, if you want to help (I'm fine on my own, if you have suggestions, open an issue).  
-> The information below is incomplete and inaccurate.
-
 # XToolBox
-A toolbox full of Windows 10/11 debloating utilities.\
-Made by [Nyxie](https://nyx.fuckingbitch.eu), the project's site can be found [here](https://xtoolbox.fuckingbitch.eu).
+A toolbox full of Windows 10/11 debloating utilities.  
+Made by [Nyx](https://nyx.meowery.eu).
 
 ## 🚀 Quickstart
-1. Press Windows + R
-2. Type in `powershell` and press Enter
-3. Type in `irm https://xtoolbox.fuckingbitch.eu/get | iex` and press Enter
+>[!TIP]
+> [You can click here to download the latest release zip.](https://github.com/nyxiereal/XToolbox/releases/latest/download/Release.zip)  
+1. Go to the releases tab.
+2. Click on the Release.zip file attached to the latest release.
+3. Unpack the folder and run the xtoolbox.exe file.
 4. You now have XToolBox running on your computer, pretty cool!
 
 ## 📑 Important
-1. This program will run __ONLY__ on Windows 10 (tested on 22H2) and Windows 11 (tested on 24H2), it's not advised to use older version of Windows, like Windows 7 or Windows 8.1. If you are using these unsupported versions, please upgrade to a supported one or use Linux. I can't and won't prevent you from using XTB on an older version of Windows tho.
+1. This program will run __ONLY__ on Windows 10 (tested on 22H2 and LTSC) and Windows 11 (tested on 25H2 and LTSC), it's not advised to use older version of Windows, like Windows 7 or Windows 8.1. If you are using these unsupported versions, please upgrade to a supported one or install Linux. I can't and won't prevent you from using XTB on an older version of Windows tho.
 2. If this program gets flagged as malware, it's a false positive, here's why:
     1. It downloads and executes files.
     2. It's packed with UPX.
-    3. It uses PyInstaller as a compiler.
+    3. It's a compiled Dart binary.
 
 ## 📸 Screenshots
-![img1](.github/image-1.png)
-![img2](.github/image-2.png)
-
+<details>
+    <summary>Click to reveal!</summary>
+    <img width="1379" height="757" alt="image" src="https://github.com/user-attachments/assets/6cc574db-2d3a-4145-be57-fb6a09c0adb3" />
+    <img width="1379" height="757" alt="image" src="https://github.com/user-attachments/assets/3913ce8b-0dc6-481c-9dc3-e4514fb9668e" />
+    <img width="1379" height="757" alt="image" src="https://github.com/user-attachments/assets/807706c2-03d4-424f-a5c2-e932bfc4ec87" />
+</details>
 
 ## 🖊️ Reviews
 *nice toolbox*
@@ -54,17 +55,18 @@ Made by [Nyxie](https://nyx.fuckingbitch.eu), the project's site can be found [h
 - `@jamieroot`
 
 ## ⚒️ Building
-- Remember to put in your UPX path, not to the exe, just to the directory!
-- The building process requires [Python](https://www.python.org/downloads/) and [Git](https://git-scm.com/downloads)
+- The building process requires [Flutter](https://docs.flutter.dev/get-started/quick) and [Git](https://git-scm.com/downloads)
 ```
 git clone https://github.com/nyxiereal/XToolbox
-pip install -r requirements.txt
-pip install pyinstaller
-pyinstaller --onefile --clean --upx-dir="path\to\upx\dir" main.py
+cd XToolbox
+flutter pub get
+flutter build windows --release
+cd build/windows/x64/runner/Release
 ```
+>[!NOTE]
+> You have to zip up the entire Release folder, not only the `xtoolbox.exe` file!
 
 ## 🔗 Links
-
 <a href="https://star-history.com/#nyxiereal/xtoolbox&Date">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=nyxiereal/xtoolbox&type=Date&theme=dark" />
