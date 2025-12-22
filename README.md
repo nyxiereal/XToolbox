@@ -4,10 +4,10 @@ Made by [Nyx](https://nyx.meowery.eu).
 
 ## 🚀 Quickstart
 >[!TIP]
-> [You can click here to download the latest release zip.](https://github.com/nyxiereal/XToolbox/releases/latest/download/Release.zip)  
+> [You can click here to download the latest XTBox zip.](https://github.com/nyxiereal/XToolbox/releases/latest/download/XTBox.zip)  
 1. Go to the releases tab.
-2. Click on the Release.zip file attached to the latest release.
-3. Unpack the folder and run the xtoolbox.exe file.
+2. Click on the `XTBox.zip` file attached to the latest release.
+3. Unpack the folder and run the `xtoolbox.exe` file.
 4. You now have XToolBox running on your computer, pretty cool!
 
 ## 📑 Important
