@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:system_theme/system_theme.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 
-import 'screens/startup_loading_screen.dart';
+import 'navigation.dart';
 import 'utils/theme_provider.dart';
 import 'provider/asset_provider.dart';
 import 'services/toast_notification_service.dart';
@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
               themeMode: themeProvider.themeMode,
               theme: lightTheme,
               darkTheme: darkTheme,
-              home: const StartupLoadingScreen(),
+              home: const NavigationPage(),
               builder: (context, child) {
                 return ToastOverlay(child: child ?? const SizedBox());
               },
