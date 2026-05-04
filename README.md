@@ -1,3 +1,13 @@
+# END OF LIFE
+
+XToolBox has reached the end of its journey.
+
+I am the only developer behind this project. A few years ago, I switched to Linux full-time. I no longer use Windows, and I have no desire to maintain an application for a platform I do not use.
+
+The source code will remain available, but there will be no further updates, bug fixes, or support.
+
+Thank you for using XToolBox over the last 4 years.
+
 # XToolBox
 A toolbox full of Windows 10/11 debloating utilities.  
 Made by [Nyx](https://nyx.meowery.eu).

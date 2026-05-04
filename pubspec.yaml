@@ -2,7 +2,7 @@ name: xtoolbox
 description: "A toolbox full of Windows 10/11 utilities."
 publish_to: 'none'
 
-version: 5.0.0
+version: 5.0.1
 
 environment:
   sdk: ^3.10.1
